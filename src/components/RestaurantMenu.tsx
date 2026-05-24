@@ -29,18 +29,18 @@ export function RestaurantMenu({ restaurant, groupedMenu }: Props) {
 
   // Show nav when hero scrolls out of view, hide when it returns
   useEffect(() => {
-    const hero = heroRef.current;
-    if (!hero) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setShowNav(!entry.isIntersecting);
-      },
-      { threshold: 0 }
-    );
-
-    observer.observe(hero);
-    return () => observer.disconnect();
+    const handleScroll = () => {
+      const hero = heroRef.current;
+      if (!hero) return;
+      
+      // Show nav when scrolled past the bottom of the hero
+      const heroBottom = hero.offsetTop + hero.offsetHeight;
+      setShowNav(window.scrollY > heroBottom - 60);
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Update active category based on scroll position
