@@ -2,10 +2,9 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
-import { notFound } from 'next/navigation';
-import { routing } from '@/i18n/routing';
 import '@/app/globals.css';
 import Logo from '@/components/Logo';
+import { LanguageToggle } from '@/components/LanguageToggle';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { Footer } from '@/components/Footer';
@@ -26,10 +25,6 @@ export default async function RootLayout({
 }) {
   const { locale } = await params;
 
-  if (!routing.locales.includes(locale as any)) {
-    notFound();
-  }
-
   const messages = await getMessages();
 
   return (
@@ -43,6 +38,7 @@ export default async function RootLayout({
             
             <Footer />
 
+            <LanguageToggle />
             <ThemeToggle />
           </ThemeProvider>
         </NextIntlClientProvider>

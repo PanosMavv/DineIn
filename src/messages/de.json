@@ -1,0 +1,27 @@
+{
+  "app": {
+    "title": "Dine In - Speisekarten",
+    "description": "Entdecken Sie Speisekarten von Restaurants",
+    "name": "Dine In"
+  },
+  "home": {
+    "heading": "Dine In",
+    "subtitle": "Plattform für Restaurant-Speisekarten"
+  },
+  "restaurant": {
+    "soldOut": "Ausverkauft",
+    "noItems": "Keine Artikel verfügbar.",
+    "noImage": "Kein Bild",
+    "backToRestaurants": "Zurück zu den Restaurants",
+    "notFound": "Restaurant nicht gefunden",
+    "notFoundMessage": "Das gesuchte Restaurant existiert nicht.",
+    "loading": "Speisekarte wird geladen..."
+  },
+  "footer": {
+    "description": "Schöne digitale Speisekarten für Restaurants, Cafés und Lebensmittelbetriebe.",
+    "rights": "Dine In. Alle Rechte vorbehalten."
+  },
+  "theme": {
+    "toggle": "Thema wechseln"
+  }
+}
