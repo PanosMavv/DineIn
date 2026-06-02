@@ -4,7 +4,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import '@/app/globals.css';
 import Logo from '@/components/Logo';
-import { LanguageToggle } from '@/components/LanguageToggle';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { Footer } from '@/components/Footer';
@@ -38,7 +38,7 @@ export default async function RootLayout({
             
             <Footer />
 
-            <LanguageToggle />
+            <LanguageSwitcher />
             <ThemeToggle />
           </ThemeProvider>
         </NextIntlClientProvider>
