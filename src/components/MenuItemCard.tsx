@@ -1,13 +1,18 @@
+'use client';
+
+import { useTranslations } from 'next-intl';
 import type { MenuItem } from '@/lib/utils';
 
 export function MenuItemCard({ item }: { item: MenuItem }) {
+  const t = useTranslations('restaurant');
+
   return (
     <div className="py-4 flex justify-between items-start" style={{ opacity: item.isAvailable ? 1 : 0.5 }}>
       <div className="flex-1 mr-4">
         <h3 className="text-base font-medium text-gray-900 dark:text-gray-100">
           {item.name}
           {!item.isAvailable && (
-            <span className="text-xs text-red-500 dark:text-red-400 ml-2">(Sold Out)</span>
+            <span className="text-xs text-red-500 dark:text-red-400 ml-2">({t('soldOut')})</span>
           )}
         </h3>
         {item.description && (
