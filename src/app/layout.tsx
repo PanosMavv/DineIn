@@ -4,9 +4,8 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import '@/app/globals.css';
 import Logo from '@/components/Logo';
-import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+import { SettingsButton } from '@/components/SettingsButton';
 import { ThemeProvider } from '@/components/ThemeProvider';
-import { ThemeToggle } from '@/components/ThemeToggle';
 import { Footer } from '@/components/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -38,8 +37,7 @@ export default async function RootLayout({
             
             <Footer />
 
-            <LanguageSwitcher />
-            <ThemeToggle />
+            <SettingsButton />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
