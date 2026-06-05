@@ -13,14 +13,15 @@ const languages = [
 
 export function SettingsButton() {
   const [isOpen, setIsOpen] = useState(false);
+  const locale = useLocale();
+  const router = useRouter();
+
   const [isDark, setIsDark] = useState(() => {
     if (typeof window !== 'undefined') {
       return document.documentElement.classList.contains('dark');
     }
-    return false;
+    return true;
   });
-  const locale = useLocale();
-  const router = useRouter();
 
   // Lock body scroll when sheet is open
   useEffect(() => {
@@ -106,12 +107,12 @@ export function SettingsButton() {
             >
               <div className="flex items-center gap-3">
                 {isDark ? (
-                  <Sun className="w-5 h-5 text-yellow-500" />
-                ) : (
                   <Moon className="w-5 h-5 text-gray-500" />
+                ) : (
+                  <Sun className="w-5 h-5 text-yellow-500" />
                 )}
                 <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
-                  {isDark ? 'Light Mode' : 'Dark Mode'}
+                  {isDark ? 'Dark Mode' : 'Light Mode'}
                 </span>
               </div>
               <span className="text-xs text-gray-400">{isDark ? 'Switch to light' : 'Switch to dark'}</span>
@@ -121,7 +122,11 @@ export function SettingsButton() {
       </div>
 
       <button
-        onClick={() => setIsOpen(true)}
+        onClick={() => {
+          const dark = document.documentElement.classList.contains('dark');
+          setIsDark(dark);
+          setIsOpen(true);
+        }}
         className="fixed bottom-4 right-4 z-30 w-12 h-12 rounded-full bg-white dark:bg-gray-800 shadow-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center transition-all duration-300 hover:scale-105"
         aria-label="Settings"
       >
