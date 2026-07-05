@@ -13,15 +13,16 @@ datasource db {
 }
 
 model Restaurant {
-  id             String                  @id @default(cuid())
-  slug           String                  @unique
-  category       String
-  theme          Json                    @default("{}")
-  template       String                  @default("simple-list")
-  translations   RestaurantTranslation[]
-  menuItems      MenuItem[]
-  createdAt      DateTime                @default(now())
-  updatedAt      DateTime                @updatedAt
+  id                   String                  @id @default(cuid())
+  slug                 String                  @unique
+  category             String
+  theme                Json                    @default("{}")
+  template             String                  @default("simple-list")
+  translations         RestaurantTranslation[]
+  categoryTranslations CategoryTranslation[] // <-- Add this line
+  menuItems            MenuItem[]
+  createdAt            DateTime                @default(now())
+  updatedAt            DateTime                @updatedAt
 }
 
 model RestaurantTranslation {
@@ -36,16 +37,16 @@ model RestaurantTranslation {
 }
 
 model MenuItem {
-  id            String                 @id @default(cuid())
-  price         Decimal                @db.Decimal(10, 2)
-  image         String?
-  category      String
-  isAvailable   Boolean                @default(true)
-  restaurantId  String
-  restaurant    Restaurant             @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
-  translations  MenuItemTranslation[]
-  createdAt     DateTime               @default(now())
-  updatedAt     DateTime               @updatedAt
+  id           String                @id @default(cuid())
+  price        Decimal               @db.Decimal(10, 2)
+  image        String?
+  category     String
+  isAvailable  Boolean               @default(true)
+  restaurantId String
+  restaurant   Restaurant            @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  translations MenuItemTranslation[]
+  createdAt    DateTime              @default(now())
+  updatedAt    DateTime              @updatedAt
 }
 
 model MenuItemTranslation {
@@ -57,4 +58,15 @@ model MenuItemTranslation {
   menuItem    MenuItem @relation(fields: [menuItemId], references: [id], onDelete: Cascade)
 
   @@unique([menuItemId, locale])
+}
+
+model CategoryTranslation {
+  id           String     @id @default(cuid())
+  restaurantId String
+  locale       String
+  key          String
+  value        String
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+
+  @@unique([restaurantId, locale, key])
 }
