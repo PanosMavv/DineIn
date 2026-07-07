@@ -15,7 +15,9 @@
     "backToRestaurants": "返回餐厅",
     "notFound": "未找到餐厅",
     "notFoundMessage": "您要找的餐厅不存在。",
-    "loading": "菜单加载中..."
+    "loading": "菜单加载中...",
+    "searchPlaceholder": "搜索菜单...",
+    "searchNotFound": "未找到任何菜品"
   },
   "footer": {
     "description": "为餐厅、咖啡馆和食品企业提供精美的数字菜单。",

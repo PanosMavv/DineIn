@@ -15,7 +15,9 @@
     "backToRestaurants": "Retour aux restaurants",
     "notFound": "Restaurant non trouvé",
     "notFoundMessage": "Le restaurant que vous cherchez n'existe pas.",
-    "loading": "Chargement du menu..."
+    "loading": "Chargement du menu...",
+    "searchPlaceholder": "Rechercher dans le menu...",
+    "searchNotFound": "Aucun article trouvé"
   },
   "footer": {
     "description": "De magnifiques menus numériques pour restaurants, cafés et commerces alimentaires.",

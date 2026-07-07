@@ -15,7 +15,9 @@
     "backToRestaurants": "Back to Restaurants",
     "notFound": "Restaurant Not Found",
     "notFoundMessage": "The restaurant you're looking for doesn't exist.",
-    "loading": "Loading menu..."
+    "loading": "Loading menu...",
+    "searchPlaceholder": "Search the menu...",
+    "searchNotFound": "No items were found for"
   },
   "footer": {
     "description": "Beautiful digital menus for restaurants, coffee shops, and food businesses.",

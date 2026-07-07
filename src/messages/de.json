@@ -15,7 +15,9 @@
     "backToRestaurants": "Zurück zu den Restaurants",
     "notFound": "Restaurant nicht gefunden",
     "notFoundMessage": "Das gesuchte Restaurant existiert nicht.",
-    "loading": "Speisekarte wird geladen..."
+    "loading": "Speisekarte wird geladen...",
+    "searchPlaceholder": "Menü durchsuchen...",
+    "searchNotFound": "Keine Artikel gefunden"
   },
   "footer": {
     "description": "Schöne digitale Speisekarten für Restaurants, Cafés und Lebensmittelbetriebe.",
