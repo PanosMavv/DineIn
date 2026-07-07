@@ -2,19 +2,25 @@
 
 import { useState, useEffect } from 'react';
 import { useLocale } from 'next-intl';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { Settings, X, Sun, Moon } from 'lucide-react';
 
-const languages = [
+const allLanguages = [
   { code: 'en', flag: '🇬🇧', label: 'English' },
   { code: 'el', flag: '🇬🇷', label: 'Ελληνικά' },
   { code: 'de', flag: '🇩🇪', label: 'Deutsch' },
+  { code: 'fr', flag: '🇫🇷', label: 'Français' },
+  { code: 'zh', flag: '🇨🇳', label: '中文' },
 ];
+
+const allLanguageCodes = allLanguages.map(l => l.code);
 
 export function SettingsButton() {
   const [isOpen, setIsOpen] = useState(false);
+  const [availableLocales, setAvailableLocales] = useState<string[]>(allLanguageCodes);
   const locale = useLocale();
   const router = useRouter();
+  const pathname = usePathname();
 
   const [isDark, setIsDark] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -22,6 +28,23 @@ export function SettingsButton() {
     }
     return true;
   });
+
+  // Fetch available locales for current restaurant
+  useEffect(() => {
+    const segments = pathname.split('/').filter(Boolean);
+    if (segments.length === 1 && !allLanguageCodes.includes(segments[0])) {
+      fetch(`/api/restaurant/${segments[0]}/locales`)
+        .then(res => res.json())
+        .then(data => setAvailableLocales(data.locales))
+        .catch(() => setAvailableLocales(allLanguageCodes));
+    } else {
+      setAvailableLocales(allLanguageCodes);
+    }
+  }, [pathname]);
+
+  const languages = allLanguages.filter(lang =>
+    availableLocales.includes(lang.code)
+  );
 
   // Lock body scroll when sheet is open
   useEffect(() => {

@@ -1,0 +1,27 @@
+{
+  "app": {
+    "title": "Dine In - 餐厅菜单",
+    "description": "发现和探索餐厅菜单",
+    "name": "Dine In"
+  },
+  "home": {
+    "heading": "Dine In",
+    "subtitle": "餐厅菜单平台"
+  },
+  "restaurant": {
+    "soldOut": "售罄",
+    "noItems": "暂无菜品。",
+    "noImage": "暂无图片",
+    "backToRestaurants": "返回餐厅",
+    "notFound": "未找到餐厅",
+    "notFoundMessage": "您要找的餐厅不存在。",
+    "loading": "菜单加载中..."
+  },
+  "footer": {
+    "description": "为餐厅、咖啡馆和食品企业提供精美的数字菜单。",
+    "rights": "Dine In。保留所有权利。"
+  },
+  "theme": {
+    "toggle": "切换主题"
+  }
+}

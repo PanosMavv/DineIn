@@ -1,0 +1,27 @@
+{
+  "app": {
+    "title": "Dine In - Menus Restaurant",
+    "description": "Découvrez et explorez les menus des restaurants",
+    "name": "Dine In"
+  },
+  "home": {
+    "heading": "Dine In",
+    "subtitle": "Plateforme de menus pour restaurants"
+  },
+  "restaurant": {
+    "soldOut": "Épuisé",
+    "noItems": "Aucun article disponible.",
+    "noImage": "Pas d'image",
+    "backToRestaurants": "Retour aux restaurants",
+    "notFound": "Restaurant non trouvé",
+    "notFoundMessage": "Le restaurant que vous cherchez n'existe pas.",
+    "loading": "Chargement du menu..."
+  },
+  "footer": {
+    "description": "De magnifiques menus numériques pour restaurants, cafés et commerces alimentaires.",
+    "rights": "Dine In. Tous droits réservés."
+  },
+  "theme": {
+    "toggle": "Changer le thème"
+  }
+}

@@ -49,3 +49,18 @@ export async function getRestaurantBySlug(slug: string, locale: string = 'en') {
     }),
   };
 }
+
+export async function getRestaurantLocales(slug: string): Promise<string[]> {
+  const restaurant = await prisma.restaurant.findUnique({
+    where: { slug },
+    include: {
+      translations: {
+        select: { locale: true },
+      },
+    },
+  });
+
+  if (!restaurant) return [];
+
+  return restaurant.translations.map(t => t.locale);
+}
