@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { getRestaurantBySlug, getRestaurantLocales } from '@/lib/db';
 import { groupMenuItemsByCategory } from '@/lib/utils';
 import { RestaurantMenu } from '@/components/RestaurantMenu';
+import { ScrollToTop } from '@/components/ScrollToTop';
 import { cookies } from 'next/headers';
 
 export default async function RestaurantPage({
@@ -13,10 +14,8 @@ export default async function RestaurantPage({
   const cookieStore = await cookies();
   const requestedLocale = cookieStore.get('locale')?.value || 'en';
   
-  // Get available locales for this restaurant
   const availableLocales = await getRestaurantLocales(slug);
   
-  // If the user's locale isn't available, fall back to the first available one
   const locale = availableLocales.includes(requestedLocale) 
     ? requestedLocale 
     : availableLocales[0] || 'en';
@@ -27,9 +26,12 @@ export default async function RestaurantPage({
   const groupedMenu = groupMenuItemsByCategory(restaurant.menuItems);
 
   return (
-    <RestaurantMenu
-      restaurant={restaurant}
-      groupedMenu={groupedMenu}
-    />
+    <>
+      <ScrollToTop />
+      <RestaurantMenu
+        restaurant={restaurant}
+        groupedMenu={groupedMenu}
+      />
+    </>
   );
 }
