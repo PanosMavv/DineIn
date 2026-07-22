@@ -3,6 +3,8 @@ import { getRestaurantBySlug, getRestaurantLocales } from '@/lib/db';
 import { groupMenuItemsByCategory } from '@/lib/utils';
 import { SimpleListMenu } from '@/components/Restaurant/Themes/SimpleListMenu';
 import { CategoryCardMenu } from '@/components/Restaurant/Themes/CategoryCardMenu';
+import { RestaurantHero } from '@/components/Restaurant/Heros/RestaurantHero';
+import { OverlayHero } from '@/components/Restaurant/Heros/OverlayHero';
 import { cookies } from 'next/headers';
 
 export default async function RestaurantPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -17,10 +19,24 @@ export default async function RestaurantPage({ params }: { params: Promise<{ slu
 
   const groupedMenu = groupMenuItemsByCategory(restaurant.menuItems);
 
-  // Choose template based on restaurant setting
-  if (restaurant.template === 'category-cards') {
-    return <CategoryCardMenu restaurant={restaurant} groupedMenu={groupedMenu} />;
-  }
+  const heroStyle = restaurant.theme?.heroStyle || 'default';
 
-  return <SimpleListMenu restaurant={restaurant} groupedMenu={groupedMenu} />;
+  return (
+    <>
+      {heroStyle === 'overlay' ? (
+        <OverlayHero restaurant={restaurant} />
+      ) : (
+        <RestaurantHero restaurant={restaurant} />
+      )}
+
+      {/* Spacer */}
+      <div className="h-8" />
+
+      {restaurant.template === 'category-cards' ? (
+        <CategoryCardMenu restaurant={restaurant} groupedMenu={groupedMenu} />
+      ) : (
+        <SimpleListMenu restaurant={restaurant} groupedMenu={groupedMenu} />
+      )}
+    </>
+  );
 }

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { ArrowLeft } from 'lucide-react';
 import type { MenuItem } from '@/lib/utils';
-import { RestaurantHero } from '../Heros/RestraurantHero';
+import { OverlayHero } from '@/components/Restaurant/Heros/OverlayHero';
 import Image from 'next/image';
 
 interface Props {
@@ -47,8 +47,6 @@ export function CategoryCardMenu({ restaurant, groupedMenu }: Props) {
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950">
-      <RestaurantHero restaurant={restaurant} />
-
       {selectedCategory ? (
         <>
           <div id="category-nav" className="sticky top-0 z-20 bg-white dark:bg-gray-900 shadow-sm">

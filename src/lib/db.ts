@@ -57,6 +57,7 @@ export async function getRestaurantBySlug(slug: string, locale: string = 'en') {
     theme: {
       carouselImages,
       logoImage: restaurant.themeSettings?.logoImage || null,
+      heroStyle: restaurant.themeSettings?.heroStyle || 'default',
       categoryImages: Object.fromEntries(
         Object.entries(categoryMap).map(([id, data]) => [data.name, data.image])
       ),

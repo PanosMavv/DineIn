@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import type { MenuItem } from '@/lib/utils';
 import { Search, X, ArrowLeft } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { RestaurantHero } from '@/components/Restaurant/Heros/RestraurantHero';
+import { RestaurantHero } from '@/components/Restaurant/Heros/RestaurantHero';
 
 interface Props {
   restaurant: { name: string; description?: string | null; category: string; theme?: any };
@@ -115,8 +115,6 @@ export function SimpleListMenu({ restaurant, groupedMenu }: Props) {
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950">
-      <RestaurantHero restaurant={restaurant} heroRef={heroRef} />
-
       {/* ==================== TOP BAR + CATEGORY NAV ==================== */}
       <div className={`fixed top-0 left-0 right-0 z-20 bg-white dark:bg-gray-900 shadow-sm transition-transform duration-300 ${showNav ? 'translate-y-0' : '-translate-y-full'
         }`}>

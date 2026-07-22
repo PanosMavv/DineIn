@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { ImageCarousel } from '../../ImageCarousel';
+import { ImageCarousel } from '@/components/Restaurant/Heros/ImageCarousel';
 
 interface Props {
   restaurant: { name: string; description?: string | null; category: string; theme?: any };
@@ -17,7 +17,7 @@ export function RestaurantHero({ restaurant, heroRef }: Props) {
       {images.length > 0 && <ImageCarousel images={images} />}
 
       {/* ==================== RESTAURANT INFO (HERO) ==================== */}
-      <div ref={heroRef} className="px-4 py-6 pb-16">
+      <div ref={heroRef} className="px-4 py-6">
         <div className="flex items-center gap-4">
           {/* Restaurant info */}
           <div className="flex-1">
