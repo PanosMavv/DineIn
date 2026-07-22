@@ -22,7 +22,7 @@ export function RestaurantMenu({ restaurant, groupedMenu }: Props) {
   const clickedCategory = useRef<string | null>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
-  
+
   const images = (restaurant.theme as any)?.carouselImages || [];
 
   const t = useTranslations('restaurant');
@@ -41,7 +41,7 @@ export function RestaurantMenu({ restaurant, groupedMenu }: Props) {
       const shouldShow = window.scrollY > heroBottom - 60;
       setShowNav(shouldShow);
     };
-    
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
@@ -54,7 +54,7 @@ export function RestaurantMenu({ restaurant, groupedMenu }: Props) {
         if (el) {
           const rect = el.getBoundingClientRect();
           const isLastCategory = groupedMenu[groupedMenu.length - 1].category === clickedCategory.current;
-          
+
           if (rect.top <= 56 || (isLastCategory && window.innerHeight + window.scrollY >= document.body.offsetHeight - 10)) {
             clickedCategory.current = null;
           } else {
@@ -63,7 +63,7 @@ export function RestaurantMenu({ restaurant, groupedMenu }: Props) {
           }
         }
       }
-      
+
       const y = window.scrollY + 120;
       for (let i = groupedMenu.length - 1; i >= 0; i--) {
         const el = document.getElementById(groupedMenu[i].category);
@@ -107,12 +107,12 @@ export function RestaurantMenu({ restaurant, groupedMenu }: Props) {
 
   const filteredItems = searchQuery.trim()
     ? groupedMenu
-        .flatMap(group => group.items)
-        .filter(
-          item =>
-            item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            (item.description && item.description.toLowerCase().includes(searchQuery.toLowerCase()))
-        )
+      .flatMap(group => group.items)
+      .filter(
+        item =>
+          item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          (item.description && item.description.toLowerCase().includes(searchQuery.toLowerCase()))
+      )
     : [];
 
   return (
@@ -152,9 +152,8 @@ export function RestaurantMenu({ restaurant, groupedMenu }: Props) {
       </div>
 
       {/* ==================== TOP BAR + CATEGORY NAV ==================== */}
-      <div className={`fixed top-0 left-0 right-0 z-20 bg-white dark:bg-gray-900 shadow-sm transition-transform duration-300 ${
-        showNav ? 'translate-y-0' : '-translate-y-full'
-      }`}>
+      <div className={`fixed top-0 left-0 right-0 z-20 bg-white dark:bg-gray-900 shadow-sm transition-transform duration-300 ${showNav ? 'translate-y-0' : '-translate-y-full'
+        }`}>
         {/* Restaurant name + search icon */}
         <div className="flex items-center justify-between px-4 py-1.5">
           <div className="w-9" /> {/* Spacer to balance the search button */}
@@ -181,11 +180,10 @@ export function RestaurantMenu({ restaurant, groupedMenu }: Props) {
                 e.preventDefault();
                 scrollTo(g.category);
               }}
-              className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium border no-underline transition-colors ${
-                activeCategory === g.category
-                  ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white'
-                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-700'
-              }`}
+              className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium border no-underline transition-colors ${activeCategory === g.category
+                ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white'
+                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-700'
+                }`}
             >
               {g.category}
             </a>
