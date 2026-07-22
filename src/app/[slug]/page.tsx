@@ -23,7 +23,7 @@ export default async function RestaurantPage({ params }: { params: Promise<{ slu
 
   return (
     <>
-      {heroStyle === 'overlay' ? (
+      {heroStyle === 'default' ? (
         <OverlayHero restaurant={restaurant} />
       ) : (
         <RestaurantHero restaurant={restaurant} />

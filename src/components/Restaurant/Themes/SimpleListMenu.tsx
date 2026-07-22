@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from 'react';
 import type { MenuItem } from '@/lib/utils';
 import { Search, X, ArrowLeft } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { RestaurantHero } from '@/components/Restaurant/Heros/RestaurantHero';
 
 interface Props {
   restaurant: { name: string; description?: string | null; category: string; theme?: any };
@@ -18,7 +17,6 @@ export function SimpleListMenu({ restaurant, groupedMenu }: Props) {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const activeRef = useRef<HTMLAnchorElement>(null);
   const clickedCategory = useRef<string | null>(null);
-  const heroRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   const t = useTranslations('restaurant');
@@ -31,10 +29,11 @@ export function SimpleListMenu({ restaurant, groupedMenu }: Props) {
 
   useEffect(() => {
     const handleScroll = () => {
-      const hero = heroRef.current;
-      if (!hero) return;
-      const heroBottom = hero.offsetTop + hero.offsetHeight;
-      const shouldShow = window.scrollY > heroBottom - 60;
+      const firstCategory = document.getElementById(groupedMenu[0]?.category);
+      if (!firstCategory) return;
+
+      const categoryTop = firstCategory.offsetTop;
+      const shouldShow = window.scrollY > categoryTop - 100;
 
       if (!shouldShow && !searchQuery) {
         searchInputRef.current?.blur();
@@ -45,7 +44,7 @@ export function SimpleListMenu({ restaurant, groupedMenu }: Props) {
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [groupedMenu]);
 
   useEffect(() => {
     const handleScroll = () => {
