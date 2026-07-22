@@ -7,11 +7,21 @@ export async function getRestaurantBySlug(slug: string, locale: string = 'en') {
       translations: {
         where: { locale },
       },
-      categoryTranslations: {
-        where: { locale },
+      themeSettings: true,
+      carouselImages: {
+        orderBy: { order: 'asc' },
+      },
+      categories: {
+        orderBy: { id: 'asc' },
+        include: {
+          translations: {
+            where: { locale },
+          },
+          theme: true,
+        },
       },
       menuItems: {
-        orderBy: [{ category: 'asc' }, { id: 'asc' }],
+        orderBy: [{ id: 'asc' }],
         include: {
           translations: {
             where: { locale },
@@ -25,24 +35,45 @@ export async function getRestaurantBySlug(slug: string, locale: string = 'en') {
 
   const t = restaurant.translations[0];
 
-  // Build a map of category key → translated value
-  const categoryMap: Record<string, string> = {};
-  restaurant.categoryTranslations.forEach(ct => {
-    categoryMap[ct.key] = ct.value;
+  // Build carousel URLs array
+  const carouselImages = restaurant.carouselImages.map(ci => ci.image);
+
+  // Build category map: categoryId → { name, image, emoji }
+  const categoryMap: Record<string, { name: string; image: string | null; emoji: string | null }> = {};
+  restaurant.categories.forEach(cat => {
+    const catT = cat.translations[0];
+    categoryMap[cat.id] = {
+      name: catT?.name || cat.id,
+      image: cat.theme?.image || null,
+      emoji: cat.theme?.emoji || null,
+    };
   });
-  
+
   return {
     ...restaurant,
+    template: restaurant.themeSettings?.template || 'simple-list',
     name: t?.name || restaurant.slug,
     description: t?.description || null,
+    theme: {
+      carouselImages,
+      logoImage: restaurant.themeSettings?.logoImage || null,
+      categoryImages: Object.fromEntries(
+        Object.entries(categoryMap).map(([id, data]) => [data.name, data.image])
+      ),
+      categoryEmojis: Object.fromEntries(
+        Object.entries(categoryMap).map(([id, data]) => [data.name, data.emoji])
+      ),
+    },
     menuItems: restaurant.menuItems.map(item => {
       const itemT = item.translations[0];
+      const catData = categoryMap[item.categoryId];
       return {
         id: item.id,
         name: itemT?.name || 'Untitled',
         description: itemT?.description || null,
         price: Number(item.price),
-        category: categoryMap[item.category] || item.category,
+        category: catData?.name || item.categoryId,
+        categoryId: item.categoryId,
         isAvailable: item.isAvailable,
         image: item.image,
       };

@@ -16,9 +16,8 @@ export function groupMenuItemsByCategory(items: MenuItem[]) {
     }, {} as Record<string, MenuItem[]>);
 
   return Object.keys(grouped)
-    .sort()
     .map(category => ({
       category,
-      items: grouped[category].sort((a, b) => a.name.localeCompare(b.name)),
+      items: grouped[category],
     }));
 }
