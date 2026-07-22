@@ -1,8 +1,8 @@
 import { notFound } from 'next/navigation';
 import { getRestaurantBySlug, getRestaurantLocales } from '@/lib/db';
 import { groupMenuItemsByCategory } from '@/lib/utils';
-import { RestaurantMenu } from '@/components/RestaurantMenu';
-import { CategoryCardsTemplate } from '@/components/CategoryCardsTemplate';
+import { SimpleListMenu } from '@/components/Restaurant/Themes/SimpleListMenu';
+import { CategoryCardMenu } from '@/components/Restaurant/Themes/CategoryCardMenu';
 import { cookies } from 'next/headers';
 
 export default async function RestaurantPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -19,8 +19,8 @@ export default async function RestaurantPage({ params }: { params: Promise<{ slu
 
   // Choose template based on restaurant setting
   if (restaurant.template === 'category-cards') {
-    return <CategoryCardsTemplate restaurant={restaurant} groupedMenu={groupedMenu} />;
+    return <CategoryCardMenu restaurant={restaurant} groupedMenu={groupedMenu} />;
   }
 
-  return <RestaurantMenu restaurant={restaurant} groupedMenu={groupedMenu} />;
+  return <SimpleListMenu restaurant={restaurant} groupedMenu={groupedMenu} />;
 }

@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { ImageCarousel } from './ImageCarousel';
+import { ImageCarousel } from '../../ImageCarousel';
 
 interface Props {
   restaurant: { name: string; description?: string | null; category: string; theme?: any };

@@ -80,9 +80,8 @@ export function SettingsButton() {
       )}
 
       <div
-        className={`fixed inset-x-0 bottom-0 z-50 bg-white dark:bg-gray-900 rounded-t-2xl shadow-lg transition-transform duration-300 ease-out ${
-          isOpen ? 'translate-y-0' : 'translate-y-full'
-        }`}
+        className={`fixed inset-x-0 bottom-0 z-50 bg-white dark:bg-gray-900 rounded-t-2xl shadow-lg transition-transform duration-300 ease-out ${isOpen ? 'translate-y-0' : 'translate-y-full'
+          }`}
         style={{ maxHeight: '80vh' }}
       >
         <div className="flex justify-center pt-3 pb-1">
@@ -107,11 +106,10 @@ export function SettingsButton() {
                 <button
                   key={lang.code}
                   onClick={() => switchLanguage(lang.code)}
-                  className={`flex items-center gap-3 px-4 py-3 rounded-xl border text-left transition-colors ${
-                    lang.code === locale
-                      ? 'border-black dark:border-white bg-gray-50 dark:bg-gray-800'
-                      : 'border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800'
-                  }`}
+                  className={`flex items-center gap-3 px-4 py-3 rounded-xl border text-left transition-colors ${lang.code === locale
+                    ? 'border-black dark:border-white bg-gray-50 dark:bg-gray-800'
+                    : 'border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800'
+                    }`}
                 >
                   <span className="text-xl">{lang.flag}</span>
                   <span className="text-sm font-medium text-gray-900 dark:text-gray-100">{lang.label}</span>

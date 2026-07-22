@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { ArrowLeft } from 'lucide-react';
 import type { MenuItem } from '@/lib/utils';
-import { RestaurantHero } from './RestraurantHero';
+import { RestaurantHero } from '../Heros/RestraurantHero';
 import Image from 'next/image';
 
 interface Props {
@@ -12,7 +12,7 @@ interface Props {
   groupedMenu: { category: string; items: MenuItem[] }[];
 }
 
-export function CategoryCardsTemplate({ restaurant, groupedMenu }: Props) {
+export function CategoryCardMenu({ restaurant, groupedMenu }: Props) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const t = useTranslations('restaurant');
   const selectedGroup = selectedIndex !== null ? groupedMenu[selectedIndex] : null;

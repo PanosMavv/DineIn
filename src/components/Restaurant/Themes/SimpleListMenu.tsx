@@ -1,18 +1,17 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { MenuGrid } from './MenuGrid';
 import type { MenuItem } from '@/lib/utils';
 import { Search, X, ArrowLeft } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { RestaurantHero } from './RestraurantHero';
+import { RestaurantHero } from '@/components/Restaurant/Heros/RestraurantHero';
 
 interface Props {
   restaurant: { name: string; description?: string | null; category: string; theme?: any };
   groupedMenu: { category: string; items: MenuItem[] }[];
 }
 
-export function RestaurantMenu({ restaurant, groupedMenu }: Props) {
+export function SimpleListMenu({ restaurant, groupedMenu }: Props) {
   const [activeCategory, setActiveCategory] = useState(groupedMenu[0]?.category || '');
   const [showNav, setShowNav] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -82,14 +81,12 @@ export function RestaurantMenu({ restaurant, groupedMenu }: Props) {
     activeRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   }, [activeCategory]);
 
-  // Focus search input when opened
   useEffect(() => {
     if (isSearchOpen && searchInputRef.current) {
       searchInputRef.current.focus();
     }
   }, [isSearchOpen]);
 
-  // Lock body scroll when search is open
   useEffect(() => {
     if (isSearchOpen) {
       document.body.style.overflow = 'hidden';
@@ -116,6 +113,26 @@ export function RestaurantMenu({ restaurant, groupedMenu }: Props) {
       )
     : [];
 
+  // Inline MenuItemCard
+  const MenuItemCard = ({ item }: { item: MenuItem }) => (
+    <div className="py-4 flex justify-between items-start" style={{ opacity: item.isAvailable ? 1 : 0.5 }}>
+      <div className="flex-1 mr-4">
+        <h3 className="text-base font-medium text-gray-900 dark:text-gray-100">
+          {item.name}
+          {!item.isAvailable && (
+            <span className="text-xs text-red-500 dark:text-red-400 ml-2">({t('soldOut')})</span>
+          )}
+        </h3>
+        {item.description && (
+          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{item.description}</p>
+        )}
+      </div>
+      <span className="text-base font-medium text-gray-900 dark:text-gray-100 whitespace-nowrap">
+        €{item.price.toFixed(2)}
+      </span>
+    </div>
+  );
+
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950">
       <RestaurantHero restaurant={restaurant} heroRef={heroRef} />
@@ -123,9 +140,8 @@ export function RestaurantMenu({ restaurant, groupedMenu }: Props) {
       {/* ==================== TOP BAR + CATEGORY NAV ==================== */}
       <div className={`fixed top-0 left-0 right-0 z-20 bg-white dark:bg-gray-900 shadow-sm transition-transform duration-300 ${showNav ? 'translate-y-0' : '-translate-y-full'
         }`}>
-        {/* Restaurant name + search icon */}
         <div className="flex items-center justify-between px-4 py-1.5">
-          <div className="w-9" /> {/* Spacer to balance the search button */}
+          <div className="w-9" />
           <h2 className="text-base font-semibold text-gray-900 dark:text-gray-100 truncate flex-1 text-center mx-3">
             {restaurant.name}
           </h2>
@@ -138,7 +154,6 @@ export function RestaurantMenu({ restaurant, groupedMenu }: Props) {
           </button>
         </div>
 
-        {/* Category nav */}
         <div className="flex gap-2 overflow-x-auto px-4 py-2 scrollbar-none border-t border-gray-200 dark:border-gray-700">
           {groupedMenu.map(g => (
             <a
@@ -163,7 +178,6 @@ export function RestaurantMenu({ restaurant, groupedMenu }: Props) {
       {/* ==================== SEARCH OVERLAY ==================== */}
       {isSearchOpen && (
         <div className="fixed inset-0 z-30 bg-white dark:bg-gray-950">
-          {/* Search header */}
           <div className="flex items-center gap-3 px-4 py-3 border-b border-gray-200 dark:border-gray-800">
             <button
               onClick={closeSearch}
@@ -189,7 +203,6 @@ export function RestaurantMenu({ restaurant, groupedMenu }: Props) {
             </div>
           </div>
 
-          {/* Search results */}
           <div className="overflow-y-auto" style={{ maxHeight: 'calc(100vh - 60px)' }}>
             {searchQuery && filteredItems.length === 0 ? (
               <div className="text-center py-12">
@@ -230,8 +243,25 @@ export function RestaurantMenu({ restaurant, groupedMenu }: Props) {
             <div className="bg-[#fafafa] dark:bg-gray-900 border-y border-gray-200 dark:border-gray-800 -mx-4 px-4 py-4">
               <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100">{g.category}</h2>
             </div>
-            <div className="py-2">
-              <MenuGrid items={g.items} />
+            <div className="divide-y divide-gray-200 dark:divide-gray-800">
+              {g.items.map(item => (
+                <div key={item.id} className="py-4 flex justify-between items-start" style={{ opacity: item.isAvailable ? 1 : 0.5 }}>
+                  <div className="flex-1 mr-4">
+                    <h3 className="text-base font-medium text-gray-900 dark:text-gray-100">
+                      {item.name}
+                      {!item.isAvailable && (
+                        <span className="text-xs text-red-500 dark:text-red-400 ml-2">({t('soldOut')})</span>
+                      )}
+                    </h3>
+                    {item.description && (
+                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{item.description}</p>
+                    )}
+                  </div>
+                  <span className="text-base font-medium text-gray-900 dark:text-gray-100 whitespace-nowrap">
+                    €{item.price.toFixed(2)}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
         ))}
