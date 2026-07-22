@@ -5,7 +5,7 @@ import { ImageCarousel } from '../../ImageCarousel';
 
 interface Props {
   restaurant: { name: string; description?: string | null; category: string; theme?: any };
-  heroRef?: React.RefObject<HTMLDivElement>;
+  heroRef?: React.RefObject<HTMLDivElement | null>;
 }
 
 export function RestaurantHero({ restaurant, heroRef }: Props) {
