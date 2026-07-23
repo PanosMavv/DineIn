@@ -4,6 +4,9 @@ import { useState, useEffect, useRef } from 'react';
 import type { MenuItem } from '@/lib/utils';
 import { Search, X, ArrowLeft } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { SearchBox } from '@/components/Restaurant/Navigation/SearchBox';
+import { CategoryNavBar } from '@/components/Restaurant/Navigation/CategoryNavBar';
+
 
 interface Props {
   restaurant: { name: string; description?: string | null; category: string; theme?: any };
@@ -15,7 +18,7 @@ export function SimpleListMenu({ restaurant, groupedMenu }: Props) {
   const [showNav, setShowNav] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const activeRef = useRef<HTMLAnchorElement>(null);
+  const activeRef = useRef<HTMLButtonElement>(null);
   const clickedCategory = useRef<string | null>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
@@ -114,7 +117,6 @@ export function SimpleListMenu({ restaurant, groupedMenu }: Props) {
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950">
-      {/* ==================== TOP BAR + CATEGORY NAV ==================== */}
       <div className={`fixed top-0 left-0 right-0 z-20 bg-white dark:bg-gray-900 shadow-sm transition-transform duration-300 ${showNav ? 'translate-y-0' : '-translate-y-full'
         }`}>
         <div className="flex items-center justify-between px-4 py-1.5">
@@ -122,34 +124,9 @@ export function SimpleListMenu({ restaurant, groupedMenu }: Props) {
           <h2 className="text-base font-semibold text-gray-900 dark:text-gray-100 truncate flex-1 text-center mx-3">
             {restaurant.name}
           </h2>
-          <button
-            onClick={() => setIsSearchOpen(true)}
-            className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 shrink-0"
-            aria-label="Search menu"
-          >
-            <Search className="w-5 h-5 text-gray-600 dark:text-gray-300" />
-          </button>
+          <SearchBox value={searchQuery} onChange={setSearchQuery} onOpen={() => setIsSearchOpen(true)} onClose={() => setIsSearchOpen(false)} isOpen={isSearchOpen} items={filteredItems} />
         </div>
-
-        <div className="flex gap-2 overflow-x-auto px-4 py-2 scrollbar-none border-t border-gray-200 dark:border-gray-700">
-          {groupedMenu.map(g => (
-            <a
-              key={g.category}
-              ref={activeCategory === g.category ? activeRef : null}
-              href={`#${g.category}`}
-              onClick={e => {
-                e.preventDefault();
-                scrollTo(g.category);
-              }}
-              className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium border no-underline transition-colors ${activeCategory === g.category
-                ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white'
-                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-700'
-                }`}
-            >
-              {g.category}
-            </a>
-          ))}
-        </div>
+        <CategoryNavBar categories={groupedMenu} activeCategory={activeCategory} onSelect={scrollTo} activeRef={activeRef} />
       </div>
 
       {/* ==================== SEARCH OVERLAY ==================== */}

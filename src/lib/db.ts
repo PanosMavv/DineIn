@@ -28,6 +28,21 @@ export async function getRestaurantBySlug(slug: string, locale: string = 'en') {
           },
         },
       },
+      comboDeals: {
+        where: { active: true },
+        orderBy: { order: 'asc' },
+        include: {
+          items: {
+            include: {
+              menuItem: {
+                include: {
+                  translations: { where: { locale } },
+                },
+              },
+            },
+          },
+        },
+      },
     },
   });
 
@@ -77,8 +92,20 @@ export async function getRestaurantBySlug(slug: string, locale: string = 'en') {
         categoryId: item.categoryId,
         isAvailable: item.isAvailable,
         image: item.image,
+        originalPrice: item.originalPrice ? Number(item.originalPrice) : null,
+        isFeatured: item.isFeatured,
+        featuredLabel: item.featuredLabel,
       };
     }),
+    comboDeals: restaurant.comboDeals.map(deal => ({
+      id: deal.id,
+      name: deal.name,
+      description: deal.description,
+      price: Number(deal.price),
+      originalPrice: Number(deal.originalPrice),
+      emoji: deal.emoji,
+      image: deal.image,
+    })),
   };
 }
 

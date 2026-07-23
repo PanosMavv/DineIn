@@ -19,6 +19,7 @@ model Restaurant {
   categories     Category[]
   themeSettings  RestaurantTheme?
   carouselImages CarouselImage[]
+  comboDeals     ComboDeal[]
   createdAt      DateTime                @default(now())
   updatedAt      DateTime                @updatedAt
 }
@@ -80,17 +81,21 @@ model CategoryTheme {
 }
 
 model MenuItem {
-  id           String                @id @default(cuid())
-  price        Decimal               @db.Decimal(10, 2)
-  image        String?
-  isAvailable  Boolean               @default(true)
-  restaurantId String
-  categoryId   String
-  restaurant   Restaurant            @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
-  category     Category              @relation(fields: [categoryId], references: [id])
-  translations MenuItemTranslation[]
-  createdAt    DateTime              @default(now())
-  updatedAt    DateTime              @updatedAt
+  id             String                @id @default(cuid())
+  price          Decimal               @db.Decimal(10, 2)
+  image          String?
+  isAvailable    Boolean               @default(true)
+  restaurantId   String
+  categoryId     String
+  restaurant     Restaurant            @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  category       Category              @relation(fields: [categoryId], references: [id])
+  translations   MenuItemTranslation[]
+  comboDealItems ComboDealItem[]
+  originalPrice  Decimal?              @db.Decimal(10, 2)
+  isFeatured     Boolean               @default(false)
+  featuredLabel  String?
+  createdAt      DateTime              @default(now())
+  updatedAt      DateTime              @updatedAt
 }
 
 model MenuItemTranslation {
@@ -102,4 +107,30 @@ model MenuItemTranslation {
   menuItem    MenuItem @relation(fields: [menuItemId], references: [id], onDelete: Cascade)
 
   @@unique([menuItemId, locale])
+}
+
+model ComboDeal {
+  id            String          @id @default(cuid())
+  restaurantId  String
+  name          String
+  description   String
+  price         Decimal         @db.Decimal(10, 2)
+  originalPrice Decimal         @db.Decimal(10, 2)
+  image         String?
+  emoji         String?
+  order         Int             @default(0)
+  active        Boolean         @default(true)
+  restaurant    Restaurant      @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  items         ComboDealItem[]
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+}
+
+model ComboDealItem {
+  id          String    @id @default(cuid())
+  comboDealId String
+  menuItemId  String
+  quantity    Int       @default(1)
+  comboDeal   ComboDeal @relation(fields: [comboDealId], references: [id], onDelete: Cascade)
+  menuItem    MenuItem  @relation(fields: [menuItemId], references: [id])
 }

@@ -5,6 +5,10 @@ export interface MenuItem {
   price: number;
   category: string;
   isAvailable: boolean;
+  image?: string | null;
+  originalPrice?: number | null;
+  isFeatured?: boolean;
+  featuredLabel?: string | null;
 }
 
 export function groupMenuItemsByCategory(items: MenuItem[]) {
