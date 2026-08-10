@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import type { MenuItem } from '@/lib/utils';
-import { Search, X, ArrowLeft, Flame, Sparkles, Zap } from 'lucide-react';
+import { Search, X, ArrowLeft } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
@@ -20,18 +20,9 @@ export function FastFoodMenu({ restaurant, groupedMenu }: Props) {
 
   const t = useTranslations('restaurant');
 
-  const combos = (restaurant as any).comboDeals || [];
   const allItems = groupedMenu.flatMap(g => g.items.map(item => ({ ...item, categoryName: g.category })));
-  const featuredItems = allItems.filter(item => item.isFeatured);
 
-  // Offer categories at the top
-  const offerCategories = [
-    ...(combos.length > 0 ? [{ category: 'deals', label: '🔥 Hot Deals' }] : []),
-    ...(featuredItems.length > 0 ? [{ category: 'popular', label: '⭐ Popular' }] : []),
-  ];
-
-  // All categories for nav: offers + menu categories
-  const allCategories = [...offerCategories, ...groupedMenu];
+  const allCategories = [...groupedMenu];
 
   const scrollTo = (category: string) => {
     setActiveCategory(category);
@@ -100,7 +91,7 @@ export function FastFoodMenu({ restaurant, groupedMenu }: Props) {
       </div>
 
       {/* ==================== CATEGORY PILLS ==================== */}
-      <div className="sticky top-10.25 z-20 bg-white dark:bg-gray-950 px-4 py-3 border-b border-gray-100 dark:border-gray-800">
+      <div className="sticky top-12 z-20 bg-white dark:bg-gray-950 px-4 py-3">
         <div className="flex gap-2 overflow-x-auto scrollbar-none">
           {allCategories.map(cat => (
             <button
@@ -112,7 +103,7 @@ export function FastFoodMenu({ restaurant, groupedMenu }: Props) {
                 : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400'
                 }`}
             >
-              {'label' in cat ? cat.label : cat.category}
+              {cat.category}
             </button>
           ))}
         </div>
@@ -120,71 +111,6 @@ export function FastFoodMenu({ restaurant, groupedMenu }: Props) {
 
       {/* ==================== CONTENT ==================== */}
       <div className="px-4 pb-12">
-        {/* Hot Deals Section */}
-        {combos.length > 0 && (
-          <div id="deals" className="scroll-mt-22.5">
-            <div className="bg-linear-to-r from-red-500 to-orange-500 rounded-2xl p-4 text-white mb-6">
-              <div className="flex items-center gap-2 mb-3">
-                <Flame className="w-5 h-5" />
-                <h3 className="font-bold text-lg">Hot Deals</h3>
-              </div>
-              <div className="grid grid-cols-2 gap-2">
-                {combos.map((combo: any) => (
-                  <div key={combo.id} className="bg-white/20 rounded-xl p-3">
-                    <div className="text-2xl mb-1">{combo.emoji || '🔥'}</div>
-                    <p className="font-bold text-sm">{combo.name}</p>
-                    <p className="text-xs text-white/70">{combo.description}</p>
-                    <div className="flex items-center gap-2 mt-1">
-                      <span className="font-bold">€{combo.price.toFixed(2)}</span>
-                      <span className="text-xs line-through text-white/60">€{combo.originalPrice.toFixed(2)}</span>
-                    </div>
-                    <span className="inline-block mt-1 px-2 py-0.5 bg-white/30 text-white text-xs rounded-full font-bold">
-                      Save €{(combo.originalPrice - combo.price).toFixed(2)}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Popular Section */}
-        {featuredItems.length > 0 && (
-          <div id="popular" className="scroll-mt-22.5 mb-6">
-            <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-3 flex items-center gap-2">
-              <Zap className="w-5 h-5 text-orange-500" />
-              Popular Now
-            </h3>
-            <div className="grid grid-cols-2 gap-3">
-              {featuredItems.map(item => (
-                <div key={item.id} className="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800">
-                  <div className="aspect-square bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-4xl relative">
-                    {item.image ? (
-                      <Image src={item.image} alt={item.name} width={150} height={150} className="object-cover w-full h-full" unoptimized />
-                    ) : (
-                      '🍔'
-                    )}
-                    {item.featuredLabel && (
-                      <span className="absolute top-2 left-2 px-2 py-0.5 bg-orange-500 text-white text-xs rounded-full font-bold">
-                        {item.featuredLabel}
-                      </span>
-                    )}
-                  </div>
-                  <div className="p-3">
-                    <p className="text-xs text-orange-500 font-bold mb-1">{item.categoryName || item.category}</p>
-                    <h4 className="font-bold text-sm text-gray-900 dark:text-gray-100">{item.name}</h4>
-                    <div className="flex items-center gap-2 mt-1">
-                      <p className="font-bold text-orange-500">€{item.price.toFixed(2)}</p>
-                      {item.originalPrice && (
-                        <p className="text-xs line-through text-gray-400">€{item.originalPrice.toFixed(2)}</p>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
 
         {/* Menu Categories */}
         {groupedMenu.map(g => (
