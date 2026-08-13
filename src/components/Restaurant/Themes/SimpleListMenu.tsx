@@ -6,7 +6,7 @@ import { Search, X, ArrowLeft } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { SearchBox } from '@/components/Restaurant/Navigation/SearchBox';
 import { CategoryNavBar } from '@/components/Restaurant/Navigation/CategoryNavBar';
-
+import { ImageMenuItem } from '@/components/Restaurant/Content/ImageMenuItem';
 
 interface Props {
   restaurant: { name: string; description?: string | null; category: string; theme?: any };
@@ -119,9 +119,9 @@ export function SimpleListMenu({ restaurant, groupedMenu }: Props) {
     <div className="min-h-screen bg-white dark:bg-gray-950">
       <div className={`fixed top-0 left-0 right-0 z-20 bg-white dark:bg-gray-900 shadow-sm transition-transform duration-300 ${showNav ? 'translate-y-0' : '-translate-y-full'
         }`}>
-        <div className="flex items-center justify-between px-4 py-1.5">
+        <div className="flex items-center justify-between px-4 py-3">
           <div className="w-9" />
-          <h2 className="text-base font-semibold text-gray-900 dark:text-gray-100 truncate flex-1 text-center mx-3">
+          <h2 className="text-base font-bold text-gray-900 dark:text-gray-100 truncate flex-1 text-center mx-3">
             {restaurant.name}
           </h2>
           <SearchBox value={searchQuery} onChange={setSearchQuery} onOpen={() => setIsSearchOpen(true)} onClose={() => setIsSearchOpen(false)} isOpen={isSearchOpen} items={filteredItems} />
@@ -195,26 +195,11 @@ export function SimpleListMenu({ restaurant, groupedMenu }: Props) {
         {groupedMenu.map(g => (
           <div key={g.category} id={g.category} className="scroll-mt-22.5">
             <div className="bg-[#fafafa] dark:bg-gray-900 border-y border-gray-200 dark:border-gray-800 -mx-4 px-4 py-4">
-              <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100">{g.category}</h2>
+              <h2 className="text-lg font-extrabold text-gray-900 dark:text-gray-100">{g.category}</h2>
             </div>
             <div className="divide-y divide-gray-200 dark:divide-gray-800">
-              {g.items.map(item => (
-                <div key={item.id} className="py-4 flex justify-between items-start" style={{ opacity: item.isAvailable ? 1 : 0.5 }}>
-                  <div className="flex-1 mr-4">
-                    <h3 className="text-base font-medium text-gray-900 dark:text-gray-100">
-                      {item.name}
-                      {!item.isAvailable && (
-                        <span className="text-xs text-red-500 dark:text-red-400 ml-2">({t('soldOut')})</span>
-                      )}
-                    </h3>
-                    {item.description && (
-                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{item.description}</p>
-                    )}
-                  </div>
-                  <span className="text-base font-medium text-gray-900 dark:text-gray-100 whitespace-nowrap">
-                    €{item.price.toFixed(2)}
-                  </span>
-                </div>
+              {g.items.map(item => (  
+               <ImageMenuItem item={item} showImage={true} />
               ))}
             </div>
           </div>

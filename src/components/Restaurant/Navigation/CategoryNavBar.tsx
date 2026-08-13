@@ -15,7 +15,7 @@ export function CategoryNavBar({ categories, activeCategory, onSelect, activeRef
   }, [activeCategory, activeRef]);
 
   return (
-    <div className="flex gap-2 overflow-x-auto px-4 py-2 scrollbar-none border-t border-gray-200 dark:border-gray-700">
+    <div className="flex gap-2 overflow-x-auto px-4 py-2 scrollbar-none border-gray-200 dark:border-gray-700">
       {categories.map(g => (
         <button
           key={g.category}

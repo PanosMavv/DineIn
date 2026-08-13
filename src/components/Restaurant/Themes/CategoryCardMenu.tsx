@@ -4,8 +4,8 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { ArrowLeft } from 'lucide-react';
 import type { MenuItem } from '@/lib/utils';
-import { OverlayHero } from '@/components/Restaurant/Heros/OverlayHero';
 import Image from 'next/image';
+import { ImageMenuItem } from '../Content/ImageMenuItem';
 
 interface Props {
   restaurant: { name: string; description?: string | null; category: string; theme?: any };
@@ -66,21 +66,7 @@ export function CategoryCardMenu({ restaurant, groupedMenu }: Props) {
           <div className="px-4 pb-12">
             <div className="divide-y divide-gray-200 dark:divide-gray-800">
               {categoryItems.map((item) => (
-                <div key={item.id} className="py-4 flex justify-between items-start">
-                  <div className="flex-1 mr-4">
-                    <h3 className="text-base font-medium text-gray-900 dark:text-gray-100">
-                      {item.name}
-                    </h3>
-                    {item.description && (
-                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                        {item.description}
-                      </p>
-                    )}
-                  </div>
-                  <span className="text-base font-medium text-gray-900 dark:text-gray-100 whitespace-nowrap">
-                    €{item.price.toFixed(2)}
-                  </span>
-                </div>
+                <ImageMenuItem item={item} showImage={true} />
               ))}
             </div>
           </div>
