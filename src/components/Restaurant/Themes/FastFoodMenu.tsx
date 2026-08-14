@@ -119,23 +119,26 @@ export function FastFoodMenu({ restaurant, groupedMenu }: Props) {
             <div className="divide-y divide-gray-200 dark:divide-gray-800 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden">
               {g.items.map(item => (
                 <div key={item.id} className="py-4 px-4 flex gap-3">
-                  <div className="w-14 h-14 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center shrink-0 text-xl">
-                    {item.image ? (
-                      <Image src={item.image} alt={item.name} width={56} height={56} className="object-cover w-full h-full rounded-xl" unoptimized />
-                    ) : (
-                      '🍽️'
-                    )}
-                  </div>
+                  {/* Text content on left */}
                   <div className="flex-1 min-w-0">
                     <h4 className="text-base font-bold text-gray-900 dark:text-gray-100">{item.name}</h4>
                     {item.description && (
-                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5 line-clamp-2">{item.description}</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">{item.description}</p>
                     )}
+                    {/* Price under description */}
+                    <div className="flex items-center gap-2 mt-2">
+                      <span className="text-base font-bold text-orange-500">€{item.price.toFixed(2)}</span>
+                      {item.originalPrice && (
+                        <span className="text-xs line-through text-gray-400">€{item.originalPrice.toFixed(2)}</span>
+                      )}
+                    </div>
                   </div>
-                  <div className="text-right">
-                    <span className="text-base font-bold text-orange-500 whitespace-nowrap">€{item.price.toFixed(2)}</span>
-                    {item.originalPrice && (
-                      <p className="text-xs line-through text-gray-400">€{item.originalPrice.toFixed(2)}</p>
+                  {/* Image */}
+                  <div className="w-24 h-24 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center shrink-0 text-xl overflow-hidden">
+                    {item.image ? (
+                      <Image src={item.image} alt={item.name} width={88} height={88} className="object-cover w-full h-full rounded-xl" unoptimized />
+                    ) : (
+                      '🍽️'
                     )}
                   </div>
                 </div>
