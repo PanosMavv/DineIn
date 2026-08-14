@@ -3,10 +3,9 @@ import { Inter } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import '@/app/globals.css';
-import Logo from '@/components/Logo';
-import { SettingsButton } from '@/components/SettingsButton';
-import { ThemeProvider } from '@/components/ThemeProvider';
-import { Footer } from '@/components/Footer';
+import { SettingsButton } from '@/components/Misc/SettingsButton';
+import { ThemeProvider } from '@/components/Misc/ThemeProvider';
+import { Footer } from '@/components/Misc/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -34,7 +33,7 @@ export default async function RootLayout({
             <main className="flex-1">
               {children}
             </main>
-            
+
             <Footer />
 
             <SettingsButton />

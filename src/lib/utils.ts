@@ -5,6 +5,10 @@ export interface MenuItem {
   price: number;
   category: string;
   isAvailable: boolean;
+  image?: string | null;
+  originalPrice?: number | null;
+  isFeatured?: boolean;
+  featuredLabel?: string | null;
 }
 
 export function groupMenuItemsByCategory(items: MenuItem[]) {
@@ -16,9 +20,8 @@ export function groupMenuItemsByCategory(items: MenuItem[]) {
     }, {} as Record<string, MenuItem[]>);
 
   return Object.keys(grouped)
-    .sort()
     .map(category => ({
       category,
-      items: grouped[category].sort((a, b) => a.name.localeCompare(b.name)),
+      items: grouped[category],
     }));
 }

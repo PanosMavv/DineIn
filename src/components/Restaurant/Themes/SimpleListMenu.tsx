@@ -1,29 +1,26 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { MenuGrid } from './MenuGrid';
-import { ImageCarousel } from './ImageCarousel';
 import type { MenuItem } from '@/lib/utils';
-import Image from 'next/image';
 import { Search, X, ArrowLeft } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { SearchBox } from '@/components/Restaurant/Navigation/SearchBox';
+import { CategoryNavBar } from '@/components/Restaurant/Navigation/CategoryNavBar';
+import { ImageMenuItem } from '@/components/Restaurant/Content/ImageMenuItem';
 
 interface Props {
   restaurant: { name: string; description?: string | null; category: string; theme?: any };
   groupedMenu: { category: string; items: MenuItem[] }[];
 }
 
-export function RestaurantMenu({ restaurant, groupedMenu }: Props) {
+export function SimpleListMenu({ restaurant, groupedMenu }: Props) {
   const [activeCategory, setActiveCategory] = useState(groupedMenu[0]?.category || '');
   const [showNav, setShowNav] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const activeRef = useRef<HTMLAnchorElement>(null);
+  const activeRef = useRef<HTMLButtonElement>(null);
   const clickedCategory = useRef<string | null>(null);
-  const heroRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
-
-  const images = (restaurant.theme as any)?.carouselImages || [];
 
   const t = useTranslations('restaurant');
 
@@ -35,17 +32,22 @@ export function RestaurantMenu({ restaurant, groupedMenu }: Props) {
 
   useEffect(() => {
     const handleScroll = () => {
-      const hero = heroRef.current;
-      if (!hero) return;
-      const heroBottom = hero.offsetTop + hero.offsetHeight;
-      const shouldShow = window.scrollY > heroBottom - 60;
+      const firstCategory = document.getElementById(groupedMenu[0]?.category);
+      if (!firstCategory) return;
+
+      const categoryTop = firstCategory.offsetTop;
+      const shouldShow = window.scrollY > categoryTop - 100;
+
+      if (!shouldShow && !searchQuery) {
+        searchInputRef.current?.blur();
+      }
       setShowNav(shouldShow);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [groupedMenu]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -81,14 +83,12 @@ export function RestaurantMenu({ restaurant, groupedMenu }: Props) {
     activeRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   }, [activeCategory]);
 
-  // Focus search input when opened
   useEffect(() => {
     if (isSearchOpen && searchInputRef.current) {
       searchInputRef.current.focus();
     }
   }, [isSearchOpen]);
 
-  // Lock body scroll when search is open
   useEffect(() => {
     if (isSearchOpen) {
       document.body.style.overflow = 'hidden';
@@ -117,84 +117,21 @@ export function RestaurantMenu({ restaurant, groupedMenu }: Props) {
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950">
-      {images.length > 0 && <ImageCarousel images={images} />}
-
-      {/* ==================== RESTAURANT INFO (HERO) ==================== */}
-      <div ref={heroRef} className="px-4 py-6">
-        <div className="flex items-center gap-4">
-          <div className="flex-1">
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">{restaurant.name}</h1>
-            {restaurant.description && (
-              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{restaurant.description}</p>
-            )}
-            <span className="inline-block mt-3 px-3 py-1 text-xs font-medium rounded-full bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200">
-              {restaurant.category.replace('_', ' ')}
-            </span>
-          </div>
-
-          <div className="w-20 h-20 rounded-full overflow-hidden shrink-0 border-2 border-gray-200 dark:border-gray-700 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-            {(restaurant.theme as any)?.logoImage ? (
-              <Image
-                src={(restaurant.theme as any).logoImage}
-                alt={restaurant.name}
-                width={64}
-                height={64}
-                className="object-cover w-full h-full"
-                unoptimized
-              />
-            ) : (
-              <span className="text-2xl font-bold text-gray-400 dark:text-gray-500">
-                {restaurant.name.charAt(0)}
-              </span>
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* ==================== TOP BAR + CATEGORY NAV ==================== */}
       <div className={`fixed top-0 left-0 right-0 z-20 bg-white dark:bg-gray-900 shadow-sm transition-transform duration-300 ${showNav ? 'translate-y-0' : '-translate-y-full'
         }`}>
-        {/* Restaurant name + search icon */}
-        <div className="flex items-center justify-between px-4 py-1.5">
-          <div className="w-9" /> {/* Spacer to balance the search button */}
-          <h2 className="text-base font-semibold text-gray-900 dark:text-gray-100 truncate flex-1 text-center mx-3">
+        <div className="flex items-center justify-between px-4 py-3">
+          <div className="w-9" />
+          <h2 className="text-base font-bold text-gray-900 dark:text-gray-100 truncate flex-1 text-center mx-3">
             {restaurant.name}
           </h2>
-          <button
-            onClick={() => setIsSearchOpen(true)}
-            className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 shrink-0"
-            aria-label="Search menu"
-          >
-            <Search className="w-5 h-5 text-gray-600 dark:text-gray-300" />
-          </button>
+          <SearchBox value={searchQuery} onChange={setSearchQuery} onOpen={() => setIsSearchOpen(true)} onClose={() => setIsSearchOpen(false)} isOpen={isSearchOpen} items={filteredItems} />
         </div>
-
-        {/* Category nav */}
-        <div className="flex gap-2 overflow-x-auto px-4 py-2 scrollbar-none border-t border-gray-200 dark:border-gray-700">
-          {groupedMenu.map(g => (
-            <a
-              key={g.category}
-              ref={activeCategory === g.category ? activeRef : null}
-              href={`#${g.category}`}
-              onClick={e => {
-                e.preventDefault();
-                scrollTo(g.category);
-              }}
-              className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium border no-underline transition-colors ${activeCategory === g.category
-                ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white'
-                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-700'
-                }`}
-            >
-              {g.category}
-            </a>
-          ))}
-        </div>
+        <CategoryNavBar categories={groupedMenu} activeCategory={activeCategory} onSelect={scrollTo} activeRef={activeRef} />
       </div>
 
       {/* ==================== SEARCH OVERLAY ==================== */}
       {isSearchOpen && (
         <div className="fixed inset-0 z-30 bg-white dark:bg-gray-950">
-          {/* Search header */}
           <div className="flex items-center gap-3 px-4 py-3 border-b border-gray-200 dark:border-gray-800">
             <button
               onClick={closeSearch}
@@ -220,7 +157,6 @@ export function RestaurantMenu({ restaurant, groupedMenu }: Props) {
             </div>
           </div>
 
-          {/* Search results */}
           <div className="overflow-y-auto" style={{ maxHeight: 'calc(100vh - 60px)' }}>
             {searchQuery && filteredItems.length === 0 ? (
               <div className="text-center py-12">
@@ -239,7 +175,7 @@ export function RestaurantMenu({ restaurant, groupedMenu }: Props) {
                         <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">{item.category}</p>
                       </div>
                       <span className="text-base font-medium text-gray-900 dark:text-gray-100 whitespace-nowrap">
-                        €{item.price.toFixed(2)}
+                        €{(item.price ?? 0).toFixed(2)}
                       </span>
                     </div>
                   </div>
@@ -255,14 +191,16 @@ export function RestaurantMenu({ restaurant, groupedMenu }: Props) {
       )}
 
       {/* ==================== MENU ITEMS BY CATEGORY ==================== */}
-      <div className="px-4 pb-12 pt-16">
+      <div className="px-4 pb-12">
         {groupedMenu.map(g => (
           <div key={g.category} id={g.category} className="scroll-mt-22.5">
             <div className="bg-[#fafafa] dark:bg-gray-900 border-y border-gray-200 dark:border-gray-800 -mx-4 px-4 py-4">
-              <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100">{g.category}</h2>
+              <h2 className="text-lg font-extrabold text-gray-900 dark:text-gray-100">{g.category}</h2>
             </div>
-            <div className="py-2">
-              <MenuGrid items={g.items} />
+            <div className="divide-y divide-gray-200 dark:divide-gray-800">
+              {g.items.map(item => (  
+               <ImageMenuItem item={item} showImage={true} />
+              ))}
             </div>
           </div>
         ))}
