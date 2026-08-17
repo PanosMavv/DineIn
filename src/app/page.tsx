@@ -34,7 +34,7 @@ export default async function HomePage() {
       <div className="px-4 pb-12">
         <div className="max-w-md mx-auto bg-white dark:bg-gray-900 rounded-2xl shadow-md border border-gray-200 dark:border-gray-800 overflow-hidden">
           {/* Hero image */}
-          <div className="relative aspect-[2/1] bg-gray-100 dark:bg-gray-800">
+          <div className="relative aspect-2/1 bg-gray-100 dark:bg-gray-800">
             <Image
               src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=400&fit=crop"
               alt="Restaurant interior"
@@ -42,7 +42,7 @@ export default async function HomePage() {
               className="object-cover"
               unoptimized
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent" />
           </div>
           {/* Restaurant info */}
           <div className="px-4 py-4 border-b border-gray-200 dark:border-gray-700">
