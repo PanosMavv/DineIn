@@ -3,38 +3,41 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
+import { authClient } from '@/lib/auth-client';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const { data: session } = authClient.useSession();
+
+  const handleSignOut = async () => {
+    await authClient.signOut();
+    setIsUserMenuOpen(false);
+  };
 
   return (
     <nav className="sticky top-0 z-50 bg-white/80 dark:bg-gray-950/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800">
       <div className="max-w-6xl mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <svg className="w-8 h-8 text-gray-900 dark:text-gray-100" viewBox="0 0 100 100" fill="none">
-              <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
-                <rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="2" />
-                <rect x="5.5" y="5.5" width="2" height="2" rx="0.5" fill="currentColor" />
-
-                <rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="2" />
-                <rect x="16.5" y="5.5" width="2" height="2" rx="0.5" fill="currentColor" />
-
-                <rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="2" />
-                <rect x="5.5" y="16.5" width="2" height="2" rx="0.5" fill="currentColor" />
-
-                <circle cx="12" cy="12" r="1.5" fill="currentColor" />
-                <circle cx="17" cy="17" r="1.5" fill="currentColor" />
-                <circle cx="7" cy="12" r="1" fill="currentColor" />
-                <circle cx="12" cy="7" r="1" fill="currentColor" />
-                <circle cx="17" cy="12" r="1" fill="currentColor" />
-                <circle cx="12" cy="17" r="1" fill="currentColor" />
-                <circle cx="14" cy="14" r="0.8" fill="currentColor" />
-                <circle cx="10" cy="14" r="0.8" fill="currentColor" />
-                <circle cx="14" cy="10" r="0.8" fill="currentColor" />
-                <circle cx="10" cy="10" r="0.8" fill="currentColor" />
-              </svg>
+          <Link href="/" className="flex items-center gap-2 shrink-0">
+            <svg className="w-8 h-8 text-gray-900 dark:text-gray-100" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="2" />
+              <rect x="5.5" y="5.5" width="2" height="2" rx="0.5" fill="currentColor" />
+              <rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="2" />
+              <rect x="16.5" y="5.5" width="2" height="2" rx="0.5" fill="currentColor" />
+              <rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="2" />
+              <rect x="5.5" y="16.5" width="2" height="2" rx="0.5" fill="currentColor" />
+              <circle cx="12" cy="12" r="1.5" fill="currentColor" />
+              <circle cx="17" cy="17" r="1.5" fill="currentColor" />
+              <circle cx="7" cy="12" r="1" fill="currentColor" />
+              <circle cx="12" cy="7" r="1" fill="currentColor" />
+              <circle cx="17" cy="12" r="1" fill="currentColor" />
+              <circle cx="12" cy="17" r="1" fill="currentColor" />
+              <circle cx="14" cy="14" r="0.8" fill="currentColor" />
+              <circle cx="10" cy="14" r="0.8" fill="currentColor" />
+              <circle cx="14" cy="10" r="0.8" fill="currentColor" />
+              <circle cx="10" cy="10" r="0.8" fill="currentColor" />
             </svg>
             <span className="text-2xl font-extrabold text-gray-900 dark:text-gray-100">
               Dine<span className="text-blue-600">.</span>In
@@ -43,71 +46,115 @@ export function Navbar() {
 
           {/* Desktop nav links */}
           <div className="hidden md:flex items-center gap-8 flex-1 justify-center">
-            <Link href="#features" className="text-sm font-semibold text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+            <Link href="#features" className="text-sm font-semibold text-gray-900 dark:text-gray-100 hover:text-blue-600 transition-colors">
               Features
             </Link>
-            <Link href="#pricing" className="text-sm font-semibold text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+            <Link href="#pricing" className="text-sm font-semibold text-gray-900 dark:text-gray-100 hover:text-blue-600 transition-colors">
               Pricing
             </Link>
-            <Link href="#restaurants" className="text-sm font-semibold text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+            <Link href="#restaurants" className="text-sm font-semibold text-gray-900 dark:text-gray-100 hover:text-blue-600 transition-colors">
               Demo Menus
             </Link>
           </div>
 
-          {/* Desktop sign in */}
-          <div className="hidden md:flex items-center gap-3">
-            <Link
-              href="/sign-in"
-              className="px-5 py-2 bg-black text-white rounded-full text-sm font-semibold hover:bg-gray-800 transition-colors"
-            >
-              Sign in
-            </Link>
-          </div>
+          {/* User menu - shows on both desktop and mobile */}
+          <div className="flex items-center gap-2 shrink-0">
+            {session ? (
+              <div className="relative">
+                <button
+                  onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                  className="w-9 h-9 rounded-full overflow-hidden border border-gray-200 dark:border-gray-700"
+                >
+                  {session.user.image ? (
+                    <img
+                      src={session.user.image}
+                      alt={session.user.name || 'User'}
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-blue-500 flex items-center justify-center text-white text-sm font-bold">
+                      {session.user.name?.charAt(0) || 'U'}
+                    </div>
+                  )}
+                </button>
 
-          {/* Mobile hamburger */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
-          >
-            {isOpen ? (
-              <X className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+                {/* Dropdown - works on mobile too */}
+                {isUserMenuOpen && (
+                  <div className="absolute right-0 mt-2 w-56 bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 shadow-lg py-2">
+                    <div className="px-4 py-2 border-b border-gray-100 dark:border-gray-800">
+                      <p className="text-sm font-semibold text-gray-900 dark:text-gray-100 truncate">
+                        {session.user.name}
+                      </p>
+                      <p className="text-xs text-gray-500 truncate">{session.user.email}</p>
+                    </div>
+                    <Link
+                      href="/dashboard"
+                      onClick={() => setIsUserMenuOpen(false)}
+                      className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    >
+                      Dashboard
+                    </Link>
+                    <Link
+                      href="/dashboard/restaurants"
+                      onClick={() => setIsUserMenuOpen(false)}
+                      className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    >
+                      My Restaurants
+                    </Link>
+                    <Link
+                      href="/dashboard/profile"
+                      onClick={() => setIsUserMenuOpen(false)}
+                      className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    >
+                      Profile Settings
+                    </Link>
+                    <div className="border-t border-gray-100 dark:border-gray-800 mt-2 pt-2">
+                      <button
+                        onClick={handleSignOut}
+                        className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-800"
+                      >
+                        Sign Out
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
             ) : (
-              <Menu className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+              <Link
+                href="/sign-in"
+                className="px-5 py-2 bg-black text-white rounded-full text-sm font-semibold hover:bg-gray-800 transition-colors"
+              >
+                Sign in
+              </Link>
             )}
-          </button>
+
+            {/* Mobile hamburger */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="md:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
+            >
+              {isOpen ? (
+                <X className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+              ) : (
+                <Menu className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Mobile menu */}
         {isOpen && (
           <div className="md:hidden mt-4 pb-4 border-t border-gray-200 dark:border-gray-800 pt-4">
             <div className="flex flex-col gap-3">
-              <Link
-                href="#features"
-                onClick={() => setIsOpen(false)}
-                className="text-sm font-semibold text-gray-900 dark:text-gray-100"
-              >
+              <Link href="#features" onClick={() => setIsOpen(false)} className="text-sm font-semibold text-gray-900 dark:text-gray-100">
                 Features
               </Link>
-              <Link
-                href="#pricing"
-                onClick={() => setIsOpen(false)}
-                className="text-sm font-semibold text-gray-900 dark:text-gray-100"
-              >
+              <Link href="#pricing" onClick={() => setIsOpen(false)} className="text-sm font-semibold text-gray-900 dark:text-gray-100">
                 Pricing
               </Link>
-              <Link
-                href="#restaurants"
-                onClick={() => setIsOpen(false)}
-                className="text-sm font-semibold text-gray-900 dark:text-gray-100"
-              >
+              <Link href="#restaurants" onClick={() => setIsOpen(false)} className="text-sm font-semibold text-gray-900 dark:text-gray-100">
                 Demo Menus
-              </Link>
-              <Link
-                href="/sign-in"
-                onClick={() => setIsOpen(false)}
-                className="px-5 py-2 bg-black text-white rounded-full text-sm font-semibold hover:bg-gray-800 transition-colors w-fit mt-2"
-              >
-                Sign in
               </Link>
             </div>
           </div>

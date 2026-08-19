@@ -58,7 +58,7 @@ export default async function HomePage() {
       </div>
 
       {/* ==================== FEATURES ==================== */}
-      <div className="px-4 pb-24 max-w-6xl mx-auto">
+      <div className="px-4 pb-12 max-w-6xl mx-auto">
         <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900 dark:text-gray-100 mb-12">
           Everything your menu needs
         </h2>
@@ -81,9 +81,9 @@ export default async function HomePage() {
       </div>
 
       {/* ==================== PRICING ==================== */}
-      <div id="pricing" className="px-4 pb-24 bg-gray-50 dark:bg-gray-900/50 py-24">
+      <div id="pricing" className="px-4 bg-gray-50 dark:bg-gray-900/50 py-12">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900 dark:text-gray-100 mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900 dark:text-gray-100">
             Simple pricing
           </h2>
           <p className="text-center text-gray-500 dark:text-gray-400 mb-12">
@@ -126,7 +126,7 @@ export default async function HomePage() {
                 href="/sign-up?plan=diy"
                 className="block text-center px-6 py-3 border border-gray-300 rounded-full font-semibold hover:bg-gray-50 transition-colors"
               >
-                Start DIY Plan
+                Start Planning For Free!
               </Link>
             </div>
 
@@ -209,22 +209,6 @@ export default async function HomePage() {
             );
           })}
         </div>
-      </div>
-
-      {/* ==================== FOOTER CTA ==================== */}
-      <div className="px-4 py-24 text-center">
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-          Ready to get started?
-        </h2>
-        <p className="text-gray-500 dark:text-gray-400 mb-8">
-          Join hundreds of restaurants using Dine In
-        </p>
-        <Link
-          href="#pricing"
-          className="inline-block px-8 py-4 bg-black text-white rounded-full font-semibold hover:bg-gray-800 transition-colors"
-        >
-          View Plans
-        </Link>
       </div>
     </div>
   );
