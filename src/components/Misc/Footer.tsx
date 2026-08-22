@@ -1,5 +1,5 @@
 import { getTranslations } from 'next-intl/server';
-import Logo from '@/components/Misc/Logo';
+import { Logo } from '@/components/Misc/Logo';
 
 export async function Footer() {
   const t = await getTranslations('footer');

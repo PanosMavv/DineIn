@@ -4,23 +4,15 @@ import { useState, useEffect } from 'react';
 import { useLocale } from 'next-intl';
 import { useRouter, usePathname } from 'next/navigation';
 import { Settings, X, Sun, Moon } from 'lucide-react';
-
-const allLanguages = [
-  { code: 'en', flag: '🇬🇧', label: 'English' },
-  { code: 'el', flag: '🇬🇷', label: 'Ελληνικά' },
-  { code: 'de', flag: '🇩🇪', label: 'Deutsch' },
-  { code: 'fr', flag: '🇫🇷', label: 'Français' },
-  { code: 'zh', flag: '🇨🇳', label: '中文' },
-];
-
-const allLanguageCodes = allLanguages.map(l => l.code);
+import { availableLocales, localeCodes } from '@/lib/locales';
 
 export function SettingsButton() {
   const [isOpen, setIsOpen] = useState(false);
-  const [availableLocales, setAvailableLocales] = useState<string[]>(allLanguageCodes);
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
+
+  const [availableRestaurantLocales, setAvailableRestaurantLocales] = useState<string[]>([]);
 
   const [isDark, setIsDark] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -32,19 +24,19 @@ export function SettingsButton() {
   // Fetch available locales for current restaurant
   useEffect(() => {
     const segments = pathname.split('/').filter(Boolean);
-    if (segments.length === 1 && !allLanguageCodes.includes(segments[0])) {
+    if (segments.length === 1 && !localeCodes.includes(segments[0])) {
       fetch(`/api/restaurant/${segments[0]}/locales`)
         .then(res => res.json())
-        .then(data => setAvailableLocales(data.locales))
-        .catch(() => setAvailableLocales(allLanguageCodes));
+        .then(data => setAvailableRestaurantLocales(data.locales))
+        .catch(() => setAvailableRestaurantLocales(localeCodes));
     } else {
-      setAvailableLocales(allLanguageCodes);
+      setAvailableRestaurantLocales([]);
     }
   }, [pathname]);
 
-  const languages = allLanguages.filter(lang =>
-    availableLocales.includes(lang.code)
-  );
+  const languages = availableRestaurantLocales.length > 0
+    ? availableLocales.filter(lang => availableRestaurantLocales.includes(lang.code))
+    : availableLocales;
 
   // Lock body scroll when sheet is open
   useEffect(() => {
@@ -80,7 +72,7 @@ export function SettingsButton() {
       )}
 
       <div
-        className={`fixed inset-x-0 bottom-0 z-50 bg-white dark:bg-gray-900 rounded-t-2xl shadow-lg transition-transform duration-300 ease-out ${isOpen ? 'translate-y-0' : 'translate-y-full'
+        className={`fixed inset-x-0 bottom-0 z-50 bg-white dark:bg-gray-900 rounded-t-2xl shadow-lg transition-transform duration-300 ease-out max-w-2xl mx-auto ${isOpen ? 'translate-y-0' : 'translate-y-full'
           }`}
         style={{ maxHeight: '80vh' }}
       >

@@ -1,20 +1,35 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { authClient } from '@/lib/auth-client';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
+import { Logo } from '@/components/Misc/Logo';
 
 export default function SignInPage() {
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+  const { data: session, isPending } = authClient.useSession();
+
+  // Redirect to dashboard if already signed in
+  useEffect(() => {
+    if (!isPending && session) {
+      router.push('/dashboard');
+    }
+  }, [session, isPending, router]);
 
   const handleGoogleSignIn = async () => {
     setIsLoading(true);
     await authClient.signIn.social({
       provider: 'google',
-      callbackURL: '/',
+      callbackURL: '/dashboard', // Redirect to dashboard after sign in
     });
   };
+
+  if (isPending || session) {
+    return null;
+  }
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950 flex flex-col">
@@ -34,9 +49,7 @@ export default function SignInPage() {
         <div className="w-full max-w-sm">
           {/* Logo */}
           <div className="text-center mb-8">
-            <Link href="/" className="text-3xl font-extrabold text-gray-900 dark:text-gray-100">
-              Dine<span className="text-blue-600">.</span>In
-            </Link>
+            <Logo />
             <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-6">
               Welcome back
             </h1>

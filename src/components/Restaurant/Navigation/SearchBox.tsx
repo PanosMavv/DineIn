@@ -1,19 +1,18 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { Search, X, ArrowLeft } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import type { MenuItem } from '@/lib/utils';
+import { ImageMenuItem } from '@/components/Restaurant/Content/ImageMenuItem';
 
 interface Props {
-  value: string;
-  onChange: (value: string) => void;
-  onOpen: () => void;
-  onClose: () => void;
-  isOpen: boolean;
-  items: { id: string; name: string; description?: string | null; price: number; category: string; image?: string | null }[];
+  groupedMenu: { category: string; items: MenuItem[] }[];
 }
 
-export function SearchBox({ value, onChange, onOpen, onClose, isOpen, items }: Props) {
+export function SearchBox({ groupedMenu }: Props) {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const t = useTranslations('restaurant');
 
@@ -27,55 +26,80 @@ export function SearchBox({ value, onChange, onOpen, onClose, isOpen, items }: P
     return () => { document.body.style.overflow = ''; };
   }, [isOpen]);
 
+  const closeSearch = () => {
+    setIsOpen(false);
+    setSearchQuery('');
+  };
+
+  const filteredItems = useMemo(() => {
+    if (!searchQuery.trim()) return [];
+
+    return groupedMenu
+      .flatMap(group => group.items)
+      .filter(
+        item =>
+          item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          (item.description && item.description.toLowerCase().includes(searchQuery.toLowerCase()))
+      )
+      .slice(0, 50);
+  }, [groupedMenu, searchQuery]);
+
   return (
     <>
+      {/* Search button */}
       <button
-        onClick={onOpen}
+        onClick={() => setIsOpen(true)}
         className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 shrink-0"
         aria-label="Search menu"
       >
         <Search className="w-5 h-5 text-gray-600 dark:text-gray-300" />
       </button>
 
+      {/* Search overlay - no portal, rendered inline */}
       {isOpen && (
-        <div className="fixed inset-0 z-50 bg-white dark:bg-gray-950">
-          <div className="flex items-center gap-3 px-4 py-3 border-b border-gray-200 dark:border-gray-800">
-            <button onClick={onClose} className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
-              <ArrowLeft className="w-5 h-5 text-gray-600 dark:text-gray-300" />
-            </button>
-            <div className="flex-1 flex items-center gap-2 bg-gray-100 dark:bg-gray-800 rounded-full px-4 py-2">
-              <Search className="w-4 h-4 text-gray-400 shrink-0" />
-              <input
-                ref={inputRef}
-                type="text"
-                value={value}
-                onChange={(e) => onChange(e.target.value)}
-                placeholder={t('searchPlaceholder')}
-                className="flex-1 min-w-0 bg-transparent text-sm text-gray-900 dark:text-gray-100 outline-none"
-              />
-              {value && (
-                <button onClick={() => onChange('')}><X className="w-4 h-4 text-gray-400" /></button>
+        <div className="fixed inset-0 z-50 bg-white dark:bg-gray-950 left-0 right-0">
+          <div className="max-w-2xl mx-auto h-screen flex flex-col">
+            <div className="flex items-center gap-3 px-4 py-3 border-b border-gray-200 dark:border-gray-800 shrink-0">
+              <button
+                onClick={closeSearch}
+                className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 shrink-0"
+              >
+                <ArrowLeft className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+              </button>
+              <div className="flex-1 flex items-center gap-2 bg-gray-100 dark:bg-gray-800 rounded-full px-4 py-2">
+                <Search className="w-4 h-4 text-gray-400 shrink-0" />
+                <input
+                  ref={inputRef}
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder={t('searchPlaceholder')}
+                  className="flex-1 min-w-0 bg-transparent text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 outline-none"
+                />
+                {searchQuery && (
+                  <button onClick={() => setSearchQuery('')} className="shrink-0">
+                    <X className="w-4 h-4 text-gray-400" />
+                  </button>
+                )}
+              </div>
+            </div>
+            <div className="flex-1 overflow-y-auto">
+              {searchQuery && filteredItems.length === 0 ? (
+                <div className="text-center py-12">
+                  <p className="text-gray-500 dark:text-gray-400">{t('searchNotFound')}</p>
+                </div>
+              ) : searchQuery ? (
+                <div className="divide-y divide-gray-100 dark:divide-gray-800 px-4">
+                  {filteredItems.map(item => (
+                    <ImageMenuItem key={item.id} item={item} showImage={true} />
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-12">
+                  <p className="text-gray-400 dark:text-gray-500">Start typing to search the menu</p>
+                </div>
               )}
             </div>
-          </div>
-          <div className="overflow-y-auto px-4" style={{ maxHeight: 'calc(100vh - 60px)' }}>
-            {value && items.length === 0 ? (
-              <p className="text-center py-12 text-gray-500">{t('searchNotFound')}</p>
-            ) : value ? (
-              <div className="divide-y divide-gray-100 dark:divide-gray-800">
-                {items.map(item => (
-                  <div key={item.id} className="py-4 flex justify-between items-start">
-                    <div className="flex-1">
-                      <h3 className="font-bold text-sm">{item.name}</h3>
-                      <p className="text-xs text-gray-400">{item.category}</p>
-                    </div>
-                    <span className="font-bold">€{item.price.toFixed(2)}</span>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <p className="text-center py-12 text-gray-400">Start typing to search</p>
-            )}
           </div>
         </div>
       )}

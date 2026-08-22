@@ -2,7 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import { prisma } from '@/lib/prisma';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Check, Sparkles, Wrench, Zap, Globe, Palette, Smartphone, BarChart3, Menu } from 'lucide-react';
+import { Check, Sparkles, Wrench, Zap, Globe, Palette } from 'lucide-react';
 import { Navbar } from '@/components/Homepage/Navbar';
 
 export default async function HomePage() {
@@ -62,7 +62,7 @@ export default async function HomePage() {
         <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900 dark:text-gray-100 mb-12">
           Everything your menu needs
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature) => (
             <div
               key={feature.title}
@@ -81,8 +81,8 @@ export default async function HomePage() {
       </div>
 
       {/* ==================== PRICING ==================== */}
-      <div id="pricing" className="px-4 bg-gray-50 dark:bg-gray-900/50 py-12">
-        <div className="max-w-5xl mx-auto">
+      <div id="pricing" className="px-4 bg-gray-50 dark:bg-gray-900/50 py-12 scroll-mt-16">
+        <div className="max-w-6xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900 dark:text-gray-100">
             Simple pricing
           </h2>
@@ -90,9 +90,9 @@ export default async function HomePage() {
             Choose the plan that fits your needs
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* DIY Plan */}
-            <div className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-200 dark:border-gray-800 p-8">
+            <div className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-200 dark:border-gray-800 p-8 flex flex-col">
               <div className="flex items-center gap-3 mb-4">
                 <Wrench className="w-6 h-6 text-gray-500" />
                 <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">DIY Plan</h3>
@@ -109,12 +109,10 @@ export default async function HomePage() {
               </p>
               <ul className="space-y-3 mb-8">
                 {[
-                  'Full menu management',
-                  'All themes included',
-                  'Multilingual support',
-                  'Mobile-friendly menus',
-                  'Combos & deals',
-                  'Email support',
+                  'Unlimited menu items',
+                  'Two languages',
+                  'Multiple menu themes',
+                  'Combo deals & offers',
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
                     <Check className="w-4 h-4 text-green-500 shrink-0" />
@@ -123,15 +121,15 @@ export default async function HomePage() {
                 ))}
               </ul>
               <Link
-                href="/sign-up?plan=diy"
-                className="block text-center px-6 py-3 border border-gray-300 rounded-full font-semibold hover:bg-gray-50 transition-colors"
+                href="/sign-in?plan=diy"
+                className="block text-center px-6 py-3 border border-gray-300 rounded-full font-semibold hover:bg-gray-50 transition-colors mt-auto"
               >
-                Start Planning For Free!
+                Start DIY Plan
               </Link>
             </div>
 
             {/* Full Service Plan */}
-            <div className="bg-black text-white rounded-3xl p-8 relative">
+            <div className="bg-black text-white rounded-3xl p-8 relative flex flex-col">
               <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-blue-600 text-xs font-bold rounded-full">
                 MOST POPULAR
               </span>
@@ -147,28 +145,84 @@ export default async function HomePage() {
                 <span className="text-gray-400">/month</span>
               </div>
               <p className="text-sm text-gray-400 mb-8">
-                or €190/year <span className="text-green-400 font-semibold">(save €170)</span>
+                or €220/year <span className="text-green-400 font-semibold">(save €140)</span>
               </p>
+              {/* Full Service Plan */}
               <ul className="space-y-3 mb-8">
                 {[
                   'Everything in DIY',
-                  'We build your menu',
-                  'Professional food photography',
-                  'Priority support',
-                  'Quarterly menu updates',
-                  'Dedicated account manager',
+                  'Unlimited languages',
+                  'Our team builds your menu',
+                  'Menu updates on request',
+                  'Email support',
                 ].map((item) => (
-                  <li key={item} className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-green-400 shrink-0" />
-                    {item}
+                  <li key={item} className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-green-400 shrink-0 mt-0.5" />
+                    <span>
+                      {item}
+                      {item === 'Unlimited languages' && (
+                        <span className="block text-xs text-gray-400 mt-0.5">
+                          +€5/month per additional language translated
+                        </span>
+                      )}
+                    </span>
                   </li>
                 ))}
               </ul>
               <Link
                 href="/sign-up?plan=full"
-                className="block text-center px-6 py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-100 transition-colors"
+                className="block text-center px-6 py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-100 transition-colors mt-auto"
               >
                 Start Full Service
+              </Link>
+            </div>
+
+            {/* Custom Design Plan */}
+            <div className="bg-white dark:bg-gray-900 rounded-3xl border-2 border-blue-600 p-8 relative flex flex-col">
+              <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-blue-600 text-xs font-bold rounded-full">
+                PREMIUM
+              </span>
+              <div className="flex items-center gap-3 mb-4">
+                <Palette className="w-6 h-6 text-blue-600" />
+                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">Custom Design</h3>
+              </div>
+              <p className="text-gray-500 dark:text-gray-400 mb-6">
+                A bespoke menu design tailored to your brand.
+              </p>
+              <div className="flex items-baseline gap-2 mb-2">
+                <span className="text-4xl font-extrabold text-gray-900 dark:text-gray-100">€50</span>
+                <span className="text-gray-500">/month</span>
+              </div>
+              <p className="text-sm text-gray-400 mb-8">
+                or €450/year <span className="text-green-600 font-semibold">(save €150)</span>
+              </p>
+              {/* Custom Design Plan */}
+              <ul className="space-y-3 mb-8">
+                {[
+                  'Everything in Full Service',
+                  'Unlimited languages',
+                  'Fully custom menu design',
+                  'Monthly design revisions',
+                  'Priority email support',
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-gray-700 dark:text-gray-300">
+                    <Check className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
+                    <span>
+                      {item}
+                      {item === 'Unlimited languages' && (
+                        <span className="block text-xs text-gray-400 mt-0.5">
+                          +€5/month per additional language translated
+                        </span>
+                      )}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href="/sign-up?plan=custom"
+                className="block text-center px-6 py-3 border border-blue-600 text-blue-600 rounded-full font-semibold hover:bg-blue-50 transition-colors mt-auto"
+              >
+                Start Custom Plan
               </Link>
             </div>
           </div>
@@ -176,7 +230,7 @@ export default async function HomePage() {
       </div>
 
       {/* ==================== DEMO RESTAURANTS ==================== */}
-      <div id="restaurants" className="px-4 py-24 max-w-4xl mx-auto">
+      <div id="restaurants" className="px-4 py-12 max-w-4xl mx-auto">
         <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900 dark:text-gray-100 mb-12">
           Try our demo menus
         </h2>

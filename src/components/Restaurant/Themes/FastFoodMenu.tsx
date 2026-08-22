@@ -78,7 +78,7 @@ export function FastFoodMenu({ restaurant, groupedMenu }: Props) {
   return (
     <div className="min-h-screen bg-orange-50 dark:bg-gray-950">
       {/* ==================== TOP BAR ==================== */}
-      <div className="sticky top-0 z-30 bg-white dark:bg-gray-900 shadow-sm">
+      <div className="sticky top-0 z-30 bg-white dark:bg-gray-900 shadow-sm max-w-2xl mx-auto">
         <div className="flex items-center justify-between px-4 py-2">
           <h2 className="text-sm font-bold text-gray-900 dark:text-gray-100 truncate">{restaurant.name}</h2>
           <button
@@ -91,7 +91,7 @@ export function FastFoodMenu({ restaurant, groupedMenu }: Props) {
       </div>
 
       {/* ==================== CATEGORY PILLS ==================== */}
-      <div className="sticky top-12 z-20 bg-white dark:bg-gray-950 px-4 py-3">
+      <div className="sticky top-12 z-20 bg-white dark:bg-gray-950 px-4 py-3 max-w-2xl mx-auto">
         <div className="flex gap-2 overflow-x-auto scrollbar-none">
           {allCategories.map(cat => (
             <button

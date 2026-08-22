@@ -12,6 +12,8 @@ datasource db {
 
 model Restaurant {
   id             String                  @id @default(cuid())
+  ownerId        String
+  owner          User                    @relation(fields: [ownerId], references: [id])
   slug           String                  @unique
   category       String
   translations   RestaurantTranslation[]
@@ -30,6 +32,7 @@ model RestaurantTranslation {
   locale       String
   name         String
   description  String?
+  isActive     Boolean    @default(false)
   restaurant   Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
 
   @@unique([restaurantId, locale])
@@ -136,15 +139,16 @@ model ComboDealItem {
 }
 
 model User {
-  id            String    @id
+  id            String       @id
   name          String
   email         String
-  emailVerified Boolean   @default(false)
+  emailVerified Boolean      @default(false)
   image         String?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
   sessions      Session[]
   accounts      Account[]
+  restaurants   Restaurant[]
 
   @@unique([email])
   @@map("user")
