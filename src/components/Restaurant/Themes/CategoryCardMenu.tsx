@@ -73,7 +73,7 @@ export function CategoryCardMenu({ restaurant, groupedMenu }: Props) {
         </>
       ) : (
         <>
-          <div id="category-list" className="px-4 pb-12">
+          <div id="category-list" className="pt-4 px-4">
             <div className="space-y-3">
               {groupedMenu.map((group, index) => (
                 <button

@@ -5,7 +5,7 @@ export async function getRestaurantBySlug(slug: string, locale: string = 'en') {
     where: { slug },
     include: {
       translations: {
-        where: { locale },
+        where: { locale, isActive: true },
       },
       themeSettings: true,
       carouselImages: {
@@ -114,6 +114,7 @@ export async function getRestaurantLocales(slug: string): Promise<string[]> {
     where: { slug },
     include: {
       translations: {
+        where: { isActive: true },
         select: { locale: true },
       },
     },

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
+import { cookies } from 'next/headers';
 import '@/app/globals.css';
 import { SettingsButton } from '@/components/Misc/SettingsButton';
 import { ThemeProvider } from '@/components/Misc/ThemeProvider';
@@ -16,19 +17,18 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
-  params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params;
+  const cookieStore = await cookies();
+  const locale = cookieStore.get('locale')?.value || 'en';
 
-  const messages = await getMessages();
+  const messages = await getMessages({ locale });
 
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={`${inter.className} bg-gray-50 dark:bg-gray-950 flex flex-col min-h-screen`}>
-        <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider messages={messages} locale={locale}>
           <ThemeProvider>
             <main className="flex-1">
               {children}

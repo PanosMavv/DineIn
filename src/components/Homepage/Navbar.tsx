@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import { authClient } from '@/lib/auth-client';
+import { Logo } from '@/components/Misc/Logo';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,29 +21,7 @@ export function Navbar() {
       <div className="max-w-6xl mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 shrink-0">
-            <svg className="w-8 h-8 text-gray-900 dark:text-gray-100" viewBox="0 0 24 24" fill="none">
-              <rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="2" />
-              <rect x="5.5" y="5.5" width="2" height="2" rx="0.5" fill="currentColor" />
-              <rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="2" />
-              <rect x="16.5" y="5.5" width="2" height="2" rx="0.5" fill="currentColor" />
-              <rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="2" />
-              <rect x="5.5" y="16.5" width="2" height="2" rx="0.5" fill="currentColor" />
-              <circle cx="12" cy="12" r="1.5" fill="currentColor" />
-              <circle cx="17" cy="17" r="1.5" fill="currentColor" />
-              <circle cx="7" cy="12" r="1" fill="currentColor" />
-              <circle cx="12" cy="7" r="1" fill="currentColor" />
-              <circle cx="17" cy="12" r="1" fill="currentColor" />
-              <circle cx="12" cy="17" r="1" fill="currentColor" />
-              <circle cx="14" cy="14" r="0.8" fill="currentColor" />
-              <circle cx="10" cy="14" r="0.8" fill="currentColor" />
-              <circle cx="14" cy="10" r="0.8" fill="currentColor" />
-              <circle cx="10" cy="10" r="0.8" fill="currentColor" />
-            </svg>
-            <span className="text-2xl font-extrabold text-gray-900 dark:text-gray-100">
-              Dine<span className="text-blue-600">.</span>In
-            </span>
-          </Link>
+          <Logo />
 
           {/* Desktop nav links */}
           <div className="hidden md:flex items-center gap-8 flex-1 justify-center">

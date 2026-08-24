@@ -30,9 +30,6 @@ export default async function RestaurantPage({ params }: { params: Promise<{ slu
         <RestaurantHero restaurant={restaurant} />
       )}
 
-      {/* Spacer */}
-      {/* <div className="h-8" /> */}
-
       {restaurant.template === 'category-cards' ? (
         <CategoryCardMenu restaurant={restaurant} groupedMenu={groupedMenu} />
       ) : restaurant.template === 'fast-food' ? (

@@ -4,7 +4,12 @@ import { routing } from './routing';
 
 export default getRequestConfig(async () => {
   const cookieStore = await cookies();
-  const locale = cookieStore.get('locale')?.value || routing.defaultLocale;
+  const cookieLocale = cookieStore.get('locale')?.value;
+
+  // Validate cookie locale against available locales
+  const locale = cookieLocale && routing.locales.includes(cookieLocale as any)
+    ? cookieLocale
+    : routing.defaultLocale;
 
   return {
     locale,
