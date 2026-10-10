@@ -1,0 +1,98 @@
+{
+  "app": {
+    "title": "Dine In - レストランメニュー",
+    "description": "レストランのメニューを見つけて探索しましょう",
+    "name": "Dine In"
+  },
+  "home": {
+    "heading": "Dine In",
+    "subtitle": "レストランメニュープラットフォーム",
+    "hero": {
+      "title": "あなたのレストランのための美しいデジタルメニュー",
+      "description": "お客様に愛される、魅力的でモバイルフレンドリーなメニューを作成しましょう。多言語対応、美しいテーマ、簡単な管理——すべてが一か所に。",
+      "getStarted": "始める",
+      "viewDemos": "デモメニューを見る"
+    },
+    "features": {
+      "heading": "メニューに必要なすべて",
+      "multilingual": {
+        "title": "多言語メニュー",
+        "description": "即時翻訳で、お客様の母語でサービスを提供"
+      },
+      "themes": {
+        "title": "美しいテーマ",
+        "description": "あなたのブランドに合った複数の魅力的なテンプレートから選択"
+      },
+      "fast": {
+        "title": "高速で信頼性が高い",
+        "description": "超高速の読み込み時間でお客様を満足させます"
+      },
+      "combos": {
+        "title": "コンボとお得な情報",
+        "description": "特別オファーやコンボメニューを強調して売上を向上"
+      }
+    },
+    "pricing": {
+      "heading": "シンプルな料金プラン",
+      "subtitle": "あなたのニーズに合ったプランをお選びください",
+      "perMonth": "/月",
+      "perYear": "年",
+      "save": "お得",
+      "diy": {
+        "name": "DIYプラン",
+        "description": "使いやすいダッシュボードで、すべてをご自身で管理できます。",
+        "feature1": "無制限のメニュー項目",
+        "feature2": "2言語",
+        "feature3": "複数のメニューテーマ",
+        "feature4": "コンボのお得な情報とオファー",
+        "cta": "DIYプランを始める"
+      },
+      "full": {
+        "name": "フルサービス",
+        "description": "メニューの作成と管理を私たちが代行します。コンテンツを送るだけ。",
+        "badge": "一番人気",
+        "feature1": "DIYのすべてを含む",
+        "feature2": "無制限の言語",
+        "feature2Note": "追加言語の翻訳ごとに +5€/月",
+        "feature3": "私たちのチームがメニューを作成",
+        "feature4": "リクエストに応じたメニュー更新",
+        "feature5": "メールサポート",
+        "cta": "フルサービスを始める"
+      },
+      "custom": {
+        "name": "カスタムデザイン",
+        "description": "あなたのブランドに合わせたオーダーメイドのメニューデザイン。",
+        "badge": "プレミアム",
+        "feature1": "フルサービスのすべてを含む",
+        "feature2": "無制限の言語",
+        "feature2Note": "追加言語の翻訳ごとに +5€/月",
+        "feature3": "完全カスタムのメニューデザイン",
+        "feature4": "毎月のデザイン修正",
+        "feature5": "優先メールサポート",
+        "cta": "カスタムプランを始める"
+      }
+    },
+    "demos": {
+      "heading": "デモメニューをお試しください",
+      "itemsCount": "項目"
+    }
+  },
+  "restaurant": {
+    "soldOut": "売り切れ",
+    "noItems": "利用可能なメニュー項目がありません。",
+    "noImage": "画像なし",
+    "backToRestaurants": "レストラン一覧に戻る",
+    "notFound": "レストランが見つかりません",
+    "notFoundMessage": "お探しのレストランは存在しません。",
+    "loading": "メニューを読み込み中...",
+    "searchPlaceholder": "メニューを検索...",
+    "searchNotFound": "該当する項目が見つかりませんでした："
+  },
+  "footer": {
+    "description": "レストラン、カフェ、フードビジネスのための美しいデジタルメニュー。",
+    "rights": "Dine In. All rights reserved."
+  },
+  "theme": {
+    "toggle": "テーマを切り替え"
+  }
+}

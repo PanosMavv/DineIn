@@ -1,0 +1,98 @@
+{
+  "app": {
+    "title": "Dine In - Restaurangmenyer",
+    "description": "Upptäck och utforska restaurangmenyer",
+    "name": "Dine In"
+  },
+  "home": {
+    "heading": "Dine In",
+    "subtitle": "Plattform för restaurangmenyer",
+    "hero": {
+      "title": "Vackra digitala menyer för din restaurang",
+      "description": "Skapa fantastiska, mobilvänliga menyer som dina gäster kommer att älska. Flerspråkigt stöd, vackra teman och enkel hantering — allt på ett ställe.",
+      "getStarted": "Kom igång",
+      "viewDemos": "Visa demomenyer"
+    },
+    "features": {
+      "heading": "Allt din meny behöver",
+      "multilingual": {
+        "title": "Flerspråkiga menyer",
+        "description": "Betjäna dina gäster på deras språk med omedelbara översättningar"
+      },
+      "themes": {
+        "title": "Vackra teman",
+        "description": "Välj bland flera fantastiska mallar som matchar ditt varumärke"
+      },
+      "fast": {
+        "title": "Snabbt och pålitligt",
+        "description": "Blixtsnabba laddningstider håller dina gäster nöjda"
+      },
+      "combos": {
+        "title": "Combos och erbjudanden",
+        "description": "Lyft fram specialerbjudanden och combomenyer för att öka försäljningen"
+      }
+    },
+    "pricing": {
+      "heading": "Enkel prissättning",
+      "subtitle": "Välj den plan som passar dina behov",
+      "perMonth": "/månad",
+      "perYear": "år",
+      "save": "spara",
+      "diy": {
+        "name": "DIY-plan",
+        "description": "Du hanterar allt själv med vår lättanvända instrumentpanel.",
+        "feature1": "Obegränsat antal menyobjekt",
+        "feature2": "Två språk",
+        "feature3": "Flera menyteman",
+        "feature4": "Comboerbjudanden och deals",
+        "cta": "Starta DIY-plan"
+      },
+      "full": {
+        "name": "Full service",
+        "description": "Vi skapar och hanterar din meny åt dig. Skicka bara ditt innehåll till oss.",
+        "badge": "MEST POPULÄR",
+        "feature1": "Allt i DIY-planen",
+        "feature2": "Obegränsat antal språk",
+        "feature2Note": "+5€/månad per ytterligare översatt språk",
+        "feature3": "Vårt team bygger din meny",
+        "feature4": "Menyuppdateringar på begäran",
+        "feature5": "E-postsupport",
+        "cta": "Starta full service"
+      },
+      "custom": {
+        "name": "Anpassad design",
+        "description": "En skräddarsydd menydesign anpassad efter ditt varumärke.",
+        "badge": "PREMIUM",
+        "feature1": "Allt i full service",
+        "feature2": "Obegränsat antal språk",
+        "feature2Note": "+5€/månad per ytterligare översatt språk",
+        "feature3": "Helt anpassad menydesign",
+        "feature4": "Månatliga designrevisioner",
+        "feature5": "Prioriterad e-postsupport",
+        "cta": "Starta anpassad plan"
+      }
+    },
+    "demos": {
+      "heading": "Prova våra demomenyer",
+      "itemsCount": "objekt"
+    }
+  },
+  "restaurant": {
+    "soldOut": "Slutsåld",
+    "noItems": "Inga menyobjekt tillgängliga.",
+    "noImage": "Ingen bild",
+    "backToRestaurants": "Tillbaka till restauranger",
+    "notFound": "Restaurangen hittades inte",
+    "notFoundMessage": "Restaurangen du letar efter finns inte.",
+    "loading": "Laddar meny...",
+    "searchPlaceholder": "Sök i menyn...",
+    "searchNotFound": "Inga objekt hittades för"
+  },
+  "footer": {
+    "description": "Vackra digitala menyer för restauranger, kaféer och matverksamheter.",
+    "rights": "Dine In. Alla rättigheter förbehållna."
+  },
+  "theme": {
+    "toggle": "Växla tema"
+  }
+}

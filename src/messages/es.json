@@ -1,0 +1,98 @@
+{
+  "app": {
+    "title": "Dine In - Menús de Restaurante",
+    "description": "Descubre y explora menús de restaurantes",
+    "name": "Dine In"
+  },
+  "home": {
+    "heading": "Dine In",
+    "subtitle": "Plataforma de menús de restaurante",
+    "hero": {
+      "title": "Hermosos menús digitales para tu restaurante",
+      "description": "Crea menús impresionantes y adaptados a móviles que tus clientes adorarán. Soporte multilingüe, temas hermosos y gestión sencilla — todo en un solo lugar.",
+      "getStarted": "Comenzar",
+      "viewDemos": "Ver menús de demostración"
+    },
+    "features": {
+      "heading": "Todo lo que tu menú necesita",
+      "multilingual": {
+        "title": "Menús multilingües",
+        "description": "Atiende a tus clientes en su idioma con traducciones instantáneas"
+      },
+      "themes": {
+        "title": "Temas hermosos",
+        "description": "Elige entre múltiples plantillas impresionantes que combinen con tu marca"
+      },
+      "fast": {
+        "title": "Rápido y confiable",
+        "description": "Tiempos de carga ultrarrápidos que mantienen a tus clientes satisfechos"
+      },
+      "combos": {
+        "title": "Combos y ofertas",
+        "description": "Destaca ofertas especiales y combos para aumentar las ventas"
+      }
+    },
+    "pricing": {
+      "heading": "Precios simples",
+      "subtitle": "Elige el plan que se adapte a tus necesidades",
+      "perMonth": "/mes",
+      "perYear": "año",
+      "save": "ahorra",
+      "diy": {
+        "name": "Plan DIY",
+        "description": "Tú gestionas todo por tu cuenta con nuestro panel de control fácil de usar.",
+        "feature1": "Platos ilimitados",
+        "feature2": "Dos idiomas",
+        "feature3": "Múltiples temas de menú",
+        "feature4": "Combos y ofertas",
+        "cta": "Comenzar plan DIY"
+      },
+      "full": {
+        "name": "Servicio completo",
+        "description": "Nosotros creamos y gestionamos tu menú. Solo envíanos tu contenido.",
+        "badge": "MÁS POPULAR",
+        "feature1": "Todo lo del plan DIY",
+        "feature2": "Idiomas ilimitados",
+        "feature2Note": "+5€/mes por cada idioma adicional traducido",
+        "feature3": "Nuestro equipo crea tu menú",
+        "feature4": "Actualizaciones del menú a pedido",
+        "feature5": "Soporte por correo electrónico",
+        "cta": "Comenzar servicio completo"
+      },
+      "custom": {
+        "name": "Diseño personalizado",
+        "description": "Un diseño de menú a medida, adaptado a tu marca.",
+        "badge": "PREMIUM",
+        "feature1": "Todo lo del servicio completo",
+        "feature2": "Idiomas ilimitados",
+        "feature2Note": "+5€/mes por cada idioma adicional traducido",
+        "feature3": "Diseño de menú totalmente personalizado",
+        "feature4": "Revisiones de diseño mensuales",
+        "feature5": "Soporte prioritario por correo electrónico",
+        "cta": "Comenzar plan personalizado"
+      }
+    },
+    "demos": {
+      "heading": "Prueba nuestros menús de demostración",
+      "itemsCount": "artículos"
+    }
+  },
+  "restaurant": {
+    "soldOut": "Agotado",
+    "noItems": "No hay platos disponibles.",
+    "noImage": "Sin imagen",
+    "backToRestaurants": "Volver a los restaurantes",
+    "notFound": "Restaurante no encontrado",
+    "notFoundMessage": "El restaurante que buscas no existe.",
+    "loading": "Cargando menú...",
+    "searchPlaceholder": "Buscar en el menú...",
+    "searchNotFound": "No se encontraron artículos para"
+  },
+  "footer": {
+    "description": "Hermosos menús digitales para restaurantes, cafeterías y negocios de comida.",
+    "rights": "Dine In. Todos los derechos reservados."
+  },
+  "theme": {
+    "toggle": "Cambiar tema"
+  }
+}

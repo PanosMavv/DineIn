@@ -6,7 +6,76 @@
   },
   "home": {
     "heading": "Dine In",
-    "subtitle": "Restaurant menu platform"
+    "subtitle": "Restaurant menu platform",
+    "hero": {
+      "title": "Beautiful digital menus for your restaurant",
+      "description": "Create stunning, mobile-friendly menus that your customers will love. Multilingual support, beautiful themes, and easy management — all in one place.",
+      "getStarted": "Get Started",
+      "viewDemos": "View Demo Menus"
+    },
+    "features": {
+      "heading": "Everything your menu needs",
+      "multilingual": {
+        "title": "Multilingual Menus",
+        "description": "Serve your customers in their language with instant translations"
+      },
+      "themes": {
+        "title": "Beautiful Themes",
+        "description": "Choose from multiple stunning templates that match your brand"
+      },
+      "fast": {
+        "title": "Fast & Reliable",
+        "description": "Lightning-fast loading times keep your customers happy"
+      },
+      "combos": {
+        "title": "Combos & Deals",
+        "description": "Highlight special offers and combo meals to boost sales"
+      }
+    },
+    "pricing": {
+      "heading": "Simple pricing",
+      "subtitle": "Choose the plan that fits your needs",
+      "perMonth": "/month",
+      "perYear": "year",
+      "save": "save",
+      "diy": {
+        "name": "DIY Plan",
+        "description": "You manage everything yourself with our easy-to-use dashboard.",
+        "feature1": "Unlimited menu items",
+        "feature2": "Two languages",
+        "feature3": "Multiple menu themes",
+        "feature4": "Combo deals & offers",
+        "cta": "Start DIY Plan"
+      },
+      "full": {
+        "name": "Full Service",
+        "description": "We create and manage your menu for you. Just send us your content.",
+        "badge": "MOST POPULAR",
+        "feature1": "Everything in DIY",
+        "feature2": "Unlimited languages",
+        "feature2Note": "+€5/month per additional language translated",
+        "feature3": "Our team builds your menu",
+        "feature4": "Menu updates on request",
+        "feature5": "Email support",
+        "cta": "Start Full Service"
+      },
+      "custom": {
+        "name": "Custom Design",
+        "description": "A bespoke menu design tailored to your brand.",
+        "badge": "PREMIUM",
+        "feature1": "Everything in Full Service",
+        "feature2": "Unlimited languages",
+        "feature2Note": "+€5/month per additional language translated",
+        "feature3": "Fully custom menu design",
+        "feature4": "Monthly design revisions",
+        "feature5": "Priority email support",
+        "cta": "Start Custom Plan"
+      }
+    },
+    "demos": {
+      "heading": "Try our demo menus",
+      "itemsCount": "items"
+    }
   },
   "restaurant": {
     "soldOut": "Sold Out",

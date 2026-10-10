@@ -1,0 +1,98 @@
+{
+  "app": {
+    "title": "Dine In - Menu restauracji",
+    "description": "Odkrywaj i przeglądaj menu restauracji",
+    "name": "Dine In"
+  },
+  "home": {
+    "heading": "Dine In",
+    "subtitle": "Platforma menu restauracyjnych",
+    "hero": {
+      "title": "Piękne cyfrowe menu dla Twojej restauracji",
+      "description": "Twórz zachwycające, mobilne menu, które pokochają Twoi goście. Wsparcie wielojęzyczne, piękne motywy i łatwe zarządzanie — wszystko w jednym miejscu.",
+      "getStarted": "Rozpocznij",
+      "viewDemos": "Zobacz menu demonstracyjne"
+    },
+    "features": {
+      "heading": "Wszystko, czego potrzebuje Twoje menu",
+      "multilingual": {
+        "title": "Wielojęzyczne menu",
+        "description": "Obsługuj gości w ich języku dzięki natychmiastowym tłumaczeniom"
+      },
+      "themes": {
+        "title": "Piękne motywy",
+        "description": "Wybierz spośród wielu zachwycających szablonów dopasowanych do Twojej marki"
+      },
+      "fast": {
+        "title": "Szybko i niezawodnie",
+        "description": "Błyskawiczne czasy ładowania utrzymują zadowolenie Twoich gości"
+      },
+      "combos": {
+        "title": "Zestawy i oferty",
+        "description": "Wyróżniaj oferty specjalne i zestawy, aby zwiększyć sprzedaż"
+      }
+    },
+    "pricing": {
+      "heading": "Proste ceny",
+      "subtitle": "Wybierz plan dopasowany do Twoich potrzeb",
+      "perMonth": "/miesiąc",
+      "perYear": "rok",
+      "save": "oszczędź",
+      "diy": {
+        "name": "Plan DIY",
+        "description": "Sam zarządzasz wszystkim dzięki naszemu łatwemu w obsłudze panelowi.",
+        "feature1": "Nieograniczona liczba pozycji menu",
+        "feature2": "Dwa języki",
+        "feature3": "Wiele motywów menu",
+        "feature4": "Zestawy i oferty specjalne",
+        "cta": "Rozpocznij plan DIY"
+      },
+      "full": {
+        "name": "Pełna obsługa",
+        "description": "Tworzymy i zarządzamy Twoim menu za Ciebie. Wystarczy przesłać nam treści.",
+        "badge": "NAJPOPULARNIEJSZY",
+        "feature1": "Wszystko z planu DIY",
+        "feature2": "Nieograniczona liczba języków",
+        "feature2Note": "+5€/miesiąc za każdy dodatkowy przetłumaczony język",
+        "feature3": "Nasz zespół tworzy Twoje menu",
+        "feature4": "Aktualizacje menu na życzenie",
+        "feature5": "Wsparcie e-mail",
+        "cta": "Rozpocznij pełną obsługę"
+      },
+      "custom": {
+        "name": "Indywidualny projekt",
+        "description": "Projekt menu szyty na miarę, dopasowany do Twojej marki.",
+        "badge": "PREMIUM",
+        "feature1": "Wszystko z pełnej obsługi",
+        "feature2": "Nieograniczona liczba języków",
+        "feature2Note": "+5€/miesiąc za każdy dodatkowy przetłumaczony język",
+        "feature3": "W pełni indywidualny projekt menu",
+        "feature4": "Miesięczne poprawki projektu",
+        "feature5": "Priorytetowe wsparcie e-mail",
+        "cta": "Rozpocznij plan indywidualny"
+      }
+    },
+    "demos": {
+      "heading": "Wypróbuj nasze menu demonstracyjne",
+      "itemsCount": "pozycji"
+    }
+  },
+  "restaurant": {
+    "soldOut": "Wyprzedane",
+    "noItems": "Brak dostępnych pozycji menu.",
+    "noImage": "Brak zdjęcia",
+    "backToRestaurants": "Powrót do restauracji",
+    "notFound": "Nie znaleziono restauracji",
+    "notFoundMessage": "Restauracja, której szukasz, nie istnieje.",
+    "loading": "Ładowanie menu...",
+    "searchPlaceholder": "Szukaj w menu...",
+    "searchNotFound": "Nie znaleziono pozycji dla"
+  },
+  "footer": {
+    "description": "Piękne cyfrowe menu dla restauracji, kawiarni i firm gastronomicznych.",
+    "rights": "Dine In. Wszelkie prawa zastrzeżone."
+  },
+  "theme": {
+    "toggle": "Przełącz motyw"
+  }
+}

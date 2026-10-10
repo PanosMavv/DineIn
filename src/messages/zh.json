@@ -6,22 +6,91 @@
   },
   "home": {
     "heading": "Dine In",
-    "subtitle": "餐厅菜单平台"
+    "subtitle": "餐厅菜单平台",
+    "hero": {
+      "title": "为您的餐厅打造精美的数字菜单",
+      "description": "创建令人惊艳、适配移动端的菜单，让您的顾客爱不释手。多语言支持、精美主题、轻松管理——尽在一处。",
+      "getStarted": "立即开始",
+      "viewDemos": "查看演示菜单"
+    },
+    "features": {
+      "heading": "您的菜单所需的一切",
+      "multilingual": {
+        "title": "多语言菜单",
+        "description": "通过即时翻译，用顾客的母语为他们提供服务"
+      },
+      "themes": {
+        "title": "精美主题",
+        "description": "从多个与您品牌相匹配的精美模板中选择"
+      },
+      "fast": {
+        "title": "快速可靠",
+        "description": "闪电般的加载速度让您的顾客始终满意"
+      },
+      "combos": {
+        "title": "套餐与优惠",
+        "description": "突出展示特别优惠和套餐，提升销售额"
+      }
+    },
+    "pricing": {
+      "heading": "简单定价",
+      "subtitle": "选择适合您需求的方案",
+      "perMonth": "/月",
+      "perYear": "年",
+      "save": "节省",
+      "diy": {
+        "name": "DIY 方案",
+        "description": "通过我们易于使用的后台，您可自行管理一切。",
+        "feature1": "无限菜单项目",
+        "feature2": "两种语言",
+        "feature3": "多种菜单主题",
+        "feature4": "套餐优惠与折扣",
+        "cta": "开始 DIY 方案"
+      },
+      "full": {
+        "name": "全包服务",
+        "description": "我们为您创建和管理菜单。只需将您的内容发送给我们。",
+        "badge": "最受欢迎",
+        "feature1": "包含 DIY 方案的所有内容",
+        "feature2": "无限语言",
+        "feature2Note": "每增加一种翻译语言 +5€/月",
+        "feature3": "我们的团队为您构建菜单",
+        "feature4": "按需更新菜单",
+        "feature5": "电子邮件支持",
+        "cta": "开始全包服务"
+      },
+      "custom": {
+        "name": "定制设计",
+        "description": "为您的品牌量身定制的菜单设计。",
+        "badge": "高级版",
+        "feature1": "包含全包服务的所有内容",
+        "feature2": "无限语言",
+        "feature2Note": "每增加一种翻译语言 +5€/月",
+        "feature3": "完全定制的菜单设计",
+        "feature4": "每月设计修订",
+        "feature5": "优先电子邮件支持",
+        "cta": "开始定制方案"
+      }
+    },
+    "demos": {
+      "heading": "试用我们的演示菜单",
+      "itemsCount": "个项目"
+    }
   },
   "restaurant": {
-    "soldOut": "售罄",
-    "noItems": "暂无菜品。",
-    "noImage": "暂无图片",
-    "backToRestaurants": "返回餐厅",
+    "soldOut": "已售罄",
+    "noItems": "暂无可用菜单项目。",
+    "noImage": "无图片",
+    "backToRestaurants": "返回餐厅列表",
     "notFound": "未找到餐厅",
-    "notFoundMessage": "您要找的餐厅不存在。",
-    "loading": "菜单加载中...",
+    "notFoundMessage": "您要查找的餐厅不存在。",
+    "loading": "正在加载菜单...",
     "searchPlaceholder": "搜索菜单...",
-    "searchNotFound": "未找到任何菜品"
+    "searchNotFound": "未找到相关项目："
   },
   "footer": {
-    "description": "为餐厅、咖啡馆和食品企业提供精美的数字菜单。",
-    "rights": "Dine In。保留所有权利。"
+    "description": "为餐厅、咖啡馆和餐饮企业打造的精美数字菜单。",
+    "rights": "Dine In. 保留所有权利。"
   },
   "theme": {
     "toggle": "切换主题"

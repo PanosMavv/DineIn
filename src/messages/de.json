@@ -1,29 +1,98 @@
 {
   "app": {
-    "title": "Dine In - Speisekarten",
-    "description": "Entdecken Sie Speisekarten von Restaurants",
+    "title": "Dine In - Restaurant-Menüs",
+    "description": "Entdecken und erkunden Sie Restaurant-Menüs",
     "name": "Dine In"
   },
   "home": {
     "heading": "Dine In",
-    "subtitle": "Plattform für Restaurant-Speisekarten"
+    "subtitle": "Plattform für Restaurant-Menüs",
+    "hero": {
+      "title": "Wunderschöne digitale Menüs für Ihr Restaurant",
+      "description": "Erstellen Sie beeindruckende, mobilfreundliche Menüs, die Ihre Gäste lieben werden. Mehrsprachige Unterstützung, wunderschöne Themes und einfache Verwaltung — alles an einem Ort.",
+      "getStarted": "Jetzt starten",
+      "viewDemos": "Demo-Menüs ansehen"
+    },
+    "features": {
+      "heading": "Alles, was Ihr Menü braucht",
+      "multilingual": {
+        "title": "Mehrsprachige Menüs",
+        "description": "Bedienen Sie Ihre Gäste in ihrer Sprache mit sofortigen Übersetzungen"
+      },
+      "themes": {
+        "title": "Wunderschöne Themes",
+        "description": "Wählen Sie aus mehreren beeindruckenden Vorlagen, die zu Ihrer Marke passen"
+      },
+      "fast": {
+        "title": "Schnell & Zuverlässig",
+        "description": "Blitzschnelle Ladezeiten halten Ihre Gäste zufrieden"
+      },
+      "combos": {
+        "title": "Combos & Angebote",
+        "description": "Heben Sie Sonderangebote und Kombi-Menüs hervor, um den Umsatz zu steigern"
+      }
+    },
+    "pricing": {
+      "heading": "Einfache Preisgestaltung",
+      "subtitle": "Wählen Sie den Plan, der zu Ihren Bedürfnissen passt",
+      "perMonth": "/Monat",
+      "perYear": "Jahr",
+      "save": "sparen",
+      "diy": {
+        "name": "DIY-Plan",
+        "description": "Sie verwalten alles selbst mit unserem benutzerfreundlichen Dashboard.",
+        "feature1": "Unbegrenzte Menüpunkte",
+        "feature2": "Zwei Sprachen",
+        "feature3": "Mehrere Menü-Themes",
+        "feature4": "Kombi-Angebote & Deals",
+        "cta": "DIY-Plan starten"
+      },
+      "full": {
+        "name": "Full Service",
+        "description": "Wir erstellen und verwalten Ihr Menü für Sie. Senden Sie uns einfach Ihre Inhalte.",
+        "badge": "AM BELIEBTESTEN",
+        "feature1": "Alles aus dem DIY-Plan",
+        "feature2": "Unbegrenzte Sprachen",
+        "feature2Note": "+5€/Monat pro zusätzlich übersetzter Sprache",
+        "feature3": "Unser Team erstellt Ihr Menü",
+        "feature4": "Menü-Updates auf Anfrage",
+        "feature5": "E-Mail-Support",
+        "cta": "Full Service starten"
+      },
+      "custom": {
+        "name": "Individuelles Design",
+        "description": "Ein maßgeschneidertes Menü-Design, abgestimmt auf Ihre Marke.",
+        "badge": "PREMIUM",
+        "feature1": "Alles aus dem Full Service",
+        "feature2": "Unbegrenzte Sprachen",
+        "feature2Note": "+5€/Monat pro zusätzlich übersetzter Sprache",
+        "feature3": "Vollständig individuelles Menü-Design",
+        "feature4": "Monatliche Design-Überarbeitungen",
+        "feature5": "Priorisierter E-Mail-Support",
+        "cta": "Individuellen Plan starten"
+      }
+    },
+    "demos": {
+      "heading": "Probieren Sie unsere Demo-Menüs aus",
+      "itemsCount": "Einträge"
+    }
   },
   "restaurant": {
     "soldOut": "Ausverkauft",
-    "noItems": "Keine Artikel verfügbar.",
+    "noItems": "Keine Menüpunkte verfügbar.",
     "noImage": "Kein Bild",
     "backToRestaurants": "Zurück zu den Restaurants",
     "notFound": "Restaurant nicht gefunden",
     "notFoundMessage": "Das gesuchte Restaurant existiert nicht.",
-    "loading": "Speisekarte wird geladen...",
+    "loading": "Menü wird geladen...",
     "searchPlaceholder": "Menü durchsuchen...",
-    "searchNotFound": "Keine Artikel gefunden"
+    "searchNotFound": "Keine Einträge gefunden für"
   },
   "footer": {
-    "description": "Schöne digitale Speisekarten für Restaurants, Cafés und Lebensmittelbetriebe.",
+    "description": "Wunderschöne digitale Menüs für Restaurants, Cafés und Gastronomiebetriebe.",
     "rights": "Dine In. Alle Rechte vorbehalten."
   },
   "theme": {
-    "toggle": "Thema wechseln"
+    "toggle": "Theme wechseln"
   }
 }

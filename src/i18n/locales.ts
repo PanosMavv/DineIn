@@ -19,17 +19,17 @@ const EXPOSED_LOCALES = [
   { code: 'de', region: 'DE' }, // Germany
   { code: 'fr', region: 'FR' }, // France
   { code: 'zh', region: 'CN' }, // China
-  // { code: 'es', region: 'ES' }, // Spain
-  // { code: 'it', region: 'IT' }, // Italy
-  // { code: 'ja', region: 'JP' }, // Japan
-  // { code: 'ko', region: 'KR' }, // South Korea
+  { code: 'es', region: 'ES' }, // Spain
+  { code: 'it', region: 'IT' }, // Italy
+  { code: 'ja', region: 'JP' }, // Japan
+  { code: 'ko', region: 'KR' }, // South Korea
   // { code: 'pt', region: 'PT' }, // Portugal
-  // { code: 'ru', region: 'RU' }, // Russia
+  { code: 'ru', region: 'RU' }, // Russia
   // { code: 'ar', region: 'SA' }, // Saudi Arabia
   // { code: 'hi', region: 'IN' }, // India
-  // { code: 'sv', region: 'SE' }, // Sweden
+  { code: 'sv', region: 'SE' }, // Sweden
   // { code: 'nl', region: 'NL' }, // Netherlands
-  // { code: 'pl', region: 'PL' }, // Poland
+  { code: 'pl', region: 'PL' }, // Poland
   // { code: 'tr', region: 'TR' }, // Turkey
   // { code: 'th', region: 'TH' }, // Thailand
   // { code: 'vi', region: 'VN' }, // Vietnam

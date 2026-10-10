@@ -1,0 +1,98 @@
+{
+  "app": {
+    "title": "Dine In - Menù dei Ristoranti",
+    "description": "Scopri ed esplora i menù dei ristoranti",
+    "name": "Dine In"
+  },
+  "home": {
+    "heading": "Dine In",
+    "subtitle": "Piattaforma di menù per ristoranti",
+    "hero": {
+      "title": "Splendidi menù digitali per il tuo ristorante",
+      "description": "Crea menù straordinari e ottimizzati per i dispositivi mobili che i tuoi clienti adoreranno. Supporto multilingue, temi eleganti e gestione semplice — tutto in un unico posto.",
+      "getStarted": "Inizia ora",
+      "viewDemos": "Visualizza i menù dimostrativi"
+    },
+    "features": {
+      "heading": "Tutto ciò che serve al tuo menù",
+      "multilingual": {
+        "title": "Menù multilingue",
+        "description": "Servi i tuoi clienti nella loro lingua con traduzioni istantanee"
+      },
+      "themes": {
+        "title": "Temi eleganti",
+        "description": "Scegli tra diversi modelli straordinari che si abbinano al tuo marchio"
+      },
+      "fast": {
+        "title": "Veloce e affidabile",
+        "description": "Tempi di caricamento fulminei che mantengono i tuoi clienti soddisfatti"
+      },
+      "combos": {
+        "title": "Combo e offerte",
+        "description": "Metti in evidenza offerte speciali e menù combinati per aumentare le vendite"
+      }
+    },
+    "pricing": {
+      "heading": "Prezzi semplici",
+      "subtitle": "Scegli il piano più adatto alle tue esigenze",
+      "perMonth": "/mese",
+      "perYear": "anno",
+      "save": "risparmia",
+      "diy": {
+        "name": "Piano DIY",
+        "description": "Gestisci tutto da solo con il nostro pannello di controllo facile da usare.",
+        "feature1": "Piatti illimitati",
+        "feature2": "Due lingue",
+        "feature3": "Molteplici temi per il menù",
+        "feature4": "Combo e offerte speciali",
+        "cta": "Inizia il piano DIY"
+      },
+      "full": {
+        "name": "Servizio completo",
+        "description": "Creiamo e gestiamo il tuo menù per te. Basta inviarci i tuoi contenuti.",
+        "badge": "PIÙ POPOLARE",
+        "feature1": "Tutto ciò che include il piano DIY",
+        "feature2": "Lingue illimitate",
+        "feature2Note": "+5€/mese per ogni lingua aggiuntiva tradotta",
+        "feature3": "Il nostro team crea il tuo menù",
+        "feature4": "Aggiornamenti del menù su richiesta",
+        "feature5": "Supporto via e-mail",
+        "cta": "Inizia il servizio completo"
+      },
+      "custom": {
+        "name": "Design personalizzato",
+        "description": "Un design del menù su misura, adattato al tuo marchio.",
+        "badge": "PREMIUM",
+        "feature1": "Tutto ciò che include il servizio completo",
+        "feature2": "Lingue illimitate",
+        "feature2Note": "+5€/mese per ogni lingua aggiuntiva tradotta",
+        "feature3": "Design del menù completamente personalizzato",
+        "feature4": "Revisioni del design mensili",
+        "feature5": "Supporto prioritario via e-mail",
+        "cta": "Inizia il piano personalizzato"
+      }
+    },
+    "demos": {
+      "heading": "Prova i nostri menù dimostrativi",
+      "itemsCount": "voci"
+    }
+  },
+  "restaurant": {
+    "soldOut": "Esaurito",
+    "noItems": "Nessun piatto disponibile.",
+    "noImage": "Nessuna immagine",
+    "backToRestaurants": "Torna ai ristoranti",
+    "notFound": "Ristorante non trovato",
+    "notFoundMessage": "Il ristorante che stai cercando non esiste.",
+    "loading": "Caricamento del menù...",
+    "searchPlaceholder": "Cerca nel menù...",
+    "searchNotFound": "Nessuna voce trovata per"
+  },
+  "footer": {
+    "description": "Splendidi menù digitali per ristoranti, caffetterie e attività gastronomiche.",
+    "rights": "Dine In. Tutti i diritti riservati."
+  },
+  "theme": {
+    "toggle": "Cambia tema"
+  }
+}
