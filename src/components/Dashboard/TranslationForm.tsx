@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Save, X, Globe, ChevronDown, ChevronUp } from 'lucide-react';
 import Image from 'next/image';
-import { availableLocales } from '@/lib/locales';
+import { availableLocales } from '@/i18n/locales';
 
 interface MenuItem {
   id: string;

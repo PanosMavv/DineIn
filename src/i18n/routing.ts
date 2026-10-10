@@ -1,5 +1,5 @@
 import { createNavigation } from 'next-intl/navigation';
-import { localeCodes, defaultLocale } from '@/lib/locales';
+import { localeCodes, defaultLocale } from '@/i18n/locales';
 
 export const routing = {
   locales: localeCodes,
