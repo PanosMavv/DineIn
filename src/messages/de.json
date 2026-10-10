@@ -92,6 +92,12 @@
     "description": "Wunderschöne digitale Menüs für Restaurants, Cafés und Gastronomiebetriebe.",
     "rights": "Dine In. Alle Rechte vorbehalten."
   },
+  "header": {
+    "features": "Funktionen",
+    "pricing": "Preise",
+    "demoMenus": "Demo-Menüs",
+    "signIn": "Anmelden"
+  },
   "theme": {
     "toggle": "Theme wechseln"
   }

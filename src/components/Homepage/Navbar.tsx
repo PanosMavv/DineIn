@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { authClient } from '@/lib/auth-client';
 import { Logo } from '@/components/Misc/Logo';
 
@@ -10,6 +11,7 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const { data: session } = authClient.useSession();
+  const t = useTranslations('header');
 
   const handleSignOut = async () => {
     await authClient.signOut();
@@ -26,13 +28,13 @@ export function Navbar() {
           {/* Desktop nav links */}
           <div className="hidden md:flex items-center gap-8 flex-1 justify-center">
             <Link href="#features" className="text-sm font-semibold text-gray-900 dark:text-gray-100 hover:text-blue-600 transition-colors">
-              Features
+              {t('features')}
             </Link>
             <Link href="#pricing" className="text-sm font-semibold text-gray-900 dark:text-gray-100 hover:text-blue-600 transition-colors">
-              Pricing
+              {t('pricing')}
             </Link>
             <Link href="#restaurants" className="text-sm font-semibold text-gray-900 dark:text-gray-100 hover:text-blue-600 transition-colors">
-              Demo Menus
+              {t('demoMenus')}
             </Link>
           </div>
 
@@ -104,7 +106,7 @@ export function Navbar() {
                 href="/sign-in"
                 className="px-5 py-2 bg-black text-white rounded-full text-sm font-semibold hover:bg-gray-800 transition-colors"
               >
-                Sign in
+                {t('signIn')}
               </Link>
             )}
 
@@ -127,13 +129,13 @@ export function Navbar() {
           <div className="md:hidden mt-4 pb-4 border-t border-gray-200 dark:border-gray-800 pt-4">
             <div className="flex flex-col gap-3">
               <Link href="#features" onClick={() => setIsOpen(false)} className="text-sm font-semibold text-gray-900 dark:text-gray-100">
-                Features
+                {t('features')}
               </Link>
               <Link href="#pricing" onClick={() => setIsOpen(false)} className="text-sm font-semibold text-gray-900 dark:text-gray-100">
-                Pricing
+                {t('pricing')}
               </Link>
               <Link href="#restaurants" onClick={() => setIsOpen(false)} className="text-sm font-semibold text-gray-900 dark:text-gray-100">
-                Demo Menus
+                {t('demoMenus')}
               </Link>
             </div>
           </div>

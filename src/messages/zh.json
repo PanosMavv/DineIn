@@ -92,6 +92,12 @@
     "description": "为餐厅、咖啡馆和餐饮企业打造的精美数字菜单。",
     "rights": "Dine In. 保留所有权利。"
   },
+  "header": {
+    "features": "功能",
+    "pricing": "定价",
+    "demoMenus": "演示菜单",
+    "signIn": "登录"
+  },
   "theme": {
     "toggle": "切换主题"
   }

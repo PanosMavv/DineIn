@@ -92,6 +92,12 @@
     "description": "레스토랑, 카페, 외식업체를 위한 아름다운 디지털 메뉴.",
     "rights": "Dine In. 모든 권리 보유."
   },
+  "header": {
+    "features": "기능",
+    "pricing": "요금제",
+    "demoMenus": "데모 메뉴",
+    "signIn": "로그인"
+  },
   "theme": {
     "toggle": "테마 전환"
   }

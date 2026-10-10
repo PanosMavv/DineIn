@@ -92,6 +92,12 @@
     "description": "Beautiful digital menus for restaurants, coffee shops, and food businesses.",
     "rights": "Dine In. All rights reserved."
   },
+  "header": {
+    "features": "Features",
+    "pricing": "Pricing",
+    "demoMenus": "Demo Menus",
+    "signIn": "Sign In"
+  },
   "theme": {
     "toggle": "Toggle theme"
   }

@@ -92,6 +92,12 @@
     "description": "レストラン、カフェ、フードビジネスのための美しいデジタルメニュー。",
     "rights": "Dine In. All rights reserved."
   },
+  "header": {
+    "features": "機能",
+    "pricing": "料金",
+    "demoMenus": "デモメニュー",
+    "signIn": "ログイン"
+  },
   "theme": {
     "toggle": "テーマを切り替え"
   }

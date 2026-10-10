@@ -92,6 +92,12 @@
     "description": "Vackra digitala menyer för restauranger, kaféer och matverksamheter.",
     "rights": "Dine In. Alla rättigheter förbehållna."
   },
+  "header": {
+    "features": "Funktioner",
+    "pricing": "Priser",
+    "demoMenus": "Demomenyer",
+    "signIn": "Logga in"
+  },
   "theme": {
     "toggle": "Växla tema"
   }

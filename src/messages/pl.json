@@ -92,6 +92,12 @@
     "description": "Piękne cyfrowe menu dla restauracji, kawiarni i firm gastronomicznych.",
     "rights": "Dine In. Wszelkie prawa zastrzeżone."
   },
+  "header": {
+    "features": "Funkcje",
+    "pricing": "Cennik",
+    "demoMenus": "Menu demonstracyjne",
+    "signIn": "Zaloguj się"
+  },
   "theme": {
     "toggle": "Przełącz motyw"
   }
