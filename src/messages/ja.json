@@ -98,6 +98,16 @@
     "demoMenus": "デモメニュー",
     "signIn": "ログイン"
   },
+  "auth": {
+    "signIn": {
+      "backToHome": "ホームに戻る",
+      "welcome": "おかえりなさい！",
+      "description": "ログインしてレストランのメニューを管理しましょう。",
+      "eula": "ログインすると、<tos>利用規約</tos>および<privacy>プライバシーポリシー</privacy>に同意したものとみなされます。",
+      "signInWithGoogle": "Google でログイン",
+      "waitSignIn": "ログイン中..."
+    }
+  },
   "theme": {
     "toggle": "テーマを切り替え"
   }

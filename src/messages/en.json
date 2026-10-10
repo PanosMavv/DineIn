@@ -98,6 +98,16 @@
     "demoMenus": "Demo Menus",
     "signIn": "Sign In"
   },
+  "auth": {
+    "signIn": {
+      "backToHome": "Back to Home",
+      "welcome": "Welcome back!",
+      "description": "Sign in to manage your restaurant menus.",
+      "eula": "By signing in, you agree to our <tos>Terms of Service</tos> and <privacy>Privacy Policy</privacy>.",
+      "signInWithGoogle": "Sign in with Google",
+      "waitSignIn": "Signing in..."
+    }
+  },
   "theme": {
     "toggle": "Toggle theme"
   }

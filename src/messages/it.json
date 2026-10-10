@@ -98,6 +98,16 @@
     "demoMenus": "Menù dimostrativi",
     "signIn": "Accedi"
   },
+  "auth": {
+    "signIn": {
+      "backToHome": "Torna alla home",
+      "welcome": "Bentornato!",
+      "description": "Accedi per gestire i menù del tuo ristorante.",
+      "eula": "Accedendo, accetti i nostri <tos>Termini di servizio</tos> e la nostra <privacy>Informativa sulla privacy</privacy>.",
+      "signInWithGoogle": "Accedi con Google",
+      "waitSignIn": "Accesso in corso..."
+    }
+  },
   "theme": {
     "toggle": "Cambia tema"
   }

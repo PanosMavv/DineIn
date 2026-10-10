@@ -98,6 +98,16 @@
     "demoMenus": "Demomenyer",
     "signIn": "Logga in"
   },
+  "auth": {
+    "signIn": {
+      "backToHome": "Tillbaka till startsidan",
+      "welcome": "Välkommen tillbaka!",
+      "description": "Logga in för att hantera dina restaurangmenyer.",
+      "eula": "Genom att logga in godkänner du våra <tos>Användarvillkor</tos> och vår <privacy>Integritetspolicy</privacy>.",
+      "signInWithGoogle": "Logga in med Google",
+      "waitSignIn": "Loggar in..."
+    }
+  },
   "theme": {
     "toggle": "Växla tema"
   }

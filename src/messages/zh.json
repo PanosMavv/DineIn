@@ -98,6 +98,16 @@
     "demoMenus": "演示菜单",
     "signIn": "登录"
   },
+  "auth": {
+    "signIn": {
+      "backToHome": "返回首页",
+      "welcome": "欢迎回来！",
+      "description": "登录以管理您的餐厅菜单。",
+      "eula": "登录即表示您同意我们的<tos>服务条款</tos>和<privacy>隐私政策</privacy>。",
+      "signInWithGoogle": "使用 Google 登录",
+      "waitSignIn": "正在登录..."
+    }
+  },
   "theme": {
     "toggle": "切换主题"
   }

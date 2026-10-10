@@ -98,6 +98,16 @@
     "demoMenus": "데모 메뉴",
     "signIn": "로그인"
   },
+  "auth": {
+    "signIn": {
+      "backToHome": "홈으로 돌아가기",
+      "welcome": "다시 오신 것을 환영합니다!",
+      "description": "로그인하여 레스토랑 메뉴를 관리하세요.",
+      "eula": "로그인하면 <tos>이용약관</tos> 및 <privacy>개인정보 처리방침</privacy>에 동의하는 것으로 간주됩니다.",
+      "signInWithGoogle": "Google로 로그인",
+      "waitSignIn": "로그인 중..."
+    }
+  },
   "theme": {
     "toggle": "테마 전환"
   }

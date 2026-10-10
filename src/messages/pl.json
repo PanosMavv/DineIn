@@ -98,6 +98,16 @@
     "demoMenus": "Menu demonstracyjne",
     "signIn": "Zaloguj się"
   },
+  "auth": {
+    "signIn": {
+      "backToHome": "Powrót do strony głównej",
+      "welcome": "Witaj ponownie!",
+      "description": "Zaloguj się, aby zarządzać menu swojej restauracji.",
+      "eula": "Logując się, akceptujesz nasz <tos>Regulamin</tos> oraz <privacy>Politykę prywatności</privacy>.",
+      "signInWithGoogle": "Zaloguj się przez Google",
+      "waitSignIn": "Logowanie..."
+    }
+  },
   "theme": {
     "toggle": "Przełącz motyw"
   }

@@ -98,6 +98,16 @@
     "demoMenus": "Menús de demostración",
     "signIn": "Iniciar sesión"
   },
+  "auth": {
+    "signIn": {
+      "backToHome": "Volver al inicio",
+      "welcome": "¡Bienvenido de nuevo!",
+      "description": "Inicia sesión para gestionar los menús de tu restaurante.",
+      "eula": "Al iniciar sesión, aceptas nuestros <tos>Términos de servicio</tos> y nuestra <privacy>Política de privacidad</privacy>.",
+      "signInWithGoogle": "Iniciar sesión con Google",
+      "waitSignIn": "Iniciando sesión..."
+    }
+  },
   "theme": {
     "toggle": "Cambiar tema"
   }
