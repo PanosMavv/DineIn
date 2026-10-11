@@ -6,22 +6,235 @@
   },
   "home": {
     "heading": "Dine In",
-    "subtitle": "餐厅菜单平台"
+    "subtitle": "餐厅菜单平台",
+    "hero": {
+      "title": "为您的餐厅打造精美的数字菜单",
+      "description": "创建令人惊艳、适配移动端的菜单，让您的顾客爱不释手。多语言支持、精美主题、轻松管理——尽在一处。",
+      "getStarted": "立即开始",
+      "viewDemos": "查看演示菜单"
+    },
+    "features": {
+      "heading": "您的菜单所需的一切",
+      "multilingual": {
+        "title": "多语言菜单",
+        "description": "通过即时翻译，用顾客的母语为他们提供服务"
+      },
+      "themes": {
+        "title": "精美主题",
+        "description": "从多个与您品牌相匹配的精美模板中选择"
+      },
+      "fast": {
+        "title": "快速可靠",
+        "description": "闪电般的加载速度让您的顾客始终满意"
+      },
+      "combos": {
+        "title": "套餐与优惠",
+        "description": "突出展示特别优惠和套餐，提升销售额"
+      }
+    },
+    "pricing": {
+      "heading": "简单定价",
+      "subtitle": "选择适合您需求的方案",
+      "perMonth": "/月",
+      "perYear": "年",
+      "save": "节省",
+      "diy": {
+        "name": "DIY 方案",
+        "description": "通过我们易于使用的后台，您可自行管理一切。",
+        "feature1": "无限菜单项目",
+        "feature2": "两种语言",
+        "feature3": "多种菜单主题",
+        "feature4": "套餐优惠与折扣",
+        "cta": "开始 DIY 方案"
+      },
+      "full": {
+        "name": "全包服务",
+        "description": "我们为您创建和管理菜单。只需将您的内容发送给我们。",
+        "badge": "最受欢迎",
+        "feature1": "包含 DIY 方案的所有内容",
+        "feature2": "无限语言",
+        "feature2Note": "每增加一种翻译语言 +5€/月",
+        "feature3": "我们的团队为您构建菜单",
+        "feature4": "按需更新菜单",
+        "feature5": "电子邮件支持",
+        "cta": "开始全包服务"
+      },
+      "custom": {
+        "name": "定制设计",
+        "description": "为您的品牌量身定制的菜单设计。",
+        "badge": "高级版",
+        "feature1": "包含全包服务的所有内容",
+        "feature2": "无限语言",
+        "feature2Note": "每增加一种翻译语言 +5€/月",
+        "feature3": "完全定制的菜单设计",
+        "feature4": "每月设计修订",
+        "feature5": "优先电子邮件支持",
+        "cta": "开始定制方案"
+      }
+    },
+    "demos": {
+      "heading": "试用我们的演示菜单",
+      "itemsCount": "个项目"
+    }
   },
   "restaurant": {
-    "soldOut": "售罄",
-    "noItems": "暂无菜品。",
-    "noImage": "暂无图片",
-    "backToRestaurants": "返回餐厅",
+    "soldOut": "已售罄",
+    "noItems": "暂无可用菜单项目。",
+    "noImage": "无图片",
+    "backToRestaurants": "返回餐厅列表",
     "notFound": "未找到餐厅",
-    "notFoundMessage": "您要找的餐厅不存在。",
-    "loading": "菜单加载中...",
+    "notFoundMessage": "您要查找的餐厅不存在。",
+    "loading": "正在加载菜单...",
     "searchPlaceholder": "搜索菜单...",
-    "searchNotFound": "未找到任何菜品"
+    "searchNotFound": "未找到相关项目："
   },
   "footer": {
-    "description": "为餐厅、咖啡馆和食品企业提供精美的数字菜单。",
-    "rights": "Dine In。保留所有权利。"
+    "description": "为餐厅、咖啡馆和餐饮企业打造的精美数字菜单。",
+    "rights": "Dine In. 保留所有权利。"
+  },
+  "header": {
+    "features": "功能",
+    "pricing": "定价",
+    "demoMenus": "演示菜单",
+    "signIn": "登录"
+  },
+  "auth": {
+    "signIn": {
+      "backToHome": "返回首页",
+      "welcome": "欢迎回来！",
+      "description": "登录以管理您的餐厅菜单。",
+      "eula": "登录即表示您同意我们的<tos>服务条款</tos>和<privacy>隐私政策</privacy>。",
+      "signInWithGoogle": "使用 Google 登录",
+      "waitSignIn": "正在登录..."
+    }
+  },
+  "dashboard": {
+    "signOut": "退出登录",
+    "overview": {
+      "header": "概览",
+      "welcome": "欢迎回来，",
+      "description": "管理您的餐厅和菜单。",
+      "restaurants": "您的餐厅"
+    },
+    "myRestaurants": {
+      "header": "我的餐厅",
+      "description": "管理您所有的餐厅和菜单。"
+    },
+    "profile": {
+      "header": "我的个人资料",
+      "name": "姓名",
+      "email": "电子邮件"
+    },
+    "restaurantCard": {
+      "items": "项目",
+      "manage": "管理",
+      "preview": "预览",
+      "back": "返回餐厅列表"
+    },
+    "management": {
+      "theme": {
+        "header": "主题与外观",
+        "description": "自定义外观和风格。",
+        "menuTemplate": "菜单模板",
+        "saveTemplate": "保存模板",
+        "logo": "餐厅标志",
+        "saveLogo": "保存标志",
+        "carouselImages": "轮播图片",
+        "back": "返回管理"
+      },
+      "categories": {
+        "header": "分类",
+        "description": "将您的菜单项目整理到分类中。",
+        "back": "返回管理",
+        "add": {
+          "header": "添加分类",
+          "description": "请输入英文分类名称。您可以稍后添加翻译。",
+          "englishReminder": "（英文）",
+          "categoryName": "分类名称",
+          "namePlaceholder": "例如：开胃菜、主菜、甜点",
+          "saveCategory": "保存分类",
+          "cancel": "取消",
+          "back": "返回分类列表"
+        },
+        "edit": {
+          "header": "编辑分类",
+          "description": "请输入英文分类名称。您可以稍后添加翻译。",
+          "englishReminder": "（英文）",
+          "categoryName": "分类名称",
+          "saveCategory": "保存分类",
+          "cancel": "取消",
+          "back": "返回分类列表"
+        },
+        "delete": {
+          "header": "删除分类？",
+          "description": "此分类中的所有菜单项目也将被删除。此操作无法撤销。",
+          "delete": "删除",
+          "cancel": "取消"
+        }
+      },
+      "items": {
+        "header": "菜单项目",
+        "description": "添加、编辑和管理您的菜单项目。",
+        "back": "返回管理",
+        "add": {
+          "header": "添加菜单项目",
+          "description": "请用英文输入所有内容。您可以稍后添加其他语言的翻译。",
+          "englishReminder": "（英文）",
+          "itemName": "名称",
+          "namePlaceholder": "例如：玛格丽特披萨、凯撒沙拉",
+          "itemDescription": "描述",
+          "descriptionPlaceholder": "例如：经典意大利披萨，配番茄酱和马苏里拉奶酪",
+          "itemPrice": "价格",
+          "itemCategory": "分类",
+          "saveItem": "保存项目",
+          "cancel": "取消",
+          "back": "返回菜单项目"
+        },
+        "edit": {
+          "header": "编辑菜单项目",
+          "description": "请用英文输入菜单项目的详细信息。您可以稍后添加翻译。",
+          "englishReminder": "（英文）",
+          "itemName": "名称",
+          "itemDescription": "描述",
+          "itemPrice": "价格",
+          "itemCategory": "分类",
+          "saveItem": "保存项目",
+          "cancel": "取消",
+          "back": "返回菜单项目"
+        },
+        "delete": {
+          "header": "删除菜单项目？",
+          "description": "此操作无法撤销。",
+          "delete": "删除",
+          "cancel": "取消"
+        }
+      },
+      "translations": {
+        "header": "翻译",
+        "description": "管理您餐厅的翻译。",
+        "back": "返回管理",
+        "add": {
+          "header": "添加语言",
+          "description": "选择语言并提供翻译。英文作为参考显示。",
+          "selectLanguage": "选择语言...",
+          "addLanguage": "添加语言",
+          "cancel": "取消",
+          "back": "返回语言列表"
+        },
+        "edit": {
+          "header": "编辑翻译",
+          "description": "选择语言并提供翻译。英文作为参考显示。",
+          "saveTranslation": "保存翻译",
+          "cancel": "取消"
+        },
+        "delete": {
+          "header": "删除翻译？",
+          "description": "此操作无法撤销。",
+          "delete": "删除",
+          "cancel": "取消"
+        }
+      }
+    }
   },
   "theme": {
     "toggle": "切换主题"

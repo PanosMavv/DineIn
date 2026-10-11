@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Save, X, Globe, ChevronDown, ChevronUp } from 'lucide-react';
 import Image from 'next/image';
-import { availableLocales } from '@/lib/locales';
+import { useTranslations } from 'next-intl';
+import { availableLocales } from '@/i18n/locales';
 
 interface MenuItem {
   id: string;
@@ -53,6 +54,10 @@ export function TranslationForm({
   const [categoryTranslations, setCategoryTranslations] = useState<Record<string, string>>({});
   const [itemTranslations, setItemTranslations] = useState<Record<string, { name: string; description: string }>>({});
 
+  const t = useTranslations(
+    `dashboard.management.translations.${isEditing ? 'edit' : 'add'}`
+  );
+
   // Initialize all categories as collapsed
   useEffect(() => {
     const initialCollapsed: Record<string, boolean> = {};
@@ -65,24 +70,24 @@ export function TranslationForm({
   // Load existing translations when editing
   useEffect(() => {
     if (initialLocale) {
-      const rt = restaurantTranslations?.find(t => t.locale === initialLocale);
+      const rt = restaurantTranslations?.find(tr => tr.locale === initialLocale);
       setRestaurantName(rt?.name || '');
       setRestaurantDescription(rt?.description || '');
 
       const catMap: Record<string, string> = {};
       categories.forEach(cat => {
-        const t = cat.translations.find(t => t.locale === initialLocale);
-        catMap[cat.id] = t?.name || '';
+        const catTr = cat.translations.find(tr => tr.locale === initialLocale);
+        catMap[cat.id] = catTr?.name || '';
       });
       setCategoryTranslations(catMap);
 
       const itemMap: Record<string, { name: string; description: string }> = {};
       categories.forEach(cat => {
         cat.menuItems.forEach(item => {
-          const t = item.translations.find(t => t.locale === initialLocale);
+          const itemTr = item.translations.find(tr => tr.locale === initialLocale);
           itemMap[item.id] = {
-            name: t?.name || '',
-            description: t?.description || '',
+            name: itemTr?.name || '',
+            description: itemTr?.description || '',
           };
         });
       });
@@ -92,24 +97,24 @@ export function TranslationForm({
 
   const handleLocaleChange = (newLocale: string) => {
     setLocale(newLocale);
-    const rt = restaurantTranslations?.find(t => t.locale === newLocale);
+    const rt = restaurantTranslations?.find(tr => tr.locale === newLocale);
     setRestaurantName(rt?.name || '');
     setRestaurantDescription(rt?.description || '');
 
     const catMap: Record<string, string> = {};
     categories.forEach(cat => {
-      const t = cat.translations.find(t => t.locale === newLocale);
-      catMap[cat.id] = t?.name || '';
+      const catTr = cat.translations.find(tr => tr.locale === newLocale);
+      catMap[cat.id] = catTr?.name || '';
     });
     setCategoryTranslations(catMap);
 
     const itemMap: Record<string, { name: string; description: string }> = {};
     categories.forEach(cat => {
       cat.menuItems.forEach(item => {
-        const t = item.translations.find(t => t.locale === newLocale);
+        const itemTr = item.translations.find(tr => tr.locale === newLocale);
         itemMap[item.id] = {
-          name: t?.name || '',
-          description: t?.description || '',
+          name: itemTr?.name || '',
+          description: itemTr?.description || '',
         };
       });
     });
@@ -161,11 +166,11 @@ export function TranslationForm({
   };
 
   const getEnglishName = (item: MenuItem) => {
-    return item.translations.find(t => t.locale === 'en')?.name || 'Untitled';
+    return item.translations.find(tr => tr.locale === 'en')?.name || t('untitled');
   };
 
   const getEnglishCategoryName = (category: Category) => {
-    return category.translations.find(t => t.locale === 'en')?.name || 'Unnamed Category';
+    return category.translations.find(tr => tr.locale === 'en')?.name || t('unnamedCategory');
   };
 
   // Filter available locales to exclude existing ones
@@ -185,7 +190,7 @@ export function TranslationForm({
       <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl flex items-start gap-3">
         <Globe className="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
         <p className="text-sm text-blue-700 dark:text-blue-300">
-          Select a language and provide translations. English is shown as reference.
+          {t('description')}
         </p>
       </div>
 
@@ -193,7 +198,7 @@ export function TranslationForm({
       {!isEditing && (
         <div>
           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-            Select Language
+            {t('selectLanguage')}
           </label>
           <div className="relative">
             <select
@@ -202,7 +207,7 @@ export function TranslationForm({
               required
               className="w-full px-4 py-3 bg-white dark:bg-gray-900 rounded-xl border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 appearance-none cursor-pointer hover:border-gray-400 dark:hover:border-gray-600 transition-colors pr-10"
             >
-              <option value="">Choose a language...</option>
+              <option value="">{t('selectLanguage')}</option>
               {availableNewLocales.map(loc => (
                 <option key={loc.code} value={loc.code}>
                   {loc.flag} {loc.label}
@@ -219,18 +224,18 @@ export function TranslationForm({
         <>
           <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6 space-y-4">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-              Restaurant
+              {t('restaurant')}
             </h3>
-            {restaurantTranslations?.find(t => t.locale === 'en') && (
+            {restaurantTranslations?.find(tr => tr.locale === 'en') && (
               <p className="text-xs text-gray-500">
-                English: <span className="font-medium text-gray-700 dark:text-gray-300">
-                  {restaurantTranslations.find(t => t.locale === 'en')?.name}
+                {t('englishReference')} <span className="font-medium text-gray-700 dark:text-gray-300">
+                  {restaurantTranslations.find(tr => tr.locale === 'en')?.name}
                 </span>
               </p>
             )}
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                Name in {locale.toUpperCase()}
+                {t('nameIn', { locale: locale.toUpperCase() })}
               </label>
               <input
                 type="text"
@@ -241,7 +246,7 @@ export function TranslationForm({
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                Description in {locale.toUpperCase()}
+                {t('descriptionIn', { locale: locale.toUpperCase() })}
               </label>
               <textarea
                 value={restaurantDescription}
@@ -282,7 +287,7 @@ export function TranslationForm({
 
                 <div className="flex-1 text-left">
                   <p className="text-xs text-gray-600 dark:text-gray-400">
-                    Category · English: {getEnglishCategoryName(category)}
+                    {t('categoryEnglishLabel')} {getEnglishCategoryName(category)}
                   </p>
                   <input
                     type="text"
@@ -292,7 +297,7 @@ export function TranslationForm({
                       [category.id]: e.target.value,
                     })}
                     onClick={(e) => e.stopPropagation()}
-                    placeholder={`${locale.toUpperCase()} category name`}
+                    placeholder={t('categoryNamePlaceholder', { locale: locale.toUpperCase() })}
                     className="mt-1 w-full px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg border border-gray-300 dark:border-gray-700 text-sm text-gray-900 dark:text-gray-100"
                   />
                 </div>
@@ -328,7 +333,7 @@ export function TranslationForm({
                       {/* Translation inputs */}
                       <div className="flex-1 space-y-2">
                         <p className="text-xs text-gray-500">
-                          English: <span className="font-medium text-gray-700 dark:text-gray-300">{getEnglishName(item)}</span>
+                          {t('englishReference')} <span className="font-medium text-gray-700 dark:text-gray-300">{getEnglishName(item)}</span>
                         </p>
                         <input
                           type="text"
@@ -340,7 +345,7 @@ export function TranslationForm({
                               name: e.target.value,
                             },
                           })}
-                          placeholder={`${locale.toUpperCase()} name`}
+                          placeholder={t('itemNamePlaceholder', { locale: locale.toUpperCase() })}
                           className="w-full px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg border border-gray-300 dark:border-gray-700 text-sm text-gray-900 dark:text-gray-100"
                         />
                         <textarea
@@ -353,7 +358,7 @@ export function TranslationForm({
                             },
                           })}
                           rows={1}
-                          placeholder={`${locale.toUpperCase()} description`}
+                          placeholder={t('itemDescriptionPlaceholder', { locale: locale.toUpperCase() })}
                           className="w-full px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg border border-gray-300 dark:border-gray-700 text-sm text-gray-900 dark:text-gray-100 field-sizing-content"
                         />
                       </div>
@@ -375,7 +380,7 @@ export function TranslationForm({
             className="inline-flex items-center gap-2 px-6 py-3 bg-black text-white rounded-full font-semibold hover:bg-gray-800 transition-colors disabled:opacity-50"
           >
             <Save className="w-4 h-4" />
-            {isSaving ? 'Saving...' : 'Save Translation'}
+            {isSaving ? t('saving') : t('saveTranslation')}
           </button>
           <button
             type="button"
@@ -383,7 +388,7 @@ export function TranslationForm({
             className="inline-flex items-center gap-2 px-6 py-3 border border-gray-300 rounded-full font-semibold hover:bg-gray-50 transition-colors"
           >
             <X className="w-4 h-4" />
-            Cancel
+            {t('cancel')}
           </button>
         </div>
       )}

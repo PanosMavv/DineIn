@@ -1,0 +1,242 @@
+{
+  "app": {
+    "title": "Dine In - Menu restauracji",
+    "description": "Odkrywaj i przeglądaj menu restauracji",
+    "name": "Dine In"
+  },
+  "home": {
+    "heading": "Dine In",
+    "subtitle": "Platforma menu restauracyjnych",
+    "hero": {
+      "title": "Piękne cyfrowe menu dla Twojej restauracji",
+      "description": "Twórz zachwycające, mobilne menu, które pokochają Twoi goście. Wsparcie wielojęzyczne, piękne motywy i łatwe zarządzanie — wszystko w jednym miejscu.",
+      "getStarted": "Rozpocznij",
+      "viewDemos": "Zobacz menu demonstracyjne"
+    },
+    "features": {
+      "heading": "Wszystko, czego potrzebuje Twoje menu",
+      "multilingual": {
+        "title": "Wielojęzyczne menu",
+        "description": "Obsługuj gości w ich języku dzięki natychmiastowym tłumaczeniom"
+      },
+      "themes": {
+        "title": "Piękne motywy",
+        "description": "Wybierz spośród wielu zachwycających szablonów dopasowanych do Twojej marki"
+      },
+      "fast": {
+        "title": "Szybko i niezawodnie",
+        "description": "Błyskawiczne czasy ładowania utrzymują zadowolenie Twoich gości"
+      },
+      "combos": {
+        "title": "Zestawy i oferty",
+        "description": "Wyróżniaj oferty specjalne i zestawy, aby zwiększyć sprzedaż"
+      }
+    },
+    "pricing": {
+      "heading": "Proste ceny",
+      "subtitle": "Wybierz plan dopasowany do Twoich potrzeb",
+      "perMonth": "/miesiąc",
+      "perYear": "rok",
+      "save": "oszczędź",
+      "diy": {
+        "name": "Plan DIY",
+        "description": "Sam zarządzasz wszystkim dzięki naszemu łatwemu w obsłudze panelowi.",
+        "feature1": "Nieograniczona liczba pozycji menu",
+        "feature2": "Dwa języki",
+        "feature3": "Wiele motywów menu",
+        "feature4": "Zestawy i oferty specjalne",
+        "cta": "Rozpocznij plan DIY"
+      },
+      "full": {
+        "name": "Pełna obsługa",
+        "description": "Tworzymy i zarządzamy Twoim menu za Ciebie. Wystarczy przesłać nam treści.",
+        "badge": "NAJPOPULARNIEJSZY",
+        "feature1": "Wszystko z planu DIY",
+        "feature2": "Nieograniczona liczba języków",
+        "feature2Note": "+5€/miesiąc za każdy dodatkowy przetłumaczony język",
+        "feature3": "Nasz zespół tworzy Twoje menu",
+        "feature4": "Aktualizacje menu na życzenie",
+        "feature5": "Wsparcie e-mail",
+        "cta": "Rozpocznij pełną obsługę"
+      },
+      "custom": {
+        "name": "Indywidualny projekt",
+        "description": "Projekt menu szyty na miarę, dopasowany do Twojej marki.",
+        "badge": "PREMIUM",
+        "feature1": "Wszystko z pełnej obsługi",
+        "feature2": "Nieograniczona liczba języków",
+        "feature2Note": "+5€/miesiąc za każdy dodatkowy przetłumaczony język",
+        "feature3": "W pełni indywidualny projekt menu",
+        "feature4": "Miesięczne poprawki projektu",
+        "feature5": "Priorytetowe wsparcie e-mail",
+        "cta": "Rozpocznij plan indywidualny"
+      }
+    },
+    "demos": {
+      "heading": "Wypróbuj nasze menu demonstracyjne",
+      "itemsCount": "pozycji"
+    }
+  },
+  "restaurant": {
+    "soldOut": "Wyprzedane",
+    "noItems": "Brak dostępnych pozycji menu.",
+    "noImage": "Brak zdjęcia",
+    "backToRestaurants": "Powrót do restauracji",
+    "notFound": "Nie znaleziono restauracji",
+    "notFoundMessage": "Restauracja, której szukasz, nie istnieje.",
+    "loading": "Ładowanie menu...",
+    "searchPlaceholder": "Szukaj w menu...",
+    "searchNotFound": "Nie znaleziono pozycji dla"
+  },
+  "footer": {
+    "description": "Piękne cyfrowe menu dla restauracji, kawiarni i firm gastronomicznych.",
+    "rights": "Dine In. Wszelkie prawa zastrzeżone."
+  },
+  "header": {
+    "features": "Funkcje",
+    "pricing": "Cennik",
+    "demoMenus": "Menu demonstracyjne",
+    "signIn": "Zaloguj się"
+  },
+  "auth": {
+    "signIn": {
+      "backToHome": "Powrót do strony głównej",
+      "welcome": "Witaj ponownie!",
+      "description": "Zaloguj się, aby zarządzać menu swojej restauracji.",
+      "eula": "Logując się, akceptujesz nasz <tos>Regulamin</tos> oraz <privacy>Politykę prywatności</privacy>.",
+      "signInWithGoogle": "Zaloguj się przez Google",
+      "waitSignIn": "Logowanie..."
+    }
+  },
+  "dashboard": {
+    "signOut": "Wyloguj się",
+    "overview": {
+      "header": "Przegląd",
+      "welcome": "Witaj ponownie, ",
+      "description": "Zarządzaj swoimi restauracjami i menu.",
+      "restaurants": "Twoje Restauracje"
+    },
+    "myRestaurants": {
+      "header": "Moje Restauracje",
+      "description": "Zarządzaj wszystkimi swoimi restauracjami i menu."
+    },
+    "profile": {
+      "header": "Mój Profil",
+      "name": "Imię i nazwisko",
+      "email": "E-mail"
+    },
+    "restaurantCard": {
+      "items": "Pozycje",
+      "manage": "Zarządzaj",
+      "preview": "Podgląd",
+      "back": "Powrót do Restauracji"
+    },
+    "management": {
+      "theme": {
+        "header": "Motyw i Wygląd",
+        "description": "Dostosuj wygląd i styl.",
+        "menuTemplate": "Szablon Menu",
+        "saveTemplate": "Zapisz Szablon",
+        "logo": "Logo Restauracji",
+        "saveLogo": "Zapisz Logo",
+        "carouselImages": "Obrazy Karuzeli",
+        "back": "Powrót do Zarządzania"
+      },
+      "categories": {
+        "header": "Kategorie",
+        "description": "Organizuj pozycje menu w kategorie.",
+        "back": "Powrót do Zarządzania",
+        "add": {
+          "header": "Dodaj Kategorię",
+          "description": "Wprowadź nazwę kategorii po angielsku. Tłumaczenia możesz dodać później.",
+          "englishReminder": "(Angielski)",
+          "categoryName": "Nazwa Kategorii",
+          "namePlaceholder": "np. Przystawki, Dania Główne, Desery",
+          "saveCategory": "Zapisz Kategorię",
+          "cancel": "Anuluj",
+          "back": "Powrót do Kategorii"
+        },
+        "edit": {
+          "header": "Edytuj Kategorię",
+          "description": "Wprowadź nazwę kategorii po angielsku. Tłumaczenia możesz dodać później.",
+          "englishReminder": "(Angielski)",
+          "categoryName": "Nazwa Kategorii",
+          "saveCategory": "Zapisz Kategorię",
+          "cancel": "Anuluj",
+          "back": "Powrót do Kategorii"
+        },
+        "delete": {
+          "header": "Usunąć Kategorię?",
+          "description": "Wszystkie pozycje menu w tej kategorii również zostaną usunięte. Tej operacji nie można cofnąć.",
+          "delete": "Usuń",
+          "cancel": "Anuluj"
+        }
+      },
+      "items": {
+        "header": "Pozycje Menu",
+        "description": "Dodawaj, edytuj i zarządzaj pozycjami swojego menu.",
+        "back": "Powrót do Zarządzania",
+        "add": {
+          "header": "Dodaj Pozycję Menu",
+          "description": "Wprowadź całą treść po angielsku. Tłumaczenia na inne języki możesz dodać później.",
+          "englishReminder": "(Angielski)",
+          "itemName": "Nazwa",
+          "namePlaceholder": "np. Pizza Margherita, Sałatka Cezar",
+          "itemDescription": "Opis",
+          "descriptionPlaceholder": "np. Klasyczna włoska pizza z sosem pomidorowym i mozzarellą",
+          "itemPrice": "Cena",
+          "itemCategory": "Kategoria",
+          "saveItem": "Zapisz Pozycję",
+          "cancel": "Anuluj",
+          "back": "Powrót do Pozycji Menu"
+        },
+        "edit": {
+          "header": "Edytuj Pozycję Menu",
+          "description": "Wprowadź szczegóły pozycji menu po angielsku. Tłumaczenia możesz dodać później.",
+          "englishReminder": "(Angielski)",
+          "itemName": "Nazwa",
+          "itemDescription": "Opis",
+          "itemPrice": "Cena",
+          "itemCategory": "Kategoria",
+          "saveItem": "Zapisz Pozycję",
+          "cancel": "Anuluj",
+          "back": "Powrót do Pozycji Menu"
+        },
+        "delete": {
+          "header": "Usunąć Pozycję Menu?",
+          "description": "Tej operacji nie można cofnąć.",
+          "delete": "Usuń",
+          "cancel": "Anuluj"
+        }
+      },
+      "translations": {
+        "header": "Tłumaczenia",
+        "description": "Zarządzaj tłumaczeniami swojej restauracji.",
+        "back": "Powrót do Zarządzania",
+        "add": {
+          "header": "Dodaj Język",
+          "description": "Wybierz język i podaj tłumaczenia. Angielski jest wyświetlany jako odniesienie.",
+          "selectLanguage": "Wybierz Język...",
+          "addLanguage": "Dodaj Język",
+          "cancel": "Anuluj",
+          "back": "Powrót do Języków"
+        },
+        "edit": {
+          "header": "Edytuj Tłumaczenie",
+          "description": "Wybierz język i podaj tłumaczenia. Angielski jest wyświetlany jako odniesienie.",
+          "saveTranslation": "Zapisz Tłumaczenie",
+          "cancel": "Anuluj"
+        },
+        "delete": {
+          "header": "Usunąć Tłumaczenie?",
+          "description": "Tej operacji nie można cofnąć.",
+          "delete": "Usuń",
+          "cancel": "Anuluj"
+        }
+      }
+    }
+  },
+  "theme": {
+    "toggle": "Przełącz motyw"
+  }
+}

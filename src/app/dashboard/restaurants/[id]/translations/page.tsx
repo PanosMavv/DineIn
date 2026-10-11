@@ -4,6 +4,7 @@ import { prisma } from '@/lib/prisma';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, Plus, Pencil, Trash2, Eye, EyeOff } from 'lucide-react';
+import { getTranslations } from 'next-intl/server';
 import { ToggleTranslation } from '@/components/Dashboard/ToggleTranslation';
 import { DeleteTranslation } from '@/components/Dashboard/DeleteTranslation';
 
@@ -17,6 +18,8 @@ export default async function TranslationsPage({
   const userId = session?.user.id;
 
   if (!userId) return null;
+
+  const t = await getTranslations('dashboard.management.translations');
 
   const restaurant = await prisma.restaurant.findFirst({
     where: { id, ownerId: userId },
@@ -38,11 +41,11 @@ export default async function TranslationsPage({
   if (!restaurant) notFound();
 
   const allLocales = new Set<string>();
-  restaurant.translations.forEach(t => allLocales.add(t.locale));
+  restaurant.translations.forEach(tr => allLocales.add(tr.locale));
   restaurant.categories.forEach(cat => {
-    cat.translations.forEach(t => allLocales.add(t.locale));
+    cat.translations.forEach(tr => allLocales.add(tr.locale));
     cat.menuItems.forEach(item => {
-      item.translations.forEach(t => allLocales.add(t.locale));
+      item.translations.forEach(tr => allLocales.add(tr.locale));
     });
   });
 
@@ -55,16 +58,16 @@ export default async function TranslationsPage({
         className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 mb-4"
       >
         <ArrowLeft className="w-4 h-4" />
-        Back
+        {t('back')}
       </Link>
 
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">
-            Translations
+            {t('header')}
           </h1>
           <p className="text-gray-500 dark:text-gray-400 mt-1">
-            Manage menu languages
+            {t('description')}
           </p>
         </div>
         <Link
@@ -72,32 +75,32 @@ export default async function TranslationsPage({
           className="inline-flex items-center gap-2 px-5 py-2.5 bg-black text-white rounded-full text-sm font-semibold hover:bg-gray-800 transition-colors"
         >
           <Plus className="w-4 h-4" />
-          Add Translation
+          {t('add.header')}
         </Link>
       </div>
 
       {locales.length === 0 ? (
         <div className="text-center py-16 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800">
-          <p className="text-gray-500 mb-4">No translations yet</p>
+          <p className="text-gray-500 mb-4">{t('noTranslations')}</p>
           <Link
             href={`/dashboard/restaurants/${id}/translations/new`}
             className="inline-flex items-center gap-2 px-6 py-3 bg-black text-white rounded-full font-semibold"
           >
             <Plus className="w-4 h-4" />
-            Add First Translation
+            {t('add.header')}
           </Link>
         </div>
       ) : (
         <div className="space-y-4">
           {locales.map(locale => {
-            const restaurantTranslation = restaurant.translations.find(t => t.locale === locale);
+            const restaurantTranslation = restaurant.translations.find(tr => tr.locale === locale);
             const isActive = restaurantTranslation?.isActive ?? true;
             const categoryTranslations = restaurant.categories.filter(cat =>
-              cat.translations.some(t => t.locale === locale)
+              cat.translations.some(tr => tr.locale === locale)
             );
             const itemTranslations = restaurant.categories.flatMap(cat =>
               cat.menuItems.filter(item =>
-                item.translations.some(t => t.locale === locale)
+                item.translations.some(tr => tr.locale === locale)
               )
             );
 
@@ -118,11 +121,6 @@ export default async function TranslationsPage({
                       <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                         {locale.toUpperCase()}
                       </h3>
-                      <p className="text-sm text-gray-500">
-                        {restaurantTranslation ? 'Translated' : 'Not translated'} ·{' '}
-                        {categoryTranslations.length + itemTranslations.length} items
-                        {!isActive && ' · Disabled'}
-                      </p>
                     </div>
                   </div>
 

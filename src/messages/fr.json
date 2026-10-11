@@ -1,29 +1,242 @@
 {
   "app": {
-    "title": "Dine In - Menus Restaurant",
-    "description": "Découvrez et explorez les menus des restaurants",
+    "title": "Dine In - Menus de Restaurant",
+    "description": "Découvrez et explorez les menus de restaurant",
     "name": "Dine In"
   },
   "home": {
     "heading": "Dine In",
-    "subtitle": "Plateforme de menus pour restaurants"
+    "subtitle": "Plateforme de menus de restaurant",
+    "hero": {
+      "title": "De magnifiques menus numériques pour votre restaurant",
+      "description": "Créez des menus magnifiques et adaptés aux mobiles que vos clients adoreront. Support multilingue, thèmes élégants et gestion facile — le tout au même endroit.",
+      "getStarted": "Commencer",
+      "viewDemos": "Voir les menus de démonstration"
+    },
+    "features": {
+      "heading": "Tout ce dont votre menu a besoin",
+      "multilingual": {
+        "title": "Menus multilingues",
+        "description": "Servez vos clients dans leur langue grâce à des traductions instantanées"
+      },
+      "themes": {
+        "title": "Thèmes élégants",
+        "description": "Choisissez parmi plusieurs modèles magnifiques qui correspondent à votre marque"
+      },
+      "fast": {
+        "title": "Rapide et fiable",
+        "description": "Des temps de chargement ultra-rapides qui gardent vos clients satisfaits"
+      },
+      "combos": {
+        "title": "Combos et offres",
+        "description": "Mettez en avant les offres spéciales et les menus combinés pour augmenter les ventes"
+      }
+    },
+    "pricing": {
+      "heading": "Tarification simple",
+      "subtitle": "Choisissez le forfait qui correspond à vos besoins",
+      "perMonth": "/mois",
+      "perYear": "an",
+      "save": "économisez",
+      "diy": {
+        "name": "Forfait DIY",
+        "description": "Vous gérez tout vous-même grâce à notre tableau de bord facile à utiliser.",
+        "feature1": "Plats illimités",
+        "feature2": "Deux langues",
+        "feature3": "Plusieurs thèmes de menu",
+        "feature4": "Offres et combos",
+        "cta": "Démarrer le forfait DIY"
+      },
+      "full": {
+        "name": "Service complet",
+        "description": "Nous créons et gérons votre menu pour vous. Envoyez-nous simplement votre contenu.",
+        "badge": "LE PLUS POPULAIRE",
+        "feature1": "Tout ce qui est inclus dans le DIY",
+        "feature2": "Langues illimitées",
+        "feature2Note": "+5€/mois par langue supplémentaire traduite",
+        "feature3": "Notre équipe crée votre menu",
+        "feature4": "Mises à jour du menu sur demande",
+        "feature5": "Support par e-mail",
+        "cta": "Démarrer le service complet"
+      },
+      "custom": {
+        "name": "Design personnalisé",
+        "description": "Un design de menu sur mesure, adapté à votre marque.",
+        "badge": "PREMIUM",
+        "feature1": "Tout ce qui est inclus dans le service complet",
+        "feature2": "Langues illimitées",
+        "feature2Note": "+5€/mois par langue supplémentaire traduite",
+        "feature3": "Design de menu entièrement personnalisé",
+        "feature4": "Révisions de design mensuelles",
+        "feature5": "Support par e-mail prioritaire",
+        "cta": "Démarrer le forfait personnalisé"
+      }
+    },
+    "demos": {
+      "heading": "Essayez nos menus de démonstration",
+      "itemsCount": "articles"
+    }
   },
   "restaurant": {
     "soldOut": "Épuisé",
-    "noItems": "Aucun article disponible.",
+    "noItems": "Aucun plat disponible.",
     "noImage": "Pas d'image",
     "backToRestaurants": "Retour aux restaurants",
-    "notFound": "Restaurant non trouvé",
-    "notFoundMessage": "Le restaurant que vous cherchez n'existe pas.",
+    "notFound": "Restaurant introuvable",
+    "notFoundMessage": "Le restaurant que vous recherchez n'existe pas.",
     "loading": "Chargement du menu...",
     "searchPlaceholder": "Rechercher dans le menu...",
-    "searchNotFound": "Aucun article trouvé"
+    "searchNotFound": "Aucun article trouvé pour"
   },
   "footer": {
-    "description": "De magnifiques menus numériques pour restaurants, cafés et commerces alimentaires.",
+    "description": "De magnifiques menus numériques pour les restaurants, cafés et entreprises de restauration.",
     "rights": "Dine In. Tous droits réservés."
   },
+  "header": {
+    "features": "Fonctionnalités",
+    "pricing": "Tarifs",
+    "demoMenus": "Menus de démonstration",
+    "signIn": "Se connecter"
+  },
+  "auth": {
+    "signIn": {
+      "backToHome": "Retour à l'accueil",
+      "welcome": "Bon retour !",
+      "description": "Connectez-vous pour gérer les menus de votre restaurant.",
+      "eula": "En vous connectant, vous acceptez nos <tos>Conditions d'utilisation</tos> et notre <privacy>Politique de confidentialité</privacy>.",
+      "signInWithGoogle": "Se connecter avec Google",
+      "waitSignIn": "Connexion en cours..."
+    }
+  },
+  "dashboard": {
+    "signOut": "Se déconnecter",
+    "overview": {
+      "header": "Aperçu",
+      "welcome": "Bon retour, ",
+      "description": "Gérez vos restaurants et vos menus.",
+      "restaurants": "Vos Restaurants"
+    },
+    "myRestaurants": {
+      "header": "Mes Restaurants",
+      "description": "Gérez tous vos restaurants et vos menus."
+    },
+    "profile": {
+      "header": "Mon Profil",
+      "name": "Nom",
+      "email": "E-mail"
+    },
+    "restaurantCard": {
+      "items": "Articles",
+      "manage": "Gérer",
+      "preview": "Aperçu",
+      "back": "Retour aux Restaurants"
+    },
+    "management": {
+      "theme": {
+        "header": "Thème et Apparence",
+        "description": "Personnalisez l'apparence et le style.",
+        "menuTemplate": "Modèle de Menu",
+        "saveTemplate": "Enregistrer le Modèle",
+        "logo": "Logo du Restaurant",
+        "saveLogo": "Enregistrer le Logo",
+        "carouselImages": "Images du Carrousel",
+        "back": "Retour à la Gestion"
+      },
+      "categories": {
+        "header": "Catégories",
+        "description": "Organisez les articles de votre menu en catégories.",
+        "back": "Retour à la Gestion",
+        "add": {
+          "header": "Ajouter une Catégorie",
+          "description": "Saisissez le nom de la catégorie en anglais. Vous pourrez ajouter des traductions plus tard.",
+          "englishReminder": "(Anglais)",
+          "categoryName": "Nom de la Catégorie",
+          "namePlaceholder": "ex. Entrées, Plats Principaux, Desserts",
+          "saveCategory": "Enregistrer la Catégorie",
+          "cancel": "Annuler",
+          "back": "Retour aux Catégories"
+        },
+        "edit": {
+          "header": "Modifier la Catégorie",
+          "description": "Saisissez le nom de la catégorie en anglais. Vous pourrez ajouter des traductions plus tard.",
+          "englishReminder": "(Anglais)",
+          "categoryName": "Nom de la Catégorie",
+          "saveCategory": "Enregistrer la Catégorie",
+          "cancel": "Annuler",
+          "back": "Retour aux Catégories"
+        },
+        "delete": {
+          "header": "Supprimer la Catégorie ?",
+          "description": "Tous les articles de menu de cette catégorie seront également supprimés. Cette action est irréversible.",
+          "delete": "Supprimer",
+          "cancel": "Annuler"
+        }
+      },
+      "items": {
+        "header": "Articles du Menu",
+        "description": "Ajoutez, modifiez et gérez les articles de votre menu.",
+        "back": "Retour à la Gestion",
+        "add": {
+          "header": "Ajouter un Article du Menu",
+          "description": "Saisissez tout le contenu en anglais. Vous pourrez ajouter des traductions pour d'autres langues plus tard.",
+          "englishReminder": "(Anglais)",
+          "itemName": "Nom",
+          "namePlaceholder": "ex. Pizza Margherita, Salade César",
+          "itemDescription": "Description",
+          "descriptionPlaceholder": "ex. Une pizza italienne classique avec sauce tomate et mozzarella",
+          "itemPrice": "Prix",
+          "itemCategory": "Catégorie",
+          "saveItem": "Enregistrer l'Article",
+          "cancel": "Annuler",
+          "back": "Retour aux Articles du Menu"
+        },
+        "edit": {
+          "header": "Modifier l'Article du Menu",
+          "description": "Saisissez les détails de l'article du menu en anglais. Vous pourrez ajouter des traductions plus tard.",
+          "englishReminder": "(Anglais)",
+          "itemName": "Nom",
+          "itemDescription": "Description",
+          "itemPrice": "Prix",
+          "itemCategory": "Catégorie",
+          "saveItem": "Enregistrer l'Article",
+          "cancel": "Annuler",
+          "back": "Retour aux Articles du Menu"
+        },
+        "delete": {
+          "header": "Supprimer l'Article du Menu ?",
+          "description": "Cette action est irréversible.",
+          "delete": "Supprimer",
+          "cancel": "Annuler"
+        }
+      },
+      "translations": {
+        "header": "Traductions",
+        "description": "Gérez les traductions de votre restaurant.",
+        "back": "Retour à la Gestion",
+        "add": {
+          "header": "Ajouter une Langue",
+          "description": "Sélectionnez une langue et fournissez les traductions. L'anglais est affiché comme référence.",
+          "selectLanguage": "Sélectionner une Langue...",
+          "addLanguage": "Ajouter une Langue",
+          "cancel": "Annuler",
+          "back": "Retour aux Langues"
+        },
+        "edit": {
+          "header": "Modifier la Traduction",
+          "description": "Sélectionnez une langue et fournissez les traductions. L'anglais est affiché comme référence.",
+          "saveTranslation": "Enregistrer la Traduction",
+          "cancel": "Annuler"
+        },
+        "delete": {
+          "header": "Supprimer la Traduction ?",
+          "description": "Cette action est irréversible.",
+          "delete": "Supprimer",
+          "cancel": "Annuler"
+        }
+      }
+    }
+  },
   "theme": {
-    "toggle": "Changer le thème"
+    "toggle": "Changer de thème"
   }
 }

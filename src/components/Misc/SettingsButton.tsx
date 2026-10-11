@@ -1,16 +1,18 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useLocale } from 'next-intl';
 import { useRouter, usePathname } from 'next/navigation';
-import { Settings, X, Sun, Moon } from 'lucide-react';
-import { availableLocales, localeCodes } from '@/lib/locales';
+import { Settings, X, Sun, Moon, Check, ChevronDown } from 'lucide-react';
+import { availableLocales, localeCodes } from '@/i18n/locales';
 
 export function SettingsButton() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLocaleDropdownOpen, setIsLocaleDropdownOpen] = useState(false);
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const [availableRestaurantLocales, setAvailableRestaurantLocales] = useState<string[]>([]);
 
@@ -38,6 +40,19 @@ export function SettingsButton() {
     ? availableLocales.filter(lang => availableRestaurantLocales.includes(lang.code))
     : availableLocales;
 
+  const currentLanguage = availableLocales.find(l => l.code === locale) || availableLocales[0];
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setIsLocaleDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   // Lock body scroll when sheet is open
   useEffect(() => {
     if (isOpen) {
@@ -52,6 +67,7 @@ export function SettingsButton() {
 
   const switchLanguage = (code: string) => {
     document.cookie = `locale=${code}; path=/; max-age=31536000`;
+    setIsLocaleDropdownOpen(false);
     router.refresh();
   };
 
@@ -72,8 +88,7 @@ export function SettingsButton() {
       )}
 
       <div
-        className={`fixed inset-x-0 bottom-0 z-50 bg-white dark:bg-gray-900 rounded-t-2xl shadow-lg transition-transform duration-300 ease-out max-w-2xl mx-auto ${isOpen ? 'translate-y-0' : 'translate-y-full'
-          }`}
+        className={`fixed inset-x-0 bottom-0 z-50 bg-white dark:bg-gray-900 rounded-t-2xl shadow-lg transition-transform duration-300 ease-out max-w-2xl mx-auto ${isOpen ? 'translate-y-0' : 'translate-y-full'}`}
         style={{ maxHeight: '80vh' }}
       >
         <div className="flex justify-center pt-3 pb-1">
@@ -91,27 +106,62 @@ export function SettingsButton() {
         </div>
 
         <div className="px-6 pb-8 space-y-6 overflow-y-auto" style={{ maxHeight: 'calc(80vh - 60px)' }}>
+          {/* Language dropdown */}
           <div>
             <p className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-3">Language</p>
-            <div className="grid grid-cols-2 gap-2">
-              {languages.map(lang => (
-                <button
-                  key={lang.code}
-                  onClick={() => switchLanguage(lang.code)}
-                  className={`flex items-center gap-3 px-4 py-3 rounded-xl border text-left transition-colors ${lang.code === locale
-                    ? 'border-black dark:border-white bg-gray-50 dark:bg-gray-800'
-                    : 'border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800'
-                    }`}
-                >
-                  <span className="text-xl">{lang.flag}</span>
-                  <span className="text-sm font-medium text-gray-900 dark:text-gray-100">{lang.label}</span>
-                </button>
-              ))}
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={() => setIsLocaleDropdownOpen(!isLocaleDropdownOpen)}
+                className="w-full flex items-center justify-between gap-3 px-4 py-3 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-750 transition-colors"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="text-xl">{currentLanguage.flag}</span>
+                  <div className="text-left">
+                    <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                      {currentLanguage.name}
+                    </p>
+                    {currentLanguage.nativeName !== currentLanguage.name && (
+                      <p className="text-xs text-gray-400">{currentLanguage.nativeName}</p>
+                    )}
+                  </div>
+                </div>
+                <ChevronDown
+                  className={`w-5 h-5 text-gray-400 transition-transform ${isLocaleDropdownOpen ? 'rotate-180' : ''}`}
+                />
+              </button>
+
+              {isLocaleDropdownOpen && (
+                <div className="mt-2 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 max-h-64 overflow-y-auto">
+                  {languages.map(lang => (
+                    <button
+                      key={lang.code}
+                      onClick={() => switchLanguage(lang.code)}
+                      className="w-full flex items-center justify-between gap-3 px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className="text-xl">{lang.flag}</span>
+                        <div className="text-left">
+                          <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                            {lang.name}
+                          </p>
+                          {lang.nativeName !== lang.name && (
+                            <p className="text-xs text-gray-400">{lang.nativeName}</p>
+                          )}
+                        </div>
+                      </div>
+                      {lang.code === locale && (
+                        <Check className="w-4 h-4 text-blue-600 shrink-0" />
+                      )}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
 
           <div className="border-t border-gray-200 dark:border-gray-700" />
 
+          {/* Theme toggle */}
           <div>
             <p className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-3">Appearance</p>
             <button

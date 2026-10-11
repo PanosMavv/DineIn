@@ -1,29 +1,242 @@
 {
   "app": {
-    "title": "Dine In - Speisekarten",
-    "description": "Entdecken Sie Speisekarten von Restaurants",
+    "title": "Dine In - Restaurant-Menüs",
+    "description": "Entdecken und erkunden Sie Restaurant-Menüs",
     "name": "Dine In"
   },
   "home": {
     "heading": "Dine In",
-    "subtitle": "Plattform für Restaurant-Speisekarten"
+    "subtitle": "Plattform für Restaurant-Menüs",
+    "hero": {
+      "title": "Wunderschöne digitale Menüs für Ihr Restaurant",
+      "description": "Erstellen Sie beeindruckende, mobilfreundliche Menüs, die Ihre Gäste lieben werden. Mehrsprachige Unterstützung, wunderschöne Themes und einfache Verwaltung — alles an einem Ort.",
+      "getStarted": "Jetzt starten",
+      "viewDemos": "Demo-Menüs ansehen"
+    },
+    "features": {
+      "heading": "Alles, was Ihr Menü braucht",
+      "multilingual": {
+        "title": "Mehrsprachige Menüs",
+        "description": "Bedienen Sie Ihre Gäste in ihrer Sprache mit sofortigen Übersetzungen"
+      },
+      "themes": {
+        "title": "Wunderschöne Themes",
+        "description": "Wählen Sie aus mehreren beeindruckenden Vorlagen, die zu Ihrer Marke passen"
+      },
+      "fast": {
+        "title": "Schnell & Zuverlässig",
+        "description": "Blitzschnelle Ladezeiten halten Ihre Gäste zufrieden"
+      },
+      "combos": {
+        "title": "Combos & Angebote",
+        "description": "Heben Sie Sonderangebote und Kombi-Menüs hervor, um den Umsatz zu steigern"
+      }
+    },
+    "pricing": {
+      "heading": "Einfache Preisgestaltung",
+      "subtitle": "Wählen Sie den Plan, der zu Ihren Bedürfnissen passt",
+      "perMonth": "/Monat",
+      "perYear": "Jahr",
+      "save": "sparen",
+      "diy": {
+        "name": "DIY-Plan",
+        "description": "Sie verwalten alles selbst mit unserem benutzerfreundlichen Dashboard.",
+        "feature1": "Unbegrenzte Menüpunkte",
+        "feature2": "Zwei Sprachen",
+        "feature3": "Mehrere Menü-Themes",
+        "feature4": "Kombi-Angebote & Deals",
+        "cta": "DIY-Plan starten"
+      },
+      "full": {
+        "name": "Full Service",
+        "description": "Wir erstellen und verwalten Ihr Menü für Sie. Senden Sie uns einfach Ihre Inhalte.",
+        "badge": "AM BELIEBTESTEN",
+        "feature1": "Alles aus dem DIY-Plan",
+        "feature2": "Unbegrenzte Sprachen",
+        "feature2Note": "+5€/Monat pro zusätzlich übersetzter Sprache",
+        "feature3": "Unser Team erstellt Ihr Menü",
+        "feature4": "Menü-Updates auf Anfrage",
+        "feature5": "E-Mail-Support",
+        "cta": "Full Service starten"
+      },
+      "custom": {
+        "name": "Individuelles Design",
+        "description": "Ein maßgeschneidertes Menü-Design, abgestimmt auf Ihre Marke.",
+        "badge": "PREMIUM",
+        "feature1": "Alles aus dem Full Service",
+        "feature2": "Unbegrenzte Sprachen",
+        "feature2Note": "+5€/Monat pro zusätzlich übersetzter Sprache",
+        "feature3": "Vollständig individuelles Menü-Design",
+        "feature4": "Monatliche Design-Überarbeitungen",
+        "feature5": "Priorisierter E-Mail-Support",
+        "cta": "Individuellen Plan starten"
+      }
+    },
+    "demos": {
+      "heading": "Probieren Sie unsere Demo-Menüs aus",
+      "itemsCount": "Einträge"
+    }
   },
   "restaurant": {
     "soldOut": "Ausverkauft",
-    "noItems": "Keine Artikel verfügbar.",
+    "noItems": "Keine Menüpunkte verfügbar.",
     "noImage": "Kein Bild",
     "backToRestaurants": "Zurück zu den Restaurants",
     "notFound": "Restaurant nicht gefunden",
     "notFoundMessage": "Das gesuchte Restaurant existiert nicht.",
-    "loading": "Speisekarte wird geladen...",
+    "loading": "Menü wird geladen...",
     "searchPlaceholder": "Menü durchsuchen...",
-    "searchNotFound": "Keine Artikel gefunden"
+    "searchNotFound": "Keine Einträge gefunden für"
   },
   "footer": {
-    "description": "Schöne digitale Speisekarten für Restaurants, Cafés und Lebensmittelbetriebe.",
+    "description": "Wunderschöne digitale Menüs für Restaurants, Cafés und Gastronomiebetriebe.",
     "rights": "Dine In. Alle Rechte vorbehalten."
   },
+  "header": {
+    "features": "Funktionen",
+    "pricing": "Preise",
+    "demoMenus": "Demo-Menüs",
+    "signIn": "Anmelden"
+  },
+  "auth": {
+    "signIn": {
+      "backToHome": "Zurück zur Startseite",
+      "welcome": "Willkommen zurück!",
+      "description": "Melden Sie sich an, um Ihre Restaurant-Menüs zu verwalten.",
+      "eula": "Mit der Anmeldung stimmen Sie unseren <tos>Nutzungsbedingungen</tos> und unserer <privacy>Datenschutzrichtlinie</privacy> zu.",
+      "signInWithGoogle": "Mit Google anmelden",
+      "waitSignIn": "Anmeldung läuft..."
+    }
+  },
+  "dashboard": {
+    "signOut": "Abmelden",
+    "overview": {
+      "header": "Übersicht",
+      "welcome": "Willkommen zurück, ",
+      "description": "Verwalten Sie Ihre Restaurants und Menüs.",
+      "restaurants": "Ihre Restaurants"
+    },
+    "myRestaurants": {
+      "header": "Meine Restaurants",
+      "description": "Verwalten Sie alle Ihre Restaurants und Menüs."
+    },
+    "profile": {
+      "header": "Mein Profil",
+      "name": "Name",
+      "email": "E-Mail"
+    },
+    "restaurantCard": {
+      "items": "Einträge",
+      "manage": "Verwalten",
+      "preview": "Vorschau",
+      "back": "Zurück zu den Restaurants"
+    },
+    "management": {
+      "theme": {
+        "header": "Design & Erscheinungsbild",
+        "description": "Passen Sie Aussehen und Stil an.",
+        "menuTemplate": "Menü-Vorlage",
+        "saveTemplate": "Vorlage speichern",
+        "logo": "Restaurant-Logo",
+        "saveLogo": "Logo speichern",
+        "carouselImages": "Karussell-Bilder",
+        "back": "Zurück zur Verwaltung"
+      },
+      "categories": {
+        "header": "Kategorien",
+        "description": "Organisieren Sie Ihre Menüpunkte in Kategorien.",
+        "back": "Zurück zur Verwaltung",
+        "add": {
+          "header": "Kategorie hinzufügen",
+          "description": "Geben Sie den Kategorienamen auf Englisch ein. Übersetzungen können später hinzugefügt werden.",
+          "englishReminder": "(Englisch)",
+          "categoryName": "Kategoriename",
+          "namePlaceholder": "z. B. Vorspeisen, Hauptgerichte, Desserts",
+          "saveCategory": "Kategorie speichern",
+          "cancel": "Abbrechen",
+          "back": "Zurück zu den Kategorien"
+        },
+        "edit": {
+          "header": "Kategorie bearbeiten",
+          "description": "Geben Sie den Kategorienamen auf Englisch ein. Übersetzungen können später hinzugefügt werden.",
+          "englishReminder": "(Englisch)",
+          "categoryName": "Kategoriename",
+          "saveCategory": "Kategorie speichern",
+          "cancel": "Abbrechen",
+          "back": "Zurück zu den Kategorien"
+        },
+        "delete": {
+          "header": "Kategorie löschen?",
+          "description": "Alle Menüpunkte in dieser Kategorie werden ebenfalls gelöscht. Dies kann nicht rückgängig gemacht werden.",
+          "delete": "Löschen",
+          "cancel": "Abbrechen"
+        }
+      },
+      "items": {
+        "header": "Menüpunkte",
+        "description": "Fügen Sie Ihre Menüpunkte hinzu, bearbeiten und verwalten Sie sie.",
+        "back": "Zurück zur Verwaltung",
+        "add": {
+          "header": "Menüpunkt hinzufügen",
+          "description": "Geben Sie alle Inhalte auf Englisch ein. Übersetzungen für andere Sprachen können später hinzugefügt werden.",
+          "englishReminder": "(Englisch)",
+          "itemName": "Name",
+          "namePlaceholder": "z. B. Pizza Margherita, Caesar Salad",
+          "itemDescription": "Beschreibung",
+          "descriptionPlaceholder": "z. B. Eine klassische italienische Pizza mit Tomatensauce und Mozzarella",
+          "itemPrice": "Preis",
+          "itemCategory": "Kategorie",
+          "saveItem": "Eintrag speichern",
+          "cancel": "Abbrechen",
+          "back": "Zurück zu den Menüpunkten"
+        },
+        "edit": {
+          "header": "Menüpunkt bearbeiten",
+          "description": "Geben Sie die Details des Menüpunkts auf Englisch ein. Übersetzungen können später hinzugefügt werden.",
+          "englishReminder": "(Englisch)",
+          "itemName": "Name",
+          "itemDescription": "Beschreibung",
+          "itemPrice": "Preis",
+          "itemCategory": "Kategorie",
+          "saveItem": "Eintrag speichern",
+          "cancel": "Abbrechen",
+          "back": "Zurück zu den Menüpunkten"
+        },
+        "delete": {
+          "header": "Menüpunkt löschen?",
+          "description": "Diese Aktion kann nicht rückgängig gemacht werden.",
+          "delete": "Löschen",
+          "cancel": "Abbrechen"
+        }
+      },
+      "translations": {
+        "header": "Übersetzungen",
+        "description": "Verwalten Sie die Übersetzungen für Ihr Restaurant.",
+        "back": "Zurück zur Verwaltung",
+        "add": {
+          "header": "Sprache hinzufügen",
+          "description": "Wählen Sie eine Sprache und geben Sie Übersetzungen an. Englisch wird als Referenz angezeigt.",
+          "selectLanguage": "Sprache auswählen...",
+          "addLanguage": "Sprache hinzufügen",
+          "cancel": "Abbrechen",
+          "back": "Zurück zu den Sprachen"
+        },
+        "edit": {
+          "header": "Übersetzung bearbeiten",
+          "description": "Wählen Sie eine Sprache und geben Sie Übersetzungen an. Englisch wird als Referenz angezeigt.",
+          "saveTranslation": "Übersetzung speichern",
+          "cancel": "Abbrechen"
+        },
+        "delete": {
+          "header": "Übersetzung löschen?",
+          "description": "Diese Aktion kann nicht rückgängig gemacht werden.",
+          "delete": "Löschen",
+          "cancel": "Abbrechen"
+        }
+      }
+    }
+  },
   "theme": {
-    "toggle": "Thema wechseln"
+    "toggle": "Theme wechseln"
   }
 }

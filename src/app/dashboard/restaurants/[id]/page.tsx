@@ -4,6 +4,7 @@ import { prisma } from '@/lib/prisma';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Settings, UtensilsCrossed, Palette, Eye, ArrowLeft, Languages } from 'lucide-react';
+import { getTranslations } from 'next-intl/server';
 
 export default async function RestaurantDetailPage({
   params,
@@ -15,6 +16,12 @@ export default async function RestaurantDetailPage({
   const userId = session?.user.id;
 
   if (!userId) return null;
+
+  const t = await getTranslations('dashboard.restaurantCard');
+  const tTheme = await getTranslations('dashboard.management.theme');
+  const tCategories = await getTranslations('dashboard.management.categories');
+  const tItems = await getTranslations('dashboard.management.items');
+  const tTranslations = await getTranslations('dashboard.management.translations');
 
   const restaurant = await prisma.restaurant.findFirst({
     where: { id, ownerId: userId },
@@ -32,26 +39,26 @@ export default async function RestaurantDetailPage({
   const sections = [
     {
       href: `/dashboard/restaurants/${id}/theme`,
-      label: 'Theme & Appearance',
-      description: 'Customize look and feel',
+      label: tTheme('header'),
+      description: tTheme('description'),
       icon: Palette,
     },
     {
       href: `/dashboard/restaurants/${id}/categories`,
-      label: 'Categories',
+      label: tCategories('header'),
       description: `Manage ${restaurant._count.categories} categories`,
       icon: Settings,
     },
     {
       href: `/dashboard/restaurants/${id}/menu`,
-      label: 'Menu Items',
+      label: tItems('header'),
       description: `Manage ${restaurant._count.menuItems} items`,
       icon: UtensilsCrossed,
     },
     {
       href: `/dashboard/restaurants/${id}/translations`,
-      label: 'Translations',
-      description: 'Manage menu in multiple languages',
+      label: tTranslations('header'),
+      description: tTranslations('description'),
       icon: Languages,
     }
   ];
@@ -63,7 +70,7 @@ export default async function RestaurantDetailPage({
         className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 mb-4"
       >
         <ArrowLeft className="w-4 h-4" />
-        Back to restaurants
+        {t('back')}
       </Link>
 
       <div className="flex items-center justify-between mb-8">
@@ -76,7 +83,7 @@ export default async function RestaurantDetailPage({
           className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-full text-sm font-medium text-blue-600 hover:bg-blue-100 transition-colors"
         >
           <Eye className="w-4 h-4" />
-          Preview
+          {t('preview')}
         </Link>
       </div>
 

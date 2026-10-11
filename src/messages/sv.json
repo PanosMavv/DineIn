@@ -1,0 +1,242 @@
+{
+  "app": {
+    "title": "Dine In - Restaurangmenyer",
+    "description": "Upptäck och utforska restaurangmenyer",
+    "name": "Dine In"
+  },
+  "home": {
+    "heading": "Dine In",
+    "subtitle": "Plattform för restaurangmenyer",
+    "hero": {
+      "title": "Vackra digitala menyer för din restaurang",
+      "description": "Skapa fantastiska, mobilvänliga menyer som dina gäster kommer att älska. Flerspråkigt stöd, vackra teman och enkel hantering — allt på ett ställe.",
+      "getStarted": "Kom igång",
+      "viewDemos": "Visa demomenyer"
+    },
+    "features": {
+      "heading": "Allt din meny behöver",
+      "multilingual": {
+        "title": "Flerspråkiga menyer",
+        "description": "Betjäna dina gäster på deras språk med omedelbara översättningar"
+      },
+      "themes": {
+        "title": "Vackra teman",
+        "description": "Välj bland flera fantastiska mallar som matchar ditt varumärke"
+      },
+      "fast": {
+        "title": "Snabbt och pålitligt",
+        "description": "Blixtsnabba laddningstider håller dina gäster nöjda"
+      },
+      "combos": {
+        "title": "Combos och erbjudanden",
+        "description": "Lyft fram specialerbjudanden och combomenyer för att öka försäljningen"
+      }
+    },
+    "pricing": {
+      "heading": "Enkel prissättning",
+      "subtitle": "Välj den plan som passar dina behov",
+      "perMonth": "/månad",
+      "perYear": "år",
+      "save": "spara",
+      "diy": {
+        "name": "DIY-plan",
+        "description": "Du hanterar allt själv med vår lättanvända instrumentpanel.",
+        "feature1": "Obegränsat antal menyobjekt",
+        "feature2": "Två språk",
+        "feature3": "Flera menyteman",
+        "feature4": "Comboerbjudanden och deals",
+        "cta": "Starta DIY-plan"
+      },
+      "full": {
+        "name": "Full service",
+        "description": "Vi skapar och hanterar din meny åt dig. Skicka bara ditt innehåll till oss.",
+        "badge": "MEST POPULÄR",
+        "feature1": "Allt i DIY-planen",
+        "feature2": "Obegränsat antal språk",
+        "feature2Note": "+5€/månad per ytterligare översatt språk",
+        "feature3": "Vårt team bygger din meny",
+        "feature4": "Menyuppdateringar på begäran",
+        "feature5": "E-postsupport",
+        "cta": "Starta full service"
+      },
+      "custom": {
+        "name": "Anpassad design",
+        "description": "En skräddarsydd menydesign anpassad efter ditt varumärke.",
+        "badge": "PREMIUM",
+        "feature1": "Allt i full service",
+        "feature2": "Obegränsat antal språk",
+        "feature2Note": "+5€/månad per ytterligare översatt språk",
+        "feature3": "Helt anpassad menydesign",
+        "feature4": "Månatliga designrevisioner",
+        "feature5": "Prioriterad e-postsupport",
+        "cta": "Starta anpassad plan"
+      }
+    },
+    "demos": {
+      "heading": "Prova våra demomenyer",
+      "itemsCount": "objekt"
+    }
+  },
+  "restaurant": {
+    "soldOut": "Slutsåld",
+    "noItems": "Inga menyobjekt tillgängliga.",
+    "noImage": "Ingen bild",
+    "backToRestaurants": "Tillbaka till restauranger",
+    "notFound": "Restaurangen hittades inte",
+    "notFoundMessage": "Restaurangen du letar efter finns inte.",
+    "loading": "Laddar meny...",
+    "searchPlaceholder": "Sök i menyn...",
+    "searchNotFound": "Inga objekt hittades för"
+  },
+  "footer": {
+    "description": "Vackra digitala menyer för restauranger, kaféer och matverksamheter.",
+    "rights": "Dine In. Alla rättigheter förbehållna."
+  },
+  "header": {
+    "features": "Funktioner",
+    "pricing": "Priser",
+    "demoMenus": "Demomenyer",
+    "signIn": "Logga in"
+  },
+  "auth": {
+    "signIn": {
+      "backToHome": "Tillbaka till startsidan",
+      "welcome": "Välkommen tillbaka!",
+      "description": "Logga in för att hantera dina restaurangmenyer.",
+      "eula": "Genom att logga in godkänner du våra <tos>Användarvillkor</tos> och vår <privacy>Integritetspolicy</privacy>.",
+      "signInWithGoogle": "Logga in med Google",
+      "waitSignIn": "Loggar in..."
+    }
+  },
+  "dashboard": {
+    "signOut": "Logga ut",
+    "overview": {
+      "header": "Översikt",
+      "welcome": "Välkommen tillbaka, ",
+      "description": "Hantera dina restauranger och menyer.",
+      "restaurants": "Dina Restauranger"
+    },
+    "myRestaurants": {
+      "header": "Mina Restauranger",
+      "description": "Hantera alla dina restauranger och menyer."
+    },
+    "profile": {
+      "header": "Min Profil",
+      "name": "Namn",
+      "email": "E-post"
+    },
+    "restaurantCard": {
+      "items": "Objekt",
+      "manage": "Hantera",
+      "preview": "Förhandsgranska",
+      "back": "Tillbaka till Restauranger"
+    },
+    "management": {
+      "theme": {
+        "header": "Tema och Utseende",
+        "description": "Anpassa utseende och stil.",
+        "menuTemplate": "Menymall",
+        "saveTemplate": "Spara Mall",
+        "logo": "Restaurangens Logotyp",
+        "saveLogo": "Spara Logotyp",
+        "carouselImages": "Karusellbilder",
+        "back": "Tillbaka till Hantering"
+      },
+      "categories": {
+        "header": "Kategorier",
+        "description": "Organisera dina menyobjekt i kategorier.",
+        "back": "Tillbaka till Hantering",
+        "add": {
+          "header": "Lägg till Kategori",
+          "description": "Ange kategorinamnet på engelska. Du kan lägga till översättningar senare.",
+          "englishReminder": "(Engelska)",
+          "categoryName": "Kategorinamn",
+          "namePlaceholder": "t.ex. Förrätter, Huvudrätter, Efterrätter",
+          "saveCategory": "Spara Kategori",
+          "cancel": "Avbryt",
+          "back": "Tillbaka till Kategorier"
+        },
+        "edit": {
+          "header": "Redigera Kategori",
+          "description": "Ange kategorinamnet på engelska. Du kan lägga till översättningar senare.",
+          "englishReminder": "(Engelska)",
+          "categoryName": "Kategorinamn",
+          "saveCategory": "Spara Kategori",
+          "cancel": "Avbryt",
+          "back": "Tillbaka till Kategorier"
+        },
+        "delete": {
+          "header": "Radera Kategori?",
+          "description": "Alla menyobjekt i den här kategorin kommer också att raderas. Detta kan inte ångras.",
+          "delete": "Radera",
+          "cancel": "Avbryt"
+        }
+      },
+      "items": {
+        "header": "Menyobjekt",
+        "description": "Lägg till, redigera och hantera dina menyobjekt.",
+        "back": "Tillbaka till Hantering",
+        "add": {
+          "header": "Lägg till Menyobjekt",
+          "description": "Ange allt innehåll på engelska. Du kan lägga till översättningar för andra språk senare.",
+          "englishReminder": "(Engelska)",
+          "itemName": "Namn",
+          "namePlaceholder": "t.ex. Pizza Margherita, Caesarsallad",
+          "itemDescription": "Beskrivning",
+          "descriptionPlaceholder": "t.ex. En klassisk italiensk pizza med tomatsås och mozzarella",
+          "itemPrice": "Pris",
+          "itemCategory": "Kategori",
+          "saveItem": "Spara Objekt",
+          "cancel": "Avbryt",
+          "back": "Tillbaka till Menyobjekt"
+        },
+        "edit": {
+          "header": "Redigera Menyobjekt",
+          "description": "Ange menyobjektets detaljer på engelska. Du kan lägga till översättningar senare.",
+          "englishReminder": "(Engelska)",
+          "itemName": "Namn",
+          "itemDescription": "Beskrivning",
+          "itemPrice": "Pris",
+          "itemCategory": "Kategori",
+          "saveItem": "Spara Objekt",
+          "cancel": "Avbryt",
+          "back": "Tillbaka till Menyobjekt"
+        },
+        "delete": {
+          "header": "Radera Menyobjekt?",
+          "description": "Detta kan inte ångras.",
+          "delete": "Radera",
+          "cancel": "Avbryt"
+        }
+      },
+      "translations": {
+        "header": "Översättningar",
+        "description": "Hantera översättningar för din restaurang.",
+        "back": "Tillbaka till Hantering",
+        "add": {
+          "header": "Lägg till Språk",
+          "description": "Välj ett språk och ange översättningar. Engelska visas som referens.",
+          "selectLanguage": "Välj Språk...",
+          "addLanguage": "Lägg till Språk",
+          "cancel": "Avbryt",
+          "back": "Tillbaka till Språk"
+        },
+        "edit": {
+          "header": "Redigera Översättning",
+          "description": "Välj ett språk och ange översättningar. Engelska visas som referens.",
+          "saveTranslation": "Spara Översättning",
+          "cancel": "Avbryt"
+        },
+        "delete": {
+          "header": "Radera Översättning?",
+          "description": "Detta kan inte ångras.",
+          "delete": "Radera",
+          "cancel": "Avbryt"
+        }
+      }
+    }
+  },
+  "theme": {
+    "toggle": "Växla tema"
+  }
+}

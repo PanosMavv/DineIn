@@ -3,12 +3,15 @@ import { headers } from 'next/headers';
 import { prisma } from '@/lib/prisma';
 import Link from 'next/link';
 import { Plus, UtensilsCrossed, LayoutGrid, Eye } from 'lucide-react';
+import { getTranslations } from 'next-intl/server';
 
 export default async function DashboardPage() {
   const session = await auth.api.getSession({ headers: await headers() });
   const userId = session?.user.id;
 
   if (!userId) return null;
+
+  const t = await getTranslations('dashboard.overview');
 
   const restaurants = await prisma.restaurant.findMany({
     where: { ownerId: userId },
@@ -38,10 +41,10 @@ export default async function DashboardPage() {
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">
-            Welcome back, {session.user.name?.split(' ')[0]}
+            {t('welcome')}{session.user.name?.split(' ')[0]}
           </h1>
           <p className="text-gray-500 dark:text-gray-400 mt-1">
-            Manage your restaurants and menus
+            {t('description')}
           </p>
         </div>
       </div>
@@ -68,7 +71,7 @@ export default async function DashboardPage() {
 
       {/* Restaurants */}
       <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
-        Your Restaurants
+        {t('restaurants')}
       </h2>
 
       {restaurants.length === 0 ? (

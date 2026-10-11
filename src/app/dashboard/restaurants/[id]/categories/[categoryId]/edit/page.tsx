@@ -4,6 +4,7 @@ import { prisma } from '@/lib/prisma';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
+import { getTranslations } from 'next-intl/server';
 import { CategoryForm } from '@/components/Dashboard/CategoryForm';
 
 export default async function EditCategoryPage({
@@ -16,6 +17,8 @@ export default async function EditCategoryPage({
   const userId = session?.user.id;
 
   if (!userId) return null;
+
+  const t = await getTranslations('dashboard.management.categories');
 
   const restaurant = await prisma.restaurant.findFirst({
     where: { id, ownerId: userId },
@@ -40,11 +43,11 @@ export default async function EditCategoryPage({
         className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 mb-4"
       >
         <ArrowLeft className="w-4 h-4" />
-        Back to Categories
+        {t('edit.back')}
       </Link>
 
       <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
-        Edit Category
+        {t('edit.header')}
       </h1>
 
       <CategoryForm
