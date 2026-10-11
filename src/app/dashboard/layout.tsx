@@ -6,12 +6,14 @@ import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
 import { Home, UtensilsCrossed, User, LogOut, Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { Logo } from '@/components/Misc/Logo';
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const { data: session, isPending } = authClient.useSession();
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const t = useTranslations('dashboard');
 
   useEffect(() => {
     if (!isPending && !session) {
@@ -35,9 +37,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   };
 
   const navLinks = [
-    { href: '/dashboard', label: 'Overview', icon: Home },
-    { href: '/dashboard/restaurants', label: 'My Restaurants', icon: UtensilsCrossed },
-    { href: '/dashboard/profile', label: 'Profile', icon: User },
+    { href: '/dashboard', label: t('overview.header'), icon: Home },
+    { href: '/dashboard/restaurants', label: t('myRestaurants.header'), icon: UtensilsCrossed },
+    { href: '/dashboard/profile', label: t('profile.name'), icon: User },
   ];
 
   return (
@@ -92,7 +94,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             className="flex items-center gap-3 w-full px-4 py-2 rounded-xl text-sm text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
           >
             <LogOut className="w-5 h-5" />
-            Sign Out
+            {t('signOut')}
           </button>
         </div>
       </aside>
@@ -134,7 +136,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors text-left"
               >
                 <LogOut className="w-5 h-5" />
-                Sign Out
+                {t('signOut')}
               </button>
             </div>
           </div>

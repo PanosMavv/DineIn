@@ -108,6 +108,134 @@
       "waitSignIn": "Signing in..."
     }
   },
+  "dashboard": {
+    "signOut": "Sign Out",
+    "overview": {
+      "header": "Overview",
+      "welcome": "Welcome back, ",
+      "description": "Manage your restaurants and menus.",
+      "restaurants": "Your Restaurants"
+    },
+    "myRestaurants": {
+      "header": "My Restaurants",
+      "description": "Manage all your restaurants and menus."
+    },
+    "profile": {
+      "header": "My Profile",
+      "name": "Name",
+      "email": "Email"
+    },
+    "restaurantCard": {
+      "items": "Items",
+      "manage": "Manage",
+      "preview": "Preview",
+      "back": "Back to Restaurants"
+    },
+    "management": {
+      "theme": {
+        "header": "Theme & Appearance",
+        "description": "Customize look and feel.",
+        "menuTemplate": "Menu Template",
+        "saveTemplate": "Save Template",
+        "logo": "Restaurant Logo",
+        "saveLogo": "Save Logo",
+        "carouselImages": "Carousel Images",
+        "back": "Back to Management"
+      },
+      "categories": {
+        "header": "Categories",
+        "description": "Organize your menu items into categories.",
+        "back": "Back to Management",
+        "add": {
+          "header": "Add Category",
+          "description": "Enter the category name in English. You can add translations later.",
+          "englishReminder": "(English)",
+          "categoryName": "Category Name",
+          "namePlaceholder": "e.g. Appetizers, Main Courses, Desserts",
+          "saveCategory": "Save Category",
+          "cancel": "Cancel",
+          "back": "Back to Categories"
+        },
+        "edit": {
+          "header": "Edit Category",
+          "description": "Enter the category name in English. You can add translations later.",
+          "englishReminder": "(English)",
+          "categoryName": "Category Name",
+          "saveCategory": "Save Category",
+          "cancel": "Cancel",
+          "back": "Back to Categories"
+        },
+        "delete": {
+          "header": "Delete Category?",
+          "description": "All menu items in this category will also be deleted. This cannot be undone.",
+          "delete": "Delete",
+          "cancel": "Cancel"
+        }
+      },
+      "items": {
+        "header": "Menu Items",
+        "description": "Add, edit, and manage your menu items.",
+        "back": "Back to Management",
+        "add": {
+          "header": "Add Menu Item",
+          "description": "Enter all content in English. You can add translations for other languages later.",
+          "englishReminder": "(English)",
+          "itemName": "Name",
+          "namePlaceholder": "e.g. Margherita Pizza, Caesar Salad",
+          "itemDescription": "Description",
+          "descriptionPlaceholder": "e.g. A classic Italian pizza with tomato sauce and mozzarella",
+          "itemPrice": "Price",
+          "itemCategory": "Category",
+          "saveItem": "Save Item",
+          "cancel": "Cancel",
+          "back": "Back to Menu Items"
+        },
+        "edit": {
+          "header": "Edit Menu Item",
+          "description": "Enter the menu item details in English. You can add translations later.",
+          "englishReminder": "(English)",
+          "itemName": "Name",
+          "itemDescription": "Description",
+          "itemPrice": "Price",
+          "itemCategory": "Category",
+          "saveItem": "Save Item",
+          "cancel": "Cancel",
+          "back": "Back to Menu Items"
+        },
+        "delete": {
+          "header": "Delete Menu Item?",
+          "description": "This action cannot be undone.",
+          "delete": "Delete",
+          "cancel": "Cancel"
+        }
+      },
+      "translations": {
+        "header": "Translations",
+        "description": "Manage translations for your restaurant.",
+        "back": "Back to Management",
+        "add": {
+          "header": "Add Language",
+          "description": "Select a language and provide translations. English is shown as reference.",
+          "selectLanguage": "Select Language...",
+          "addLanguage": "Add Language",
+          "cancel": "Cancel",
+          "back": "Back to Languages"
+        },
+        "edit": {
+          "header": "Edit Translation",
+          "description": "Select a language and provide translations. English is shown as reference.",
+          "saveTranslation": "Save Translation",
+          "cancel": "Cancel"
+        },
+        "delete": {
+          "header": "Delete Translation?",
+          "description": "This action cannot be undone.",
+          "delete": "Delete",
+          "cancel": "Cancel"
+        }
+      }
+    }
+  },
   "theme": {
     "toggle": "Toggle theme"
   }

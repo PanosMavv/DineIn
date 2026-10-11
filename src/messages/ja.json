@@ -108,6 +108,134 @@
       "waitSignIn": "ログイン中..."
     }
   },
+  "dashboard": {
+    "signOut": "ログアウト",
+    "overview": {
+      "header": "概要",
+      "welcome": "おかえりなさい、",
+      "description": "レストランとメニューを管理します。",
+      "restaurants": "あなたのレストラン"
+    },
+    "myRestaurants": {
+      "header": "マイレストラン",
+      "description": "すべてのレストランとメニューを管理します。"
+    },
+    "profile": {
+      "header": "マイプロフィール",
+      "name": "名前",
+      "email": "メールアドレス"
+    },
+    "restaurantCard": {
+      "items": "項目",
+      "manage": "管理",
+      "preview": "プレビュー",
+      "back": "レストラン一覧に戻る"
+    },
+    "management": {
+      "theme": {
+        "header": "テーマと外観",
+        "description": "見た目とスタイルをカスタマイズします。",
+        "menuTemplate": "メニューテンプレート",
+        "saveTemplate": "テンプレートを保存",
+        "logo": "レストランのロゴ",
+        "saveLogo": "ロゴを保存",
+        "carouselImages": "カルーセル画像",
+        "back": "管理画面に戻る"
+      },
+      "categories": {
+        "header": "カテゴリー",
+        "description": "メニュー項目をカテゴリーに整理します。",
+        "back": "管理画面に戻る",
+        "add": {
+          "header": "カテゴリーを追加",
+          "description": "カテゴリー名を英語で入力してください。翻訳は後で追加できます。",
+          "englishReminder": "（英語）",
+          "categoryName": "カテゴリー名",
+          "namePlaceholder": "例：前菜、メインディッシュ、デザート",
+          "saveCategory": "カテゴリーを保存",
+          "cancel": "キャンセル",
+          "back": "カテゴリー一覧に戻る"
+        },
+        "edit": {
+          "header": "カテゴリーを編集",
+          "description": "カテゴリー名を英語で入力してください。翻訳は後で追加できます。",
+          "englishReminder": "（英語）",
+          "categoryName": "カテゴリー名",
+          "saveCategory": "カテゴリーを保存",
+          "cancel": "キャンセル",
+          "back": "カテゴリー一覧に戻る"
+        },
+        "delete": {
+          "header": "カテゴリーを削除しますか？",
+          "description": "このカテゴリー内のすべてのメニュー項目も削除されます。この操作は取り消せません。",
+          "delete": "削除",
+          "cancel": "キャンセル"
+        }
+      },
+      "items": {
+        "header": "メニュー項目",
+        "description": "メニュー項目を追加、編集、管理します。",
+        "back": "管理画面に戻る",
+        "add": {
+          "header": "メニュー項目を追加",
+          "description": "すべての内容を英語で入力してください。他の言語の翻訳は後で追加できます。",
+          "englishReminder": "（英語）",
+          "itemName": "名前",
+          "namePlaceholder": "例：マルゲリータピザ、シーザーサラダ",
+          "itemDescription": "説明",
+          "descriptionPlaceholder": "例：トマトソースとモッツァレラを使った定番のイタリアンピザ",
+          "itemPrice": "価格",
+          "itemCategory": "カテゴリー",
+          "saveItem": "項目を保存",
+          "cancel": "キャンセル",
+          "back": "メニュー項目に戻る"
+        },
+        "edit": {
+          "header": "メニュー項目を編集",
+          "description": "メニュー項目の詳細を英語で入力してください。翻訳は後で追加できます。",
+          "englishReminder": "（英語）",
+          "itemName": "名前",
+          "itemDescription": "説明",
+          "itemPrice": "価格",
+          "itemCategory": "カテゴリー",
+          "saveItem": "項目を保存",
+          "cancel": "キャンセル",
+          "back": "メニュー項目に戻る"
+        },
+        "delete": {
+          "header": "メニュー項目を削除しますか？",
+          "description": "この操作は取り消せません。",
+          "delete": "削除",
+          "cancel": "キャンセル"
+        }
+      },
+      "translations": {
+        "header": "翻訳",
+        "description": "レストランの翻訳を管理します。",
+        "back": "管理画面に戻る",
+        "add": {
+          "header": "言語を追加",
+          "description": "言語を選択して翻訳を入力してください。英語が参照として表示されます。",
+          "selectLanguage": "言語を選択...",
+          "addLanguage": "言語を追加",
+          "cancel": "キャンセル",
+          "back": "言語一覧に戻る"
+        },
+        "edit": {
+          "header": "翻訳を編集",
+          "description": "言語を選択して翻訳を入力してください。英語が参照として表示されます。",
+          "saveTranslation": "翻訳を保存",
+          "cancel": "キャンセル"
+        },
+        "delete": {
+          "header": "翻訳を削除しますか？",
+          "description": "この操作は取り消せません。",
+          "delete": "削除",
+          "cancel": "キャンセル"
+        }
+      }
+    }
+  },
   "theme": {
     "toggle": "テーマを切り替え"
   }

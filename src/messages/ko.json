@@ -108,6 +108,134 @@
       "waitSignIn": "로그인 중..."
     }
   },
+  "dashboard": {
+    "signOut": "로그아웃",
+    "overview": {
+      "header": "개요",
+      "welcome": "다시 오신 것을 환영합니다, ",
+      "description": "레스토랑과 메뉴를 관리하세요.",
+      "restaurants": "내 레스토랑"
+    },
+    "myRestaurants": {
+      "header": "내 레스토랑",
+      "description": "모든 레스토랑과 메뉴를 관리하세요."
+    },
+    "profile": {
+      "header": "내 프로필",
+      "name": "이름",
+      "email": "이메일"
+    },
+    "restaurantCard": {
+      "items": "항목",
+      "manage": "관리",
+      "preview": "미리보기",
+      "back": "레스토랑 목록으로 돌아가기"
+    },
+    "management": {
+      "theme": {
+        "header": "테마 및 모양",
+        "description": "모양과 스타일을 사용자 지정하세요.",
+        "menuTemplate": "메뉴 템플릿",
+        "saveTemplate": "템플릿 저장",
+        "logo": "레스토랑 로고",
+        "saveLogo": "로고 저장",
+        "carouselImages": "캐러셀 이미지",
+        "back": "관리로 돌아가기"
+      },
+      "categories": {
+        "header": "카테고리",
+        "description": "메뉴 항목을 카테고리로 정리하세요.",
+        "back": "관리로 돌아가기",
+        "add": {
+          "header": "카테고리 추가",
+          "description": "카테고리 이름을 영어로 입력하세요. 번역은 나중에 추가할 수 있습니다.",
+          "englishReminder": "(영어)",
+          "categoryName": "카테고리 이름",
+          "namePlaceholder": "예: 에피타이저, 메인 요리, 디저트",
+          "saveCategory": "카테고리 저장",
+          "cancel": "취소",
+          "back": "카테고리 목록으로 돌아가기"
+        },
+        "edit": {
+          "header": "카테고리 편집",
+          "description": "카테고리 이름을 영어로 입력하세요. 번역은 나중에 추가할 수 있습니다.",
+          "englishReminder": "(영어)",
+          "categoryName": "카테고리 이름",
+          "saveCategory": "카테고리 저장",
+          "cancel": "취소",
+          "back": "카테고리 목록으로 돌아가기"
+        },
+        "delete": {
+          "header": "카테고리를 삭제하시겠습니까?",
+          "description": "이 카테고리의 모든 메뉴 항목도 함께 삭제됩니다. 이 작업은 되돌릴 수 없습니다.",
+          "delete": "삭제",
+          "cancel": "취소"
+        }
+      },
+      "items": {
+        "header": "메뉴 항목",
+        "description": "메뉴 항목을 추가, 편집 및 관리하세요.",
+        "back": "관리로 돌아가기",
+        "add": {
+          "header": "메뉴 항목 추가",
+          "description": "모든 내용을 영어로 입력하세요. 다른 언어의 번역은 나중에 추가할 수 있습니다.",
+          "englishReminder": "(영어)",
+          "itemName": "이름",
+          "namePlaceholder": "예: 마르게리타 피자, 시저 샐러드",
+          "itemDescription": "설명",
+          "descriptionPlaceholder": "예: 토마토 소스와 모차렐라를 사용한 클래식 이탈리아 피자",
+          "itemPrice": "가격",
+          "itemCategory": "카테고리",
+          "saveItem": "항목 저장",
+          "cancel": "취소",
+          "back": "메뉴 항목으로 돌아가기"
+        },
+        "edit": {
+          "header": "메뉴 항목 편집",
+          "description": "메뉴 항목 세부 정보를 영어로 입력하세요. 번역은 나중에 추가할 수 있습니다.",
+          "englishReminder": "(영어)",
+          "itemName": "이름",
+          "itemDescription": "설명",
+          "itemPrice": "가격",
+          "itemCategory": "카테고리",
+          "saveItem": "항목 저장",
+          "cancel": "취소",
+          "back": "메뉴 항목으로 돌아가기"
+        },
+        "delete": {
+          "header": "메뉴 항목을 삭제하시겠습니까?",
+          "description": "이 작업은 되돌릴 수 없습니다.",
+          "delete": "삭제",
+          "cancel": "취소"
+        }
+      },
+      "translations": {
+        "header": "번역",
+        "description": "레스토랑의 번역을 관리하세요.",
+        "back": "관리로 돌아가기",
+        "add": {
+          "header": "언어 추가",
+          "description": "언어를 선택하고 번역을 입력하세요. 영어가 참조로 표시됩니다.",
+          "selectLanguage": "언어 선택...",
+          "addLanguage": "언어 추가",
+          "cancel": "취소",
+          "back": "언어 목록으로 돌아가기"
+        },
+        "edit": {
+          "header": "번역 편집",
+          "description": "언어를 선택하고 번역을 입력하세요. 영어가 참조로 표시됩니다.",
+          "saveTranslation": "번역 저장",
+          "cancel": "취소"
+        },
+        "delete": {
+          "header": "번역을 삭제하시겠습니까?",
+          "description": "이 작업은 되돌릴 수 없습니다.",
+          "delete": "삭제",
+          "cancel": "취소"
+        }
+      }
+    }
+  },
   "theme": {
     "toggle": "테마 전환"
   }

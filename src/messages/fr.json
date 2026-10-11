@@ -108,6 +108,134 @@
       "waitSignIn": "Connexion en cours..."
     }
   },
+  "dashboard": {
+    "signOut": "Se déconnecter",
+    "overview": {
+      "header": "Aperçu",
+      "welcome": "Bon retour, ",
+      "description": "Gérez vos restaurants et vos menus.",
+      "restaurants": "Vos Restaurants"
+    },
+    "myRestaurants": {
+      "header": "Mes Restaurants",
+      "description": "Gérez tous vos restaurants et vos menus."
+    },
+    "profile": {
+      "header": "Mon Profil",
+      "name": "Nom",
+      "email": "E-mail"
+    },
+    "restaurantCard": {
+      "items": "Articles",
+      "manage": "Gérer",
+      "preview": "Aperçu",
+      "back": "Retour aux Restaurants"
+    },
+    "management": {
+      "theme": {
+        "header": "Thème et Apparence",
+        "description": "Personnalisez l'apparence et le style.",
+        "menuTemplate": "Modèle de Menu",
+        "saveTemplate": "Enregistrer le Modèle",
+        "logo": "Logo du Restaurant",
+        "saveLogo": "Enregistrer le Logo",
+        "carouselImages": "Images du Carrousel",
+        "back": "Retour à la Gestion"
+      },
+      "categories": {
+        "header": "Catégories",
+        "description": "Organisez les articles de votre menu en catégories.",
+        "back": "Retour à la Gestion",
+        "add": {
+          "header": "Ajouter une Catégorie",
+          "description": "Saisissez le nom de la catégorie en anglais. Vous pourrez ajouter des traductions plus tard.",
+          "englishReminder": "(Anglais)",
+          "categoryName": "Nom de la Catégorie",
+          "namePlaceholder": "ex. Entrées, Plats Principaux, Desserts",
+          "saveCategory": "Enregistrer la Catégorie",
+          "cancel": "Annuler",
+          "back": "Retour aux Catégories"
+        },
+        "edit": {
+          "header": "Modifier la Catégorie",
+          "description": "Saisissez le nom de la catégorie en anglais. Vous pourrez ajouter des traductions plus tard.",
+          "englishReminder": "(Anglais)",
+          "categoryName": "Nom de la Catégorie",
+          "saveCategory": "Enregistrer la Catégorie",
+          "cancel": "Annuler",
+          "back": "Retour aux Catégories"
+        },
+        "delete": {
+          "header": "Supprimer la Catégorie ?",
+          "description": "Tous les articles de menu de cette catégorie seront également supprimés. Cette action est irréversible.",
+          "delete": "Supprimer",
+          "cancel": "Annuler"
+        }
+      },
+      "items": {
+        "header": "Articles du Menu",
+        "description": "Ajoutez, modifiez et gérez les articles de votre menu.",
+        "back": "Retour à la Gestion",
+        "add": {
+          "header": "Ajouter un Article du Menu",
+          "description": "Saisissez tout le contenu en anglais. Vous pourrez ajouter des traductions pour d'autres langues plus tard.",
+          "englishReminder": "(Anglais)",
+          "itemName": "Nom",
+          "namePlaceholder": "ex. Pizza Margherita, Salade César",
+          "itemDescription": "Description",
+          "descriptionPlaceholder": "ex. Une pizza italienne classique avec sauce tomate et mozzarella",
+          "itemPrice": "Prix",
+          "itemCategory": "Catégorie",
+          "saveItem": "Enregistrer l'Article",
+          "cancel": "Annuler",
+          "back": "Retour aux Articles du Menu"
+        },
+        "edit": {
+          "header": "Modifier l'Article du Menu",
+          "description": "Saisissez les détails de l'article du menu en anglais. Vous pourrez ajouter des traductions plus tard.",
+          "englishReminder": "(Anglais)",
+          "itemName": "Nom",
+          "itemDescription": "Description",
+          "itemPrice": "Prix",
+          "itemCategory": "Catégorie",
+          "saveItem": "Enregistrer l'Article",
+          "cancel": "Annuler",
+          "back": "Retour aux Articles du Menu"
+        },
+        "delete": {
+          "header": "Supprimer l'Article du Menu ?",
+          "description": "Cette action est irréversible.",
+          "delete": "Supprimer",
+          "cancel": "Annuler"
+        }
+      },
+      "translations": {
+        "header": "Traductions",
+        "description": "Gérez les traductions de votre restaurant.",
+        "back": "Retour à la Gestion",
+        "add": {
+          "header": "Ajouter une Langue",
+          "description": "Sélectionnez une langue et fournissez les traductions. L'anglais est affiché comme référence.",
+          "selectLanguage": "Sélectionner une Langue...",
+          "addLanguage": "Ajouter une Langue",
+          "cancel": "Annuler",
+          "back": "Retour aux Langues"
+        },
+        "edit": {
+          "header": "Modifier la Traduction",
+          "description": "Sélectionnez une langue et fournissez les traductions. L'anglais est affiché comme référence.",
+          "saveTranslation": "Enregistrer la Traduction",
+          "cancel": "Annuler"
+        },
+        "delete": {
+          "header": "Supprimer la Traduction ?",
+          "description": "Cette action est irréversible.",
+          "delete": "Supprimer",
+          "cancel": "Annuler"
+        }
+      }
+    }
+  },
   "theme": {
     "toggle": "Changer de thème"
   }

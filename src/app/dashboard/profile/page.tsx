@@ -1,16 +1,18 @@
 'use client';
 
 import { authClient } from '@/lib/auth-client';
+import { useTranslations } from 'next-intl';
 
 export default function ProfilePage() {
   const { data: session } = authClient.useSession();
+  const t = useTranslations('dashboard.profile');
 
   if (!session) return null;
 
   return (
     <div>
       <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8">
-        Profile
+        {t('header')}
       </h1>
 
       <div className="max-w-lg bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6">
@@ -42,7 +44,7 @@ export default function ProfilePage() {
         <div className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-              Name
+              {t('name')}
             </label>
             <input
               type="text"
@@ -53,7 +55,7 @@ export default function ProfilePage() {
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-              Email
+              {t('email')}
             </label>
             <input
               type="email"

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Upload, Image as ImageIcon, Plus, Trash2, Save } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 interface Props {
   restaurantId: string;
@@ -20,6 +21,7 @@ export function ThemeSettings({ restaurantId, restaurantName, currentTemplate, c
   const [newCarouselImage, setNewCarouselImage] = useState('');
   const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState('');
+  const t = useTranslations('dashboard.management.theme');
 
   const templates = [
     { value: 'simple-list', label: 'Simple List' },
@@ -106,11 +108,11 @@ export function ThemeSettings({ restaurantId, restaurantName, currentTemplate, c
         className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 mb-4"
       >
         <ArrowLeft className="w-4 h-4" />
-        Back to {restaurantName}
+        {t('back', { name: restaurantName })}
       </Link>
 
       <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8">
-        Theme & Appearance
+        {t('header')}
       </h1>
 
       {error && (
@@ -123,7 +125,7 @@ export function ThemeSettings({ restaurantId, restaurantName, currentTemplate, c
         {/* Template Selection */}
         <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6">
           <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
-            Menu Template
+            {t('menuTemplate')}
           </h2>
           <div className="space-y-3">
             <select
@@ -131,8 +133,8 @@ export function ThemeSettings({ restaurantId, restaurantName, currentTemplate, c
               onChange={(e) => setTemplate(e.target.value)}
               className="w-full px-4 py-2 bg-white dark:bg-gray-900 rounded-xl border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100"
             >
-              {templates.map(t => (
-                <option key={t.value} value={t.value}>{t.label}</option>
+              {templates.map(tpl => (
+                <option key={tpl.value} value={tpl.value}>{tpl.label}</option>
               ))}
             </select>
             <button
@@ -141,7 +143,7 @@ export function ThemeSettings({ restaurantId, restaurantName, currentTemplate, c
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-black text-white rounded-full text-sm font-semibold hover:bg-gray-800 transition-colors disabled:opacity-50"
             >
               <Save className="w-4 h-4" />
-              Save Template
+              {t('saveTemplate')}
             </button>
           </div>
         </div>
@@ -149,7 +151,7 @@ export function ThemeSettings({ restaurantId, restaurantName, currentTemplate, c
         {/* Logo Image */}
         <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6">
           <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
-            Restaurant Logo
+            {t('logo')}
           </h2>
           <div className="space-y-3">
             <div className="flex items-center gap-4">
@@ -162,7 +164,7 @@ export function ThemeSettings({ restaurantId, restaurantName, currentTemplate, c
               </div>
               <div className="flex-1">
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                  Logo URL
+                  {t('logoUrl')}
                 </label>
                 <input
                   type="text"
@@ -179,7 +181,7 @@ export function ThemeSettings({ restaurantId, restaurantName, currentTemplate, c
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-black text-white rounded-full text-sm font-semibold hover:bg-gray-800 transition-colors disabled:opacity-50"
             >
               <Save className="w-4 h-4" />
-              Save Logo
+              {t('saveLogo')}
             </button>
           </div>
         </div>
@@ -187,7 +189,7 @@ export function ThemeSettings({ restaurantId, restaurantName, currentTemplate, c
         {/* Carousel Images */}
         <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6">
           <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
-            Carousel Images
+            {t('carouselImages')}
           </h2>
 
           {/* Existing images */}
@@ -200,7 +202,7 @@ export function ThemeSettings({ restaurantId, restaurantName, currentTemplate, c
                 <button
                   onClick={() => handleDeleteCarouselImage(image.id)}
                   className="absolute top-1 right-1 w-6 h-6 bg-red-600 text-white rounded-full flex items-center justify-center opacity-100 transition-opacity"
-                  title="Delete image"
+                  title={t('deleteImage')}
                 >
                   <Trash2 className="w-3 h-3" />
                 </button>
@@ -214,7 +216,7 @@ export function ThemeSettings({ restaurantId, restaurantName, currentTemplate, c
           {/* Add new image */}
           <div className="space-y-3">
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-              Add Carousel Image
+              {t('addCarouselImage')}
             </label>
             <div className="flex gap-2">
               <input
@@ -230,7 +232,7 @@ export function ThemeSettings({ restaurantId, restaurantName, currentTemplate, c
                 className="inline-flex items-center gap-2 px-4 py-2 bg-black text-white rounded-full text-sm font-semibold hover:bg-gray-800 transition-colors disabled:opacity-50"
               >
                 <Plus className="w-4 h-4" />
-                Add
+                {t('add')}
               </button>
             </div>
           </div>

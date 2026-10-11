@@ -108,6 +108,134 @@
       "waitSignIn": "Accesso in corso..."
     }
   },
+  "dashboard": {
+    "signOut": "Disconnetti",
+    "overview": {
+      "header": "Panoramica",
+      "welcome": "Bentornato, ",
+      "description": "Gestisci i tuoi ristoranti e menù.",
+      "restaurants": "I Tuoi Ristoranti"
+    },
+    "myRestaurants": {
+      "header": "I Miei Ristoranti",
+      "description": "Gestisci tutti i tuoi ristoranti e menù."
+    },
+    "profile": {
+      "header": "Il Mio Profilo",
+      "name": "Nome",
+      "email": "Email"
+    },
+    "restaurantCard": {
+      "items": "Articoli",
+      "manage": "Gestisci",
+      "preview": "Anteprima",
+      "back": "Torna ai Ristoranti"
+    },
+    "management": {
+      "theme": {
+        "header": "Tema e Aspetto",
+        "description": "Personalizza l'aspetto e lo stile.",
+        "menuTemplate": "Modello del Menù",
+        "saveTemplate": "Salva Modello",
+        "logo": "Logo del Ristorante",
+        "saveLogo": "Salva Logo",
+        "carouselImages": "Immagini del Carosello",
+        "back": "Torna alla Gestione"
+      },
+      "categories": {
+        "header": "Categorie",
+        "description": "Organizza gli articoli del tuo menù in categorie.",
+        "back": "Torna alla Gestione",
+        "add": {
+          "header": "Aggiungi Categoria",
+          "description": "Inserisci il nome della categoria in inglese. Potrai aggiungere le traduzioni in seguito.",
+          "englishReminder": "(Inglese)",
+          "categoryName": "Nome della Categoria",
+          "namePlaceholder": "es. Antipasti, Piatti Principali, Dolci",
+          "saveCategory": "Salva Categoria",
+          "cancel": "Annulla",
+          "back": "Torna alle Categorie"
+        },
+        "edit": {
+          "header": "Modifica Categoria",
+          "description": "Inserisci il nome della categoria in inglese. Potrai aggiungere le traduzioni in seguito.",
+          "englishReminder": "(Inglese)",
+          "categoryName": "Nome della Categoria",
+          "saveCategory": "Salva Categoria",
+          "cancel": "Annulla",
+          "back": "Torna alle Categorie"
+        },
+        "delete": {
+          "header": "Eliminare la Categoria?",
+          "description": "Tutti gli articoli del menù in questa categoria verranno eliminati. Questa azione non può essere annullata.",
+          "delete": "Elimina",
+          "cancel": "Annulla"
+        }
+      },
+      "items": {
+        "header": "Articoli del Menù",
+        "description": "Aggiungi, modifica e gestisci gli articoli del tuo menù.",
+        "back": "Torna alla Gestione",
+        "add": {
+          "header": "Aggiungi Articolo del Menù",
+          "description": "Inserisci tutti i contenuti in inglese. Potrai aggiungere le traduzioni per altre lingue in seguito.",
+          "englishReminder": "(Inglese)",
+          "itemName": "Nome",
+          "namePlaceholder": "es. Pizza Margherita, Insalata Caesar",
+          "itemDescription": "Descrizione",
+          "descriptionPlaceholder": "es. Una classica pizza italiana con salsa di pomodoro e mozzarella",
+          "itemPrice": "Prezzo",
+          "itemCategory": "Categoria",
+          "saveItem": "Salva Articolo",
+          "cancel": "Annulla",
+          "back": "Torna agli Articoli del Menù"
+        },
+        "edit": {
+          "header": "Modifica Articolo del Menù",
+          "description": "Inserisci i dettagli dell'articolo del menù in inglese. Potrai aggiungere le traduzioni in seguito.",
+          "englishReminder": "(Inglese)",
+          "itemName": "Nome",
+          "itemDescription": "Descrizione",
+          "itemPrice": "Prezzo",
+          "itemCategory": "Categoria",
+          "saveItem": "Salva Articolo",
+          "cancel": "Annulla",
+          "back": "Torna agli Articoli del Menù"
+        },
+        "delete": {
+          "header": "Eliminare l'Articolo del Menù?",
+          "description": "Questa azione non può essere annullata.",
+          "delete": "Elimina",
+          "cancel": "Annulla"
+        }
+      },
+      "translations": {
+        "header": "Traduzioni",
+        "description": "Gestisci le traduzioni del tuo ristorante.",
+        "back": "Torna alla Gestione",
+        "add": {
+          "header": "Aggiungi Lingua",
+          "description": "Seleziona una lingua e fornisci le traduzioni. L'inglese è mostrato come riferimento.",
+          "selectLanguage": "Seleziona una Lingua...",
+          "addLanguage": "Aggiungi Lingua",
+          "cancel": "Annulla",
+          "back": "Torna alle Lingue"
+        },
+        "edit": {
+          "header": "Modifica Traduzione",
+          "description": "Seleziona una lingua e fornisci le traduzioni. L'inglese è mostrato come riferimento.",
+          "saveTranslation": "Salva Traduzione",
+          "cancel": "Annulla"
+        },
+        "delete": {
+          "header": "Eliminare la Traduzione?",
+          "description": "Questa azione non può essere annullata.",
+          "delete": "Elimina",
+          "cancel": "Annulla"
+        }
+      }
+    }
+  },
   "theme": {
     "toggle": "Cambia tema"
   }

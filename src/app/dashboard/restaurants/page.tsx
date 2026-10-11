@@ -3,12 +3,17 @@ import { headers } from 'next/headers';
 import { prisma } from '@/lib/prisma';
 import Link from 'next/link';
 import { Plus, UtensilsCrossed, Settings, Eye } from 'lucide-react';
+import { getTranslations } from 'next-intl/server';
 
 export default async function RestaurantsPage() {
   const session = await auth.api.getSession({ headers: await headers() });
   const userId = session?.user.id;
 
   if (!userId) return null;
+
+  const t = await getTranslations('dashboard.myRestaurants');
+  const tOverview = await getTranslations('dashboard.overview');
+  const tCard = await getTranslations('dashboard.restaurantCard');
 
   const restaurants = await prisma.restaurant.findMany({
     where: { ownerId: userId },
@@ -25,10 +30,10 @@ export default async function RestaurantsPage() {
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">
-            My Restaurants
+            {t('header')}
           </h1>
           <p className="text-gray-500 dark:text-gray-400 mt-1">
-            Manage all your restaurant menus
+            {t('description')}
           </p>
         </div>
       </div>
@@ -39,17 +44,17 @@ export default async function RestaurantsPage() {
             <UtensilsCrossed className="w-8 h-8 text-gray-400" />
           </div>
           <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
-            No restaurants yet
+            {tOverview('noRestaurants.title')}
           </h3>
           <p className="text-gray-500 dark:text-gray-400 mb-6">
-            Create your first restaurant to get started
+            {tOverview('noRestaurants.description')}
           </p>
           <Link
             href="/dashboard/restaurants/new"
             className="inline-flex items-center gap-2 px-6 py-3 bg-black text-white rounded-full font-semibold hover:bg-gray-800 transition-colors"
           >
             <Plus className="w-4 h-4" />
-            Create Restaurant
+            {tOverview('noRestaurants.cta')}
           </Link>
         </div>
       ) : (
@@ -78,7 +83,7 @@ export default async function RestaurantsPage() {
                       {name}
                     </h3>
                     <p className="text-sm text-gray-500 dark:text-gray-400">
-                      {restaurant._count.menuItems} items · {restaurant.category.replace('_', ' ')}
+                      {restaurant._count.menuItems} {tCard('items')} · {restaurant.category.replace('_', ' ')}
                     </p>
                   </div>
                 </div>
@@ -89,7 +94,7 @@ export default async function RestaurantsPage() {
                     className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-full text-sm font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
                   >
                     <Settings className="w-4 h-4" />
-                    Manage
+                    {tCard('manage')}
                   </Link>
                   <Link
                     href={`/${restaurant.slug}`}
@@ -97,7 +102,7 @@ export default async function RestaurantsPage() {
                     className="flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/20 rounded-full text-sm font-medium text-blue-600 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors"
                   >
                     <Eye className="w-4 h-4" />
-                    Preview
+                    {tCard('preview')}
                   </Link>
                 </div>
               </div>

@@ -4,6 +4,7 @@ import { prisma } from '@/lib/prisma';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, Plus, Pencil, Trash2, Image as ImageIcon } from 'lucide-react';
+import { getTranslations } from 'next-intl/server';
 import { DeleteCategory } from '@/components/Dashboard/DeleteCategory';
 
 export default async function CategoriesPage({
@@ -16,6 +17,9 @@ export default async function CategoriesPage({
   const userId = session?.user.id;
 
   if (!userId) return null;
+
+  const t = await getTranslations('dashboard.management.categories');
+  const tCard = await getTranslations('dashboard.restaurantCard');
 
   const restaurant = await prisma.restaurant.findFirst({
     where: { id, ownerId: userId },
@@ -43,16 +47,16 @@ export default async function CategoriesPage({
         className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 mb-4"
       >
         <ArrowLeft className="w-4 h-4" />
-        Back to {name}
+        {t('back', { name })}
       </Link>
 
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">
-            Categories
+            {t('header')}
           </h1>
           <p className="text-gray-500 dark:text-gray-400 mt-1">
-            Manage menu categories
+            {t('description')}
           </p>
         </div>
         <Link
@@ -60,13 +64,13 @@ export default async function CategoriesPage({
           className="inline-flex items-center gap-2 px-5 py-2.5 bg-black text-white rounded-full text-sm font-semibold hover:bg-gray-800 transition-colors"
         >
           <Plus className="w-4 h-4" />
-          Add Category
+          {t('add.header')}
         </Link>
       </div>
 
       {restaurant.categories.length === 0 ? (
         <div className="text-center py-16 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800">
-          <p className="text-gray-500">No categories yet</p>
+          <p className="text-gray-500">{t('noCategories')}</p>
         </div>
       ) : (
         <div className="grid gap-4">
@@ -93,7 +97,7 @@ export default async function CategoriesPage({
                     {categoryName}
                   </h3>
                   <p className="text-sm text-gray-500">
-                    {category._count.menuItems} items
+                    {category._count.menuItems} {tCard('items')}
                   </p>
                 </div>
                 <Link

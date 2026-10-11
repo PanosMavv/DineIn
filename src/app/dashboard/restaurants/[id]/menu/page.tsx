@@ -4,6 +4,7 @@ import { prisma } from '@/lib/prisma';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, Plus, Pencil, Eye, EyeOff } from 'lucide-react';
+import { getTranslations } from 'next-intl/server';
 import { DeleteMenuItem } from '@/components/Dashboard/DeleteMenuItem';
 
 export default async function MenuPage({
@@ -16,6 +17,9 @@ export default async function MenuPage({
   const userId = session?.user.id;
 
   if (!userId) return null;
+
+  const t = await getTranslations('dashboard.management.items');
+  const tCard = await getTranslations('dashboard.restaurantCard');
 
   const restaurant = await prisma.restaurant.findFirst({
     where: { id, ownerId: userId },
@@ -61,16 +65,16 @@ export default async function MenuPage({
         className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 mb-4"
       >
         <ArrowLeft className="w-4 h-4" />
-        Back to {name}
+        {t('back', { name })}
       </Link>
 
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">
-            Menu Items
+            {t('header')}
           </h1>
           <p className="text-gray-500 dark:text-gray-400 mt-1">
-            Manage your menu items for {name}
+            {t('description', { name })}
           </p>
         </div>
         <Link
@@ -78,19 +82,19 @@ export default async function MenuPage({
           className="inline-flex items-center gap-2 px-5 py-2.5 bg-black text-white rounded-full text-sm font-semibold hover:bg-gray-800 transition-colors"
         >
           <Plus className="w-4 h-4" />
-          New
+          {t('add.header')}
         </Link>
       </div>
 
       {itemsByCategory.length === 0 ? (
         <div className="text-center py-16 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800">
-          <p className="text-gray-500 mb-4">No categories or items yet</p>
+          <p className="text-gray-500 mb-4">{t('noCategoriesOrItems')}</p>
           <Link
             href={`/dashboard/restaurants/${id}/categories`}
             className="inline-flex items-center gap-2 px-6 py-3 bg-black text-white rounded-full font-semibold"
           >
             <Plus className="w-4 h-4" />
-            Create Categories First
+            {t('createCategoriesFirst')}
           </Link>
         </div>
       ) : (
@@ -104,12 +108,14 @@ export default async function MenuPage({
                 <h2 className="font-semibold text-gray-900 dark:text-gray-100">
                   {categoryName}
                 </h2>
-                <span className="text-sm text-gray-500">{items.length} items</span>
+                <span className="text-sm text-gray-500">
+                  {items.length} {tCard('items')}
+                </span>
               </div>
 
               {items.length === 0 ? (
                 <div className="px-6 py-8 text-center text-gray-500">
-                  No items in this category yet
+                  {t('noItemsInCategory')}
                 </div>
               ) : (
                 <div className="divide-y divide-gray-100 dark:divide-gray-800">
@@ -143,12 +149,12 @@ export default async function MenuPage({
                           {item.isAvailable ? (
                             <span className="inline-flex items-center gap-1 px-2 py-1 bg-green-50 text-green-700 text-xs rounded-full">
                               <Eye className="w-3 h-3" />
-                              Visible
+                              {t('visible')}
                             </span>
                           ) : (
                             <span className="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 text-gray-500 text-xs rounded-full">
                               <EyeOff className="w-3 h-3" />
-                              Hidden
+                              {t('hidden')}
                             </span>
                           )}
                           <Link

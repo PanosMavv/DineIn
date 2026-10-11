@@ -108,6 +108,134 @@
       "waitSignIn": "Logowanie..."
     }
   },
+  "dashboard": {
+    "signOut": "Wyloguj się",
+    "overview": {
+      "header": "Przegląd",
+      "welcome": "Witaj ponownie, ",
+      "description": "Zarządzaj swoimi restauracjami i menu.",
+      "restaurants": "Twoje Restauracje"
+    },
+    "myRestaurants": {
+      "header": "Moje Restauracje",
+      "description": "Zarządzaj wszystkimi swoimi restauracjami i menu."
+    },
+    "profile": {
+      "header": "Mój Profil",
+      "name": "Imię i nazwisko",
+      "email": "E-mail"
+    },
+    "restaurantCard": {
+      "items": "Pozycje",
+      "manage": "Zarządzaj",
+      "preview": "Podgląd",
+      "back": "Powrót do Restauracji"
+    },
+    "management": {
+      "theme": {
+        "header": "Motyw i Wygląd",
+        "description": "Dostosuj wygląd i styl.",
+        "menuTemplate": "Szablon Menu",
+        "saveTemplate": "Zapisz Szablon",
+        "logo": "Logo Restauracji",
+        "saveLogo": "Zapisz Logo",
+        "carouselImages": "Obrazy Karuzeli",
+        "back": "Powrót do Zarządzania"
+      },
+      "categories": {
+        "header": "Kategorie",
+        "description": "Organizuj pozycje menu w kategorie.",
+        "back": "Powrót do Zarządzania",
+        "add": {
+          "header": "Dodaj Kategorię",
+          "description": "Wprowadź nazwę kategorii po angielsku. Tłumaczenia możesz dodać później.",
+          "englishReminder": "(Angielski)",
+          "categoryName": "Nazwa Kategorii",
+          "namePlaceholder": "np. Przystawki, Dania Główne, Desery",
+          "saveCategory": "Zapisz Kategorię",
+          "cancel": "Anuluj",
+          "back": "Powrót do Kategorii"
+        },
+        "edit": {
+          "header": "Edytuj Kategorię",
+          "description": "Wprowadź nazwę kategorii po angielsku. Tłumaczenia możesz dodać później.",
+          "englishReminder": "(Angielski)",
+          "categoryName": "Nazwa Kategorii",
+          "saveCategory": "Zapisz Kategorię",
+          "cancel": "Anuluj",
+          "back": "Powrót do Kategorii"
+        },
+        "delete": {
+          "header": "Usunąć Kategorię?",
+          "description": "Wszystkie pozycje menu w tej kategorii również zostaną usunięte. Tej operacji nie można cofnąć.",
+          "delete": "Usuń",
+          "cancel": "Anuluj"
+        }
+      },
+      "items": {
+        "header": "Pozycje Menu",
+        "description": "Dodawaj, edytuj i zarządzaj pozycjami swojego menu.",
+        "back": "Powrót do Zarządzania",
+        "add": {
+          "header": "Dodaj Pozycję Menu",
+          "description": "Wprowadź całą treść po angielsku. Tłumaczenia na inne języki możesz dodać później.",
+          "englishReminder": "(Angielski)",
+          "itemName": "Nazwa",
+          "namePlaceholder": "np. Pizza Margherita, Sałatka Cezar",
+          "itemDescription": "Opis",
+          "descriptionPlaceholder": "np. Klasyczna włoska pizza z sosem pomidorowym i mozzarellą",
+          "itemPrice": "Cena",
+          "itemCategory": "Kategoria",
+          "saveItem": "Zapisz Pozycję",
+          "cancel": "Anuluj",
+          "back": "Powrót do Pozycji Menu"
+        },
+        "edit": {
+          "header": "Edytuj Pozycję Menu",
+          "description": "Wprowadź szczegóły pozycji menu po angielsku. Tłumaczenia możesz dodać później.",
+          "englishReminder": "(Angielski)",
+          "itemName": "Nazwa",
+          "itemDescription": "Opis",
+          "itemPrice": "Cena",
+          "itemCategory": "Kategoria",
+          "saveItem": "Zapisz Pozycję",
+          "cancel": "Anuluj",
+          "back": "Powrót do Pozycji Menu"
+        },
+        "delete": {
+          "header": "Usunąć Pozycję Menu?",
+          "description": "Tej operacji nie można cofnąć.",
+          "delete": "Usuń",
+          "cancel": "Anuluj"
+        }
+      },
+      "translations": {
+        "header": "Tłumaczenia",
+        "description": "Zarządzaj tłumaczeniami swojej restauracji.",
+        "back": "Powrót do Zarządzania",
+        "add": {
+          "header": "Dodaj Język",
+          "description": "Wybierz język i podaj tłumaczenia. Angielski jest wyświetlany jako odniesienie.",
+          "selectLanguage": "Wybierz Język...",
+          "addLanguage": "Dodaj Język",
+          "cancel": "Anuluj",
+          "back": "Powrót do Języków"
+        },
+        "edit": {
+          "header": "Edytuj Tłumaczenie",
+          "description": "Wybierz język i podaj tłumaczenia. Angielski jest wyświetlany jako odniesienie.",
+          "saveTranslation": "Zapisz Tłumaczenie",
+          "cancel": "Anuluj"
+        },
+        "delete": {
+          "header": "Usunąć Tłumaczenie?",
+          "description": "Tej operacji nie można cofnąć.",
+          "delete": "Usuń",
+          "cancel": "Anuluj"
+        }
+      }
+    }
+  },
   "theme": {
     "toggle": "Przełącz motyw"
   }

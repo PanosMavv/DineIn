@@ -108,6 +108,134 @@
       "waitSignIn": "Anmeldung läuft..."
     }
   },
+  "dashboard": {
+    "signOut": "Abmelden",
+    "overview": {
+      "header": "Übersicht",
+      "welcome": "Willkommen zurück, ",
+      "description": "Verwalten Sie Ihre Restaurants und Menüs.",
+      "restaurants": "Ihre Restaurants"
+    },
+    "myRestaurants": {
+      "header": "Meine Restaurants",
+      "description": "Verwalten Sie alle Ihre Restaurants und Menüs."
+    },
+    "profile": {
+      "header": "Mein Profil",
+      "name": "Name",
+      "email": "E-Mail"
+    },
+    "restaurantCard": {
+      "items": "Einträge",
+      "manage": "Verwalten",
+      "preview": "Vorschau",
+      "back": "Zurück zu den Restaurants"
+    },
+    "management": {
+      "theme": {
+        "header": "Design & Erscheinungsbild",
+        "description": "Passen Sie Aussehen und Stil an.",
+        "menuTemplate": "Menü-Vorlage",
+        "saveTemplate": "Vorlage speichern",
+        "logo": "Restaurant-Logo",
+        "saveLogo": "Logo speichern",
+        "carouselImages": "Karussell-Bilder",
+        "back": "Zurück zur Verwaltung"
+      },
+      "categories": {
+        "header": "Kategorien",
+        "description": "Organisieren Sie Ihre Menüpunkte in Kategorien.",
+        "back": "Zurück zur Verwaltung",
+        "add": {
+          "header": "Kategorie hinzufügen",
+          "description": "Geben Sie den Kategorienamen auf Englisch ein. Übersetzungen können später hinzugefügt werden.",
+          "englishReminder": "(Englisch)",
+          "categoryName": "Kategoriename",
+          "namePlaceholder": "z. B. Vorspeisen, Hauptgerichte, Desserts",
+          "saveCategory": "Kategorie speichern",
+          "cancel": "Abbrechen",
+          "back": "Zurück zu den Kategorien"
+        },
+        "edit": {
+          "header": "Kategorie bearbeiten",
+          "description": "Geben Sie den Kategorienamen auf Englisch ein. Übersetzungen können später hinzugefügt werden.",
+          "englishReminder": "(Englisch)",
+          "categoryName": "Kategoriename",
+          "saveCategory": "Kategorie speichern",
+          "cancel": "Abbrechen",
+          "back": "Zurück zu den Kategorien"
+        },
+        "delete": {
+          "header": "Kategorie löschen?",
+          "description": "Alle Menüpunkte in dieser Kategorie werden ebenfalls gelöscht. Dies kann nicht rückgängig gemacht werden.",
+          "delete": "Löschen",
+          "cancel": "Abbrechen"
+        }
+      },
+      "items": {
+        "header": "Menüpunkte",
+        "description": "Fügen Sie Ihre Menüpunkte hinzu, bearbeiten und verwalten Sie sie.",
+        "back": "Zurück zur Verwaltung",
+        "add": {
+          "header": "Menüpunkt hinzufügen",
+          "description": "Geben Sie alle Inhalte auf Englisch ein. Übersetzungen für andere Sprachen können später hinzugefügt werden.",
+          "englishReminder": "(Englisch)",
+          "itemName": "Name",
+          "namePlaceholder": "z. B. Pizza Margherita, Caesar Salad",
+          "itemDescription": "Beschreibung",
+          "descriptionPlaceholder": "z. B. Eine klassische italienische Pizza mit Tomatensauce und Mozzarella",
+          "itemPrice": "Preis",
+          "itemCategory": "Kategorie",
+          "saveItem": "Eintrag speichern",
+          "cancel": "Abbrechen",
+          "back": "Zurück zu den Menüpunkten"
+        },
+        "edit": {
+          "header": "Menüpunkt bearbeiten",
+          "description": "Geben Sie die Details des Menüpunkts auf Englisch ein. Übersetzungen können später hinzugefügt werden.",
+          "englishReminder": "(Englisch)",
+          "itemName": "Name",
+          "itemDescription": "Beschreibung",
+          "itemPrice": "Preis",
+          "itemCategory": "Kategorie",
+          "saveItem": "Eintrag speichern",
+          "cancel": "Abbrechen",
+          "back": "Zurück zu den Menüpunkten"
+        },
+        "delete": {
+          "header": "Menüpunkt löschen?",
+          "description": "Diese Aktion kann nicht rückgängig gemacht werden.",
+          "delete": "Löschen",
+          "cancel": "Abbrechen"
+        }
+      },
+      "translations": {
+        "header": "Übersetzungen",
+        "description": "Verwalten Sie die Übersetzungen für Ihr Restaurant.",
+        "back": "Zurück zur Verwaltung",
+        "add": {
+          "header": "Sprache hinzufügen",
+          "description": "Wählen Sie eine Sprache und geben Sie Übersetzungen an. Englisch wird als Referenz angezeigt.",
+          "selectLanguage": "Sprache auswählen...",
+          "addLanguage": "Sprache hinzufügen",
+          "cancel": "Abbrechen",
+          "back": "Zurück zu den Sprachen"
+        },
+        "edit": {
+          "header": "Übersetzung bearbeiten",
+          "description": "Wählen Sie eine Sprache und geben Sie Übersetzungen an. Englisch wird als Referenz angezeigt.",
+          "saveTranslation": "Übersetzung speichern",
+          "cancel": "Abbrechen"
+        },
+        "delete": {
+          "header": "Übersetzung löschen?",
+          "description": "Diese Aktion kann nicht rückgängig gemacht werden.",
+          "delete": "Löschen",
+          "cancel": "Abbrechen"
+        }
+      }
+    }
+  },
   "theme": {
     "toggle": "Theme wechseln"
   }
