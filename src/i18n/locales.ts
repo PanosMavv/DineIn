@@ -38,6 +38,7 @@ const EXPOSED_LOCALES = [
 export interface Locale {
   code: string;
   name: string;
+  label: string;
   nativeName: string;
   flag: string;
 }
@@ -46,6 +47,7 @@ export const availableLocales: Locale[] = EXPOSED_LOCALES
   .map(({ code, region }) => ({
     code,
     name: anyaround(code, { mode: 'language', locale: 'en' }) || code,
+    label: anyaround(code, { mode: 'language', locale: 'en' }) || code, // <-- add this
     nativeName: anyaround(code, { mode: 'language', locale: code }) || code,
     flag: anyaround(region, { display: 'flag' }) || '🌐',
   }))
