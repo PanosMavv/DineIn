@@ -131,6 +131,13 @@
       "preview": "预览",
       "back": "返回餐厅列表"
     },
+    "components": {
+      "restaurantEmptyState": {
+        "title": "还没有餐厅",
+        "description": "创建您的第一个餐厅以开始使用",
+        "cta": "创建餐厅"
+      }
+    },
     "management": {
       "theme": {
         "header": "主题与外观",

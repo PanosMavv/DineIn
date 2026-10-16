@@ -131,6 +131,13 @@
       "preview": "Förhandsgranska",
       "back": "Tillbaka till Restauranger"
     },
+    "components": {
+      "restaurantEmptyState": {
+        "title": "Inga restauranger ännu",
+        "description": "Skapa din första restaurang för att komma igång",
+        "cta": "Skapa Restaurang"
+      }
+    },
     "management": {
       "theme": {
         "header": "Tema och Utseende",

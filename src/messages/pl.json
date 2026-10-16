@@ -131,6 +131,13 @@
       "preview": "Podgląd",
       "back": "Powrót do Restauracji"
     },
+    "components": {
+      "restaurantEmptyState": {
+        "title": "Nie masz jeszcze restauracji",
+        "description": "Utwórz swoją pierwszą restaurację, aby rozpocząć",
+        "cta": "Utwórz Restaurację"
+      }
+    },
     "management": {
       "theme": {
         "header": "Motyw i Wygląd",

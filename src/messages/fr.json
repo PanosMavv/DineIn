@@ -131,6 +131,13 @@
       "preview": "Aperçu",
       "back": "Retour aux Restaurants"
     },
+    "components": {
+      "restaurantEmptyState": {
+        "title": "Aucun restaurant pour le moment",
+        "description": "Créez votre premier restaurant pour commencer",
+        "cta": "Créer un restaurant"
+      }
+    },
     "management": {
       "theme": {
         "header": "Thème et Apparence",

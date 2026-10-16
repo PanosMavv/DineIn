@@ -131,6 +131,13 @@
       "preview": "미리보기",
       "back": "레스토랑 목록으로 돌아가기"
     },
+    "components": {
+      "restaurantEmptyState": {
+        "title": "아직 레스토랑이 없습니다",
+        "description": "첫 번째 레스토랑을 만들어 시작하세요",
+        "cta": "레스토랑 만들기"
+      }
+    },
     "management": {
       "theme": {
         "header": "테마 및 모양",

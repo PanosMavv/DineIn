@@ -131,6 +131,13 @@
       "preview": "Preview",
       "back": "Back to Restaurants"
     },
+    "components": {
+      "restaurantEmptyState": {
+        "title": "No restaurants yet",
+        "description": "Create your first restaurant to get started",
+        "cta": "Create Restaurant"
+      }
+    },
     "management": {
       "theme": {
         "header": "Theme & Appearance",

@@ -131,6 +131,13 @@
       "preview": "プレビュー",
       "back": "レストラン一覧に戻る"
     },
+    "components": {
+      "restaurantEmptyState": {
+        "title": "レストランがまだありません",
+        "description": "最初のレストランを作成して始めましょう",
+        "cta": "レストランを作成"
+      }
+    },
     "management": {
       "theme": {
         "header": "テーマと外観",
