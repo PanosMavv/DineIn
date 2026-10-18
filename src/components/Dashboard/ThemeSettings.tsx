@@ -105,33 +105,33 @@ export function ThemeSettings({ restaurantId, restaurantName, currentTemplate, c
     <div>
       <Link
         href={`/dashboard/restaurants/${restaurantId}`}
-        className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 mb-4"
+        className="inline-flex items-center gap-2 text-sm text-ink-muted hover:text-ink mb-4"
       >
         <ArrowLeft className="w-4 h-4" />
         {t('back', { name: restaurantName })}
       </Link>
 
-      <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8">
+      <h1 className="text-2xl md:text-3xl font-bold text-ink mb-8">
         {t('header')}
       </h1>
 
       {error && (
-        <div className="p-4 bg-red-50 dark:bg-red-900/20 text-red-600 rounded-xl text-sm mb-6">
+        <div className="p-4 bg-red-500/10 text-red-600 rounded-xl text-sm mb-6">
           {error}
         </div>
       )}
 
       <div className="grid gap-6 max-w-2xl">
         {/* Template Selection */}
-        <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6">
-          <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+        <div className="bg-surface rounded-2xl border border-hairline p-6">
+          <h2 className="text-lg font-semibold text-ink mb-4">
             {t('menuTemplate')}
           </h2>
           <div className="space-y-3">
             <select
               value={template}
               onChange={(e) => setTemplate(e.target.value)}
-              className="w-full px-4 py-2 bg-white dark:bg-gray-900 rounded-xl border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100"
+              className="w-full px-4 py-2 bg-surface rounded-xl border border-hairline text-ink"
             >
               {templates.map(tpl => (
                 <option key={tpl.value} value={tpl.value}>{tpl.label}</option>
@@ -140,7 +140,7 @@ export function ThemeSettings({ restaurantId, restaurantName, currentTemplate, c
             <button
               onClick={handleSaveTemplate}
               disabled={isSaving}
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-black text-white rounded-full text-sm font-semibold hover:bg-gray-800 transition-colors disabled:opacity-50"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-ink text-[color:var(--color-surface)] rounded-full text-sm font-semibold hover:opacity-90 transition-opacity disabled:opacity-50"
             >
               <Save className="w-4 h-4" />
               {t('saveTemplate')}
@@ -149,21 +149,21 @@ export function ThemeSettings({ restaurantId, restaurantName, currentTemplate, c
         </div>
 
         {/* Logo Image */}
-        <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6">
-          <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+        <div className="bg-surface rounded-2xl border border-hairline p-6">
+          <h2 className="text-lg font-semibold text-ink mb-4">
             {t('logo')}
           </h2>
           <div className="space-y-3">
             <div className="flex items-center gap-4">
-              <div className="w-20 h-20 rounded-full overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+              <div className="w-20 h-20 rounded-full overflow-hidden bg-surface-2 flex items-center justify-center">
                 {logoUrl ? (
                   <img src={logoUrl} alt="Logo" className="w-full h-full object-cover" />
                 ) : (
-                  <ImageIcon className="w-8 h-8 text-gray-400" />
+                  <ImageIcon className="w-8 h-8 text-ink-subtle" />
                 )}
               </div>
               <div className="flex-1">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                <label className="block text-sm font-medium text-ink mb-1">
                   {t('logoUrl')}
                 </label>
                 <input
@@ -171,14 +171,14 @@ export function ThemeSettings({ restaurantId, restaurantName, currentTemplate, c
                   value={logoUrl}
                   onChange={(e) => setLogoUrl(e.target.value)}
                   placeholder="https://example.com/logo.jpg"
-                  className="w-full px-4 py-2 bg-white dark:bg-gray-900 rounded-xl border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100"
+                  className="w-full px-4 py-2 bg-surface rounded-xl border border-hairline text-ink"
                 />
               </div>
             </div>
             <button
               onClick={handleSaveLogo}
               disabled={isSaving}
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-black text-white rounded-full text-sm font-semibold hover:bg-gray-800 transition-colors disabled:opacity-50"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-ink text-[color:var(--color-surface)] rounded-full text-sm font-semibold hover:opacity-90 transition-opacity disabled:opacity-50"
             >
               <Save className="w-4 h-4" />
               {t('saveLogo')}
@@ -187,8 +187,8 @@ export function ThemeSettings({ restaurantId, restaurantName, currentTemplate, c
         </div>
 
         {/* Carousel Images */}
-        <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6">
-          <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+        <div className="bg-surface rounded-2xl border border-hairline p-6">
+          <h2 className="text-lg font-semibold text-ink mb-4">
             {t('carouselImages')}
           </h2>
 
@@ -196,7 +196,7 @@ export function ThemeSettings({ restaurantId, restaurantName, currentTemplate, c
           <div className="flex gap-3 flex-wrap mb-4">
             {carouselImages.map((image, index) => (
               <div key={image.id} className="relative group">
-                <div className="w-32 h-20 rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-800">
+                <div className="w-32 h-20 rounded-lg overflow-hidden bg-surface-2">
                   <img src={image.image} alt={`Carousel ${index + 1}`} className="w-full h-full object-cover" />
                 </div>
                 <button
@@ -215,7 +215,7 @@ export function ThemeSettings({ restaurantId, restaurantName, currentTemplate, c
 
           {/* Add new image */}
           <div className="space-y-3">
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+            <label className="block text-sm font-medium text-ink">
               {t('addCarouselImage')}
             </label>
             <div className="flex gap-2">
@@ -224,12 +224,12 @@ export function ThemeSettings({ restaurantId, restaurantName, currentTemplate, c
                 value={newCarouselImage}
                 onChange={(e) => setNewCarouselImage(e.target.value)}
                 placeholder="https://example.com/image.jpg"
-                className="flex-1 px-4 py-2 bg-white dark:bg-gray-900 rounded-xl border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100"
+                className="flex-1 px-4 py-2 bg-surface rounded-xl border border-hairline text-ink"
               />
               <button
                 onClick={handleAddCarouselImage}
                 disabled={isSaving || !newCarouselImage.trim()}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-black text-white rounded-full text-sm font-semibold hover:bg-gray-800 transition-colors disabled:opacity-50"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-ink text-[color:var(--color-surface)] rounded-full text-sm font-semibold hover:opacity-90 transition-opacity disabled:opacity-50"
               >
                 <Plus className="w-4 h-4" />
                 {t('add')}

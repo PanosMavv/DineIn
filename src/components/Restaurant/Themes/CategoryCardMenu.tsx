@@ -44,26 +44,26 @@ export function CategoryCardMenu({ restaurant, groupedMenu }: Props) {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950">
+    <div className="min-h-screen bg-surface">
       <HeroPicker restaurant={restaurant} />
 
       {selectedCategory ? (
         <>
-          <div ref={categoryNavRef} className="sticky top-0 z-20 bg-white dark:bg-gray-900 shadow-sm">
+          <div ref={categoryNavRef} className="sticky top-0 z-20 bg-surface shadow-sm">
             <div className="flex items-center gap-3 px-4 py-3">
               <button
                 onClick={handleBack}
-                className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 shrink-0"
+                className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-surface-2 shrink-0"
                 aria-label="Back to categories"
               >
-                <ArrowLeft className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+                <ArrowLeft className="w-5 h-5 text-ink-muted" />
               </button>
-              <h2 className="text-base font-semibold text-gray-900 dark:text-gray-100">{selectedCategory}</h2>
+              <h2 className="text-base font-semibold text-ink">{selectedCategory}</h2>
             </div>
           </div>
 
           <div className="px-4 pb-12">
-            <div className="divide-y divide-gray-200 dark:divide-gray-800">
+            <div className="divide-y divide-hairline">
               {categoryItems.map((item) => (
                 <ImageMenuItem key={item.id} item={item} showImage={true} />
               ))}
@@ -77,15 +77,15 @@ export function CategoryCardMenu({ restaurant, groupedMenu }: Props) {
               <button
                 key={group.category}
                 onClick={() => handleSelectCategory(index)}
-                className="w-full flex items-center gap-4 p-4 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-colors text-left"
+                className="w-full flex items-center gap-4 p-4 bg-surface rounded-2xl border border-hairline hover:border-ink-subtle transition-colors text-left"
               >
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">{group.category}</h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                  <h3 className="text-lg font-semibold text-ink">{group.category}</h3>
+                  <p className="text-sm text-ink-muted mt-1">
                     {group.items.length} {group.items.length === 1 ? 'item' : 'items'}
                   </p>
                 </div>
-                <div className="w-20 h-20 rounded-2xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center shrink-0 overflow-hidden">
+                <div className="w-20 h-20 rounded-2xl bg-surface-2 flex items-center justify-center shrink-0 overflow-hidden">
                   {categoryImages[group.category] ? (
                     <Image
                       src={categoryImages[group.category]}

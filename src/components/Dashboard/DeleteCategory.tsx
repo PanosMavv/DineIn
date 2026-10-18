@@ -41,7 +41,7 @@ export function DeleteCategory({ restaurantId, categoryId }: Props) {
     <>
       <button
         onClick={() => setIsConfirming(true)}
-        className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-red-50 dark:hover:bg-red-900/20"
+        className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-red-500/10"
         title={t('title')}
       >
         <Trash2 className="w-4 h-4 text-red-500" />
@@ -53,22 +53,22 @@ export function DeleteCategory({ restaurantId, categoryId }: Props) {
             className="absolute inset-0 bg-black/50"
             onClick={() => setIsConfirming(false)}
           />
-          <div className="relative bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-xl max-w-sm w-full p-6">
+          <div className="relative bg-surface rounded-2xl border border-hairline shadow-xl max-w-sm w-full p-6">
             <button
               onClick={() => setIsConfirming(false)}
-              className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
+              className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full hover:bg-surface-2"
             >
-              <X className="w-4 h-4 text-gray-500" />
+              <X className="w-4 h-4 text-ink-muted" />
             </button>
 
             <div className="text-center">
-              <div className="w-14 h-14 rounded-full bg-red-50 dark:bg-red-900/20 flex items-center justify-center mx-auto mb-4">
+              <div className="w-14 h-14 rounded-full bg-red-500/10 flex items-center justify-center mx-auto mb-4">
                 <Trash2 className="w-6 h-6 text-red-500" />
               </div>
-              <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">
+              <h3 className="text-lg font-bold text-ink mb-2">
                 {t('header')}
               </h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
+              <p className="text-sm text-ink-muted mb-6">
                 {t('description')}
               </p>
               <div className="flex gap-3 justify-center">
@@ -81,7 +81,7 @@ export function DeleteCategory({ restaurantId, categoryId }: Props) {
                 </button>
                 <button
                   onClick={() => setIsConfirming(false)}
-                  className="px-5 py-2.5 border border-gray-300 dark:border-gray-700 rounded-full text-sm font-semibold hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                  className="px-5 py-2.5 border border-hairline rounded-full text-sm font-semibold text-ink hover:bg-surface-2 transition-colors"
                 >
                   {t('cancel')}
                 </button>

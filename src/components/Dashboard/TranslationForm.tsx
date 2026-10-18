@@ -181,15 +181,15 @@ export function TranslationForm({
   return (
     <form onSubmit={handleSubmit} className="max-w-3xl space-y-6">
       {error && (
-        <div className="p-4 bg-red-50 dark:bg-red-900/20 text-red-600 rounded-xl text-sm">
+        <div className="p-4 bg-red-500/10 text-red-600 rounded-xl text-sm">
           {error}
         </div>
       )}
 
       {/* Language notice */}
-      <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl flex items-start gap-3">
-        <Globe className="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
-        <p className="text-sm text-blue-700 dark:text-blue-300">
+      <div className="p-4 bg-accent-brand/10 rounded-xl flex items-start gap-3">
+        <Globe className="w-5 h-5 text-accent-brand shrink-0 mt-0.5" />
+        <p className="text-sm text-accent-brand">
           {t('description')}
         </p>
       </div>
@@ -197,7 +197,7 @@ export function TranslationForm({
       {/* Locale selector - only on add */}
       {!isEditing && (
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          <label className="block text-sm font-medium text-ink mb-1">
             {t('selectLanguage')}
           </label>
           <div className="relative">
@@ -205,7 +205,7 @@ export function TranslationForm({
               value={locale}
               onChange={(e) => handleLocaleChange(e.target.value)}
               required
-              className="w-full px-4 py-3 bg-white dark:bg-gray-900 rounded-xl border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 appearance-none cursor-pointer hover:border-gray-400 dark:hover:border-gray-600 transition-colors pr-10"
+              className="w-full px-4 py-3 bg-surface rounded-xl border border-hairline text-ink appearance-none cursor-pointer hover:border-ink-subtle transition-colors pr-10"
             >
               <option value="">{t('selectLanguage')}</option>
               {availableNewLocales.map(loc => (
@@ -214,7 +214,7 @@ export function TranslationForm({
                 </option>
               ))}
             </select>
-            <ChevronDown className="w-5 h-5 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+            <ChevronDown className="w-5 h-5 text-ink-subtle absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
           </div>
         </div>
       )}
@@ -222,37 +222,37 @@ export function TranslationForm({
       {/* Restaurant section */}
       {locale && (
         <>
-          <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6 space-y-4">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+          <div className="bg-surface rounded-2xl border border-hairline p-6 space-y-4">
+            <h3 className="text-lg font-semibold text-ink">
               {t('restaurant')}
             </h3>
             {restaurantTranslations?.find(tr => tr.locale === 'en') && (
-              <p className="text-xs text-gray-500">
-                {t('englishReference')} <span className="font-medium text-gray-700 dark:text-gray-300">
+              <p className="text-xs text-ink-muted">
+                {t('englishReference')} <span className="font-medium text-ink">
                   {restaurantTranslations.find(tr => tr.locale === 'en')?.name}
                 </span>
               </p>
             )}
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              <label className="block text-sm font-medium text-ink mb-1">
                 {t('nameIn', { locale: locale.toUpperCase() })}
               </label>
               <input
                 type="text"
                 value={restaurantName}
                 onChange={(e) => setRestaurantName(e.target.value)}
-                className="w-full px-4 py-2 bg-white dark:bg-gray-900 rounded-xl border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100"
+                className="w-full px-4 py-2 bg-surface rounded-xl border border-hairline text-ink"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              <label className="block text-sm font-medium text-ink mb-1">
                 {t('descriptionIn', { locale: locale.toUpperCase() })}
               </label>
               <textarea
                 value={restaurantDescription}
                 onChange={(e) => setRestaurantDescription(e.target.value)}
                 rows={2}
-                className="w-full px-4 py-2 bg-white dark:bg-gray-900 rounded-xl border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 field-sizing-content"
+                className="w-full px-4 py-2 bg-surface rounded-xl border border-hairline text-ink field-sizing-content"
               />
             </div>
           </div>
@@ -261,16 +261,16 @@ export function TranslationForm({
           {categories.map(category => (
             <div
               key={category.id}
-              className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden"
+              className="bg-surface rounded-2xl border border-hairline overflow-hidden"
             >
               {/* Category header - darker background */}
               <button
                 type="button"
                 onClick={() => toggleCategory(category.id)}
-                className="w-full flex items-center gap-3 px-4 py-3 bg-gray-200 dark:bg-gray-700"
+                className="w-full flex items-center gap-3 px-4 py-3 bg-surface-2"
               >
                 {/* Category image */}
-                <div className="w-10 h-10 rounded-lg overflow-hidden bg-gray-300 dark:bg-gray-600 flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 rounded-lg overflow-hidden bg-hairline flex items-center justify-center shrink-0">
                   {category.theme?.image ? (
                     <Image
                       src={category.theme.image}
@@ -286,7 +286,7 @@ export function TranslationForm({
                 </div>
 
                 <div className="flex-1 text-left">
-                  <p className="text-xs text-gray-600 dark:text-gray-400">
+                  <p className="text-xs text-ink-muted">
                     {t('categoryEnglishLabel')} {getEnglishCategoryName(category)}
                   </p>
                   <input
@@ -298,24 +298,24 @@ export function TranslationForm({
                     })}
                     onClick={(e) => e.stopPropagation()}
                     placeholder={t('categoryNamePlaceholder', { locale: locale.toUpperCase() })}
-                    className="mt-1 w-full px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg border border-gray-300 dark:border-gray-700 text-sm text-gray-900 dark:text-gray-100"
+                    className="mt-1 w-full px-3 py-1.5 bg-surface rounded-lg border border-hairline text-sm text-ink"
                   />
                 </div>
 
                 {collapsedCategories[category.id] ? (
-                  <ChevronDown className="w-5 h-5 text-gray-500 shrink-0" />
+                  <ChevronDown className="w-5 h-5 text-ink-muted shrink-0" />
                 ) : (
-                  <ChevronUp className="w-5 h-5 text-gray-500 shrink-0" />
+                  <ChevronUp className="w-5 h-5 text-ink-muted shrink-0" />
                 )}
               </button>
 
               {/* Items - only show if not collapsed */}
               {!collapsedCategories[category.id] && (
-                <div className="divide-y divide-gray-100 dark:divide-gray-800">
+                <div className="divide-y divide-hairline">
                   {category.menuItems.map(item => (
                     <div key={item.id} className="px-4 py-3 flex gap-3">
                       {/* Item image */}
-                      <div className="w-12 h-12 rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center shrink-0">
+                      <div className="w-12 h-12 rounded-lg overflow-hidden bg-surface-2 flex items-center justify-center shrink-0">
                         {item.image ? (
                           <Image
                             src={item.image}
@@ -332,8 +332,8 @@ export function TranslationForm({
 
                       {/* Translation inputs */}
                       <div className="flex-1 space-y-2">
-                        <p className="text-xs text-gray-500">
-                          {t('englishReference')} <span className="font-medium text-gray-700 dark:text-gray-300">{getEnglishName(item)}</span>
+                        <p className="text-xs text-ink-muted">
+                          {t('englishReference')} <span className="font-medium text-ink">{getEnglishName(item)}</span>
                         </p>
                         <input
                           type="text"
@@ -346,7 +346,7 @@ export function TranslationForm({
                             },
                           })}
                           placeholder={t('itemNamePlaceholder', { locale: locale.toUpperCase() })}
-                          className="w-full px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg border border-gray-300 dark:border-gray-700 text-sm text-gray-900 dark:text-gray-100"
+                          className="w-full px-3 py-1.5 bg-surface rounded-lg border border-hairline text-sm text-ink"
                         />
                         <textarea
                           value={itemTranslations[item.id]?.description || ''}
@@ -359,7 +359,7 @@ export function TranslationForm({
                           })}
                           rows={1}
                           placeholder={t('itemDescriptionPlaceholder', { locale: locale.toUpperCase() })}
-                          className="w-full px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg border border-gray-300 dark:border-gray-700 text-sm text-gray-900 dark:text-gray-100 field-sizing-content"
+                          className="w-full px-3 py-1.5 bg-surface rounded-lg border border-hairline text-sm text-ink field-sizing-content"
                         />
                       </div>
                     </div>
@@ -377,7 +377,7 @@ export function TranslationForm({
           <button
             type="submit"
             disabled={isSaving}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-black text-white rounded-full font-semibold hover:bg-gray-800 transition-colors disabled:opacity-50"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-ink text-[color:var(--color-surface)] rounded-full font-semibold hover:opacity-90 transition-opacity disabled:opacity-50"
           >
             <Save className="w-4 h-4" />
             {isSaving ? t('saving') : t('saveTranslation')}
@@ -385,7 +385,7 @@ export function TranslationForm({
           <button
             type="button"
             onClick={() => router.back()}
-            className="inline-flex items-center gap-2 px-6 py-3 border border-gray-300 rounded-full font-semibold hover:bg-gray-50 transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 border border-hairline rounded-full font-semibold text-ink hover:bg-surface-2 transition-colors"
           >
             <X className="w-4 h-4" />
             {t('cancel')}

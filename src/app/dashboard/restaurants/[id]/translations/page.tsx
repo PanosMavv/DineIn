@@ -55,7 +55,7 @@ export default async function TranslationsPage({
     <div>
       <Link
         href={`/dashboard/restaurants/${id}`}
-        className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 mb-4"
+        className="inline-flex items-center gap-2 text-sm text-ink-muted hover:text-ink mb-4"
       >
         <ArrowLeft className="w-4 h-4" />
         {t('back')}
@@ -63,16 +63,16 @@ export default async function TranslationsPage({
 
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">
+          <h1 className="text-2xl md:text-3xl font-bold text-ink">
             {t('header')}
           </h1>
-          <p className="text-gray-500 dark:text-gray-400 mt-1">
+          <p className="text-ink-muted mt-1">
             {t('description')}
           </p>
         </div>
         <Link
           href={`/dashboard/restaurants/${id}/translations/new`}
-          className="inline-flex items-center gap-2 px-5 py-2.5 bg-black text-white rounded-full text-sm font-semibold hover:bg-gray-800 transition-colors"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-ink text-[color:var(--color-surface)] rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
         >
           <Plus className="w-4 h-4" />
           {t('add.header')}
@@ -80,11 +80,11 @@ export default async function TranslationsPage({
       </div>
 
       {locales.length === 0 ? (
-        <div className="text-center py-16 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800">
-          <p className="text-gray-500 mb-4">{t('noTranslations')}</p>
+        <div className="text-center py-16 bg-surface rounded-2xl border border-hairline">
+          <p className="text-ink-muted mb-4">{t('noTranslations')}</p>
           <Link
             href={`/dashboard/restaurants/${id}/translations/new`}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-black text-white rounded-full font-semibold"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-ink text-[color:var(--color-surface)] rounded-full font-semibold hover:opacity-90 transition-opacity"
           >
             <Plus className="w-4 h-4" />
             {t('add.header')}
@@ -95,30 +95,22 @@ export default async function TranslationsPage({
           {locales.map(locale => {
             const restaurantTranslation = restaurant.translations.find(tr => tr.locale === locale);
             const isActive = restaurantTranslation?.isActive ?? true;
-            const categoryTranslations = restaurant.categories.filter(cat =>
-              cat.translations.some(tr => tr.locale === locale)
-            );
-            const itemTranslations = restaurant.categories.flatMap(cat =>
-              cat.menuItems.filter(item =>
-                item.translations.some(tr => tr.locale === locale)
-              )
-            );
 
             return (
               <div
                 key={locale}
                 className={`p-4 rounded-2xl border transition-colors ${isActive
-                  ? 'bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800'
-                  : 'bg-gray-50 dark:bg-gray-900/50 border-gray-200 dark:border-gray-800'
+                    ? 'bg-surface border-hairline'
+                    : 'bg-surface-2 border-hairline'
                   }`}
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-lg">
+                    <div className="w-10 h-10 rounded-full bg-surface-2 flex items-center justify-center text-lg">
                       {locale === 'en' ? '🇬🇧' : locale === 'el' ? '🇬🇷' : locale === 'de' ? '🇩🇪' : locale === 'fr' ? '🇫🇷' : '🇨🇳'}
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                      <h3 className="text-lg font-semibold text-ink">
                         {locale.toUpperCase()}
                       </h3>
                     </div>
@@ -132,9 +124,9 @@ export default async function TranslationsPage({
                     />
                     <Link
                       href={`/dashboard/restaurants/${id}/translations/${locale}/edit`}
-                      className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
+                      className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-surface-2"
                     >
-                      <Pencil className="w-4 h-4 text-gray-500" />
+                      <Pencil className="w-4 h-4 text-ink-muted" />
                     </Link>
                     <DeleteTranslation
                       restaurantId={id}

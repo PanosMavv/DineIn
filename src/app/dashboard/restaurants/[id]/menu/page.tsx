@@ -62,7 +62,7 @@ export default async function MenuPage({
     <div>
       <Link
         href={`/dashboard/restaurants/${id}`}
-        className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 mb-4"
+        className="inline-flex items-center gap-2 text-sm text-ink-muted hover:text-ink mb-4"
       >
         <ArrowLeft className="w-4 h-4" />
         {t('back', { name })}
@@ -70,16 +70,16 @@ export default async function MenuPage({
 
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">
+          <h1 className="text-2xl md:text-3xl font-bold text-ink">
             {t('header')}
           </h1>
-          <p className="text-gray-500 dark:text-gray-400 mt-1">
+          <p className="text-ink-muted mt-1">
             {t('description', { name })}
           </p>
         </div>
         <Link
           href={`/dashboard/restaurants/${id}/menu/new`}
-          className="inline-flex items-center gap-2 px-5 py-2.5 bg-black text-white rounded-full text-sm font-semibold hover:bg-gray-800 transition-colors"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-ink text-[color:var(--color-surface)] rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
         >
           <Plus className="w-4 h-4" />
           {t('add.header')}
@@ -87,11 +87,11 @@ export default async function MenuPage({
       </div>
 
       {itemsByCategory.length === 0 ? (
-        <div className="text-center py-16 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800">
-          <p className="text-gray-500 mb-4">{t('noCategoriesOrItems')}</p>
+        <div className="text-center py-16 bg-surface rounded-2xl border border-hairline">
+          <p className="text-ink-muted mb-4">{t('noCategoriesOrItems')}</p>
           <Link
             href={`/dashboard/restaurants/${id}/categories`}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-black text-white rounded-full font-semibold"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-ink text-[color:var(--color-surface)] rounded-full font-semibold hover:opacity-90 transition-opacity"
           >
             <Plus className="w-4 h-4" />
             {t('createCategoriesFirst')}
@@ -102,23 +102,23 @@ export default async function MenuPage({
           {itemsByCategory.map(({ category, categoryName, items }) => (
             <div
               key={category.id}
-              className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden"
+              className="bg-surface rounded-2xl border border-hairline overflow-hidden"
             >
-              <div className="px-6 py-4 bg-gray-50 dark:bg-gray-800/50 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between">
-                <h2 className="font-semibold text-gray-900 dark:text-gray-100">
+              <div className="px-6 py-4 bg-surface-2 border-b border-hairline flex items-center justify-between">
+                <h2 className="font-semibold text-ink">
                   {categoryName}
                 </h2>
-                <span className="text-sm text-gray-500">
+                <span className="text-sm text-ink-muted">
                   {items.length} {tCard('items')}
                 </span>
               </div>
 
               {items.length === 0 ? (
-                <div className="px-6 py-8 text-center text-gray-500">
+                <div className="px-6 py-8 text-center text-ink-muted">
                   {t('noItemsInCategory')}
                 </div>
               ) : (
-                <div className="divide-y divide-gray-100 dark:divide-gray-800">
+                <div className="divide-y divide-hairline">
                   {items.map((item) => {
                     const itemName = item.translations[0]?.name || item.id;
                     return (
@@ -126,7 +126,7 @@ export default async function MenuPage({
                         key={item.id}
                         className="px-6 py-4 flex items-center gap-4"
                       >
-                        <div className="w-12 h-12 rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center shrink-0">
+                        <div className="w-12 h-12 rounded-lg overflow-hidden bg-surface-2 flex items-center justify-center shrink-0">
                           {item.image ? (
                             <img
                               src={item.image}
@@ -138,30 +138,30 @@ export default async function MenuPage({
                           )}
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 truncate">
+                          <h3 className="text-sm font-semibold text-ink truncate">
                             {itemName}
                           </h3>
-                          <p className="text-sm text-gray-500">
+                          <p className="text-sm text-ink-muted">
                             €{Number(item.price).toFixed(2)}
                           </p>
                         </div>
                         <div className="flex items-center gap-2">
                           {item.isAvailable ? (
-                            <span className="inline-flex items-center gap-1 px-2 py-1 bg-green-50 text-green-700 text-xs rounded-full">
+                            <span className="inline-flex items-center gap-1 px-2 py-1 bg-success/10 text-success text-xs rounded-full">
                               <Eye className="w-3 h-3" />
                               {t('visible')}
                             </span>
                           ) : (
-                            <span className="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 text-gray-500 text-xs rounded-full">
+                            <span className="inline-flex items-center gap-1 px-2 py-1 bg-surface-2 text-ink-muted text-xs rounded-full">
                               <EyeOff className="w-3 h-3" />
                               {t('hidden')}
                             </span>
                           )}
                           <Link
                             href={`/dashboard/restaurants/${id}/menu/${item.id}/edit`}
-                            className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
+                            className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-surface-2"
                           >
-                            <Pencil className="w-4 h-4 text-gray-500" />
+                            <Pencil className="w-4 h-4 text-ink-muted" />
                           </Link>
                           <DeleteMenuItem restaurantId={id} itemId={item.id} />
                         </div>

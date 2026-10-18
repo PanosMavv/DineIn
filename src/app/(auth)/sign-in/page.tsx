@@ -34,12 +34,12 @@ export default function SignInPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950 flex flex-col">
+    <div className="min-h-screen bg-surface flex flex-col">
       {/* Back button */}
       <div className="px-4 py-4">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
+          className="inline-flex items-center gap-2 text-sm text-ink-muted hover:text-ink transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           {t('backToHome')}
@@ -52,10 +52,10 @@ export default function SignInPage() {
           {/* Logo */}
           <div className="text-center mb-8">
             <Logo />
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-6">
+            <h1 className="text-2xl font-bold text-ink mt-6">
               {t('welcome')}
             </h1>
-            <p className="text-gray-500 dark:text-gray-400 mt-2 text-sm">
+            <p className="text-ink-muted mt-2 text-sm">
               {t('description')}
             </p>
           </div>
@@ -64,7 +64,7 @@ export default function SignInPage() {
           <button
             onClick={handleGoogleSignIn}
             disabled={isLoading}
-            className="w-full flex items-center justify-center gap-3 px-6 py-3.5 bg-white border border-gray-300 rounded-full font-semibold text-gray-900 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-sm"
+            className="w-full flex items-center justify-center gap-3 px-6 py-3.5 bg-surface border border-hairline rounded-full font-semibold text-ink hover:bg-surface-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-sm"
           >
             <svg className="w-5 h-5" viewBox="0 0 24 24">
               <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -76,10 +76,10 @@ export default function SignInPage() {
           </button>
 
           {/* Terms */}
-          <p className="text-xs text-center text-gray-400 dark:text-gray-500 mt-6">
+          <p className="text-xs text-center text-ink-subtle mt-6">
             {t.rich('eula', {
-              tos: (chunks) => <a href="#" className="underline hover:text-gray-600">{chunks}</a>,
-              privacy: (chunks) => <a href="#" className="underline hover:text-gray-600">{chunks}</a>,
+              tos: (chunks) => <a href="#" className="underline hover:text-ink-muted">{chunks}</a>,
+              privacy: (chunks) => <a href="#" className="underline hover:text-ink-muted">{chunks}</a>,
             })}
           </p>
         </div>

@@ -44,7 +44,7 @@ export default async function CategoriesPage({
     <div>
       <Link
         href={`/dashboard/restaurants/${id}`}
-        className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 mb-4"
+        className="inline-flex items-center gap-2 text-sm text-ink-muted hover:text-ink mb-4"
       >
         <ArrowLeft className="w-4 h-4" />
         {t('back', { name })}
@@ -52,16 +52,16 @@ export default async function CategoriesPage({
 
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">
+          <h1 className="text-2xl md:text-3xl font-bold text-ink">
             {t('header')}
           </h1>
-          <p className="text-gray-500 dark:text-gray-400 mt-1">
+          <p className="text-ink-muted mt-1">
             {t('description')}
           </p>
         </div>
         <Link
           href={`/dashboard/restaurants/${id}/categories/new`}
-          className="inline-flex items-center gap-2 px-5 py-2.5 bg-black text-white rounded-full text-sm font-semibold hover:bg-gray-800 transition-colors"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-ink text-[color:var(--color-surface)] rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
         >
           <Plus className="w-4 h-4" />
           {t('add.header')}
@@ -69,8 +69,8 @@ export default async function CategoriesPage({
       </div>
 
       {restaurant.categories.length === 0 ? (
-        <div className="text-center py-16 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800">
-          <p className="text-gray-500">{t('noCategories')}</p>
+        <div className="text-center py-16 bg-surface rounded-2xl border border-hairline">
+          <p className="text-ink-muted">{t('noCategories')}</p>
         </div>
       ) : (
         <div className="grid gap-4">
@@ -79,9 +79,9 @@ export default async function CategoriesPage({
             return (
               <div
                 key={category.id}
-                className="p-4 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 flex items-center gap-4"
+                className="p-4 bg-surface rounded-2xl border border-hairline flex items-center gap-4"
               >
-                <div className="w-16 h-16 rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center shrink-0">
+                <div className="w-16 h-16 rounded-xl overflow-hidden bg-surface-2 flex items-center justify-center shrink-0">
                   {category.theme?.image ? (
                     <img
                       src={category.theme.image}
@@ -89,22 +89,22 @@ export default async function CategoriesPage({
                       className="w-full h-full object-cover"
                     />
                   ) : (
-                    <ImageIcon className="w-6 h-6 text-gray-400" />
+                    <ImageIcon className="w-6 h-6 text-ink-subtle" />
                   )}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100">
+                  <h3 className="text-base font-semibold text-ink">
                     {categoryName}
                   </h3>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-ink-muted">
                     {category._count.menuItems} {tCard('items')}
                   </p>
                 </div>
                 <Link
                   href={`/dashboard/restaurants/${id}/categories/${category.id}/edit`}
-                  className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
+                  className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-surface-2"
                 >
-                  <Pencil className="w-4 h-4 text-gray-500" />
+                  <Pencil className="w-4 h-4 text-ink-muted" />
                 </Link>
                 <DeleteCategory restaurantId={id} categoryId={category.id} />
               </div>

@@ -59,17 +59,17 @@ export function SimpleListMenu({ restaurant, groupedMenu }: Props) {
   }, [activeCategory]);
 
   return (
-    <div className="min-h-full bg-white dark:bg-gray-950">
+    <div className="min-h-full bg-surface">
       {/* Zero-height sticky wrapper — pins to scroll viewport top without taking space */}
       <div className="sticky top-0 z-20 h-0">
         {/* Absolute overlay — inherits wrapper width, doesn't push content */}
         <div
-          className={`absolute top-0 left-0 right-0 bg-white dark:bg-gray-900 shadow-sm ${showNav ? 'visible' : 'invisible'
+          className={`absolute top-0 left-0 right-0 bg-surface shadow-sm ${showNav ? 'visible' : 'invisible'
             }`}
         >
           <div className="flex items-center justify-between px-4 py-3">
             <div className="w-9" />
-            <h2 className="text-base font-bold text-gray-900 dark:text-gray-100 truncate flex-1 text-center mx-3">
+            <h2 className="text-base font-bold text-ink truncate flex-1 text-center mx-3">
               {restaurant.name}
             </h2>
             <SearchBox groupedMenu={groupedMenu} />
@@ -99,10 +99,10 @@ export function SimpleListMenu({ restaurant, groupedMenu }: Props) {
             }}
             className="scroll-mt-28"
           >
-            <div className="bg-[#fafafa] dark:bg-gray-900 border-y border-gray-200 dark:border-gray-800 -mx-4 px-4 py-4">
-              <h2 className="text-lg font-extrabold text-gray-900 dark:text-gray-100">{g.category}</h2>
+            <div className="bg-surface-2 border-y border-hairline -mx-4 px-4 py-4">
+              <h2 className="text-lg font-extrabold text-ink">{g.category}</h2>
             </div>
-            <div className="divide-y divide-gray-200 dark:divide-gray-800">
+            <div className="divide-y divide-hairline">
               {g.items.map((item) => (
                 <ImageMenuItem key={item.id} item={item} showImage={true} />
               ))}

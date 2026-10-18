@@ -119,9 +119,9 @@ export function MenuItemForm({ restaurantId, categories, initialData }: Props) {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="max-w-2xl space-y-6">
       {/* Language notice */}
-      <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl flex items-start gap-3">
-        <Globe className="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
-        <p className="text-sm text-blue-700 dark:text-blue-300">
+      <div className="p-4 bg-accent-brand/10 rounded-xl flex items-start gap-3">
+        <Globe className="w-5 h-5 text-accent-brand shrink-0 mt-0.5" />
+        <p className="text-sm text-accent-brand">
           {t.rich('description', {
             strong: (chunks) => <strong>{chunks}</strong>,
           })}
@@ -130,14 +130,14 @@ export function MenuItemForm({ restaurantId, categories, initialData }: Props) {
 
       {/* Name */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-          {t('itemName')} <span className="text-xs text-gray-400">{t('englishReminder')}</span>
+        <label className="block text-sm font-medium text-ink mb-1">
+          {t('itemName')} <span className="text-xs text-ink-subtle">{t('englishReminder')}</span>
         </label>
         <input
           {...register('name')}
           placeholder={t('namePlaceholder')}
-          className={`w-full px-4 py-2 bg-white dark:bg-gray-900 rounded-xl border ${errors.name ? 'border-red-500' : 'border-gray-300 dark:border-gray-700'
-            } text-gray-900 dark:text-gray-100`}
+          className={`w-full px-4 py-2 bg-surface rounded-xl border ${errors.name ? 'border-red-500' : 'border-hairline'
+            } text-ink`}
         />
         {errors.name && (
           <p className="text-xs text-red-500 mt-1">{errors.name.message}</p>
@@ -146,15 +146,15 @@ export function MenuItemForm({ restaurantId, categories, initialData }: Props) {
 
       {/* Description */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-          {t('itemDescription')} <span className="text-xs text-gray-400">{t('englishReminder')}</span>
+        <label className="block text-sm font-medium text-ink mb-1">
+          {t('itemDescription')} <span className="text-xs text-ink-subtle">{t('englishReminder')}</span>
         </label>
         <textarea
           {...register('description')}
           rows={3}
           placeholder={t('descriptionPlaceholder')}
-          className={`w-full px-4 py-2 bg-white dark:bg-gray-900 rounded-xl border ${errors.description ? 'border-red-500' : 'border-gray-300 dark:border-gray-700'
-            } text-gray-900 dark:text-gray-100`}
+          className={`w-full px-4 py-2 bg-surface rounded-xl border ${errors.description ? 'border-red-500' : 'border-hairline'
+            } text-ink`}
         />
         {errors.description && (
           <p className="text-xs text-red-500 mt-1">{errors.description.message}</p>
@@ -164,12 +164,12 @@ export function MenuItemForm({ restaurantId, categories, initialData }: Props) {
       {/* Category + Price */}
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          <label className="block text-sm font-medium text-ink mb-1">
             {t('itemCategory')}
           </label>
           <select
             {...register('categoryId')}
-            className="w-full px-4 py-2 bg-white dark:bg-gray-900 rounded-xl border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100"
+            className="w-full px-4 py-2 bg-surface rounded-xl border border-hairline text-ink"
           >
             {categories.map((cat) => (
               <option key={cat.id} value={cat.id}>{cat.name}</option>
@@ -180,14 +180,14 @@ export function MenuItemForm({ restaurantId, categories, initialData }: Props) {
           )}
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          <label className="block text-sm font-medium text-ink mb-1">
             {t('itemPrice')}
           </label>
           <input
             {...register('price')}
             type="number"
             step="0.01"
-            className="w-full px-4 py-2 bg-white dark:bg-gray-900 rounded-xl border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100"
+            className="w-full px-4 py-2 bg-surface rounded-xl border border-hairline text-ink"
           />
           {errors.price && (
             <p className="text-xs text-red-500 mt-1">{errors.price.message}</p>
@@ -197,26 +197,26 @@ export function MenuItemForm({ restaurantId, categories, initialData }: Props) {
 
       {/* Original Price */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-          {t('originalPrice')} <span className="text-xs text-gray-400">{t('originalPriceOptional')}</span>
+        <label className="block text-sm font-medium text-ink mb-1">
+          {t('originalPrice')} <span className="text-xs text-ink-subtle">{t('originalPriceOptional')}</span>
         </label>
         <input
           {...register('originalPrice')}
           type="number"
           step="0.01"
-          className="w-full px-4 py-2 bg-white dark:bg-gray-900 rounded-xl border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100"
+          className="w-full px-4 py-2 bg-surface rounded-xl border border-hairline text-ink"
         />
       </div>
 
       {/* Image URL */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+        <label className="block text-sm font-medium text-ink mb-1">
           {t('imageUrl')}
         </label>
         <input
           {...register('image')}
           placeholder="https://..."
-          className="w-full px-4 py-2 bg-white dark:bg-gray-900 rounded-xl border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100"
+          className="w-full px-4 py-2 bg-surface rounded-xl border border-hairline text-ink"
         />
         {imageUrl && (
           <img src={imageUrl} alt="Preview" className="mt-2 w-24 h-24 rounded-xl object-cover" />
@@ -230,21 +230,21 @@ export function MenuItemForm({ restaurantId, categories, initialData }: Props) {
           type="checkbox"
           className="w-4 h-4"
         />
-        <label className="text-sm text-gray-700 dark:text-gray-300">
+        <label className="text-sm text-ink">
           {t('featuredItem')}
         </label>
       </div>
 
       {isFeatured && (
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-            {t('featuredLabel')} <span className="text-xs text-gray-400">{t('englishReminder')}</span>
+          <label className="block text-sm font-medium text-ink mb-1">
+            {t('featuredLabel')} <span className="text-xs text-ink-subtle">{t('englishReminder')}</span>
           </label>
           <input
             {...register('featuredLabel')}
             placeholder={t('featuredLabelPlaceholder')}
-            className={`w-full px-4 py-2 bg-white dark:bg-gray-900 rounded-xl border ${errors.featuredLabel ? 'border-red-500' : 'border-gray-300 dark:border-gray-700'
-              } text-gray-900 dark:text-gray-100`}
+            className={`w-full px-4 py-2 bg-surface rounded-xl border ${errors.featuredLabel ? 'border-red-500' : 'border-hairline'
+              } text-ink`}
           />
           {errors.featuredLabel && (
             <p className="text-xs text-red-500 mt-1">{errors.featuredLabel.message}</p>
@@ -259,7 +259,7 @@ export function MenuItemForm({ restaurantId, categories, initialData }: Props) {
           type="checkbox"
           className="w-4 h-4"
         />
-        <label className="text-sm text-gray-700 dark:text-gray-300">
+        <label className="text-sm text-ink">
           {t('availableForOrdering')}
         </label>
       </div>
@@ -269,7 +269,7 @@ export function MenuItemForm({ restaurantId, categories, initialData }: Props) {
         <button
           type="submit"
           disabled={isSubmitting || !isValid}
-          className="inline-flex items-center gap-2 px-6 py-3 bg-black text-white rounded-full font-semibold hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-ink text-[color:var(--color-surface)] rounded-full font-semibold hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <Save className="w-4 h-4" />
           {isSubmitting ? t('saving') : t('saveItem')}
@@ -277,7 +277,7 @@ export function MenuItemForm({ restaurantId, categories, initialData }: Props) {
         <button
           type="button"
           onClick={() => router.back()}
-          className="inline-flex items-center gap-2 px-6 py-3 border border-gray-300 rounded-full font-semibold hover:bg-gray-50 transition-colors"
+          className="inline-flex items-center gap-2 px-6 py-3 border border-hairline rounded-full font-semibold text-ink hover:bg-surface-2 transition-colors"
         >
           <X className="w-4 h-4" />
           {t('cancel')}

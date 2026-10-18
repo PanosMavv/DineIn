@@ -18,11 +18,11 @@ export function Logo({ size = 'md', showDashboard = false, href = '/' }: Props) 
     <Link href={href} className="inline-flex items-center gap-1 shrink-0">
       <QRLogo className={`${sizes[size].icon} shrink-0`} />
       <span className="inline-flex items-end gap-1">
-        <span className={`${sizes[size].text} font-extrabold text-gray-900 dark:text-gray-100 leading-none`}>
-          Dine<span className="text-blue-600">.</span>In
+        <span className={`${sizes[size].text} font-extrabold text-ink leading-none`}>
+          Dine<span className="text-accent-brand">.</span>In
         </span>
         {showDashboard && (
-          <span className={`${sizes[size].dashboard} font-medium text-gray-500 dark:text-gray-400  leading-none mb-0.5`}>
+          <span className={`${sizes[size].dashboard} font-medium text-ink-muted leading-none mb-0.5`}>
             Dashboard
           </span>
         )}

@@ -40,7 +40,7 @@ export function ImageCarousel({ images }: Props) {
 
   return (
     <div
-      className="relative w-full bg-gray-100 overflow-hidden"
+      className="relative w-full bg-surface-2 overflow-hidden"
       style={{ aspectRatio: '2/1', maxHeight: '25vh' }}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}

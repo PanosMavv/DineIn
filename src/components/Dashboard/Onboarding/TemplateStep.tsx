@@ -37,7 +37,7 @@ function MiniTemplate({ template, restaurantName, restaurantDescription, grouped
   };
 
   return (
-    <div className="w-full aspect-9/16 overflow-hidden rounded-xl relative bg-white pointer-events-none">
+    <div className="w-full aspect-9/16 overflow-hidden rounded-xl relative bg-surface pointer-events-none">
       <div
         className="absolute top-0 left-0 origin-top-left"
         style={{ transform: 'scale(0.35)', width: `${100 / 0.35}%` }}

@@ -27,7 +27,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className={`${inter.className} bg-gray-50 dark:bg-gray-950 flex flex-col min-h-screen`}>
+      <body className={`${inter.className} bg-surface-2 text-ink flex flex-col min-h-screen`}>
         <NextIntlClientProvider messages={messages} locale={locale}>
           <ThemeProvider>
             <main className="flex-1">

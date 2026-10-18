@@ -80,23 +80,23 @@ export function CategoryForm({ restaurantId, initialData }: Props) {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="max-w-lg space-y-6">
       {/* Language notice */}
-      <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl flex items-start gap-3">
-        <Globe className="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
-        <p className="text-sm text-blue-700 dark:text-blue-300">
+      <div className="p-4 bg-accent-brand/10 rounded-xl flex items-start gap-3">
+        <Globe className="w-5 h-5 text-accent-brand shrink-0 mt-0.5" />
+        <p className="text-sm text-accent-brand">
           {t('description')}
         </p>
       </div>
 
       {/* Name */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-          {t('categoryName')} <span className="text-xs text-gray-400">{t('englishReminder')}</span>
+        <label className="block text-sm font-medium text-ink mb-1">
+          {t('categoryName')} <span className="text-xs text-ink-subtle">{t('englishReminder')}</span>
         </label>
         <input
           {...register('name')}
           placeholder={t('namePlaceholder')}
-          className={`w-full px-4 py-2 bg-white dark:bg-gray-900 rounded-xl border ${errors.name ? 'border-red-500' : 'border-gray-300 dark:border-gray-700'
-            } text-gray-900 dark:text-gray-100`}
+          className={`w-full px-4 py-2 bg-surface rounded-xl border ${errors.name ? 'border-red-500' : 'border-hairline'
+            } text-ink`}
         />
         {errors.name && (
           <p className="text-xs text-red-500 mt-1">{errors.name.message}</p>
@@ -105,13 +105,13 @@ export function CategoryForm({ restaurantId, initialData }: Props) {
 
       {/* Image */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+        <label className="block text-sm font-medium text-ink mb-1">
           {t('imageUrl')}
         </label>
         <input
           {...register('image')}
           placeholder="https://..."
-          className="w-full px-4 py-2 bg-white dark:bg-gray-900 rounded-xl border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100"
+          className="w-full px-4 py-2 bg-surface rounded-xl border border-hairline text-ink"
         />
         {imageUrl && (
           <img src={imageUrl} alt="Preview" className="mt-2 w-24 h-24 rounded-xl object-cover" />
@@ -120,13 +120,13 @@ export function CategoryForm({ restaurantId, initialData }: Props) {
 
       {/* Emoji */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-          {t('emoji')} <span className="text-xs text-gray-400">{t('emojiOptional')}</span>
+        <label className="block text-sm font-medium text-ink mb-1">
+          {t('emoji')} <span className="text-xs text-ink-subtle">{t('emojiOptional')}</span>
         </label>
         <input
           {...register('emoji')}
           placeholder="🍕"
-          className="w-full px-4 py-2 bg-white dark:bg-gray-900 rounded-xl border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100"
+          className="w-full px-4 py-2 bg-surface rounded-xl border border-hairline text-ink"
         />
       </div>
 
@@ -135,7 +135,7 @@ export function CategoryForm({ restaurantId, initialData }: Props) {
         <button
           type="submit"
           disabled={isSubmitting || !isValid}
-          className="inline-flex items-center gap-2 px-6 py-3 bg-black text-white rounded-full font-semibold hover:bg-gray-800 transition-colors disabled:opacity-50"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-ink text-[color:var(--color-surface)] rounded-full font-semibold hover:opacity-90 transition-opacity disabled:opacity-50"
         >
           <Save className="w-4 h-4" />
           {isSubmitting ? t('saving') : t('saveCategory')}
@@ -143,7 +143,7 @@ export function CategoryForm({ restaurantId, initialData }: Props) {
         <button
           type="button"
           onClick={() => router.back()}
-          className="inline-flex items-center gap-2 px-6 py-3 border border-gray-300 rounded-full font-semibold hover:bg-gray-50 transition-colors"
+          className="inline-flex items-center gap-2 px-6 py-3 border border-hairline rounded-full font-semibold text-ink hover:bg-surface-2 transition-colors"
         >
           <X className="w-4 h-4" />
           {t('cancel')}

@@ -36,13 +36,13 @@ export function ToggleTranslation({ restaurantId, locale, isActive }: Props) {
     <button
       onClick={handleToggle}
       disabled={isLoading}
-      className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-50"
+      className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-surface-2 disabled:opacity-50"
       title={isActive ? 'Disable translation' : 'Enable translation'}
     >
       {isActive ? (
-        <Eye className="w-4 h-4 text-green-500" />
+        <Eye className="w-4 h-4 text-success" />
       ) : (
-        <EyeOff className="w-4 h-4 text-gray-400" />
+        <EyeOff className="w-4 h-4 text-ink-subtle" />
       )}
     </button>
   );

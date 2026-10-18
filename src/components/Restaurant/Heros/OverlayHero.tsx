@@ -18,7 +18,7 @@ export function OverlayHero({ restaurant, heroRef }: Props) {
       {images.length > 0 ? (
         <ImageCarousel images={images} />
       ) : (
-        <div className="aspect-2/1 max-h-[25vh] bg-gray-200 dark:bg-gray-800" />
+        <div className="aspect-2/1 max-h-[25vh] bg-surface-2" />
       )}
 
       {/* Overlay content */}

@@ -88,69 +88,69 @@ export function SettingsButton() {
       )}
 
       <div
-        className={`fixed inset-x-0 bottom-0 z-50 bg-white dark:bg-gray-900 rounded-t-2xl shadow-lg transition-transform duration-300 ease-out max-w-2xl mx-auto ${isOpen ? 'translate-y-0' : 'translate-y-full'}`}
+        className={`fixed inset-x-0 bottom-0 z-50 bg-surface rounded-t-2xl shadow-lg transition-transform duration-300 ease-out max-w-2xl mx-auto ${isOpen ? 'translate-y-0' : 'translate-y-full'}`}
         style={{ maxHeight: '80vh' }}
       >
         <div className="flex justify-center pt-3 pb-1">
-          <div className="w-10 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />
+          <div className="w-10 h-1 rounded-full bg-hairline" />
         </div>
 
         <div className="flex items-center justify-between px-6 py-3">
-          <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Settings</h2>
+          <h2 className="text-lg font-semibold text-ink">Settings</h2>
           <button
             onClick={() => setIsOpen(false)}
-            className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
+            className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-surface-2"
           >
-            <X className="w-5 h-5 text-gray-500" />
+            <X className="w-5 h-5 text-ink-muted" />
           </button>
         </div>
 
         <div className="px-6 pb-8 space-y-6 overflow-y-auto" style={{ maxHeight: 'calc(80vh - 60px)' }}>
           {/* Language dropdown */}
           <div>
-            <p className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-3">Language</p>
+            <p className="text-sm font-medium text-ink-muted mb-3">Language</p>
             <div className="relative" ref={dropdownRef}>
               <button
                 onClick={() => setIsLocaleDropdownOpen(!isLocaleDropdownOpen)}
-                className="w-full flex items-center justify-between gap-3 px-4 py-3 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-750 transition-colors"
+                className="w-full flex items-center justify-between gap-3 px-4 py-3 bg-surface rounded-xl border border-hairline hover:bg-surface-2 transition-colors"
               >
                 <div className="flex items-center gap-3">
                   <span className="text-xl">{currentLanguage.flag}</span>
                   <div className="text-left">
-                    <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                    <p className="text-sm font-medium text-ink">
                       {currentLanguage.name}
                     </p>
                     {currentLanguage.nativeName !== currentLanguage.name && (
-                      <p className="text-xs text-gray-400">{currentLanguage.nativeName}</p>
+                      <p className="text-xs text-ink-subtle">{currentLanguage.nativeName}</p>
                     )}
                   </div>
                 </div>
                 <ChevronDown
-                  className={`w-5 h-5 text-gray-400 transition-transform ${isLocaleDropdownOpen ? 'rotate-180' : ''}`}
+                  className={`w-5 h-5 text-ink-subtle transition-transform ${isLocaleDropdownOpen ? 'rotate-180' : ''}`}
                 />
               </button>
 
               {isLocaleDropdownOpen && (
-                <div className="mt-2 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 max-h-64 overflow-y-auto">
+                <div className="mt-2 bg-surface rounded-xl border border-hairline max-h-64 overflow-y-auto">
                   {languages.map(lang => (
                     <button
                       key={lang.code}
                       onClick={() => switchLanguage(lang.code)}
-                      className="w-full flex items-center justify-between gap-3 px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                      className="w-full flex items-center justify-between gap-3 px-4 py-3 hover:bg-surface-2 transition-colors"
                     >
                       <div className="flex items-center gap-3">
                         <span className="text-xl">{lang.flag}</span>
                         <div className="text-left">
-                          <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                          <p className="text-sm font-medium text-ink">
                             {lang.name}
                           </p>
                           {lang.nativeName !== lang.name && (
-                            <p className="text-xs text-gray-400">{lang.nativeName}</p>
+                            <p className="text-xs text-ink-subtle">{lang.nativeName}</p>
                           )}
                         </div>
                       </div>
                       {lang.code === locale && (
-                        <Check className="w-4 h-4 text-blue-600 shrink-0" />
+                        <Check className="w-4 h-4 text-accent-brand shrink-0" />
                       )}
                     </button>
                   ))}
@@ -159,26 +159,26 @@ export function SettingsButton() {
             </div>
           </div>
 
-          <div className="border-t border-gray-200 dark:border-gray-700" />
+          <div className="border-t border-hairline" />
 
           {/* Theme toggle */}
           <div>
-            <p className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-3">Appearance</p>
+            <p className="text-sm font-medium text-ink-muted mb-3">Appearance</p>
             <button
               onClick={toggleTheme}
-              className="flex items-center justify-between w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+              className="flex items-center justify-between w-full px-4 py-3 rounded-xl border border-hairline hover:bg-surface-2 transition-colors"
             >
               <div className="flex items-center gap-3">
                 {isDark ? (
-                  <Moon className="w-5 h-5 text-gray-500" />
+                  <Moon className="w-5 h-5 text-ink-muted" />
                 ) : (
                   <Sun className="w-5 h-5 text-yellow-500" />
                 )}
-                <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                <span className="text-sm font-medium text-ink">
                   {isDark ? 'Dark Mode' : 'Light Mode'}
                 </span>
               </div>
-              <span className="text-xs text-gray-400">{isDark ? 'Switch to light' : 'Switch to dark'}</span>
+              <span className="text-xs text-ink-subtle">{isDark ? 'Switch to light' : 'Switch to dark'}</span>
             </button>
           </div>
         </div>
@@ -190,10 +190,10 @@ export function SettingsButton() {
           setIsDark(dark);
           setIsOpen(true);
         }}
-        className="fixed bottom-4 right-4 z-30 w-12 h-12 rounded-full bg-white dark:bg-gray-800 shadow-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center transition-all duration-300 hover:scale-105"
+        className="fixed bottom-4 right-4 z-30 w-12 h-12 rounded-full bg-surface shadow-lg border border-hairline flex items-center justify-center transition-all duration-300 hover:scale-105"
         aria-label="Settings"
       >
-        <Settings className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+        <Settings className="w-5 h-5 text-ink-muted" />
       </button>
     </>
   );

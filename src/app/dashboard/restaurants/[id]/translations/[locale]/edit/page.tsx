@@ -67,13 +67,13 @@ export default async function EditTranslationPage({
     <div>
       <Link
         href={`/dashboard/restaurants/${id}/translations`}
-        className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 mb-4"
+        className="inline-flex items-center gap-2 text-sm text-ink-muted hover:text-ink mb-4"
       >
         <ArrowLeft className="w-4 h-4" />
         Back to Translations
       </Link>
 
-      <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+      <h1 className="text-2xl md:text-3xl font-bold text-ink mb-6">
         Edit {locale.toUpperCase()} Translation
       </h1>
 

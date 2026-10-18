@@ -67,20 +67,20 @@ export default async function RestaurantDetailPage({
     <div>
       <Link
         href="/dashboard/restaurants"
-        className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 mb-4"
+        className="inline-flex items-center gap-2 text-sm text-ink-muted hover:text-ink mb-4"
       >
         <ArrowLeft className="w-4 h-4" />
         {t('back')}
       </Link>
 
       <div className="flex items-center justify-between mb-8">
-        <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">
+        <h1 className="text-2xl md:text-3xl font-bold text-ink">
           {name}
         </h1>
         <Link
           href={`/${restaurant.slug}`}
           target="_blank"
-          className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-full text-sm font-medium text-blue-600 hover:bg-blue-100 transition-colors"
+          className="inline-flex items-center gap-2 px-4 py-2 bg-accent-brand/10 rounded-full text-sm font-medium text-accent-brand hover:bg-accent-brand/20 transition-colors"
         >
           <Eye className="w-4 h-4" />
           {t('preview')}
@@ -92,18 +92,18 @@ export default async function RestaurantDetailPage({
           <Link
             key={section.href}
             href={section.href}
-            className="flex items-center gap-4 p-6 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-colors"
+            className="flex items-center gap-4 p-6 bg-surface rounded-2xl border border-hairline hover:border-ink-subtle transition-colors"
           >
-            <div className="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center">
-              <section.icon className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+            <div className="w-12 h-12 rounded-xl bg-accent-brand/10 flex items-center justify-center">
+              <section.icon className="w-6 h-6 text-accent-brand" />
             </div>
             <div className="flex-1">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+              <h3 className="text-lg font-semibold text-ink">
                 {section.label}
               </h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400">{section.description}</p>
+              <p className="text-sm text-ink-muted">{section.description}</p>
             </div>
-            <span className="text-gray-400">→</span>
+            <span className="text-ink-subtle">→</span>
           </Link>
         ))}
       </div>

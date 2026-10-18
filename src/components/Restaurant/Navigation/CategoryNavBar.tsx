@@ -15,20 +15,23 @@ export function CategoryNavBar({ categories, activeCategory, onSelect, activeRef
   }, [activeCategory, activeRef]);
 
   return (
-    <div className="flex gap-2 overflow-x-auto px-4 py-2 scrollbar-none border-gray-200 dark:border-gray-700">
-      {categories.map(g => (
-        <button
-          key={g.category}
-          ref={activeCategory === g.category ? activeRef : null}
-          onClick={() => onSelect(g.category)}
-          className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium border transition-colors ${activeCategory === g.category
-              ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white'
-              : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-700'
-            }`}
-        >
-          {g.category}
-        </button>
-      ))}
+    <div className="flex gap-2 overflow-x-auto px-4 py-2 scrollbar-none border-hairline">
+      {categories.map(g => {
+        const isActive = activeCategory === g.category;
+        return (
+          <button
+            key={g.category}
+            ref={isActive ? activeRef : null}
+            onClick={() => onSelect(g.category)}
+            className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium border transition-colors ${isActive
+                ? 'bg-ink text-[color:var(--color-surface)] border-ink'
+                : 'bg-surface text-ink-muted border-hairline'
+              }`}
+          >
+            {g.category}
+          </button>
+        );
+      })}
     </div>
   );
 }

@@ -15,7 +15,7 @@ export function PreviewFrame({ device, children }: Props) {
     <ScrollContext.Provider value={{ containerRef: scrollRef }}>
       <div
         ref={scrollRef}
-        className="h-full overflow-y-auto bg-(--color-surface) scrollbar-none"
+        className="h-full overflow-y-auto bg-surface scrollbar-none"
         style={{ zoom: 0.8 }}
       >
         {children}
