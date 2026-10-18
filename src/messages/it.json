@@ -109,6 +109,42 @@
     }
   },
   "dashboard": {
+    "onboarding": {
+      "welcome": "Configuriamo il tuo menù",
+      "subtitle": "Rispondi a qualche domanda e mostreremo un'anteprima dal vivo.",
+      "step1": "Le basi",
+      "step1Hint": "Dai un nome e una breve descrizione al tuo ristorante.",
+      "nameLabel": "Nome del ristorante",
+      "namePlaceholder": "es. Bella Napoli",
+      "nameLatinOnly": "Usa solo caratteri latini.",
+      "descLabel": "Descrizione breve",
+      "descPlaceholder": "es. Italiano a gestione familiare dal 1962",
+      "optional": "facoltativo",
+      "step2": "Aspetto",
+      "templateLabel": "Scegli un modello. Puoi cambiarlo quando vuoi.",
+      "templates": {
+        "simple-list": {
+          "name": "Elenco semplice",
+          "description": "Pulito, elegante, per categorie."
+        },
+        "category-cards": {
+          "name": "Schede categoria",
+          "description": "Griglia visiva — tocca una categoria."
+        },
+        "fast-food": {
+          "name": "Fast Food",
+          "description": "Audace, arancione, incentrato sulle offerte."
+        }
+      },
+      "create": "Crea ristorante",
+      "creating": "Creazione...",
+      "previewTitle": "Anteprima dal vivo",
+      "previewHint": "Ecco come i tuoi clienti vedranno il menù.",
+      "previewFallbackName": "Il Tuo Ristorante",
+      "mobileToggle": "Mobile",
+      "desktopToggle": "Desktop",
+      "openPreview": "Vedi menù"
+    },
     "signOut": "Disconnetti",
     "overview": {
       "header": "Panoramica",

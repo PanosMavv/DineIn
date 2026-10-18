@@ -6,6 +6,7 @@ import { Settings, Eye } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import { RestaurantEmptyState } from '@/components/Dashboard/RestaurantEmptyState';
 import { RestaurantListItem } from '@/components/Dashboard/RestaurantListItem';
+import { redirect } from 'next/navigation';
 
 export default async function RestaurantsPage() {
   const session = await auth.api.getSession({ headers: await headers() });
@@ -25,6 +26,10 @@ export default async function RestaurantsPage() {
     },
     orderBy: { createdAt: 'desc' },
   });
+
+  if (restaurants.length === 0) {
+    redirect('/dashboard');
+  }
 
   return (
     <div>

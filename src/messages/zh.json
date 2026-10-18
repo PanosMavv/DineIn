@@ -109,6 +109,42 @@
     }
   },
   "dashboard": {
+    "onboarding": {
+      "welcome": "让我们设置您的菜单",
+      "subtitle": "回答几个问题，我们将实时预览您的菜单。",
+      "step1": "基本信息",
+      "step1Hint": "为您的餐厅起个名字并添加简短描述。",
+      "nameLabel": "餐厅名称",
+      "namePlaceholder": "例如：Bella Napoli",
+      "nameLatinOnly": "请仅使用拉丁字符。",
+      "descLabel": "简短描述",
+      "descPlaceholder": "例如：始于1962年的家族意式餐厅",
+      "optional": "可选",
+      "step2": "外观",
+      "templateLabel": "选择一个模板。您可以随时更改。",
+      "templates": {
+        "simple-list": {
+          "name": "简洁列表",
+          "description": "干净优雅，以分类为主。"
+        },
+        "category-cards": {
+          "name": "分类卡片",
+          "description": "视觉网格——点击一个分类。"
+        },
+        "fast-food": {
+          "name": "快餐",
+          "description": "大胆、橙色、以优惠为主。"
+        }
+      },
+      "create": "创建餐厅",
+      "creating": "创建中...",
+      "previewTitle": "实时预览",
+      "previewHint": "客户将这样看到您的菜单。",
+      "previewFallbackName": "您的餐厅",
+      "mobileToggle": "移动端",
+      "desktopToggle": "桌面端",
+      "openPreview": "预览菜单"
+    },
     "signOut": "退出登录",
     "overview": {
       "header": "概览",

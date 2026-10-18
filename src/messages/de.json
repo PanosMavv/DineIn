@@ -109,6 +109,42 @@
     }
   },
   "dashboard": {
+    "onboarding": {
+      "welcome": "Richten wir Ihr Menü ein",
+      "subtitle": "Beantworten Sie ein paar Fragen und wir zeigen Ihnen eine Live-Vorschau.",
+      "step1": "Grundlagen",
+      "step1Hint": "Geben Sie Ihrem Restaurant einen Namen und eine kurze Beschreibung.",
+      "nameLabel": "Restaurantname",
+      "namePlaceholder": "z. B. Bella Napoli",
+      "nameLatinOnly": "Bitte verwenden Sie nur lateinische Zeichen.",
+      "descLabel": "Kurze Beschreibung",
+      "descPlaceholder": "z. B. Familiengeführtes Italiener seit 1962",
+      "optional": "optional",
+      "step2": "Aussehen & Stil",
+      "templateLabel": "Wählen Sie eine Vorlage. Sie können sie jederzeit ändern.",
+      "templates": {
+        "simple-list": {
+          "name": "Einfache Liste",
+          "description": "Klar, elegant, kategorienorientiert."
+        },
+        "category-cards": {
+          "name": "Kategorie-Karten",
+          "description": "Visuelles Raster — tippen Sie eine Kategorie an."
+        },
+        "fast-food": {
+          "name": "Fast Food",
+          "description": "Kräftig, orange, angebotsorientiert."
+        }
+      },
+      "create": "Restaurant erstellen",
+      "creating": "Wird erstellt...",
+      "previewTitle": "Live-Vorschau",
+      "previewHint": "So sehen Ihre Gäste Ihr Menü.",
+      "previewFallbackName": "Ihr Restaurant",
+      "mobileToggle": "Mobil",
+      "desktopToggle": "Desktop",
+      "openPreview": "Menü ansehen"
+    },
     "signOut": "Abmelden",
     "overview": {
       "header": "Übersicht",
@@ -130,13 +166,6 @@
       "manage": "Verwalten",
       "preview": "Vorschau",
       "back": "Zurück zu den Restaurants"
-    },
-    "components": {
-      "restaurantEmptyState": {
-        "title": "Noch keine Restaurants",
-        "description": "Erstellen Sie Ihr erstes Restaurant, um loszulegen",
-        "cta": "Restaurant erstellen"
-      }
     },
     "management": {
       "theme": {

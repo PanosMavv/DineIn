@@ -4,8 +4,6 @@ import { groupMenuItemsByCategory } from '@/lib/utils';
 import { SimpleListMenu } from '@/components/Restaurant/Themes/SimpleListMenu';
 import { CategoryCardMenu } from '@/components/Restaurant/Themes/CategoryCardMenu';
 import { FastFoodMenu } from '@/components/Restaurant/Themes/FastFoodMenu';
-import { RestaurantHero } from '@/components/Restaurant/Heros/RestaurantHero';
-import { OverlayHero } from '@/components/Restaurant/Heros/OverlayHero';
 import { cookies } from 'next/headers';
 
 export default async function RestaurantPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -24,12 +22,6 @@ export default async function RestaurantPage({ params }: { params: Promise<{ slu
 
   return (
     <>
-      {heroStyle === 'overlay' ? (
-        <OverlayHero restaurant={restaurant} />
-      ) : (
-        <RestaurantHero restaurant={restaurant} />
-      )}
-
       {restaurant.template === 'category-cards' ? (
         <CategoryCardMenu restaurant={restaurant} groupedMenu={groupedMenu} />
       ) : restaurant.template === 'fast-food' ? (

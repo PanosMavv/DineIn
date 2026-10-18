@@ -109,6 +109,42 @@
     }
   },
   "dashboard": {
+    "onboarding": {
+      "welcome": "메뉴를 설정해 봅시다",
+      "subtitle": "몇 가지 질문에 답하면 메뉴를 실시간으로 미리 볼 수 있습니다.",
+      "step1": "기본 정보",
+      "step1Hint": "레스토랑 이름과 간단한 설명을 입력하세요.",
+      "nameLabel": "레스토랑 이름",
+      "namePlaceholder": "예: Bella Napoli",
+      "nameLatinOnly": "라틴 문자만 사용하세요.",
+      "descLabel": "간단한 설명",
+      "descPlaceholder": "예: 1962년부터 가족이 운영하는 이탈리안",
+      "optional": "선택 사항",
+      "step2": "디자인",
+      "templateLabel": "템플릿을 선택하세요. 언제든지 변경할 수 있습니다.",
+      "templates": {
+        "simple-list": {
+          "name": "심플 리스트",
+          "description": "깔끔하고 우아한 카테고리 중심."
+        },
+        "category-cards": {
+          "name": "카테고리 카드",
+          "description": "비주얼 그리드 — 카테고리를 탭하세요."
+        },
+        "fast-food": {
+          "name": "패스트푸드",
+          "description": "대담하고 주황색, 할인 중심."
+        }
+      },
+      "create": "레스토랑 만들기",
+      "creating": "만드는 중...",
+      "previewTitle": "실시간 미리보기",
+      "previewHint": "고객에게 이렇게 표시됩니다.",
+      "previewFallbackName": "내 레스토랑",
+      "mobileToggle": "모바일",
+      "desktopToggle": "데스크톱",
+      "openPreview": "메뉴 미리보기"
+    },
     "signOut": "로그아웃",
     "overview": {
       "header": "개요",

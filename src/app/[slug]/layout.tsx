@@ -4,7 +4,7 @@ export default function RestaurantLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="max-w-2xl mx-auto">
+    <div className="max-w-2xl mx-auto relative">
       {children}
     </div>
   );

@@ -109,6 +109,42 @@
     }
   },
   "dashboard": {
+    "onboarding": {
+      "welcome": "メニューを設定しましょう",
+      "subtitle": "いくつかの質問に答えると、メニューをライブでプレビューできます。",
+      "step1": "基本情報",
+      "step1Hint": "レストランの名前と短い説明を入力してください。",
+      "nameLabel": "レストラン名",
+      "namePlaceholder": "例：Bella Napoli",
+      "nameLatinOnly": "ラテン文字のみ使用してください。",
+      "descLabel": "短い説明",
+      "descPlaceholder": "例：1962年創業の家族経営イタリアン",
+      "optional": "任意",
+      "step2": "見た目",
+      "templateLabel": "テンプレートを選択してください。いつでも変更できます。",
+      "templates": {
+        "simple-list": {
+          "name": "シンプルリスト",
+          "description": "クリーンでエレガント、カテゴリー重視。"
+        },
+        "category-cards": {
+          "name": "カテゴリーカード",
+          "description": "ビジュアルグリッド — カテゴリーをタップ。"
+        },
+        "fast-food": {
+          "name": "ファストフード",
+          "description": "大胆、オレンジ、お得感重視。"
+        }
+      },
+      "create": "レストランを作成",
+      "creating": "作成中...",
+      "previewTitle": "ライブプレビュー",
+      "previewHint": "お客様にはこのように表示されます。",
+      "previewFallbackName": "あなたのレストラン",
+      "mobileToggle": "モバイル",
+      "desktopToggle": "デスクトップ",
+      "openPreview": "メニューをプレビュー"
+    },
     "signOut": "ログアウト",
     "overview": {
       "header": "概要",

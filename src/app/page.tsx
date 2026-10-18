@@ -244,7 +244,7 @@ export default async function HomePage() {
                     {name}
                   </h3>
                   <p className="text-sm text-gray-500 dark:text-gray-400">
-                    {restaurant._count.menuItems} {t('demos.itemsCount')} · {restaurant.category.replace('_', ' ')}
+                    {restaurant._count.menuItems} {t('demos.itemsCount')}
                   </p>
                 </div>
                 <span className="text-gray-400">→</span>

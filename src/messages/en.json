@@ -109,6 +109,42 @@
     }
   },
   "dashboard": {
+    "onboarding": {
+      "welcome": "Let's set up your menu",
+      "subtitle": "Answer a few questions and we'll preview your menu live.",
+      "step1": "Basics",
+      "step1Hint": "Give your restaurant a name and a short description.",
+      "nameLabel": "Restaurant name",
+      "namePlaceholder": "e.g. Bella Napoli",
+      "nameLatinOnly": "Please use Latin characters only.",
+      "descLabel": "Short description",
+      "descPlaceholder": "e.g. Family-run Italian since 1962",
+      "optional": "optional",
+      "step2": "Look & feel",
+      "templateLabel": "Choose a template. You can change it anytime.",
+      "templates": {
+        "simple-list": {
+          "name": "Simple List",
+          "description": "Clean, elegant, category-first."
+        },
+        "category-cards": {
+          "name": "Category Cards",
+          "description": "Visual grid — tap a category."
+        },
+        "fast-food": {
+          "name": "Fast Food",
+          "description": "Bold, orange, deal-focused."
+        }
+      },
+      "create": "Create restaurant",
+      "creating": "Creating...",
+      "previewTitle": "Live preview",
+      "previewHint": "This is how guests will see your menu.",
+      "previewFallbackName": "Your Restaurant",
+      "mobileToggle": "Mobile",
+      "desktopToggle": "Desktop",
+      "openPreview": "Preview menu"
+    },
     "signOut": "Sign Out",
     "overview": {
       "header": "Overview",
@@ -130,13 +166,6 @@
       "manage": "Manage",
       "preview": "Preview",
       "back": "Back to Restaurants"
-    },
-    "components": {
-      "restaurantEmptyState": {
-        "title": "No restaurants yet",
-        "description": "Create your first restaurant to get started",
-        "cta": "Create Restaurant"
-      }
     },
     "management": {
       "theme": {

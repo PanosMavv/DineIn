@@ -109,6 +109,42 @@
     }
   },
   "dashboard": {
+    "onboarding": {
+      "welcome": "Låt oss ställa in din meny",
+      "subtitle": "Svara på några frågor så visar vi en förhandsvisning direkt.",
+      "step1": "Grunderna",
+      "step1Hint": "Ge din restaurang ett namn och en kort beskrivning.",
+      "nameLabel": "Restaurangnamn",
+      "namePlaceholder": "t.ex. Bella Napoli",
+      "nameLatinOnly": "Använd endast latinska tecken.",
+      "descLabel": "Kort beskrivning",
+      "descPlaceholder": "t.ex. Familjedriven italiensk sedan 1962",
+      "optional": "valfritt",
+      "step2": "Utseende",
+      "templateLabel": "Välj en mall. Du kan ändra den när som helst.",
+      "templates": {
+        "simple-list": {
+          "name": "Enkel lista",
+          "description": "Ren, elegant, kategoriförst."
+        },
+        "category-cards": {
+          "name": "Kategorikort",
+          "description": "Visuellt rutnät — tryck på en kategori."
+        },
+        "fast-food": {
+          "name": "Snabbmat",
+          "description": "Djärv, orange, erbjudandefokuserad."
+        }
+      },
+      "create": "Skapa restaurang",
+      "creating": "Skapar...",
+      "previewTitle": "Liveförhandsvisning",
+      "previewHint": "Så här ser dina gäster menyn.",
+      "previewFallbackName": "Din Restaurang",
+      "mobileToggle": "Mobil",
+      "desktopToggle": "Skrivbord",
+      "openPreview": "Förhandsgranska meny"
+    },
     "signOut": "Logga ut",
     "overview": {
       "header": "Översikt",

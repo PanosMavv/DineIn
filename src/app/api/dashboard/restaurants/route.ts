@@ -13,28 +13,40 @@ export async function POST(request: Request) {
 
   const body = await request.json();
 
-  // Generate slug from name
-  const slug = body.name
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '');
+  if (!body.name || typeof body.name !== 'string' || !body.name.trim()) {
+    return NextResponse.json({ error: 'Name is required' }, { status: 400 });
+  }
+
+  const baseSlug =
+    body.name
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '') || 'restaurant';
+
+  let slug = baseSlug;
+  let suffix = 1;
+  while (await prisma.restaurant.findUnique({ where: { slug }, select: { id: true } })) {
+    slug = `${baseSlug}-${suffix++}`;
+  }
+
+  const template = typeof body.template === 'string' ? body.template : 'simple-list';
 
   try {
     const restaurant = await prisma.restaurant.create({
       data: {
         slug,
-        category: body.type,
+        category: 'RESTAURANT',
         ownerId: userId,
         translations: {
           create: {
             locale: 'en',
-            name: body.name,
-            description: body.description || null,
+            name: body.name.trim(),
+            description: body.description?.trim() || null,
           },
         },
         themeSettings: {
           create: {
-            template: 'simple-list',
+            template,
             heroStyle: 'default',
           },
         },

@@ -45,6 +45,18 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+  --color-ink: oklch(0.15 0 0);
+  --color-ink-muted: oklch(0.45 0 0);
+  --color-ink-subtle: oklch(0.62 0 0);
+  --color-surface: oklch(1 0 0);
+  --color-surface-2: oklch(0.98 0 0);
+  --color-hairline: oklch(0.92 0 0);
+  --color-accent: oklch(0.55 0.22 255);
+  --color-accent-soft: oklch(0.95 0.03 255);
+  --color-success: oklch(0.62 0.18 150);
+  --color-success-soft: oklch(0.95 0.03 150);
+  --dashboard-radius: 1rem;
+  --dashboard-radius-sm: 0.75rem;
 }
 
 :root {
@@ -114,6 +126,16 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  --color-ink: oklch(0.98 0 0);
+  --color-ink-muted: oklch(0.70 0 0);
+  --color-ink-subtle: oklch(0.55 0 0);
+  --color-surface: oklch(0.18 0 0);
+  --color-surface-2: oklch(0.22 0 0);
+  --color-hairline: oklch(1 0 0 / 0.10);
+  --color-accent: oklch(0.65 0.20 255);
+  --color-accent-soft: oklch(0.30 0.06 255);
+  --color-success: oklch(0.72 0.18 150);
+  --color-success-soft: oklch(0.28 0.06 150);
 }
 
 @layer base {
@@ -121,10 +143,12 @@
     border-color: var(--border);
     outline-color: color-mix(in oklab, var(--ring) 50%, transparent);
   }
+
   body {
     background-color: var(--background);
     color: var(--foreground);
   }
+
   html {
     font-family: var(--font-sans);
   }
@@ -134,6 +158,7 @@
   .scrollbar-none::-webkit-scrollbar {
     display: none;
   }
+
   .scrollbar-none {
     -ms-overflow-style: none;
     scrollbar-width: none;

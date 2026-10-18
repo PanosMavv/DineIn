@@ -25,9 +25,6 @@ export function RestaurantHero({ restaurant, heroRef }: Props) {
             {restaurant.description && (
               <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{restaurant.description}</p>
             )}
-            <span className="inline-block mt-3 px-3 py-1 text-xs font-medium rounded-full bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200">
-              {restaurant.category.replace('_', ' ')}
-            </span>
           </div>
 
           {/* Restaurant logo/image */}
