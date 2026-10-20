@@ -61,7 +61,7 @@ export default async function CategoriesPage({
         </div>
         <Link
           href={`/dashboard/restaurants/${id}/categories/new`}
-          className="inline-flex items-center gap-2 px-5 py-2.5 bg-ink text-[color:var(--color-surface)] rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-ink text-surface rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
         >
           <Plus className="w-4 h-4" />
           {t('add.header')}

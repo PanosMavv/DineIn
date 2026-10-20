@@ -72,7 +72,7 @@ export default async function TranslationsPage({
         </div>
         <Link
           href={`/dashboard/restaurants/${id}/translations/new`}
-          className="inline-flex items-center gap-2 px-5 py-2.5 bg-ink text-[color:var(--color-surface)] rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-ink text-surface rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
         >
           <Plus className="w-4 h-4" />
           {t('add.header')}
@@ -84,7 +84,7 @@ export default async function TranslationsPage({
           <p className="text-ink-muted mb-4">{t('noTranslations')}</p>
           <Link
             href={`/dashboard/restaurants/${id}/translations/new`}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-ink text-[color:var(--color-surface)] rounded-full font-semibold hover:opacity-90 transition-opacity"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-ink text-surface rounded-full font-semibold hover:opacity-90 transition-opacity"
           >
             <Plus className="w-4 h-4" />
             {t('add.header')}
@@ -100,8 +100,8 @@ export default async function TranslationsPage({
               <div
                 key={locale}
                 className={`p-4 rounded-2xl border transition-colors ${isActive
-                    ? 'bg-surface border-hairline'
-                    : 'bg-surface-2 border-hairline'
+                  ? 'bg-surface border-hairline'
+                  : 'bg-surface-2 border-hairline'
                   }`}
               >
                 <div className="flex items-center justify-between">

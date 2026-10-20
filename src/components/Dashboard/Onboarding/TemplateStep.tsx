@@ -81,7 +81,7 @@ export function TemplateStep({
               className={[
                 'text-left rounded-(--dashboard-radius) p-2 transition-all border-2',
                 selected
-                  ? 'border-ink bg-surface'
+                  ? 'border-ink-subtle bg-surface'
                   : 'border-hairline bg-surface hover:border-ink-muted',
               ].join(' ')}
             >

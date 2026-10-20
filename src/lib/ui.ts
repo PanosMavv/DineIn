@@ -5,7 +5,7 @@
 export const ui = {
   // Buttons
   btnPrimary:
-    'inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-ink text-[color:var(--color-surface)] font-semibold hover:opacity-90 transition disabled:opacity-50 disabled:cursor-not-allowed',
+    'inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-ink text-surface font-semibold hover:opacity-90 transition disabled:opacity-50 disabled:cursor-not-allowed',
   btnGhost:
     'inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full border border-hairline text-ink font-semibold hover:bg-surface-2 transition disabled:opacity-50 disabled:cursor-not-allowed',
   btnIcon:

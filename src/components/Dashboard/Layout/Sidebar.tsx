@@ -42,7 +42,7 @@ export function Sidebar() {
               className={[
                 'flex items-center gap-3 px-4 py-2.5 rounded-(--dashboard-radius-sm) text-sm font-medium transition-colors',
                 active
-                  ? 'bg-ink text-(--color-surface)'
+                  ? 'bg-ink text-surface'
                   : 'text-ink-muted hover:bg-surface-2 hover:text-ink',
               ].join(' ')}
             >

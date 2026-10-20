@@ -60,6 +60,7 @@
   --color-accent-soft: var(--accent-soft);
   --color-success: var(--success);
   --color-success-soft: var(--success-soft);
+  --color-frame: var(--frame);
   --dashboard-radius: 1rem;
   --dashboard-radius-sm: 0.75rem;
 }
@@ -110,6 +111,7 @@
   --accent-soft: oklch(0.95 0.03 255);
   --success: oklch(0.62 0.18 150);
   --success-soft: oklch(0.95 0.03 150);
+  --frame: oklch(0.15 0 0);
 }
 
 .dark {
@@ -157,6 +159,7 @@
   --accent-soft: oklch(0.30 0.06 255);
   --success: oklch(0.72 0.18 150);
   --success-soft: oklch(0.28 0.06 150);
+  --frame: oklch(0.15 0 0);
 }
 
 @layer base {

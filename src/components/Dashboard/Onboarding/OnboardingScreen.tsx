@@ -115,7 +115,7 @@ export function OnboardingScreen() {
 
       <button
         onClick={() => setMobilePreviewOpen(true)}
-        className="lg:hidden fixed bottom-20 left-1/2 -translate-x-1/2 z-30 inline-flex items-center gap-2 px-6 py-3 bg-ink text-(--color-surface) rounded-full font-semibold shadow-lg"
+        className="lg:hidden fixed bottom-20 left-1/2 -translate-x-1/2 z-30 inline-flex items-center gap-2 px-6 py-3 bg-ink text-surface rounded-full font-semibold shadow-lg"
         style={{ bottom: 'calc(4.5rem + env(safe-area-inset-bottom))' }}
       >
         <Smartphone className="w-4 h-4" />

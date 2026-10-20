@@ -47,7 +47,7 @@ export default async function HomePage() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             href="#pricing"
-            className="px-8 py-4 bg-ink text-[color:var(--color-surface)] rounded-full font-semibold hover:opacity-90 transition-opacity"
+            className="px-8 py-4 bg-ink text-surface rounded-full font-semibold hover:opacity-90 transition-opacity"
           >
             {t('hero.getStarted')}
           </Link>
@@ -129,8 +129,8 @@ export default async function HomePage() {
             </div>
 
             {/* Full Service Plan */}
-            <div className="bg-ink text-[color:var(--color-surface)] rounded-3xl p-8 relative flex flex-col">
-              <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-accent-brand text-[color:var(--color-surface)] text-xs font-bold rounded-full">
+            <div className="bg-ink text-surface rounded-3xl p-8 relative flex flex-col">
+              <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-accent-brand text-surface text-xs font-bold rounded-full">
                 {t('pricing.full.badge')}
               </span>
               <div className="flex items-center gap-3 mb-4">
@@ -172,7 +172,7 @@ export default async function HomePage() {
 
             {/* Custom Design Plan */}
             <div className="bg-surface rounded-3xl border-2 border-accent-brand p-8 relative flex flex-col">
-              <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-accent-brand text-[color:var(--color-surface)] text-xs font-bold rounded-full">
+              <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-accent-brand text-surface text-xs font-bold rounded-full">
                 {t('pricing.custom.badge')}
               </span>
               <div className="flex items-center gap-3 mb-4">

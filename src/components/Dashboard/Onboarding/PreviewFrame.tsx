@@ -26,8 +26,8 @@ export function PreviewFrame({ device, children }: Props) {
   if (device === 'mobile') {
     return (
       <div className="mx-auto w-85 max-w-full">
-        <div className="rounded-[2.5rem] border-10 border-ink/90 bg-ink overflow-hidden shadow-2xl relative">
-          <div className="h-6 bg-ink/90 flex items-center justify-center">
+        <div className="rounded-[2.5rem] border-10 border-frame bg-frame overflow-hidden shadow-2xl relative">
+          <div className="h-6 bg-frame flex items-center justify-center">
             <div className="w-20 h-1.5 bg-white/20 rounded-full" />
           </div>
           <div className="h-150">{inner}</div>
@@ -38,8 +38,8 @@ export function PreviewFrame({ device, children }: Props) {
 
   return (
     <div className="w-full">
-      <div className="rounded-xl border border-hairline bg-ink/90 shadow-2xl overflow-hidden">
-        <div className="flex items-center gap-1.5 px-3 py-2 bg-ink/90">
+      <div className="rounded-xl border border-hairline bg-frame shadow-2xl overflow-hidden">
+        <div className="flex items-center gap-1.5 px-3 py-2 bg-frame">
           <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
           <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
           <span className="w-2.5 h-2.5 rounded-full bg-green-500/80" />

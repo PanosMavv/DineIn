@@ -140,7 +140,7 @@ export function ThemeSettings({ restaurantId, restaurantName, currentTemplate, c
             <button
               onClick={handleSaveTemplate}
               disabled={isSaving}
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-ink text-[color:var(--color-surface)] rounded-full text-sm font-semibold hover:opacity-90 transition-opacity disabled:opacity-50"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-ink text-surface rounded-full text-sm font-semibold hover:opacity-90 transition-opacity disabled:opacity-50"
             >
               <Save className="w-4 h-4" />
               {t('saveTemplate')}
@@ -178,7 +178,7 @@ export function ThemeSettings({ restaurantId, restaurantName, currentTemplate, c
             <button
               onClick={handleSaveLogo}
               disabled={isSaving}
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-ink text-[color:var(--color-surface)] rounded-full text-sm font-semibold hover:opacity-90 transition-opacity disabled:opacity-50"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-ink text-surface rounded-full text-sm font-semibold hover:opacity-90 transition-opacity disabled:opacity-50"
             >
               <Save className="w-4 h-4" />
               {t('saveLogo')}
@@ -229,7 +229,7 @@ export function ThemeSettings({ restaurantId, restaurantName, currentTemplate, c
               <button
                 onClick={handleAddCarouselImage}
                 disabled={isSaving || !newCarouselImage.trim()}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-ink text-[color:var(--color-surface)] rounded-full text-sm font-semibold hover:opacity-90 transition-opacity disabled:opacity-50"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-ink text-surface rounded-full text-sm font-semibold hover:opacity-90 transition-opacity disabled:opacity-50"
               >
                 <Plus className="w-4 h-4" />
                 {t('add')}

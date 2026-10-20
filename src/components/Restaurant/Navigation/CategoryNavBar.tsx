@@ -24,8 +24,8 @@ export function CategoryNavBar({ categories, activeCategory, onSelect, activeRef
             ref={isActive ? activeRef : null}
             onClick={() => onSelect(g.category)}
             className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium border transition-colors ${isActive
-                ? 'bg-ink text-[color:var(--color-surface)] border-ink'
-                : 'bg-surface text-ink-muted border-hairline'
+              ? 'bg-ink text-surface border-ink'
+              : 'bg-surface text-ink-muted border-hairline'
               }`}
           >
             {g.category}

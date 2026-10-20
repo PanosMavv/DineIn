@@ -56,7 +56,7 @@ export function Navbar() {
             ) : (
               <Link
                 href="/sign-in"
-                className="px-5 py-2 bg-ink text-[color:var(--color-surface)] rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
+                className="px-5 py-2 bg-ink text-surface rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
               >
                 {t('signIn')}
               </Link>

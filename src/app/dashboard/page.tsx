@@ -43,7 +43,7 @@ export default async function DashboardPage() {
         <h2 className="text-lg font-semibold text-ink">{t('restaurants')}</h2>
         <Link
           href="/dashboard?new=1"
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-ink text-(--color-surface) text-sm font-semibold"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-ink text-surface text-sm font-semibold"
         >
           <UtensilsCrossed className="w-4 h-4" />
           New

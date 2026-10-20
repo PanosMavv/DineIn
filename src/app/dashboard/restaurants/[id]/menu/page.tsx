@@ -79,7 +79,7 @@ export default async function MenuPage({
         </div>
         <Link
           href={`/dashboard/restaurants/${id}/menu/new`}
-          className="inline-flex items-center gap-2 px-5 py-2.5 bg-ink text-[color:var(--color-surface)] rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-ink text-surface rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
         >
           <Plus className="w-4 h-4" />
           {t('add.header')}
@@ -91,7 +91,7 @@ export default async function MenuPage({
           <p className="text-ink-muted mb-4">{t('noCategoriesOrItems')}</p>
           <Link
             href={`/dashboard/restaurants/${id}/categories`}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-ink text-[color:var(--color-surface)] rounded-full font-semibold hover:opacity-90 transition-opacity"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-ink text-surface rounded-full font-semibold hover:opacity-90 transition-opacity"
           >
             <Plus className="w-4 h-4" />
             {t('createCategoriesFirst')}
