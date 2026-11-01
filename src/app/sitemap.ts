@@ -1,16 +1,14 @@
 import type { MetadataRoute } from 'next';
 import { prisma } from '@/lib/prisma';
 
+export const dynamic = 'force-dynamic';
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl =
     process.env.NEXT_PUBLIC_APP_URL || 'https://dinein.panosmavromatis.com';
 
-  // Fetch only the data we need
   const restaurants = await prisma.restaurant.findMany({
-    select: {
-      slug: true,
-      updatedAt: true,
-    },
+    select: { slug: true, updatedAt: true },
     orderBy: { updatedAt: 'desc' },
   });
 
