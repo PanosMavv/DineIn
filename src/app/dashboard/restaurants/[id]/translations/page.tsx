@@ -3,10 +3,17 @@ import { headers } from 'next/headers';
 import { prisma } from '@/lib/prisma';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, Plus, Pencil, Trash2, Eye, EyeOff } from 'lucide-react';
+import { Languages, Plus } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
-import { ToggleTranslation } from '@/components/Dashboard/ToggleTranslation';
-import { DeleteTranslation } from '@/components/Dashboard/DeleteTranslation';
+import { ui } from '@/lib/ui';
+import {
+  getLocaleFlag,
+  getLocaleLabel,
+  getLocaleNativeName,
+} from '@/i18n/locales';
+import { RestaurantHeader } from '@/components/Dashboard/shared/RestaurantHeader';
+import { EmptyState } from '@/components/Dashboard/shared/EmptyState';
+import { LanguageRow } from '@/components/Dashboard/Translations/LanguageRow';
 
 export default async function TranslationsPage({
   params,
@@ -19,7 +26,8 @@ export default async function TranslationsPage({
 
   if (!userId) return null;
 
-  const t = await getTranslations('dashboard.management.translations');
+  const t = await getTranslations('dashboard.languages');
+  const tc = await getTranslations('dashboard.common');
 
   const restaurant = await prisma.restaurant.findFirst({
     where: { id, ownerId: userId },
@@ -29,9 +37,7 @@ export default async function TranslationsPage({
         include: {
           translations: true,
           menuItems: {
-            include: {
-              translations: true,
-            },
+            include: { translations: true },
           },
         },
       },
@@ -40,103 +46,107 @@ export default async function TranslationsPage({
 
   if (!restaurant) notFound();
 
-  const allLocales = new Set<string>();
-  restaurant.translations.forEach(tr => allLocales.add(tr.locale));
-  restaurant.categories.forEach(cat => {
-    cat.translations.forEach(tr => allLocales.add(tr.locale));
-    cat.menuItems.forEach(item => {
-      item.translations.forEach(tr => allLocales.add(tr.locale));
+  const name = restaurant.translations.find((entry) => entry.locale === 'en')?.name ||
+    restaurant.slug;
+  const items = restaurant.categories.flatMap((category) => category.menuItems);
+  const totalStrings = 1 + restaurant.categories.length + items.length;
+
+  const localeCodes = new Set<string>(['en']);
+  restaurant.translations.forEach((entry) => localeCodes.add(entry.locale));
+  restaurant.categories.forEach((category) => {
+    category.translations.forEach((entry) => localeCodes.add(entry.locale));
+    category.menuItems.forEach((item) => {
+      item.translations.forEach((entry) => localeCodes.add(entry.locale));
     });
   });
 
-  const locales = Array.from(allLocales).sort();
+  const rows = Array.from(localeCodes)
+    .map((locale) => {
+      const restaurantTranslation = restaurant.translations.find(
+        (entry) => entry.locale === locale
+      );
+      const translated =
+        (restaurantTranslation ? 1 : 0) +
+        restaurant.categories.filter((category) =>
+          category.translations.some((entry) => entry.locale === locale)
+        ).length +
+        items.filter((item) =>
+          item.translations.some((entry) => entry.locale === locale)
+        ).length;
+
+      return {
+        locale,
+        label: getLocaleLabel(locale),
+        nativeName: getLocaleNativeName(locale),
+        flag: getLocaleFlag(locale),
+        translated,
+        total: totalStrings,
+        isActive: restaurantTranslation?.isActive ?? false,
+        hasRestaurantTranslation: Boolean(restaurantTranslation),
+        isDefault: locale === 'en',
+      };
+    })
+    .sort((a, b) => {
+      if (a.isDefault) return -1;
+      if (b.isDefault) return 1;
+      return a.label.localeCompare(b.label);
+    });
+
+  const additionalLanguages = rows.filter((row) => !row.isDefault);
 
   return (
     <div>
-      <Link
-        href={`/dashboard/restaurants/${id}`}
-        className="inline-flex items-center gap-2 text-sm text-ink-muted hover:text-ink mb-4"
-      >
-        <ArrowLeft className="w-4 h-4" />
-        {t('back')}
-      </Link>
+      <RestaurantHeader
+        name={name}
+        slug={restaurant.slug}
+        backHref={`/dashboard/restaurants/${id}`}
+        backLabel={name}
+      />
 
-      <div className="flex items-center justify-between mb-8">
+      <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h1 className="text-2xl md:text-3xl font-bold text-ink">
-            {t('header')}
-          </h1>
-          <p className="text-ink-muted mt-1">
-            {t('description')}
+          <h2 className="text-xl font-bold text-ink">{t('header')}</h2>
+          <p className="mt-1 text-sm text-ink-muted">{t('description')}</p>
+          <p className="mt-1 text-xs text-ink-muted">
+            {tc('languageCount', { count: rows.length })}
           </p>
         </div>
         <Link
           href={`/dashboard/restaurants/${id}/translations/new`}
-          className="inline-flex items-center gap-2 px-5 py-2.5 bg-ink text-surface rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
+          className={`${ui.btnPrimary} shrink-0`}
         >
-          <Plus className="w-4 h-4" />
-          {t('add.header')}
+          <Plus className="h-4 w-4" aria-hidden="true" />
+          {t('addLanguage')}
         </Link>
       </div>
 
-      {locales.length === 0 ? (
-        <div className="text-center py-16 bg-surface rounded-2xl border border-hairline">
-          <p className="text-ink-muted mb-4">{t('noTranslations')}</p>
-          <Link
-            href={`/dashboard/restaurants/${id}/translations/new`}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-ink text-surface rounded-full font-semibold hover:opacity-90 transition-opacity"
-          >
-            <Plus className="w-4 h-4" />
-            {t('add.header')}
-          </Link>
-        </div>
-      ) : (
-        <div className="space-y-4">
-          {locales.map(locale => {
-            const restaurantTranslation = restaurant.translations.find(tr => tr.locale === locale);
-            const isActive = restaurantTranslation?.isActive ?? true;
+      <div className="space-y-3">
+        {rows.map((row) => (
+          <LanguageRow
+            key={row.locale}
+            restaurantId={id}
+            locale={row.locale}
+            label={row.label}
+            nativeName={row.nativeName}
+            flag={row.flag}
+            translated={row.translated}
+            total={row.total}
+            isActive={row.isActive}
+            hasRestaurantTranslation={row.hasRestaurantTranslation}
+            isDefault={row.isDefault}
+          />
+        ))}
+      </div>
 
-            return (
-              <div
-                key={locale}
-                className={`p-4 rounded-2xl border transition-colors ${isActive
-                  ? 'bg-surface border-hairline'
-                  : 'bg-surface-2 border-hairline'
-                  }`}
-              >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-surface-2 flex items-center justify-center text-lg">
-                      {locale === 'en' ? '🇬🇧' : locale === 'el' ? '🇬🇷' : locale === 'de' ? '🇩🇪' : locale === 'fr' ? '🇫🇷' : '🇨🇳'}
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-ink">
-                        {locale.toUpperCase()}
-                      </h3>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-1">
-                    <ToggleTranslation
-                      restaurantId={id}
-                      locale={locale}
-                      isActive={isActive}
-                    />
-                    <Link
-                      href={`/dashboard/restaurants/${id}/translations/${locale}/edit`}
-                      className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-surface-2"
-                    >
-                      <Pencil className="w-4 h-4 text-ink-muted" />
-                    </Link>
-                    <DeleteTranslation
-                      restaurantId={id}
-                      locale={locale}
-                    />
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+      {additionalLanguages.length === 0 && (
+        <div className="mt-4">
+          <EmptyState
+            icon={Languages}
+            title={t('emptyTitle')}
+            description={t('emptyBody')}
+            primaryHref={`/dashboard/restaurants/${id}/translations/new`}
+            primaryLabel={t('emptyCta')}
+          />
         </div>
       )}
     </div>

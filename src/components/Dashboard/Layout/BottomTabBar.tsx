@@ -37,7 +37,9 @@ export function BottomTabBar() {
           href: `${restaurantBase}/menu`,
           label: t('menu'),
           icon: UtensilsCrossed,
-          active: pathname.startsWith(`${restaurantBase}/menu`),
+          active:
+            pathname.startsWith(`${restaurantBase}/menu`) ||
+            pathname.startsWith(`${restaurantBase}/categories`),
         },
         {
           href: `${restaurantBase}/theme`,

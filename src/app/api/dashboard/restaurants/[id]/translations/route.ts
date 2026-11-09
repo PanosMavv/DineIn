@@ -91,6 +91,17 @@ export async function PUT(
           description: body.restaurant.description || null,
         },
       });
+    } else if (body.restaurant?.name) {
+      // A locale can exist through category/item rows without a restaurant
+      // translation. Editing it should make it publishable.
+      await prisma.restaurantTranslation.create({
+        data: {
+          restaurantId: id,
+          locale: body.locale,
+          name: body.restaurant.name,
+          description: body.restaurant.description || null,
+        },
+      });
     }
 
     // Update/upsert category translations

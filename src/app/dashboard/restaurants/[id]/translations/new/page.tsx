@@ -3,9 +3,11 @@ import { headers } from 'next/headers';
 import { prisma } from '@/lib/prisma';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Languages } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import { TranslationForm } from '@/components/Dashboard/TranslationForm';
+import { availableLocales } from '@/i18n/locales';
+import { EmptyState } from '@/components/Dashboard/shared/EmptyState';
 
 export default async function NewTranslationPage({
   params,
@@ -40,8 +42,40 @@ export default async function NewTranslationPage({
 
   if (!restaurant) notFound();
 
-  // Get existing locales from restaurant translations
-  const existingLocales = restaurant.translations.map(tr => tr.locale);
+  // A locale can exist through any translated row, not only the restaurant row.
+  const existingLocaleSet = new Set(restaurant.translations.map(tr => tr.locale));
+  restaurant.categories.forEach(cat => {
+    cat.translations.forEach(tr => existingLocaleSet.add(tr.locale));
+    cat.menuItems.forEach(item => {
+      item.translations.forEach(tr => existingLocaleSet.add(tr.locale));
+    });
+  });
+  const existingLocales = Array.from(existingLocaleSet);
+  const allAdded = availableLocales.every(locale =>
+    existingLocaleSet.has(locale.code)
+  );
+
+  if (allAdded) {
+    const tLanguages = await getTranslations('dashboard.languages');
+    return (
+      <div>
+        <Link
+          href={`/dashboard/restaurants/${id}/translations`}
+          className="mb-4 inline-flex items-center gap-2 text-sm text-ink-muted hover:text-ink"
+        >
+          <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+          {t('add.back')}
+        </Link>
+        <EmptyState
+          icon={Languages}
+          title={tLanguages('allAddedTitle')}
+          description={tLanguages('allAddedBody')}
+          primaryHref={`/dashboard/restaurants/${id}/translations`}
+          primaryLabel={t('add.back')}
+        />
+      </div>
+    );
+  }
 
   // Serialize categories
   const serializedCategories = restaurant.categories.map(cat => ({

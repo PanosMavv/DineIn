@@ -4,7 +4,9 @@ import { prisma } from '@/lib/prisma';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
+import { getTranslations } from 'next-intl/server';
 import { TranslationForm } from '@/components/Dashboard/TranslationForm';
+import { getLocaleLabel } from '@/i18n/locales';
 
 export default async function EditTranslationPage({
   params,
@@ -16,6 +18,9 @@ export default async function EditTranslationPage({
   const userId = session?.user.id;
 
   if (!userId) return null;
+
+  const t = await getTranslations('dashboard.management.translations');
+  const languageLabel = getLocaleLabel(locale);
 
   const restaurant = await prisma.restaurant.findFirst({
     where: { id, ownerId: userId },
@@ -67,14 +72,14 @@ export default async function EditTranslationPage({
     <div>
       <Link
         href={`/dashboard/restaurants/${id}/translations`}
-        className="inline-flex items-center gap-2 text-sm text-ink-muted hover:text-ink mb-4"
+        className="mb-4 inline-flex items-center gap-2 text-sm text-ink-muted hover:text-ink"
       >
-        <ArrowLeft className="w-4 h-4" />
-        Back to Translations
+        <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+        {t('edit.back')}
       </Link>
 
-      <h1 className="text-2xl md:text-3xl font-bold text-ink mb-6">
-        Edit {locale.toUpperCase()} Translation
+      <h1 className="mb-6 text-2xl font-bold text-ink md:text-3xl">
+        {t('edit.header', { language: languageLabel })}
       </h1>
 
       <TranslationForm

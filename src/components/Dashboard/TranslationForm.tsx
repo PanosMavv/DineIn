@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Save, X, Globe, ChevronDown, ChevronUp } from 'lucide-react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { availableLocales } from '@/i18n/locales';
+import { availableLocales, getLocaleLabel } from '@/i18n/locales';
 
 interface MenuItem {
   id: string;
@@ -57,6 +57,7 @@ export function TranslationForm({
   const t = useTranslations(
     `dashboard.management.translations.${isEditing ? 'edit' : 'add'}`
   );
+  const languageLabel = locale ? getLocaleLabel(locale) : '';
 
   // Initialize all categories as collapsed
   useEffect(() => {
@@ -158,8 +159,8 @@ export function TranslationForm({
 
       router.push(`/dashboard/restaurants/${restaurantId}/translations`);
       router.refresh();
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to save');
+    } catch {
+      setError(t('saveFailed'));
     } finally {
       setIsSaving(false);
     }
@@ -181,7 +182,10 @@ export function TranslationForm({
   return (
     <form onSubmit={handleSubmit} className="max-w-3xl space-y-6">
       {error && (
-        <div className="p-4 bg-red-500/10 text-red-600 rounded-xl text-sm">
+        <div
+          role="alert"
+          className="rounded-[var(--dashboard-radius-sm)] bg-red-500/10 p-4 text-sm text-red-600"
+        >
           {error}
         </div>
       )}
@@ -197,11 +201,12 @@ export function TranslationForm({
       {/* Locale selector - only on add */}
       {!isEditing && (
         <div>
-          <label className="block text-sm font-medium text-ink mb-1">
+          <label htmlFor="translation-locale" className="mb-1 block text-sm font-medium text-ink">
             {t('selectLanguage')}
           </label>
           <div className="relative">
             <select
+              id="translation-locale"
               value={locale}
               onChange={(e) => handleLocaleChange(e.target.value)}
               required
@@ -234,10 +239,11 @@ export function TranslationForm({
               </p>
             )}
             <div>
-              <label className="block text-sm font-medium text-ink mb-1">
-                {t('nameIn', { locale: locale.toUpperCase() })}
+              <label htmlFor="translation-restaurant-name" className="mb-1 block text-sm font-medium text-ink">
+                {t('nameIn', { locale: languageLabel })}
               </label>
               <input
+                id="translation-restaurant-name"
                 type="text"
                 value={restaurantName}
                 onChange={(e) => setRestaurantName(e.target.value)}
@@ -245,10 +251,11 @@ export function TranslationForm({
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-ink mb-1">
-                {t('descriptionIn', { locale: locale.toUpperCase() })}
+              <label htmlFor="translation-restaurant-description" className="mb-1 block text-sm font-medium text-ink">
+                {t('descriptionIn', { locale: languageLabel })}
               </label>
               <textarea
+                id="translation-restaurant-description"
                 value={restaurantDescription}
                 onChange={(e) => setRestaurantDescription(e.target.value)}
                 rows={2}
@@ -264,31 +271,40 @@ export function TranslationForm({
               className="bg-surface rounded-2xl border border-hairline overflow-hidden"
             >
               {/* Category header - darker background */}
-              <button
-                type="button"
-                onClick={() => toggleCategory(category.id)}
-                className="w-full flex items-center gap-3 px-4 py-3 bg-surface-2"
-              >
+              <div className="flex items-start gap-3 bg-surface-2 px-4 py-3">
                 {/* Category image */}
-                <div className="w-10 h-10 rounded-lg overflow-hidden bg-hairline flex items-center justify-center shrink-0">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-[var(--dashboard-radius-sm)] bg-hairline">
                   {category.theme?.image ? (
                     <Image
                       src={category.theme.image}
                       alt={getEnglishCategoryName(category)}
                       width={40}
                       height={40}
-                      className="object-cover w-full h-full"
+                      className="h-full w-full object-cover"
                       unoptimized
                     />
                   ) : (
-                    <span className="text-lg">📁</span>
+                    <span className="text-lg" aria-hidden="true">📁</span>
                   )}
                 </div>
 
-                <div className="flex-1 text-left">
-                  <p className="text-xs text-ink-muted">
-                    {t('categoryEnglishLabel')} {getEnglishCategoryName(category)}
-                  </p>
+                <div className="min-w-0 flex-1">
+                  <button
+                    type="button"
+                    onClick={() => toggleCategory(category.id)}
+                    aria-expanded={!collapsedCategories[category.id]}
+                    aria-controls={`translation-category-${category.id}`}
+                    className="flex w-full items-center justify-between gap-2 text-left"
+                  >
+                    <span className="text-xs text-ink-muted">
+                      {t('categoryEnglishLabel')} {getEnglishCategoryName(category)}
+                    </span>
+                    {collapsedCategories[category.id] ? (
+                      <ChevronDown className="h-5 w-5 shrink-0 text-ink-muted" aria-hidden="true" />
+                    ) : (
+                      <ChevronUp className="h-5 w-5 shrink-0 text-ink-muted" aria-hidden="true" />
+                    )}
+                  </button>
                   <input
                     type="text"
                     value={categoryTranslations[category.id] || ''}
@@ -296,76 +312,74 @@ export function TranslationForm({
                       ...categoryTranslations,
                       [category.id]: e.target.value,
                     })}
-                    onClick={(e) => e.stopPropagation()}
-                    placeholder={t('categoryNamePlaceholder', { locale: locale.toUpperCase() })}
+                    aria-label={t('categoryNamePlaceholder', { locale: languageLabel })}
+                    placeholder={t('categoryNamePlaceholder', { locale: languageLabel })}
                     className="mt-1 w-full px-3 py-1.5 bg-surface rounded-lg border border-hairline text-sm text-ink"
                   />
                 </div>
-
-                {collapsedCategories[category.id] ? (
-                  <ChevronDown className="w-5 h-5 text-ink-muted shrink-0" />
-                ) : (
-                  <ChevronUp className="w-5 h-5 text-ink-muted shrink-0" />
-                )}
-              </button>
+              </div>
 
               {/* Items - only show if not collapsed */}
-              {!collapsedCategories[category.id] && (
-                <div className="divide-y divide-hairline">
-                  {category.menuItems.map(item => (
-                    <div key={item.id} className="px-4 py-3 flex gap-3">
-                      {/* Item image */}
-                      <div className="w-12 h-12 rounded-lg overflow-hidden bg-surface-2 flex items-center justify-center shrink-0">
-                        {item.image ? (
-                          <Image
-                            src={item.image}
-                            alt={getEnglishName(item)}
-                            width={48}
-                            height={48}
-                            className="object-cover w-full h-full"
-                            unoptimized
-                          />
-                        ) : (
-                          <span className="text-lg">🍽️</span>
-                        )}
-                      </div>
-
-                      {/* Translation inputs */}
-                      <div className="flex-1 space-y-2">
-                        <p className="text-xs text-ink-muted">
-                          {t('englishReference')} <span className="font-medium text-ink">{getEnglishName(item)}</span>
-                        </p>
-                        <input
-                          type="text"
-                          value={itemTranslations[item.id]?.name || ''}
-                          onChange={(e) => setItemTranslations({
-                            ...itemTranslations,
-                            [item.id]: {
-                              ...itemTranslations[item.id],
-                              name: e.target.value,
-                            },
-                          })}
-                          placeholder={t('itemNamePlaceholder', { locale: locale.toUpperCase() })}
-                          className="w-full px-3 py-1.5 bg-surface rounded-lg border border-hairline text-sm text-ink"
+              <div
+                id={`translation-category-${category.id}`}
+                hidden={Boolean(collapsedCategories[category.id])}
+                className="divide-y divide-hairline"
+              >
+                {category.menuItems.map(item => (
+                  <div key={item.id} className="flex gap-3 px-4 py-3">
+                    {/* Item image */}
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-[var(--dashboard-radius-sm)] bg-surface-2">
+                      {item.image ? (
+                        <Image
+                          src={item.image}
+                          alt={getEnglishName(item)}
+                          width={48}
+                          height={48}
+                          className="h-full w-full object-cover"
+                          unoptimized
                         />
-                        <textarea
-                          value={itemTranslations[item.id]?.description || ''}
-                          onChange={(e) => setItemTranslations({
-                            ...itemTranslations,
-                            [item.id]: {
-                              ...itemTranslations[item.id],
-                              description: e.target.value,
-                            },
-                          })}
-                          rows={1}
-                          placeholder={t('itemDescriptionPlaceholder', { locale: locale.toUpperCase() })}
-                          className="w-full px-3 py-1.5 bg-surface rounded-lg border border-hairline text-sm text-ink field-sizing-content"
-                        />
-                      </div>
+                      ) : (
+                        <span className="text-lg" aria-hidden="true">🍽️</span>
+                      )}
                     </div>
-                  ))}
-                </div>
-              )}
+
+                    {/* Translation inputs */}
+                    <div className="flex-1 space-y-2">
+                      <p className="text-xs text-ink-muted">
+                        {t('englishReference')} <span className="font-medium text-ink">{getEnglishName(item)}</span>
+                      </p>
+                      <input
+                        type="text"
+                        value={itemTranslations[item.id]?.name || ''}
+                        onChange={(e) => setItemTranslations({
+                          ...itemTranslations,
+                          [item.id]: {
+                            ...itemTranslations[item.id],
+                            name: e.target.value,
+                          },
+                        })}
+                        aria-label={t('itemNamePlaceholder', { locale: languageLabel })}
+                        placeholder={t('itemNamePlaceholder', { locale: languageLabel })}
+                        className="w-full px-3 py-1.5 bg-surface rounded-lg border border-hairline text-sm text-ink"
+                      />
+                      <textarea
+                        value={itemTranslations[item.id]?.description || ''}
+                        onChange={(e) => setItemTranslations({
+                          ...itemTranslations,
+                          [item.id]: {
+                            ...itemTranslations[item.id],
+                            description: e.target.value,
+                          },
+                        })}
+                        rows={1}
+                        aria-label={t('itemDescriptionPlaceholder', { locale: languageLabel })}
+                        placeholder={t('itemDescriptionPlaceholder', { locale: languageLabel })}
+                        className="w-full px-3 py-1.5 bg-surface rounded-lg border border-hairline text-sm text-ink field-sizing-content"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
         </>
