@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 export default function ProfilePage() {
   const { data: session } = authClient.useSession();
   const t = useTranslations('dashboard.profile');
+  const tc = useTranslations('dashboard.common');
 
   if (!session) return null;
 
@@ -22,7 +23,7 @@ export default function ProfilePage() {
             {session.user.image ? (
               <img
                 src={session.user.image}
-                alt={session.user.name || 'User'}
+                alt={session.user.name || tc('user')}
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />

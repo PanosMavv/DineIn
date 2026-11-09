@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useRouter, usePathname } from 'next/navigation';
 import { Settings, X, Sun, Moon, Check, ChevronDown } from 'lucide-react';
 import { availableLocales, localeCodes } from '@/i18n/locales';
@@ -9,6 +9,7 @@ import { availableLocales, localeCodes } from '@/i18n/locales';
 export function SettingsButton() {
   const [isOpen, setIsOpen] = useState(false);
   const [isLocaleDropdownOpen, setIsLocaleDropdownOpen] = useState(false);
+  const t = useTranslations('dashboard.common');
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
@@ -96,10 +97,12 @@ export function SettingsButton() {
         </div>
 
         <div className="flex items-center justify-between px-6 py-3">
-          <h2 className="text-lg font-semibold text-ink">Settings</h2>
+          <h2 className="text-lg font-semibold text-ink">{t('settings')}</h2>
           <button
+            type="button"
             onClick={() => setIsOpen(false)}
-            className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-surface-2"
+            className="flex h-8 w-8 items-center justify-center rounded-full hover:bg-surface-2"
+            aria-label={t('close')}
           >
             <X className="w-5 h-5 text-ink-muted" />
           </button>
@@ -108,7 +111,7 @@ export function SettingsButton() {
         <div className="px-6 pb-8 space-y-6 overflow-y-auto" style={{ maxHeight: 'calc(80vh - 60px)' }}>
           {/* Language dropdown */}
           <div>
-            <p className="text-sm font-medium text-ink-muted mb-3">Language</p>
+            <p className="text-sm font-medium text-ink-muted mb-3">{t('language')}</p>
             <div className="relative" ref={dropdownRef}>
               <button
                 onClick={() => setIsLocaleDropdownOpen(!isLocaleDropdownOpen)}
@@ -163,7 +166,7 @@ export function SettingsButton() {
 
           {/* Theme toggle */}
           <div>
-            <p className="text-sm font-medium text-ink-muted mb-3">Appearance</p>
+            <p className="text-sm font-medium text-ink-muted mb-3">{t('appearance')}</p>
             <button
               onClick={toggleTheme}
               className="flex items-center justify-between w-full px-4 py-3 rounded-xl border border-hairline hover:bg-surface-2 transition-colors"
@@ -175,10 +178,12 @@ export function SettingsButton() {
                   <Sun className="w-5 h-5 text-yellow-500" />
                 )}
                 <span className="text-sm font-medium text-ink">
-                  {isDark ? 'Dark Mode' : 'Light Mode'}
+                  {isDark ? t('darkMode') : t('lightMode')}
                 </span>
               </div>
-              <span className="text-xs text-ink-subtle">{isDark ? 'Switch to light' : 'Switch to dark'}</span>
+              <span className="text-xs text-ink-subtle">
+                {isDark ? t('switchToLight') : t('switchToDark')}
+              </span>
             </button>
           </div>
         </div>
@@ -195,7 +200,7 @@ export function SettingsButton() {
             ? 'bottom-24 md:bottom-4'
             : 'bottom-4'
         }`}
-        aria-label="Settings"
+        aria-label={t('settings')}
       >
         <Settings className="w-5 h-5 text-ink-muted" />
       </button>

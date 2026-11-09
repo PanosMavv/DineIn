@@ -23,11 +23,12 @@ interface Props {
   groupedMenu: { category: string; items: MenuItem[] }[];
 }
 
-function MiniTemplate({ template, restaurantName, restaurantDescription, groupedMenu }: {
+function MiniTemplate({ template, restaurantName, restaurantDescription, groupedMenu, previewUnavailable }: {
   template: TemplateId;
   restaurantName: string;
   restaurantDescription: string;
   groupedMenu: { category: string; items: MenuItem[] }[];
+  previewUnavailable: string;
 }) {
   const restaurant = {
     ...SAMPLE_RESTAURANT,
@@ -42,7 +43,13 @@ function MiniTemplate({ template, restaurantName, restaurantDescription, grouped
         className="absolute top-0 left-0 origin-top-left"
         style={{ transform: 'scale(0.35)', width: `${100 / 0.35}%` }}
       >
-        <PreviewErrorBoundary>
+        <PreviewErrorBoundary
+          fallback={
+            <div className="p-6 text-center text-sm text-ink-subtle">
+              {previewUnavailable}
+            </div>
+          }
+        >
           {template === 'category-cards' ? (
             <CategoryCardMenu restaurant={restaurant} groupedMenu={groupedMenu} />
           ) : template === 'fast-food' ? (
@@ -90,6 +97,7 @@ export function TemplateStep({
                 restaurantName={restaurantName}
                 restaurantDescription={restaurantDescription}
                 groupedMenu={groupedMenu}
+                previewUnavailable={t('previewUnavailable')}
               />
               <p className="mt-2 text-xs md:text-sm font-semibold text-ink truncate">
                 {t(tpl.nameKey)}

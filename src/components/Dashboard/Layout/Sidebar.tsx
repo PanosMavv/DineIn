@@ -144,7 +144,7 @@ export function Sidebar({ user }: Props) {
             {user.image ? (
               <img
                 src={user.image}
-                alt={user.name || 'User'}
+                alt={user.name || td('common.user')}
                 className="h-full w-full object-cover"
                 referrerPolicy="no-referrer"
               />

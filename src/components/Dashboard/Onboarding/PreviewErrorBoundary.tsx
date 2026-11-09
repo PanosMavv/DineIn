@@ -4,7 +4,7 @@ import { Component, ReactNode } from 'react';
 
 interface Props {
   children: ReactNode;
-  fallback?: ReactNode;
+  fallback: ReactNode;
 }
 
 interface State {
@@ -19,17 +19,12 @@ export class PreviewErrorBoundary extends Component<Props, State> {
   }
 
   componentDidCatch(error: Error) {
-    // eslint-disable-next-line no-console
     console.error('[Preview] template render error:', error);
   }
 
   render() {
     if (this.state.hasError) {
-      return this.props.fallback ?? (
-        <div className="p-6 text-center text-sm text-ink-subtle">
-          Preview unavailable
-        </div>
-      );
+      return this.props.fallback;
     }
     return this.props.children;
   }

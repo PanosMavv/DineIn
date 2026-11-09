@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import { QRLogo } from './QRLogo';
 
 interface Props {
@@ -8,6 +11,7 @@ interface Props {
 }
 
 export function Logo({ size = 'md', showDashboard = false, href = '/' }: Props) {
+  const t = useTranslations('dashboard.nav');
   const sizes = {
     sm: { text: 'text-xl', icon: 'w-6 h-6', dashboard: 'text-xs' },
     md: { text: 'text-2xl', icon: 'w-8 h-8', dashboard: 'text-sm' },
@@ -23,7 +27,7 @@ export function Logo({ size = 'md', showDashboard = false, href = '/' }: Props) 
         </span>
         {showDashboard && (
           <span className={`${sizes[size].dashboard} font-medium text-ink-muted leading-none mb-0.5`}>
-            Dashboard
+            {t('dashboard')}
           </span>
         )}
       </span>

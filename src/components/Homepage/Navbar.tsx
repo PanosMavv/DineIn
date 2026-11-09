@@ -38,12 +38,12 @@ export function Navbar() {
               <Link
                 href="/dashboard"
                 className="w-9 h-9 rounded-full overflow-hidden border border-hairline hover:border-ink-subtle transition-colors block"
-                aria-label="Dashboard"
+                aria-label={t('dashboard')}
               >
                 {session.user.image ? (
                   <img
                     src={session.user.image}
-                    alt={session.user.name || 'User'}
+                    alt={session.user.name || t('user')}
                     className="w-full h-full object-cover"
                     referrerPolicy="no-referrer"
                   />
@@ -64,8 +64,10 @@ export function Navbar() {
 
             {/* Mobile hamburger */}
             <button
+              type="button"
               onClick={() => setIsOpen(!isOpen)}
               className="md:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-2"
+              aria-label={isOpen ? t('closeMenu') : t('openMenu')}
             >
               {isOpen ? (
                 <X className="w-5 h-5 text-ink-muted" />

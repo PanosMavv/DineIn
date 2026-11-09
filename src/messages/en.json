@@ -96,7 +96,11 @@
     "features": "Features",
     "pricing": "Pricing",
     "demoMenus": "Demo Menus",
-    "signIn": "Sign In"
+    "signIn": "Sign In",
+    "dashboard": "Dashboard",
+    "user": "User",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
   },
   "auth": {
     "signIn": {
@@ -146,7 +150,8 @@
       "previewFallbackName": "Your Restaurant",
       "mobileToggle": "Mobile",
       "desktopToggle": "Desktop",
-      "openPreview": "Preview menu"
+      "openPreview": "Preview menu",
+      "previewUnavailable": "Preview unavailable"
     },
     "signOut": "Sign Out",
     "nav": {
@@ -158,7 +163,8 @@
       "menu": "Menu",
       "design": "Design",
       "languages": "Languages",
-      "settings": "Settings"
+      "settings": "Settings",
+      "dashboard": "Dashboard"
     },
     "common": {
       "back": "Back",
@@ -179,6 +185,15 @@
       "deleteFailed": "Couldn't delete. Please try again.",
       "saveFailed": "Couldn't save. Please try again.",
       "dismiss": "Dismiss",
+      "settings": "Settings",
+      "language": "Language",
+      "appearance": "Appearance",
+      "darkMode": "Dark mode",
+      "lightMode": "Light mode",
+      "switchToLight": "Switch to light",
+      "switchToDark": "Switch to dark",
+      "close": "Close",
+      "user": "User",
       "itemCount": "{count, plural, one {# item} other {# items}}",
       "categoryCount": "{count, plural, one {# category} other {# categories}}",
       "languageCount": "{count, plural, one {# language} other {# languages}}"

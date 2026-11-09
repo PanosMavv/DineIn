@@ -40,7 +40,13 @@ export function LivePreviewPanel({
   };
 
   const rendered = (
-    <PreviewErrorBoundary>
+    <PreviewErrorBoundary
+      fallback={
+        <div className="p-6 text-center text-sm text-ink-subtle">
+          {t('previewUnavailable')}
+        </div>
+      }
+    >
       {template === 'category-cards' ? (
         <CategoryCardMenu restaurant={restaurant} groupedMenu={groupedMenu} />
       ) : template === 'fast-food' ? (
