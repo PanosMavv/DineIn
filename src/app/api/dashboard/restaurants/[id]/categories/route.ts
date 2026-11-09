@@ -26,9 +26,15 @@ export async function POST(
   const body = await request.json();
 
   try {
+    const lastCategory = await prisma.category.aggregate({
+      where: { restaurantId: id },
+      _max: { order: true },
+    });
+
     const category = await prisma.category.create({
       data: {
         restaurantId: id,
+        order: (lastCategory._max.order ?? -1) + 1,
         translations: {
           create: {
             locale: 'en',

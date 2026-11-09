@@ -30,8 +30,8 @@ export default async function NewCategoryPage({
   return (
     <div>
       <Link
-        href={`/dashboard/restaurants/${id}/categories`}
-        className="inline-flex items-center gap-2 text-sm text-ink-muted hover:text-ink mb-4"
+        href={`/dashboard/restaurants/${id}/menu`}
+        className="mb-4 inline-flex items-center gap-2 text-sm text-ink-muted hover:text-ink"
       >
         <ArrowLeft className="w-4 h-4" />
         {t('add.back')}

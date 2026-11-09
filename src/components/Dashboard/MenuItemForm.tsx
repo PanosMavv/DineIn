@@ -1,11 +1,14 @@
 'use client';
 
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { valibotResolver } from '@hookform/resolvers/valibot';
 import * as v from 'valibot';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { Save, X, Globe } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { ui } from '@/lib/ui';
 
 interface Category {
   id: string;
@@ -15,6 +18,7 @@ interface Category {
 interface Props {
   restaurantId: string;
   categories: Category[];
+  defaultCategoryId?: string;
   initialData?: {
     id: string;
     price: number;
@@ -29,10 +33,21 @@ interface Props {
   };
 }
 
-export function MenuItemForm({ restaurantId, categories, initialData }: Props) {
+export function MenuItemForm({
+  restaurantId,
+  categories,
+  defaultCategoryId,
+  initialData,
+}: Props) {
   const router = useRouter();
   const isEdit = !!initialData;
   const t = useTranslations(`dashboard.management.items.${isEdit ? 'edit' : 'add'}`);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  const initialCategoryId =
+    defaultCategoryId && categories.some((category) => category.id === defaultCategoryId)
+      ? defaultCategoryId
+      : categories[0]?.id || '';
 
   const menuItemSchema = v.object({
     name: v.pipe(
@@ -76,7 +91,7 @@ export function MenuItemForm({ restaurantId, categories, initialData }: Props) {
       price: initialData?.price?.toString() || '',
       originalPrice: initialData?.originalPrice?.toString() || '',
       image: initialData?.image || '',
-      categoryId: initialData?.categoryId || categories[0]?.id || '',
+      categoryId: initialData?.categoryId || initialCategoryId,
       isAvailable: initialData?.isAvailable ?? true,
       isFeatured: initialData?.isFeatured ?? false,
       featuredLabel: initialData?.featuredLabel || '',
@@ -85,8 +100,10 @@ export function MenuItemForm({ restaurantId, categories, initialData }: Props) {
 
   const isFeatured = watch('isFeatured');
   const imageUrl = watch('image');
+  const nameValue = watch('name');
 
   const onSubmit = async (data: MenuItemFormData) => {
+    setSubmitError(null);
     try {
       const url = initialData
         ? `/api/dashboard/restaurants/${restaurantId}/menu/${initialData.id}`
@@ -111,8 +128,8 @@ export function MenuItemForm({ restaurantId, categories, initialData }: Props) {
 
       router.push(`/dashboard/restaurants/${restaurantId}/menu`);
       router.refresh();
-    } catch (err) {
-      console.error(err);
+    } catch {
+      setSubmitError(t('saveFailed'));
     }
   };
 
@@ -128,126 +145,182 @@ export function MenuItemForm({ restaurantId, categories, initialData }: Props) {
         </p>
       </div>
 
+      {submitError && (
+        <div
+          role="alert"
+          className="rounded-[var(--dashboard-radius-sm)] bg-red-500/10 p-3 text-sm text-red-600"
+        >
+          {submitError}
+        </div>
+      )}
+
       {/* Name */}
       <div>
-        <label className="block text-sm font-medium text-ink mb-1">
-          {t('itemName')} <span className="text-xs text-ink-subtle">{t('englishReminder')}</span>
+        <label htmlFor="item-name" className={ui.label}>
+          {t('itemName')}{' '}
+          <span className="text-xs font-normal text-ink-subtle">
+            {t('englishReminder')}
+          </span>
         </label>
         <input
+          id="item-name"
           {...register('name')}
           placeholder={t('namePlaceholder')}
-          className={`w-full px-4 py-2 bg-surface rounded-xl border ${errors.name ? 'border-red-500' : 'border-hairline'
-            } text-ink`}
+          aria-invalid={Boolean(errors.name)}
+          aria-describedby={errors.name ? 'item-name-error' : undefined}
+          className={ui.input}
         />
         {errors.name && (
-          <p className="text-xs text-red-500 mt-1">{errors.name.message}</p>
+          <p id="item-name-error" className={ui.error}>
+            {errors.name.message}
+          </p>
         )}
       </div>
 
       {/* Description */}
       <div>
-        <label className="block text-sm font-medium text-ink mb-1">
-          {t('itemDescription')} <span className="text-xs text-ink-subtle">{t('englishReminder')}</span>
+        <label htmlFor="item-description" className={ui.label}>
+          {t('itemDescription')}{' '}
+          <span className="text-xs font-normal text-ink-subtle">
+            {t('englishReminder')}
+          </span>
         </label>
         <textarea
+          id="item-description"
           {...register('description')}
           rows={3}
           placeholder={t('descriptionPlaceholder')}
-          className={`w-full px-4 py-2 bg-surface rounded-xl border ${errors.description ? 'border-red-500' : 'border-hairline'
-            } text-ink`}
+          aria-invalid={Boolean(errors.description)}
+          aria-describedby={
+            errors.description ? 'item-description-error' : undefined
+          }
+          className={ui.textarea}
         />
         {errors.description && (
-          <p className="text-xs text-red-500 mt-1">{errors.description.message}</p>
+          <p id="item-description-error" className={ui.error}>
+            {errors.description.message}
+          </p>
         )}
       </div>
 
       {/* Category + Price */}
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
-          <label className="block text-sm font-medium text-ink mb-1">
+          <label htmlFor="item-category" className={ui.label}>
             {t('itemCategory')}
           </label>
           <select
+            id="item-category"
             {...register('categoryId')}
-            className="w-full px-4 py-2 bg-surface rounded-xl border border-hairline text-ink"
+            aria-invalid={Boolean(errors.categoryId)}
+            aria-describedby={
+              errors.categoryId ? 'item-category-error' : undefined
+            }
+            className={ui.select}
           >
             {categories.map((cat) => (
               <option key={cat.id} value={cat.id}>{cat.name}</option>
             ))}
           </select>
           {errors.categoryId && (
-            <p className="text-xs text-red-500 mt-1">{errors.categoryId.message}</p>
+            <p id="item-category-error" className={ui.error}>
+              {errors.categoryId.message}
+            </p>
           )}
         </div>
         <div>
-          <label className="block text-sm font-medium text-ink mb-1">
+          <label htmlFor="item-price" className={ui.label}>
             {t('itemPrice')}
           </label>
           <input
+            id="item-price"
             {...register('price')}
             type="number"
             step="0.01"
-            className="w-full px-4 py-2 bg-surface rounded-xl border border-hairline text-ink"
+            aria-invalid={Boolean(errors.price)}
+            aria-describedby={errors.price ? 'item-price-error' : undefined}
+            className={ui.input}
           />
           {errors.price && (
-            <p className="text-xs text-red-500 mt-1">{errors.price.message}</p>
+            <p id="item-price-error" className={ui.error}>
+              {errors.price.message}
+            </p>
           )}
         </div>
       </div>
 
       {/* Original Price */}
       <div>
-        <label className="block text-sm font-medium text-ink mb-1">
-          {t('originalPrice')} <span className="text-xs text-ink-subtle">{t('originalPriceOptional')}</span>
+        <label htmlFor="item-original-price" className={ui.label}>
+          {t('originalPrice')}{' '}
+          <span className="text-xs font-normal text-ink-subtle">
+            {t('originalPriceOptional')}
+          </span>
         </label>
         <input
+          id="item-original-price"
           {...register('originalPrice')}
           type="number"
           step="0.01"
-          className="w-full px-4 py-2 bg-surface rounded-xl border border-hairline text-ink"
+          className={ui.input}
         />
       </div>
 
       {/* Image URL */}
       <div>
-        <label className="block text-sm font-medium text-ink mb-1">
+        <label htmlFor="item-image" className={ui.label}>
           {t('imageUrl')}
         </label>
         <input
+          id="item-image"
           {...register('image')}
           placeholder="https://..."
-          className="w-full px-4 py-2 bg-surface rounded-xl border border-hairline text-ink"
+          className={ui.input}
         />
         {imageUrl && (
-          <img src={imageUrl} alt="Preview" className="mt-2 w-24 h-24 rounded-xl object-cover" />
+          <img
+            src={imageUrl}
+            alt={nameValue || t('itemName')}
+            className="mt-2 h-24 w-24 rounded-[var(--dashboard-radius-sm)] object-cover"
+          />
         )}
       </div>
 
       {/* Featured */}
       <div className="flex items-center gap-3">
         <input
+          id="item-featured"
           {...register('isFeatured')}
           type="checkbox"
-          className="w-4 h-4"
+          className="h-4 w-4"
         />
-        <label className="text-sm text-ink">
+        <label htmlFor="item-featured" className="text-sm text-ink">
           {t('featuredItem')}
         </label>
       </div>
 
       {isFeatured && (
         <div>
-          <label className="block text-sm font-medium text-ink mb-1">
-            {t('featuredLabel')} <span className="text-xs text-ink-subtle">{t('englishReminder')}</span>
+          <label htmlFor="item-featured-label" className={ui.label}>
+            {t('featuredLabel')}{' '}
+            <span className="text-xs font-normal text-ink-subtle">
+              {t('englishReminder')}
+            </span>
           </label>
           <input
+            id="item-featured-label"
             {...register('featuredLabel')}
             placeholder={t('featuredLabelPlaceholder')}
-            className={`w-full px-4 py-2 bg-surface rounded-xl border ${errors.featuredLabel ? 'border-red-500' : 'border-hairline'
-              } text-ink`}
+            aria-invalid={Boolean(errors.featuredLabel)}
+            aria-describedby={
+              errors.featuredLabel ? 'item-featured-label-error' : undefined
+            }
+            className={ui.input}
           />
           {errors.featuredLabel && (
-            <p className="text-xs text-red-500 mt-1">{errors.featuredLabel.message}</p>
+            <p id="item-featured-label-error" className={ui.error}>
+              {errors.featuredLabel.message}
+            </p>
           )}
         </div>
       )}
@@ -255,33 +328,33 @@ export function MenuItemForm({ restaurantId, categories, initialData }: Props) {
       {/* Available */}
       <div className="flex items-center gap-3">
         <input
+          id="item-available"
           {...register('isAvailable')}
           type="checkbox"
-          className="w-4 h-4"
+          className="h-4 w-4"
         />
-        <label className="text-sm text-ink">
+        <label htmlFor="item-available" className="text-sm text-ink">
           {t('availableForOrdering')}
         </label>
       </div>
 
       {/* Submit */}
-      <div className="flex gap-3 pt-4">
+      <div className="flex flex-wrap gap-3 pt-4">
         <button
           type="submit"
           disabled={isSubmitting || !isValid}
-          className="inline-flex items-center gap-2 px-6 py-3 bg-ink text-surface rounded-full font-semibold hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
+          className={ui.btnPrimary}
         >
-          <Save className="w-4 h-4" />
+          <Save className="h-4 w-4" aria-hidden="true" />
           {isSubmitting ? t('saving') : t('saveItem')}
         </button>
-        <button
-          type="button"
-          onClick={() => router.back()}
-          className="inline-flex items-center gap-2 px-6 py-3 border border-hairline rounded-full font-semibold text-ink hover:bg-surface-2 transition-colors"
+        <Link
+          href={`/dashboard/restaurants/${restaurantId}/menu`}
+          className={ui.btnGhost}
         >
-          <X className="w-4 h-4" />
+          <X className="h-4 w-4" aria-hidden="true" />
           {t('cancel')}
-        </button>
+        </Link>
       </div>
     </form>
   );

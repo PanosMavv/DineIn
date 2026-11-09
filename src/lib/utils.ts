@@ -12,12 +12,12 @@ export interface MenuItem {
 }
 
 export function groupMenuItemsByCategory(items: MenuItem[]) {
-  const grouped = items
-    .filter(item => item.isAvailable)
-    .reduce((acc, item) => {
-      (acc[item.category] ??= []).push(item);
-      return acc;
-    }, {} as Record<string, MenuItem[]>);
+  // Sold-out items stay visible on the public menu (rendered dimmed by
+  // ImageMenuItem). Consumers that need only available items can filter.
+  const grouped = items.reduce((acc, item) => {
+    (acc[item.category] ??= []).push(item);
+    return acc;
+  }, {} as Record<string, MenuItem[]>);
 
   return Object.keys(grouped)
     .map(category => ({
