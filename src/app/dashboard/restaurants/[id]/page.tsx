@@ -7,16 +7,20 @@ import { ui } from '@/lib/ui';
 import { RestaurantHeader } from '@/components/Dashboard/shared/RestaurantHeader';
 import { NextStepSection } from '@/components/Dashboard/Hub/NextStepSection';
 import { NotLiveBanner } from '@/components/Dashboard/Hub/NotLiveBanner';
+import { WelcomeBanner } from '@/components/Dashboard/Hub/WelcomeBanner';
 import { SetupChecklist, type ChecklistStep } from '@/components/Dashboard/Hub/SetupChecklist';
 import { PublicMenuCard } from '@/components/Dashboard/Hub/PublicMenuCard';
 import type { StepStatus } from '@/components/Dashboard/shared/StatusRow';
 
 export default async function RestaurantDetailPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ id: string }>;
+  searchParams: Promise<{ welcome?: string }>;
 }) {
   const { id } = await params;
+  const { welcome } = await searchParams;
   const session = await auth.api.getSession({ headers: await headers() });
   const userId = session?.user.id;
 
@@ -142,6 +146,10 @@ export default async function RestaurantDetailPage({
         backLabel={tc('allRestaurants')}
         isLive={isLive}
       />
+
+      {welcome === '1' && (
+        <WelcomeBanner name={name} hasCategories={categories > 0} />
+      )}
 
       {!isLive && <NotLiveBanner restaurantId={id} />}
 

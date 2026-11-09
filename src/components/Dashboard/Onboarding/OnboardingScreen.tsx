@@ -2,8 +2,9 @@
 
 import { useState, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { Smartphone, ArrowRight } from 'lucide-react';
+import { Smartphone, ArrowRight, X } from 'lucide-react';
 import { BasicsStep } from './BasicsStep';
 import { TemplateStep } from './TemplateStep';
 import { LivePreviewPanel } from './LivePreviewPanel';
@@ -12,7 +13,11 @@ import { SAMPLE_CATEGORIES } from './sampleData';
 import { ui } from '@/lib/ui';
 import type { MenuItem } from '@/lib/utils';
 
-export function OnboardingScreen() {
+interface Props {
+  cancelHref?: string;
+}
+
+export function OnboardingScreen({ cancelHref }: Props) {
   const router = useRouter();
   const t = useTranslations('dashboard.onboarding');
 
@@ -50,15 +55,14 @@ export function OnboardingScreen() {
       });
 
       if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
-        throw new Error(data.error || 'Failed to create restaurant');
+        throw new Error('Create failed');
       }
 
       const restaurant = await res.json();
-      router.push(`/dashboard/restaurants/${restaurant.id}`);
+      router.push(`/dashboard/restaurants/${restaurant.id}?welcome=1`);
       router.refresh();
-    } catch (err) {
-      setServerError(err instanceof Error ? err.message : 'Failed to create');
+    } catch {
+      setServerError(t('createFailed'));
     } finally {
       setIsSubmitting(false);
     }
@@ -68,18 +72,18 @@ export function OnboardingScreen() {
     <>
       <div className="lg:grid lg:grid-cols-[45%_1fr] lg:gap-10 lg:min-h-[calc(100vh-8rem)]">
         <div className="space-y-8 max-w-xl">
-          <div>
-            <h1 className="text-2xl md:text-3xl font-bold text-ink">{t('welcome')}</h1>
-            <p className="text-ink-muted mt-1">{t('subtitle')}</p>
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <h1 className="text-2xl font-bold text-ink md:text-3xl">{t('welcome')}</h1>
+              <p className="mt-1 text-ink-muted">{t('subtitle')}</p>
+            </div>
+            {cancelHref && (
+              <Link href={cancelHref} className={`${ui.btnGhost} shrink-0`}>
+                <X className="h-4 w-4" aria-hidden="true" />
+                {t('cancel')}
+              </Link>
+            )}
           </div>
-
-          <TemplateStep
-            value={template}
-            onChange={setTemplate}
-            restaurantName={name}
-            restaurantDescription={description}
-            groupedMenu={groupedMenu}
-          />
 
           <BasicsStep
             name={name}
@@ -87,6 +91,14 @@ export function OnboardingScreen() {
             onNameChange={setName}
             onDescriptionChange={setDescription}
             nameError={nameError}
+          />
+
+          <TemplateStep
+            value={template}
+            onChange={setTemplate}
+            restaurantName={name}
+            restaurantDescription={description}
+            groupedMenu={groupedMenu}
           />
 
           {serverError && (

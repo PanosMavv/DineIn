@@ -122,6 +122,9 @@
       "optional": "optional",
       "step2": "Look & feel",
       "templateLabel": "Choose a template. You can change it anytime.",
+      "cancel": "Back to restaurants",
+      "close": "Close",
+      "createFailed": "Couldn't create the restaurant. Please try again.",
       "templates": {
         "simple-list": {
           "name": "Simple List",
@@ -211,6 +214,9 @@
       "nextShareTitle": "Your menu is live",
       "nextShareBody": "Share the link with guests, or keep refining your menu.",
       "nextShareCta": "Copy menu link",
+      "welcomeTitle": "Welcome, {name}",
+      "welcomeBody": "Your restaurant is live. Add your first category below to get started.",
+      "welcomeBodyHasCategories": "Your restaurant is live. Keep building your menu below.",
       "notLive": "Not live yet",
       "notLiveBody": "English is inactive, so guests see your URL without a name. Activate it in Languages.",
       "notLiveCta": "Go to Languages",

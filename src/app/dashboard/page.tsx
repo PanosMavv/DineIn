@@ -35,8 +35,12 @@ export default async function DashboardPage({
 
   // First-time users, and people explicitly creating another restaurant,
   // both use the same onboarding screen.
-  if (restaurants.length === 0 || isNew === '1') {
+  if (restaurants.length === 0) {
     return <OnboardingScreen />;
+  }
+
+  if (isNew === '1') {
+    return <OnboardingScreen cancelHref="/dashboard" />;
   }
 
   return (

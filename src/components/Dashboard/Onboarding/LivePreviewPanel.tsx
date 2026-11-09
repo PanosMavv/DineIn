@@ -61,7 +61,7 @@ export function LivePreviewPanel({
             onClick={onCloseMobile}
             className="px-3 py-1.5 text-sm font-medium text-ink-muted hover:text-ink"
           >
-            Close
+            {t('close')}
           </button>
         </div>
         <div className="flex-1 overflow-y-auto p-4">
