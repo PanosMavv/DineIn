@@ -42,6 +42,9 @@ export async function POST(request: Request) {
             locale: 'en',
             name: body.name.trim(),
             description: body.description?.trim() || null,
+            // English is the default language; without this the public page
+            // has no active translation and falls back to the slug.
+            isActive: true,
           },
         },
         themeSettings: {

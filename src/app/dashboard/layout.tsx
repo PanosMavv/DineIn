@@ -37,11 +37,11 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <Logo size="sm" showDashboard href="/dashboard" />
         </div>
 
-        <main className="flex-1 px-4 md:px-8 py-6 pb-24 md:pb-8">
-          <div className="max-w-6xl mx-auto">
+        <div className="flex-1 px-4 py-6 pb-24 md:px-8 md:pb-8">
+          <div className="mx-auto max-w-6xl">
             {children}
           </div>
-        </main>
+        </div>
 
         <BottomTabBar />
       </div>

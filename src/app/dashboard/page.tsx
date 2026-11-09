@@ -2,64 +2,61 @@ import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
 import { prisma } from '@/lib/prisma';
 import Link from 'next/link';
-import { UtensilsCrossed } from 'lucide-react';
+import { Plus } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
+import { ui } from '@/lib/ui';
 import { OnboardingScreen } from '@/components/Dashboard/Onboarding/OnboardingScreen';
-import { RestaurantListItem } from '@/components/Dashboard/RestaurantListItem';
+import { RestaurantCard } from '@/components/Dashboard/Restaurants/RestaurantCard';
 
-export default async function DashboardPage() {
+export default async function DashboardPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ new?: string }>;
+}) {
   const session = await auth.api.getSession({ headers: await headers() });
   const userId = session?.user.id;
 
   if (!userId) return null;
 
-  const t = await getTranslations('dashboard.overview');
+  const { new: isNew } = await searchParams;
+  const t = await getTranslations('dashboard.portfolio');
 
   const restaurants = await prisma.restaurant.findMany({
     where: { ownerId: userId },
     include: {
-      translations: { where: { locale: 'en' } },
-      themeSettings: true,
-      _count: { select: { menuItems: true } },
+      translations: {
+        select: { locale: true, name: true, isActive: true },
+      },
+      themeSettings: { select: { logoImage: true } },
+      _count: { select: { categories: true, menuItems: true } },
     },
     orderBy: { createdAt: 'desc' },
   });
 
-  // First-time user: onboarding
-  if (restaurants.length === 0) {
+  // First-time users, and people explicitly creating another restaurant,
+  // both use the same onboarding screen.
+  if (restaurants.length === 0 || isNew === '1') {
     return <OnboardingScreen />;
   }
 
   return (
     <div>
-      <div className="mb-8">
-        <h1 className="text-2xl md:text-3xl font-bold text-ink">
-          {t('welcome')}{session.user.name?.split(' ')[0]}
-        </h1>
-        <p className="text-ink-muted mt-1">{t('description')}</p>
-      </div>
-
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-semibold text-ink">{t('restaurants')}</h2>
-        <Link
-          href="/dashboard?new=1"
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-ink text-surface text-sm font-semibold"
-        >
-          <UtensilsCrossed className="w-4 h-4" />
-          New
+      <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <div>
+          <h1 className="text-2xl font-bold text-ink md:text-3xl">
+            {t('header')}
+          </h1>
+          <p className="mt-1 text-ink-muted">{t('description')}</p>
+        </div>
+        <Link href="/dashboard?new=1" className={`${ui.btnPrimary} shrink-0`}>
+          <Plus className="h-4 w-4" aria-hidden="true" />
+          {t('newRestaurant')}
         </Link>
       </div>
 
-      <div className="grid gap-4">
+      <div className="grid gap-4 sm:grid-cols-2">
         {restaurants.map((restaurant) => (
-          <Link
-            key={restaurant.id}
-            href={`/dashboard/restaurants/${restaurant.id}`}
-            className="flex items-center gap-4 p-4 bg-surface rounded-(--dashboard-radius) border border-hairline hover:border-ink-subtle transition-colors"
-          >
-            <RestaurantListItem restaurant={restaurant} />
-            <span className="text-ink-subtle">→</span>
-          </Link>
+          <RestaurantCard key={restaurant.id} restaurant={restaurant} />
         ))}
       </div>
     </div>

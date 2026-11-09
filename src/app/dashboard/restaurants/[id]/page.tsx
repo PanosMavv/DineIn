@@ -1,10 +1,15 @@
 import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
 import { prisma } from '@/lib/prisma';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { Settings, UtensilsCrossed, Palette, Eye, ArrowLeft, Languages } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
+import { ui } from '@/lib/ui';
+import { RestaurantHeader } from '@/components/Dashboard/shared/RestaurantHeader';
+import { NextStepSection } from '@/components/Dashboard/Hub/NextStepSection';
+import { NotLiveBanner } from '@/components/Dashboard/Hub/NotLiveBanner';
+import { SetupChecklist, type ChecklistStep } from '@/components/Dashboard/Hub/SetupChecklist';
+import { PublicMenuCard } from '@/components/Dashboard/Hub/PublicMenuCard';
+import type { StepStatus } from '@/components/Dashboard/shared/StatusRow';
 
 export default async function RestaurantDetailPage({
   params,
@@ -17,95 +22,157 @@ export default async function RestaurantDetailPage({
 
   if (!userId) return null;
 
-  const t = await getTranslations('dashboard.restaurantCard');
-  const tTheme = await getTranslations('dashboard.management.theme');
-  const tCategories = await getTranslations('dashboard.management.categories');
-  const tItems = await getTranslations('dashboard.management.items');
-  const tTranslations = await getTranslations('dashboard.management.translations');
+  const t = await getTranslations('dashboard.hub');
+  const tc = await getTranslations('dashboard.common');
 
   const restaurant = await prisma.restaurant.findFirst({
     where: { id, ownerId: userId },
     include: {
-      translations: { where: { locale: 'en' } },
+      translations: {
+        select: { locale: true, name: true, isActive: true },
+      },
       themeSettings: true,
-      _count: { select: { menuItems: true, categories: true } },
+      _count: {
+        select: { categories: true, menuItems: true, carouselImages: true },
+      },
+      menuItems: {
+        where: { isAvailable: true },
+        select: { id: true },
+      },
     },
   });
 
   if (!restaurant) notFound();
 
-  const name = restaurant.translations[0]?.name || restaurant.slug;
+  const english = restaurant.translations.find(
+    (translation) => translation.locale === 'en'
+  );
+  const name = english?.name || restaurant.slug;
+  const isLive = Boolean(english?.isActive);
+  const activeLanguages = restaurant.translations.filter(
+    (translation) => translation.isActive
+  ).length;
+  const additionalLanguages = Math.max(
+    activeLanguages - (english?.isActive ? 1 : 0),
+    0
+  );
 
-  const sections = [
+  const categories = restaurant._count.categories;
+  const dishes = restaurant._count.menuItems;
+  const availableDishes = restaurant.menuItems.length;
+
+  const designDone = Boolean(
+    restaurant.themeSettings?.logoImage ||
+      restaurant._count.carouselImages > 0 ||
+      (restaurant.themeSettings?.template &&
+        restaurant.themeSettings.template !== 'simple-list')
+  );
+  const languagesDone = additionalLanguages > 0;
+  const essentialsDone = categories > 0 && dishes > 0;
+
+  let nextId: 'categories' | 'menu' | 'soldout' | 'share';
+  if (categories === 0) nextId = 'categories';
+  else if (dishes === 0) nextId = 'menu';
+  else if (availableDishes === 0) nextId = 'soldout';
+  else nextId = 'share';
+
+  const stepStatus = (
+    done: boolean,
+    current: boolean,
+    optional = false
+  ): StepStatus => {
+    if (done) return 'done';
+    if (optional) return 'optional';
+    return current ? 'current' : 'pending';
+  };
+
+  const steps: ChecklistStep[] = [
     {
-      href: `/dashboard/restaurants/${id}/theme`,
-      label: tTheme('header'),
-      description: tTheme('description'),
-      icon: Palette,
-    },
-    {
-      href: `/dashboard/restaurants/${id}/categories`,
-      label: tCategories('header'),
-      description: `Manage ${restaurant._count.categories} categories`,
-      icon: Settings,
-    },
-    {
+      id: 'categories',
+      status: stepStatus(categories > 0, nextId === 'categories'),
+      title: t('categories'),
+      meta:
+        categories > 0
+          ? tc('categoryCount', { count: categories })
+          : t('categoriesEmpty'),
       href: `/dashboard/restaurants/${id}/menu`,
-      label: tItems('header'),
-      description: `Manage ${restaurant._count.menuItems} items`,
-      icon: UtensilsCrossed,
+      action: tc('manage'),
     },
     {
+      id: 'dishes',
+      status: stepStatus(dishes > 0, nextId === 'menu' || nextId === 'soldout'),
+      title: t('dishes'),
+      meta:
+        dishes > 0 ? tc('itemCount', { count: dishes }) : t('dishesEmpty'),
+      href: `/dashboard/restaurants/${id}/menu`,
+      action: t('addDish'),
+    },
+    {
+      id: 'design',
+      status: stepStatus(designDone, false, true),
+      title: t('design'),
+      meta: designDone ? t('designCustom') : t('designDefault'),
+      href: `/dashboard/restaurants/${id}/theme`,
+      action: t('customize'),
+    },
+    {
+      id: 'languages',
+      status: stepStatus(languagesDone, false, true),
+      title: t('languages'),
+      meta: languagesDone
+        ? tc('languageCount', { count: activeLanguages })
+        : t('languagesEnglishOnly'),
       href: `/dashboard/restaurants/${id}/translations`,
-      label: tTranslations('header'),
-      description: tTranslations('description'),
-      icon: Languages,
-    }
+      action: t('addLanguage'),
+    },
   ];
+
+  const completedSteps = steps.filter((step) => step.status === 'done').length;
+  const progressLabel = t('progress', {
+    done: completedSteps,
+    total: steps.length,
+  });
 
   return (
     <div>
-      <Link
-        href="/dashboard/restaurants"
-        className="inline-flex items-center gap-2 text-sm text-ink-muted hover:text-ink mb-4"
-      >
-        <ArrowLeft className="w-4 h-4" />
-        {t('back')}
-      </Link>
+      <RestaurantHeader
+        name={name}
+        slug={restaurant.slug}
+        backHref="/dashboard"
+        backLabel={tc('allRestaurants')}
+        isLive={isLive}
+      />
 
-      <div className="flex items-center justify-between mb-8">
-        <h1 className="text-2xl md:text-3xl font-bold text-ink">
-          {name}
-        </h1>
-        <Link
-          href={`/${restaurant.slug}`}
-          target="_blank"
-          className="inline-flex items-center gap-2 px-4 py-2 bg-accent-brand/10 rounded-full text-sm font-medium text-accent-brand hover:bg-accent-brand/20 transition-colors"
-        >
-          <Eye className="w-4 h-4" />
-          {t('preview')}
-        </Link>
-      </div>
+      {!isLive && <NotLiveBanner restaurantId={id} />}
 
-      <div className="grid gap-4">
-        {sections.map((section) => (
-          <Link
-            key={section.href}
-            href={section.href}
-            className="flex items-center gap-4 p-6 bg-surface rounded-2xl border border-hairline hover:border-ink-subtle transition-colors"
-          >
-            <div className="w-12 h-12 rounded-xl bg-accent-brand/10 flex items-center justify-center">
-              <section.icon className="w-6 h-6 text-accent-brand" />
-            </div>
-            <div className="flex-1">
-              <h3 className="text-lg font-semibold text-ink">
-                {section.label}
-              </h3>
-              <p className="text-sm text-ink-muted">{section.description}</p>
-            </div>
-            <span className="text-ink-subtle">→</span>
-          </Link>
-        ))}
+      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_20rem]">
+        <div className="space-y-6">
+          <NextStepSection
+            nextId={nextId}
+            restaurantId={id}
+            slug={restaurant.slug}
+          />
+
+          <SetupChecklist
+            title={t('checklist')}
+            progressLabel={progressLabel}
+            progressValue={completedSteps}
+            progressTotal={steps.length}
+            badge={
+              essentialsDone ? (
+                <span className={`${ui.chip} ${ui.chipSuccess}`}>
+                  {t('menuReady')}
+                </span>
+              ) : undefined
+            }
+            steps={steps}
+            optionalLabel={tc('optional')}
+          />
+        </div>
+
+        <div className="space-y-6">
+          <PublicMenuCard slug={restaurant.slug} />
+        </div>
       </div>
     </div>
   );
