@@ -8,6 +8,7 @@ import {
   LayoutDashboard,
   Palette,
   Plus,
+  Settings,
   User,
   UtensilsCrossed,
 } from 'lucide-react';
@@ -52,6 +53,12 @@ export function BottomTabBar() {
           label: t('languages'),
           icon: Languages,
           active: pathname.startsWith(`${restaurantBase}/translations`),
+        },
+        {
+          href: `${restaurantBase}/settings`,
+          label: t('settings'),
+          icon: Settings,
+          active: pathname.startsWith(`${restaurantBase}/settings`),
         },
       ]
     : [

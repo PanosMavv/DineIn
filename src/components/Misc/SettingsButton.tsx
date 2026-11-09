@@ -190,7 +190,11 @@ export function SettingsButton() {
           setIsDark(dark);
           setIsOpen(true);
         }}
-        className="fixed bottom-4 right-4 z-30 w-12 h-12 rounded-full bg-surface shadow-lg border border-hairline flex items-center justify-center transition-all duration-300 hover:scale-105"
+        className={`fixed right-4 z-30 flex h-12 w-12 items-center justify-center rounded-full border border-hairline bg-surface shadow-lg transition-all duration-300 hover:scale-105 ${
+          pathname.startsWith('/dashboard')
+            ? 'bottom-24 md:bottom-4'
+            : 'bottom-4'
+        }`}
         aria-label="Settings"
       >
         <Settings className="w-5 h-5 text-ink-muted" />

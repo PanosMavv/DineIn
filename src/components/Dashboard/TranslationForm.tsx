@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Save, X, Globe, ChevronDown, ChevronUp } from 'lucide-react';
 import Image from 'next/image';
@@ -49,52 +49,45 @@ export function TranslationForm({
   const [locale, setLocale] = useState(initialLocale || '');
   const [collapsedCategories, setCollapsedCategories] = useState<Record<string, boolean>>({});
 
-  const [restaurantName, setRestaurantName] = useState('');
-  const [restaurantDescription, setRestaurantDescription] = useState('');
-  const [categoryTranslations, setCategoryTranslations] = useState<Record<string, string>>({});
-  const [itemTranslations, setItemTranslations] = useState<Record<string, { name: string; description: string }>>({});
-
-  const t = useTranslations(
-    `dashboard.management.translations.${isEditing ? 'edit' : 'add'}`
+  const initialRestaurantTranslation = restaurantTranslations?.find(
+    tr => tr.locale === initialLocale
   );
-  const languageLabel = locale ? getLocaleLabel(locale) : '';
-
-  // Initialize all categories as collapsed
-  useEffect(() => {
-    const initialCollapsed: Record<string, boolean> = {};
-    categories.forEach(cat => {
-      initialCollapsed[cat.id] = true;
-    });
-    setCollapsedCategories(initialCollapsed);
-  }, [categories]);
-
-  // Load existing translations when editing
-  useEffect(() => {
+  const [restaurantName, setRestaurantName] = useState(
+    initialRestaurantTranslation?.name || ''
+  );
+  const [restaurantDescription, setRestaurantDescription] = useState(
+    initialRestaurantTranslation?.description || ''
+  );
+  const [categoryTranslations, setCategoryTranslations] = useState<Record<string, string>>(() => {
+    const map: Record<string, string> = {};
     if (initialLocale) {
-      const rt = restaurantTranslations?.find(tr => tr.locale === initialLocale);
-      setRestaurantName(rt?.name || '');
-      setRestaurantDescription(rt?.description || '');
-
-      const catMap: Record<string, string> = {};
       categories.forEach(cat => {
         const catTr = cat.translations.find(tr => tr.locale === initialLocale);
-        catMap[cat.id] = catTr?.name || '';
+        map[cat.id] = catTr?.name || '';
       });
-      setCategoryTranslations(catMap);
-
-      const itemMap: Record<string, { name: string; description: string }> = {};
+    }
+    return map;
+  });
+  const [itemTranslations, setItemTranslations] = useState<Record<string, { name: string; description: string }>>(() => {
+    const map: Record<string, { name: string; description: string }> = {};
+    if (initialLocale) {
       categories.forEach(cat => {
         cat.menuItems.forEach(item => {
           const itemTr = item.translations.find(tr => tr.locale === initialLocale);
-          itemMap[item.id] = {
+          map[item.id] = {
             name: itemTr?.name || '',
             description: itemTr?.description || '',
           };
         });
       });
-      setItemTranslations(itemMap);
     }
-  }, [initialLocale, categories, restaurantTranslations]);
+    return map;
+  });
+
+  const t = useTranslations(
+    `dashboard.management.translations.${isEditing ? 'edit' : 'add'}`
+  );
+  const languageLabel = locale ? getLocaleLabel(locale) : '';
 
   const handleLocaleChange = (newLocale: string) => {
     setLocale(newLocale);
@@ -125,7 +118,7 @@ export function TranslationForm({
   const toggleCategory = (categoryId: string) => {
     setCollapsedCategories(prev => ({
       ...prev,
-      [categoryId]: !prev[categoryId],
+      [categoryId]: !(prev[categoryId] ?? true),
     }));
   };
 
@@ -265,7 +258,9 @@ export function TranslationForm({
           </div>
 
           {/* Categories */}
-          {categories.map(category => (
+          {categories.map(category => {
+            const isCollapsed = collapsedCategories[category.id] ?? true;
+            return (
             <div
               key={category.id}
               className="bg-surface rounded-2xl border border-hairline overflow-hidden"
@@ -292,14 +287,14 @@ export function TranslationForm({
                   <button
                     type="button"
                     onClick={() => toggleCategory(category.id)}
-                    aria-expanded={!collapsedCategories[category.id]}
+                    aria-expanded={!isCollapsed}
                     aria-controls={`translation-category-${category.id}`}
                     className="flex w-full items-center justify-between gap-2 text-left"
                   >
                     <span className="text-xs text-ink-muted">
                       {t('categoryEnglishLabel')} {getEnglishCategoryName(category)}
                     </span>
-                    {collapsedCategories[category.id] ? (
+                    {isCollapsed ? (
                       <ChevronDown className="h-5 w-5 shrink-0 text-ink-muted" aria-hidden="true" />
                     ) : (
                       <ChevronUp className="h-5 w-5 shrink-0 text-ink-muted" aria-hidden="true" />
@@ -322,7 +317,7 @@ export function TranslationForm({
               {/* Items - only show if not collapsed */}
               <div
                 id={`translation-category-${category.id}`}
-                hidden={Boolean(collapsedCategories[category.id])}
+                hidden={isCollapsed}
                 className="divide-y divide-hairline"
               >
                 {category.menuItems.map(item => (
@@ -381,7 +376,8 @@ export function TranslationForm({
                 ))}
               </div>
             </div>
-          ))}
+            );
+          })}
         </>
       )}
 

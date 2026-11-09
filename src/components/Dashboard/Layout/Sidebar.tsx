@@ -9,6 +9,7 @@ import {
   LogOut,
   Palette,
   Plus,
+  Settings,
   UtensilsCrossed,
 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
@@ -16,11 +17,18 @@ import { authClient } from '@/lib/auth-client';
 import { Logo } from '@/components/Misc/Logo';
 import { ui } from '@/lib/ui';
 
-export function Sidebar() {
+interface Props {
+  user: {
+    name: string;
+    email: string;
+    image: string | null;
+  };
+}
+
+export function Sidebar({ user }: Props) {
   const pathname = usePathname();
   const t = useTranslations('dashboard.nav');
   const td = useTranslations('dashboard');
-  const { data: session } = authClient.useSession();
 
   const restaurantMatch = pathname.match(
     /^\/dashboard\/restaurants\/([^/]+)/
@@ -74,6 +82,12 @@ export function Sidebar() {
           icon: Languages,
           active: pathname.startsWith(`${restaurantBase}/translations`),
         },
+        {
+          href: `${restaurantBase}/settings`,
+          label: t('settings'),
+          icon: Settings,
+          active: pathname.startsWith(`${restaurantBase}/settings`),
+        },
       ]
     : [];
 
@@ -121,45 +135,41 @@ export function Sidebar() {
         )}
       </nav>
 
-      {session?.user && (
-        <div className="border-t border-hairline p-3">
-          <Link
-            href="/dashboard/profile"
-            className={`mb-2 flex items-center gap-3 rounded-[var(--dashboard-radius-sm)] px-2 py-2 transition-colors hover:bg-surface-2 ${ui.focusRing}`}
-          >
-            <div className="h-9 w-9 shrink-0 overflow-hidden rounded-full bg-surface-2">
-              {session.user.image ? (
-                <img
-                  src={session.user.image}
-                  alt={session.user.name || 'User'}
-                  className="h-full w-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
-              ) : (
-                <div className="flex h-full w-full items-center justify-center bg-accent-brand text-sm font-bold text-white">
-                  {session.user.name?.charAt(0) || 'U'}
-                </div>
-              )}
-            </div>
-            <div className="min-w-0 flex-1">
-              <p className="truncate text-sm font-semibold text-ink">
-                {session.user.name}
-              </p>
-              <p className="truncate text-xs text-ink-muted">
-                {session.user.email}
-              </p>
-            </div>
-          </Link>
-          <button
-            type="button"
-            onClick={handleSignOut}
-            className={`flex w-full items-center gap-3 rounded-[var(--dashboard-radius-sm)] px-4 py-2.5 text-sm text-red-600 transition-colors hover:bg-red-500/10 ${ui.focusRing}`}
-          >
-            <LogOut className="h-5 w-5" aria-hidden="true" />
-            {td('signOut')}
-          </button>
-        </div>
-      )}
+      <div className="border-t border-hairline p-3">
+        <Link
+          href="/dashboard/profile"
+          className={`mb-2 flex items-center gap-3 rounded-[var(--dashboard-radius-sm)] px-2 py-2 transition-colors hover:bg-surface-2 ${ui.focusRing}`}
+        >
+          <div className="h-9 w-9 shrink-0 overflow-hidden rounded-full bg-surface-2">
+            {user.image ? (
+              <img
+                src={user.image}
+                alt={user.name || 'User'}
+                className="h-full w-full object-cover"
+                referrerPolicy="no-referrer"
+              />
+            ) : (
+              <div className="flex h-full w-full items-center justify-center bg-accent-brand text-sm font-bold text-white">
+                {user.name?.charAt(0) || 'U'}
+              </div>
+            )}
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="truncate text-sm font-semibold text-ink">
+              {user.name}
+            </p>
+            <p className="truncate text-xs text-ink-muted">{user.email}</p>
+          </div>
+        </Link>
+        <button
+          type="button"
+          onClick={handleSignOut}
+          className={`flex w-full items-center gap-3 rounded-[var(--dashboard-radius-sm)] px-4 py-2.5 text-sm text-red-600 transition-colors hover:bg-red-500/10 ${ui.focusRing}`}
+        >
+          <LogOut className="h-5 w-5" aria-hidden="true" />
+          {td('signOut')}
+        </button>
+      </div>
     </aside>
   );
 }

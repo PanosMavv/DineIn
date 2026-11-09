@@ -157,7 +157,8 @@
       "overview": "Overview",
       "menu": "Menu",
       "design": "Design",
-      "languages": "Languages"
+      "languages": "Languages",
+      "settings": "Settings"
     },
     "common": {
       "back": "Back",
@@ -279,6 +280,26 @@
       "allAddedTitle": "Every language is added",
       "allAddedBody": "You've added all the languages we currently support."
     },
+    "settings": {
+      "header": "Settings",
+      "description": "Update your restaurant details and manage the public page.",
+      "nameLabel": "Restaurant name",
+      "namePlaceholder": "e.g. Bella Napoli",
+      "nameRequired": "Restaurant name is required.",
+      "descriptionLabel": "Short description",
+      "descriptionPlaceholder": "e.g. Family-run Italian since 1962",
+      "publicUrl": "Public URL",
+      "publicUrlHint": "Share this link with guests. The URL itself can't be changed yet.",
+      "save": "Save changes",
+      "saving": "Saving...",
+      "saved": "Changes saved",
+      "saveFailed": "Couldn't save changes. Please try again.",
+      "dangerZone": "Danger zone",
+      "dangerBody": "Deleting your restaurant removes its menu, categories, and translations. This cannot be undone.",
+      "deleteRestaurant": "Delete restaurant",
+      "deleteTitle": "Delete {name}?",
+      "deleteBody": "This permanently deletes the restaurant and all of its menu content."
+    },
     "overview": {
       "header": "Overview",
       "welcome": "Welcome back, ",
@@ -302,14 +323,23 @@
     },
     "management": {
       "theme": {
-        "header": "Theme & Appearance",
-        "description": "Customize look and feel.",
+        "header": "Design",
+        "description": "Choose a template, add your logo, and show off your place.",
         "menuTemplate": "Menu Template",
         "saveTemplate": "Save Template",
         "logo": "Restaurant Logo",
+        "logoUrl": "Logo URL",
         "saveLogo": "Save Logo",
-        "carouselImages": "Carousel Images",
-        "back": "Back to Management"
+        "carouselImages": "Photos",
+        "carouselImageAlt": "Menu photo {index}",
+        "addCarouselImage": "Add photo URL",
+        "deleteImage": "Delete photo",
+        "add": "Add",
+        "saved": "Saved",
+        "saveFailed": "Couldn't save changes. Please try again.",
+        "addImageFailed": "Couldn't add the photo. Please try again.",
+        "deleteImageFailed": "Couldn't delete the photo. Please try again.",
+        "back": "Back to {name}"
       },
       "categories": {
         "header": "Categories",

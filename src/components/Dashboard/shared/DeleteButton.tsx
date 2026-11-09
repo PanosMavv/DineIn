@@ -12,9 +12,18 @@ interface Props {
   title: string;
   description: string;
   triggerLabel: string;
+  triggerVariant?: 'icon' | 'button';
+  redirectTo?: string;
 }
 
-export function DeleteButton({ endpoint, title, description, triggerLabel }: Props) {
+export function DeleteButton({
+  endpoint,
+  title,
+  description,
+  triggerLabel,
+  triggerVariant = 'icon',
+  redirectTo,
+}: Props) {
   const router = useRouter();
   const t = useTranslations('dashboard.common');
   const [open, setOpen] = useState(false);
@@ -38,7 +47,12 @@ export function DeleteButton({ endpoint, title, description, triggerLabel }: Pro
       }
 
       setOpen(false);
-      router.refresh();
+      if (redirectTo) {
+        router.push(redirectTo);
+        router.refresh();
+      } else {
+        router.refresh();
+      }
     } catch {
       setError(t('deleteFailed'));
     } finally {
@@ -48,14 +62,21 @@ export function DeleteButton({ endpoint, title, description, triggerLabel }: Pro
 
   return (
     <>
-      <button
-        type="button"
-        onClick={handleOpen}
-        className={ui.btnIconSm}
-        aria-label={triggerLabel}
-      >
-        <Trash2 className="h-4 w-4 text-red-600" aria-hidden="true" />
-      </button>
+      {triggerVariant === 'button' ? (
+        <button type="button" onClick={handleOpen} className={ui.btnDanger}>
+          <Trash2 className="h-4 w-4" aria-hidden="true" />
+          {triggerLabel}
+        </button>
+      ) : (
+        <button
+          type="button"
+          onClick={handleOpen}
+          className={ui.btnIconSm}
+          aria-label={triggerLabel}
+        >
+          <Trash2 className="h-4 w-4 text-red-600" aria-hidden="true" />
+        </button>
+      )}
 
       <ConfirmDialog
         open={open}
