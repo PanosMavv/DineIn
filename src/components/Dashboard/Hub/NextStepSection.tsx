@@ -75,16 +75,6 @@ export async function NextStepSection({ nextId, restaurantId, slug }: Props) {
       body={content.body}
       icon={content.icon}
       action={content.action}
-      secondary={
-        <a
-          href={`/${slug}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={ui.btnGhost}
-        >
-          {tc('preview')}
-        </a>
-      }
     />
   );
 }

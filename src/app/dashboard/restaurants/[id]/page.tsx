@@ -9,7 +9,6 @@ import { NextStepSection } from '@/components/Dashboard/Hub/NextStepSection';
 import { NotLiveBanner } from '@/components/Dashboard/Hub/NotLiveBanner';
 import { WelcomeBanner } from '@/components/Dashboard/Hub/WelcomeBanner';
 import { SetupChecklist, type ChecklistStep } from '@/components/Dashboard/Hub/SetupChecklist';
-import { PublicMenuCard } from '@/components/Dashboard/Hub/PublicMenuCard';
 import type { StepStatus } from '@/components/Dashboard/shared/StatusRow';
 
 export default async function RestaurantDetailPage({
@@ -153,34 +152,28 @@ export default async function RestaurantDetailPage({
 
       {!isLive && <NotLiveBanner restaurantId={id} />}
 
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_20rem]">
-        <div className="space-y-6">
-          <NextStepSection
-            nextId={nextId}
-            restaurantId={id}
-            slug={restaurant.slug}
-          />
+      <div className="max-w-4xl space-y-6">
+        <NextStepSection
+          nextId={nextId}
+          restaurantId={id}
+          slug={restaurant.slug}
+        />
 
-          <SetupChecklist
-            title={t('checklist')}
-            progressLabel={progressLabel}
-            progressValue={completedSteps}
-            progressTotal={steps.length}
-            badge={
-              essentialsDone ? (
-                <span className={`${ui.chip} ${ui.chipSuccess}`}>
-                  {t('menuReady')}
-                </span>
-              ) : undefined
-            }
-            steps={steps}
-            optionalLabel={tc('optional')}
-          />
-        </div>
-
-        <div className="space-y-6">
-          <PublicMenuCard slug={restaurant.slug} />
-        </div>
+        <SetupChecklist
+          title={t('checklist')}
+          progressLabel={progressLabel}
+          progressValue={completedSteps}
+          progressTotal={steps.length}
+          badge={
+            essentialsDone ? (
+              <span className={`${ui.chip} ${ui.chipSuccess}`}>
+                {t('menuReady')}
+              </span>
+            ) : undefined
+          }
+          steps={steps}
+          optionalLabel={tc('optional')}
+        />
       </div>
     </div>
   );

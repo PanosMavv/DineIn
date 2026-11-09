@@ -165,7 +165,6 @@
       "allRestaurants": "All restaurants",
       "preview": "Preview",
       "open": "Open",
-      "openMenu": "Open menu",
       "copyLink": "Copy link",
       "copied": "Copied",
       "copyFailed": "Copy failed",
@@ -221,8 +220,6 @@
       "notLive": "Not live yet",
       "notLiveBody": "English is inactive, so guests see your URL without a name. Activate it in Languages.",
       "notLiveCta": "Go to Languages",
-      "publicMenu": "Your public menu",
-      "publicMenuHint": "This is the page your guests will open.",
       "addDish": "Add dish",
       "addLanguage": "Add language",
       "customize": "Customize"
