@@ -42,7 +42,7 @@ export function SearchBox({ groupedMenu }: Props) {
       <button
         onClick={() => setIsOpen(true)}
         className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-surface-2 shrink-0"
-        aria-label="Search menu"
+        aria-label={t('searchAriaLabel')}
       >
         <Search className="w-5 h-5 text-ink-muted" />
       </button>
@@ -86,7 +86,7 @@ export function SearchBox({ groupedMenu }: Props) {
               </div>
             ) : (
               <div className="text-center py-12">
-                <p className="text-ink-subtle">Start typing to search the menu</p>
+                <p className="text-ink-subtle">{t('searchHint')}</p>
               </div>
             )}
           </div>

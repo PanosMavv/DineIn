@@ -82,7 +82,7 @@ export function FastFoodMenu({ restaurant, groupedMenu }: Props) {
           <button
             onClick={() => setIsSearchOpen(true)}
             className="w-8 h-8 flex items-center justify-center rounded-full bg-accent-brand text-white"
-            aria-label="Search menu"
+            aria-label={t('searchAriaLabel')}
           >
             <Search className="w-4 h-4" />
           </button>
@@ -160,7 +160,7 @@ export function FastFoodMenu({ restaurant, groupedMenu }: Props) {
             <button
               onClick={() => setIsSearchOpen(false)}
               className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-surface-2"
-              aria-label="Close search"
+              aria-label={t('closeSearch')}
             >
               <ArrowLeft className="w-5 h-5 text-ink-muted" />
             </button>
@@ -175,7 +175,7 @@ export function FastFoodMenu({ restaurant, groupedMenu }: Props) {
                 className="flex-1 min-w-0 bg-transparent text-sm text-ink outline-none"
               />
               {searchQuery && (
-                <button onClick={() => setSearchQuery('')} aria-label="Clear search">
+                <button onClick={() => setSearchQuery('')} aria-label={t('clearSearch')}>
                   <X className="w-4 h-4 text-ink-subtle" />
                 </button>
               )}
@@ -211,7 +211,7 @@ export function FastFoodMenu({ restaurant, groupedMenu }: Props) {
                 ))}
               </div>
             ) : (
-              <p className="text-center py-12 text-ink-subtle">Start typing to search</p>
+              <p className="text-center py-12 text-ink-subtle">{t('searchHintShort')}</p>
             )}
           </div>
         </div>

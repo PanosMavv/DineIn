@@ -86,7 +86,13 @@
     "notFoundMessage": "The restaurant you're looking for doesn't exist.",
     "loading": "Loading menu...",
     "searchPlaceholder": "Search the menu...",
-    "searchNotFound": "No items were found for"
+    "searchNotFound": "No items were found for",
+    "searchAriaLabel": "Search menu",
+    "searchHint": "Start typing to search the menu",
+    "searchHintShort": "Start typing to search",
+    "closeSearch": "Close search",
+    "clearSearch": "Clear search",
+    "backToCategories": "Back to categories"
   },
   "footer": {
     "description": "Beautiful digital menus for restaurants, coffee shops, and food businesses.",

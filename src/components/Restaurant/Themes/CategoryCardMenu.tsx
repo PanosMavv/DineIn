@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { ImageMenuItem } from '../Content/ImageMenuItem';
 import { useScrollTarget } from '@/components/Restaurant/useScrollTarget';
 import { HeroPicker } from '@/components/Restaurant/Heros/HeroPicker';
+import { useTranslations } from 'next-intl';
 
 interface Props {
   restaurant: { name: string; description?: string | null; category?: string; theme?: any };
@@ -15,6 +16,7 @@ interface Props {
 
 export function CategoryCardMenu({ restaurant, groupedMenu }: Props) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const t = useTranslations('restaurant');
   const { scrollTo } = useScrollTarget();
 
   const selectedGroup = selectedIndex !== null ? groupedMenu[selectedIndex] : null;
@@ -54,7 +56,7 @@ export function CategoryCardMenu({ restaurant, groupedMenu }: Props) {
               <button
                 onClick={handleBack}
                 className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-surface-2 shrink-0"
-                aria-label="Back to categories"
+                aria-label={t('backToCategories')}
               >
                 <ArrowLeft className="w-5 h-5 text-ink-muted" />
               </button>
