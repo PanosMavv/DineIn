@@ -7,6 +7,7 @@ interface Props {
   body: string;
   icon: LucideIcon;
   action: React.ReactNode;
+  secondary?: React.ReactNode;
 }
 
 export function NextStepCard({
@@ -15,6 +16,7 @@ export function NextStepCard({
   body,
   icon: Icon,
   action,
+  secondary,
 }: Props) {
   return (
     <section
@@ -35,6 +37,7 @@ export function NextStepCard({
 
           <div className="mt-4 flex flex-wrap items-center gap-2">
             {action}
+            {secondary}
           </div>
         </div>
       </div>
